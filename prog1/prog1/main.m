@@ -14,6 +14,9 @@
 -(void) setNumerator: (int) n;
 -(void) setDenominator: (int) d;
 
+-(int) numerator;
+-(int) denominator;
+
 @end
 
 @implementation Fraction {
@@ -30,6 +33,12 @@
 -(void) setDenominator: (int) d {
     denominator = d;
 }
+-(int) numerator {
+    return numerator;
+}
+-(int) denominator {
+    return denominator;
+}
 
 @end
 
@@ -38,22 +47,14 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
 
-        Fraction *frac1 = [[Fraction alloc] init];
-        Fraction *frac2 = [[Fraction alloc] init];
+        Fraction *frac = [[Fraction alloc] init];
 
+        [frac setNumerator: 1];
+        [frac setDenominator: 3];
         
-        [frac1 setNumerator: 1];
-        [frac1 setDenominator: 3];
-        
-        
-        [frac2 setNumerator: 3];
-        [frac2 setDenominator: 7];
-        
-        NSLog(@"The frac1 value of myFraction is:");
-        [frac1 print];
-
-        NSLog(@"The frac2 value of myFraction is:");
-        [frac2 print];
+        NSLog(@"The frac numerator is: %i", [frac numerator]);
+        NSLog(@"The frac denominator is: %i", [frac denominator]);
+        [frac print];
     }
     return 0;
 }
