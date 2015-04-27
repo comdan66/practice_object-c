@@ -11,11 +11,13 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        int sum;
+        int sum, v1, v2;
+        v1 = 50;
+        v2 = 25;
         
         sum = 50 + 25;
         
-        NSLog(@"The sum of 50 and 25 is %i", sum);
+        NSLog(@"The sum of %i and %i is %i", v1, v2, sum);
     }
     return 0;
 }
