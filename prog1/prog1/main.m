@@ -38,15 +38,22 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
 
-        Fraction *myFraction;
-        myFraction = [Fraction alloc];
-        myFraction = [myFraction init];
+        Fraction *frac1 = [[Fraction alloc] init];
+        Fraction *frac2 = [[Fraction alloc] init];
+
         
-        [myFraction setNumerator: 1];
-        [myFraction setDenominator: 3];
+        [frac1 setNumerator: 1];
+        [frac1 setDenominator: 3];
         
-        NSLog(@"The value of myFraction is:");
-        [myFraction print];
+        
+        [frac2 setNumerator: 3];
+        [frac2 setDenominator: 7];
+        
+        NSLog(@"The frac1 value of myFraction is:");
+        [frac1 print];
+
+        NSLog(@"The frac2 value of myFraction is:");
+        [frac2 print];
     }
     return 0;
 }
