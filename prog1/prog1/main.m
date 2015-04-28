@@ -13,9 +13,8 @@ int main(int argc, const char * argv[]) {
         // insert code here...
         int integer = 0;
         
-        for (int n = 1; n <= 200; n++) {
-            integer += n;
-        }
+        NSLog(@"input: ");
+        scanf("%i", &integer);
         
         NSLog(@"val: %i", integer);
     }
