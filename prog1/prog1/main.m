@@ -11,25 +11,11 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        int a = 100;
-        int b = 2;
-        int c = 25;
-        int d = 4;
-        int result;
+        int integer;
         
-        result = a - b;
-        NSLog(@"a - b = %i", result);
+        integer = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9;
         
-        result = b * c;
-        NSLog(@"b * c = %i", result);
-        
-        result = a / c;
-        NSLog(@"a / c = %i", result);
-        
-        result = a + b * c;
-        NSLog(@"a + b * c = %i", result);
-        
-        NSLog(@"a * b + c * d = %i", a * b + c * d);
+        NSLog(@"val: %i", integer);
     }
     return 0;
 }
