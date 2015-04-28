@@ -11,9 +11,11 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        int integer;
+        int integer = 0;
         
-        integer = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9;
+        for (int n = 1; n <= 200; n++) {
+            integer += n;
+        }
         
         NSLog(@"val: %i", integer);
     }
