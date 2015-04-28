@@ -12,11 +12,10 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         Fraction *myFrac1 = [[Fraction alloc] init];
 
-        [myFrac1 setNumerator: 1];
-        [myFrac1 setDenominator: 4];
+        myFrac1.numerator = 1;
+        myFrac1.denominator = 4;
         
-        NSLog(@"val: ");
-        [myFrac1 print];
+        NSLog(@"%i / %i = %g", myFrac1.numerator, myFrac1.denominator, myFrac1.covertToNum);
     }
     return 0;
 }
