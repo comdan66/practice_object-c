@@ -53,12 +53,17 @@ int main(int argc, const char * argv[]) {
         Fraction *frac1 = [[Fraction alloc] init];
         Fraction *frac2 = [[Fraction alloc] init];
         
-        [frac1 setNumerator: 1];
-        [frac1 setDenominator: 4];
-        [frac1 print];
-        NSLog(@" = %g", [frac1 covertToNum]);
-        
-        NSLog(@" = %g", [frac2 covertToNum]);
+        if (frac1) {
+            NSLog(@"A");
+        } else {
+            NSLog(@"B");
+        }
+//        [frac1 setNumerator: 1];
+//        [frac1 setDenominator: 4];
+//        [frac1 print];
+//        NSLog(@" = %g", [frac1 covertToNum]);
+//        
+//        NSLog(@" = %g", [frac2 covertToNum]);
         
    }
     return 0;
