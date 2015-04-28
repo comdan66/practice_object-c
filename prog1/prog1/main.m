@@ -8,53 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Fraction : NSObject
-
--(void) print;
--(void) setNumerator: (int) n;
--(void) setDenominator: (int) d;
-
--(int) numerator;
--(int) denominator;
-
-@end
-
-@implementation Fraction {
-    int numerator;
-    int denominator;
-}
-
--(void) print {
-    NSLog(@"%i / %i", numerator, denominator);
-}
--(void) setNumerator: (int) n {
-    numerator = n;
-}
--(void) setDenominator: (int) d {
-    denominator = d;
-}
--(int) numerator {
-    return numerator;
-}
--(int) denominator {
-    return denominator;
-}
-
-@end
-
-
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-
-        Fraction *frac = [[Fraction alloc] init];
-
-        [frac setNumerator: 1];
-        [frac setDenominator: 3];
+        int integerVar = 100;
+        float floatingVar = 331.79;
+        double doubleVar = 8.44e+11;
+        char charVar = 'w';
         
-        NSLog(@"The frac numerator is: %i", [frac numerator]);
-        NSLog(@"The frac denominator is: %i", [frac denominator]);
-        [frac print];
+        NSLog(@"integer value = %i", integerVar);
+        NSLog(@"float value = %f", floatingVar);
+        NSLog(@"double value = %e", doubleVar);
+        NSLog(@"double value = %g", doubleVar);
+        NSLog(@"char value = %c", charVar);
     }
     return 0;
 }
