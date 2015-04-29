@@ -13,6 +13,8 @@
 @property int numerator, denominator;
 
 -(void) print;
+-(void) setTo: (int) n over: (int) d;
 -(double) covertToNum;
+-(void) add: (Fraction *) f;
 
 @end
