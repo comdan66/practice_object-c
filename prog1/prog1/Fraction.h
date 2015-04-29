@@ -15,7 +15,7 @@
 -(void) print;
 -(void) setTo: (int) n over: (int) d;
 -(double) covertToNum;
--(void) add: (Fraction *) f;
+-(Fraction *) add: (Fraction *) f;
 -(void) reduce;
 -(void) test: (Fraction *) f;
 

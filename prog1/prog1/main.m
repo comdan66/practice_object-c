@@ -23,10 +23,10 @@ int main(int argc, const char * argv[]) {
         [myFrac2 print];
         
         
-        [myFrac1 add: myFrac2];
-        [myFrac1 print];
+        Fraction *result = [myFrac1 add: myFrac2];
+        [result print];
         
-        NSLog(@"val: %g", myFrac1.covertToNum);
+        NSLog(@"val: %g", result.covertToNum);
         //
 //        myFrac1.numerator = 1;
 //        myFrac1.denominator = 4;

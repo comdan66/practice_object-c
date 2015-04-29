@@ -25,11 +25,14 @@
     else
         return NAN;
 }
--(void) add: (Fraction *) f {
-    numerator = numerator * f.denominator + denominator * f.numerator;
-    denominator = denominator * f.denominator;
+-(Fraction *) add: (Fraction *) f {
+    Fraction *result = [[Fraction alloc] init];
     
-    [self reduce];
+    result.numerator = numerator * f.denominator + denominator * f.numerator;
+    result.denominator = denominator * f.denominator;
+    
+    [result reduce];
+    return result;
 }
 -(void) reduce {
     int u = numerator;
