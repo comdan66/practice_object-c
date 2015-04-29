@@ -16,13 +16,15 @@ int main(int argc, const char * argv[]) {
         myFrac1.numerator = 1;
         myFrac1.denominator = 4;
         
-        myFrac2.numerator = 2;
-        myFrac2.denominator = 3;
+        myFrac2.numerator = 1;
+        myFrac2.denominator = 2;
         
         [myFrac1 print];
         [myFrac2 print];
         
         [myFrac1 add: myFrac2];
+        [myFrac1 print];
+        [myFrac1 reduce];
         [myFrac1 print];
         
         NSLog(@"val: %g", myFrac1.covertToNum);

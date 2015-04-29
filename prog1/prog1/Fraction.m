@@ -29,4 +29,18 @@
     numerator = numerator * f.denominator + denominator * f.numerator;
     denominator = denominator * f.denominator;
 }
+-(void) reduce {
+    int u = numerator;
+    int v = denominator;
+    int temp;
+    
+    while (v != 0) {
+        temp = u % v;
+        u = v;
+        v = temp;
+    }
+    
+    numerator /= u;
+    denominator /= u;
+}
 @end

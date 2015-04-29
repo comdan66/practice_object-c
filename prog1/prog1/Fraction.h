@@ -16,5 +16,6 @@
 -(void) setTo: (int) n over: (int) d;
 -(double) covertToNum;
 -(void) add: (Fraction *) f;
+-(void) reduce;
 
 @end
