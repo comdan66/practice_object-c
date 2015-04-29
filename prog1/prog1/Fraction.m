@@ -43,4 +43,7 @@
     numerator /= u;
     denominator /= u;
 }
+-(void) test: (Fraction *) f {
+    f.numerator = 0;
+}
 @end

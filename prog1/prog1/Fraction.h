@@ -17,5 +17,6 @@
 -(double) covertToNum;
 -(void) add: (Fraction *) f;
 -(void) reduce;
+-(void) test: (Fraction *) f;
 
 @end
