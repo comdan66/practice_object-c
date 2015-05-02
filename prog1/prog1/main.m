@@ -6,35 +6,44 @@
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
-#import "Fraction.h"
+#import <Foundation/Foundation.h>
+
+@interface ClassA : NSObject {
+    int x;
+}
+
+-(void) initVar;
+
+@end
+
+@implementation ClassA
+
+-(void) initVar {
+    x = 100;
+}
+
+@end
+
+@interface ClassB : ClassA
+
+-(void) printVal;
+
+@end
+
+@implementation ClassB
+
+-(void) printVal {
+    NSLog(@"X = %i", x);
+}
+
+@end
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Fraction *myFrac1 = [[Fraction alloc] init];
-        Fraction *myFrac2 = [[Fraction alloc] init];
-
-        myFrac1.numerator = 1;
-        myFrac1.denominator = 4;
+        ClassB* b = [ClassB new];
         
-        myFrac2.numerator = 1;
-        myFrac2.denominator = 2;
-        
-        [myFrac1 print];
-        [myFrac2 print];
-        
-        
-        Fraction *result = [myFrac1 add: myFrac2];
-        [result print];
-        
-        NSLog(@"val: %g", result.covertToNum);
-        //
-//        myFrac1.numerator = 1;
-//        myFrac1.denominator = 4;
-//        
-//        NSLog(@"%i / %i = %g", myFrac1.numerator, myFrac1.denominator, myFrac1.covertToNum);
-//        
-//        [myFrac1 setTo: 1 over: 3];
-//        [myFrac1 print];
+        [b initVar];
+        [b printVal];
     }
     return 0;
 }
