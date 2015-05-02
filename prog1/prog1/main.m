@@ -25,15 +25,17 @@ int main(int argc, const char * argv[]) {
         
         NSLog(@"Area = %i, Perimeter = %i", myRect.area, myRect.perimeter);
         
-        [myPoint setX: 50 andY: 50];
-        
         NSLog(@"------------------------------");
+        
+        [myPoint setX: 50 andY: 50];
         
         NSLog(@"W = %i, H = %i", myRect.width, myRect.height);
         
         NSLog(@"X = %i, Y = %i", myRect.origin.x, myRect.origin.y);
         
         NSLog(@"Area = %i, Perimeter = %i", myRect.area, myRect.perimeter);
+        
+        NSLog(@"------------------------------");
         
         
         

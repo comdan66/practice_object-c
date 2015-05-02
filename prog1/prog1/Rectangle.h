@@ -13,9 +13,7 @@
 
 
 @property int width, height;
-
--(XYPoint *) origin;
--(void) setOrigin: (XYPoint *) pt;
+@property XYPoint* origin;
 
 -(void) setWidth: (int)w andHeight: (int)h;
 -(int) area;
