@@ -32,8 +32,9 @@
     if (!origin)
         origin = [[XYPoint alloc] init];
     
-    origin.x = p.x;
-    origin.y = p.y;
+//    origin.x = p.x;
+//    origin.y = p.y;
+    [origin setX: p.x andY: p.y];
 }
 
 
