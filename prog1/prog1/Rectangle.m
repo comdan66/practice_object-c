@@ -28,5 +28,13 @@
     return (width + height) * 2;
 }
 
+-(void) setOrigin2: (XYPoint *) p {
+    if (!origin)
+        origin = [[XYPoint alloc] init];
+    
+    origin.x = p.x;
+    origin.y = p.y;
+}
+
 
 @end

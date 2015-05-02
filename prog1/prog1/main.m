@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
         [myPoint setX: 100 andY: 200];
         [myRect setWidth: 5 andHeight: 8];
         
-        myRect.origin = myPoint;
+        myRect.origin2 = myPoint;
         
         NSLog(@"W = %i, H = %i", myRect.width, myRect.height);
         
@@ -37,6 +37,7 @@ int main(int argc, const char * argv[]) {
         
         NSLog(@"------------------------------");
         
+//        myRect setOrigin 
         
         
 //        Square* mySquare = [Square new];
