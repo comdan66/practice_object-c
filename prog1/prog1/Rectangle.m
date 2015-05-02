@@ -8,7 +8,10 @@
 
 #import "Rectangle.h"
 
-@implementation Rectangle
+
+@implementation Rectangle {
+    XYPoint* origin;
+}
 
 @synthesize width, height;
 
@@ -17,12 +20,20 @@
     height = h;
 }
 
+-(void) setOrigin: (XYPoint *)pt {
+    origin = pt;
+}
+
 -(int) area {
     return width * height;
 }
 
 -(int) perimeter {
     return (width + height) * 2;
+}
+
+-(XYPoint *) origin {
+    return origin;
 }
 
 @end

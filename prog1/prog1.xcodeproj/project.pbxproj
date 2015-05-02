@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E9ED2461AF51564005A9B9E /* Square.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E9ED2451AF51564005A9B9E /* Square.m */; };
 		0E9ED2581AF51793005A9B9E /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E9ED2571AF51793005A9B9E /* Rectangle.m */; };
+		0E9ED25B1AF52C03005A9B9E /* XYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E9ED25A1AF52C03005A9B9E /* XYPoint.m */; };
 		0EB0796B1AEE633300F13EF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB0796A1AEE633300F13EF2 /* main.m */; };
 		0EB079861AEFB3B800F13EF2 /* Fraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB079851AEFB3B800F13EF2 /* Fraction.m */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,8 @@
 		0E9ED2451AF51564005A9B9E /* Square.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Square.m; sourceTree = "<group>"; };
 		0E9ED2561AF51793005A9B9E /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
 		0E9ED2571AF51793005A9B9E /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rectangle.m; sourceTree = "<group>"; };
+		0E9ED2591AF52C03005A9B9E /* XYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPoint.h; sourceTree = "<group>"; };
+		0E9ED25A1AF52C03005A9B9E /* XYPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPoint.m; sourceTree = "<group>"; };
 		0EB079671AEE633300F13EF2 /* prog1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = prog1; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EB0796A1AEE633300F13EF2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0EB079841AEFB3B800F13EF2 /* Fraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fraction.h; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 			isa = PBXGroup;
 			children = (
 				0EB0796A1AEE633300F13EF2 /* main.m */,
+				0E9ED2591AF52C03005A9B9E /* XYPoint.h */,
+				0E9ED25A1AF52C03005A9B9E /* XYPoint.m */,
 				0E9ED2441AF51564005A9B9E /* Square.h */,
 				0E9ED2451AF51564005A9B9E /* Square.m */,
 				0EB079841AEFB3B800F13EF2 /* Fraction.h */,
@@ -137,6 +142,7 @@
 				0EB0796B1AEE633300F13EF2 /* main.m in Sources */,
 				0EB079861AEFB3B800F13EF2 /* Fraction.m in Sources */,
 				0E9ED2581AF51793005A9B9E /* Rectangle.m in Sources */,
+				0E9ED25B1AF52C03005A9B9E /* XYPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

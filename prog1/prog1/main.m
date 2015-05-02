@@ -6,15 +6,33 @@
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
-#import "Square.h"
+#import "Rectangle.h"
+#import "XYPoint.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Square* mySquare = [Square new];
+        Rectangle* myRect = [Rectangle new];
+        XYPoint* myPoint = [XYPoint new];
+
+        [myPoint setX: 100 andY: 200];
+        [myRect setWidth: 5 andHeight: 8];
         
-        [mySquare setSide: 10];
-        NSLog(@"Rectagle: w = %i, h = %i", [mySquare side], [mySquare side]);
-        NSLog(@"Area = %i, perimeter = %i", [mySquare area], [mySquare perimeter]);
+        myRect.origin = myPoint;
+        
+        NSLog(@"W = %i, H = %i", myRect.width, myRect.height);
+        
+        NSLog(@"X = %i, Y = %i", myPoint.x, myPoint.y);
+        
+        NSLog(@"Area = %i, Perimeter = %i", myRect.area, myRect.perimeter);
+        
+        
+        
+        
+//        Square* mySquare = [Square new];
+//        
+//        [mySquare setSide: 10];
+//        NSLog(@"Rectagle: w = %i, h = %i", [mySquare side], [mySquare side]);
+//        NSLog(@"Area = %i, perimeter = %i", [mySquare area], [mySquare perimeter]);
         
 //        Rectangle* myRect = [Rectangle new];
 //        [myRect setWidth:5 andHeight: 8];
