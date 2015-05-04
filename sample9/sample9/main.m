@@ -28,8 +28,8 @@ int main(int argc, const char * argv[]) {
         NSLog(@"        +");
         [c2 print];
         NSLog(@"---------");
-        fr = [c1 add: c2];
-        [fr print];
+        cr = [c1 add: c2];
+        [cr print];
         
         NSLog(@"===============");
         
