@@ -27,7 +27,7 @@
 - (IBAction)calculateButtonPressed:(id)sender {
     NSLog(@"Calculate Pressed");
     
-    float water = [[self.waterTextField text] floatValue];
+    float water = [[self.h2oTextField text] floatValue];
     float ratio = [[self.ratioTextField text] floatValue];
     
     NSLog(@"Water: %f, ratio: %f", water, ratio);
