@@ -6,56 +6,16 @@
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-
-@interface Fraction : NSObject
-
--(void) print;
--(void) setNumerator: (int) n;
--(void) setDenominator: (int) d;
--(int) numerator;
--(int) denominator;
-
-@end
-
-@implementation Fraction {
-    int numerator;
-    int denominator;
-}
-
--(void) print {
-    NSLog(@"%i / %i", numerator, denominator);
-}
-
--(void) setNumerator: (int) n {
-    numerator = n;
-}
-
--(void) setDenominator: (int) d {
-    denominator = d;
-}
-
--(int) numerator {
-    return numerator;
-}
-
--(int) denominator {
-    return denominator;
-}
-
-@end
+#import "User.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Fraction *myFraction = [Fraction new];
-
+        User *user = [User new];
         
-        [myFraction setNumerator: 1];
-        [myFraction setDenominator: 3];
+        [user setAge: 10];
+        int age = [user age];
         
-        NSLog(@"%i / %i", [myFraction numerator], [myFraction denominator]);
-        
+        NSLog (@"User age: %i", age);
     }
     return 0;
 }
