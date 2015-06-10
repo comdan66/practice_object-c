@@ -12,8 +12,8 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         User *user = [User new];
         
-        [user setAge: 10];
-        int age = [user age];
+        user.age = 10;
+        int age = user.age;
         
         NSLog (@"User age: %i", age);
     }

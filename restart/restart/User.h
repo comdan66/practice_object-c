@@ -10,7 +10,7 @@
 
 @interface User : NSObject
 
--(void) setAge: (int) a;
--(int) age;
+@property int age;
+
 
 @end

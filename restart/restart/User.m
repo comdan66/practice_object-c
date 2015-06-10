@@ -8,15 +8,8 @@
 
 #import "User.h"
 
-@implementation User {
-    int age;
-}
+@implementation User
 
--(void) setAge: (int) a {
-    age = a;
-}
--(int) age {
-    return age;
-}
+@synthesize age;
 
 @end
