@@ -11,8 +11,10 @@
 @interface User : NSObject
 
 @property int age;
-@property NSString *name;
-@property User *children;
+@property NSString* name;
+@property User* nextUser;
 
+-(void) addUser: (User*) u;
+-(void) printAll;
 
 @end

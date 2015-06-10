@@ -10,20 +10,35 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        User *oa = [User new];
+        User *users;
         
-        oa.age = 30;
-        oa.name = @"OA";
+
+
+        NSString* userInput;
+        do {
+            NSLog(@"Please input name(0 to stop): ");
+            char word [40];
+            scanf("%s", word);
+            userInput = [[NSString alloc] initWithCString: word encoding: NSUTF8StringEncoding];
+            
+            if ([userInput  isEqual: @"0"])
+                break;
+
+            User *user = [User new];
+            user.name = userInput;
+            user.age = 0;
+            user.nextUser = nil;
+            
+            if (users == nil)
+                users = user;
+            else
+                [users addUser: user];
+
+        } while (true);
         
-        NSLog (@"OA name: %@", oa.name);
-        NSLog (@"OA age: %i", oa.age);
         
-        oa.children = [User new];
-        oa.children.name = @"OB";
-        oa.children.age = 10;
-        
-        NSLog(@"OA Children name %@", oa.children.name);
-        NSLog(@"OA Children age %i", oa.children.age);
+        [users printAll];
+
         
         
     }
