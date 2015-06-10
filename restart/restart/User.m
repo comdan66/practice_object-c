@@ -10,7 +10,6 @@
 
 @implementation User
 
-@synthesize age;
-@synthesize name;
+@synthesize age, name, children;
 
 @end

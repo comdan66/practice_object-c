@@ -10,13 +10,22 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        User *user = [User new];
+        User *oa = [User new];
         
-        user.age = 10;
-        user.name = @"OA";
+        oa.age = 30;
+        oa.name = @"OA";
         
-        NSLog (@"User name: %@", user.name);
-        NSLog (@"User age: %i", user.age);
+        NSLog (@"OA name: %@", oa.name);
+        NSLog (@"OA age: %i", oa.age);
+        
+        oa.children = [User new];
+        oa.children.name = @"OB";
+        oa.children.age = 10;
+        
+        NSLog(@"OA Children name %@", oa.children.name);
+        NSLog(@"OA Children age %i", oa.children.age);
+        
+        
     }
     return 0;
 }

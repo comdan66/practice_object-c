@@ -12,5 +12,7 @@
 
 @property int age;
 @property NSString *name;
+@property User *children;
+
 
 @end
