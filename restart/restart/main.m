@@ -13,9 +13,8 @@ int main(int argc, const char * argv[]) {
         User *user = [User new];
         
         user.age = 10;
-        int age = user.age;
         
-        NSLog (@"User age: %i", age);
+        NSLog (@"User age: %i", user.age);
     }
     return 0;
 }
