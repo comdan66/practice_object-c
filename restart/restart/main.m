@@ -14,6 +14,8 @@
 -(void) print;
 -(void) setNumerator: (int) n;
 -(void) setDenominator: (int) d;
+-(int) numerator;
+-(int) denominator;
 
 @end
 
@@ -34,19 +36,25 @@
     denominator = d;
 }
 
+-(int) numerator {
+    return numerator;
+}
+
+-(int) denominator {
+    return denominator;
+}
+
 @end
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Fraction *myFraction;
-        
-        myFraction = [Fraction alloc];
-        myFraction = [myFraction init];
+        Fraction *myFraction = [Fraction new];
+
         
         [myFraction setNumerator: 1];
         [myFraction setDenominator: 3];
         
-        [myFraction print];
+        NSLog(@"%i / %i", [myFraction numerator], [myFraction denominator]);
         
     }
     return 0;
