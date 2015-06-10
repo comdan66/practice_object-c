@@ -13,7 +13,9 @@ int main(int argc, const char * argv[]) {
         User *user = [User new];
         
         user.age = 10;
+        user.name = "OA";
         
+        NSLog (@"User name: %s", user.name);
         NSLog (@"User age: %i", user.age);
     }
     return 0;

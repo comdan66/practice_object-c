@@ -11,6 +11,6 @@
 @interface User : NSObject
 
 @property int age;
-
+@property char* name;
 
 @end
