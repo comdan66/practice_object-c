@@ -25,19 +25,37 @@
                                     <rect key="frame" x="103" y="28" width="195" height="45"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B08-gx-GVe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Click me">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="153" y="89" width="95" height="42"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickbutton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jqK-PZ-cCj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Oiz-f6-1nk"/>
+                                <exclude reference="B08-gx-GVe"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Oiz-f6-1nk"/>
+                                <include reference="B08-gx-GVe"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="textLabel" destination="Oiz-f6-1nk" id="NlF-fC-sd5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

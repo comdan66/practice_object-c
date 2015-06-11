@@ -23,5 +23,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)clickbutton:(id)sender {
+    self.textLabel.text = @"Hi, iOS 8";
+}
 
 @end
