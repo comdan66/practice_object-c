@@ -23,8 +23,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)clickbutton:(id)sender {
-    self.textLabel.text = @"Hi, iOS 8";
+- (IBAction)click1Button:(UIButton *)sender {
+    if ([sender.titleLabel.text isEqualToString:@"Click 1"]) {
+        self.textLabel.text = @"Click 1 被按了！";
+    } else {
+        self.textLabel.text = @"Click 2 被按了！";
+    }
 }
+
 
 @end
