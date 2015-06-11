@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>325182A4-27B3-445F-8EEC-43326CAB502C</string>
+	<string>F6A3DF29-DAFF-44ED-BE94-44CE38924B67</string>
 	<key>IDESourceControlProjectName</key>
-	<string>GoNextView</string>
+	<string>Navigation</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7793D8A99D1AEC79C8934EFD5A568F4D3F96FC06</key>
 		<string>github.com:comdan66/practice_object-c.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>GoNextView/GoNextView.xcodeproj</string>
+	<string>Navigation/Navigation.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7793D8A99D1AEC79C8934EFD5A568F4D3F96FC06</key>
