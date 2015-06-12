@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  GetDatePicker
+//  CountDown
 //
 //  Created by OA Wu on 2015/6/12.
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
@@ -23,10 +23,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)dataPicker:(UIDatePicker *)sender {
-    NSDateFormatter *formate = [NSDateFormatter new];
-    [formate setDateFormat:@"yyy/M/d HH:mm:ss"];
-    NSLog(@"現在時間為：%@", sender.date);
+- (IBAction)value:(UIDatePicker *)sender {
+    NSTimeInterval n = sender.countDownDuration;
+
+    NSLog(@"倒數秒數為：%.0f", n);
 }
 
 @end

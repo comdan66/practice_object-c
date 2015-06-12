@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  GetDatePicker
+//  AutoLayout
 //
 //  Created by OA Wu on 2015/6/12.
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
@@ -22,11 +22,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)dataPicker:(UIDatePicker *)sender {
-    NSDateFormatter *formate = [NSDateFormatter new];
-    [formate setDateFormat:@"yyy/M/d HH:mm:ss"];
-    NSLog(@"現在時間為：%@", sender.date);
 }
 
 @end
