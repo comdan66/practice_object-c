@@ -91,7 +91,7 @@
 //        NSDictionary *jsonDict = [str JSONValue];
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
-//        NSLog(@"%@", [result objectForKey:@"status"]);
+        NSLog(@"result:%@", result);
 //        NSLog(@"%@", str);
 //        self->isLogin = (BOOL)[result objectForKey:@"status"];
         self->isLogin = [result[@"status"] boolValue];
