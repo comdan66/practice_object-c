@@ -30,6 +30,42 @@
     [list2 addObject:@"222"];
     [list2 addObject:@"333"];
     [list2 addObject:@"444"];
+    
+//    self.toolBar
+    
+    
+    
+    
+//    NSLayoutConstraint *headlineTop = [NSLayoutConstraint constraintWithItem:self.toolBar
+//                                                                   attribute:NSLayoutAttributeTop
+//                                                                   relatedBy:NSLayoutRelationEqual
+//                                                                      toItem:self.view
+//                                                                   attribute:NSLayoutAttributeTop
+//                                                                  multiplier:1.0
+//                                                                    constant:60];
+//    [self.view addConstraint:headlineTop];
+//
+//    
+//    NSLayoutConstraint *headlineLeft = [NSLayoutConstraint constraintWithItem:self.toolBar
+//                                                                    attribute:NSLayoutAttributeLeading
+//                                                                    relatedBy:NSLayoutRelationEqual
+//                                                                       toItem:self.view
+//                                                                    attribute:NSLayoutAttributeLeft
+//                                                                   multiplier:1.0
+//                                                                     constant:20];
+//    [self.view addConstraint:headlineLeft];
+//    
+//    NSLayoutConstraint *headlineRight = [NSLayoutConstraint constraintWithItem:self.toolBar
+//                                                                     attribute:NSLayoutAttributeTrailing
+//                                                                     relatedBy:NSLayoutRelationEqual
+//                                                                        toItem:self.view
+//                                                                     attribute:NSLayoutAttributeRight
+//                                                                    multiplier:1.0
+//                                                                      constant:-20];
+//    [self.view addConstraint:headlineRight];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,6 +140,7 @@
             cell.textLabel.text = [list2 objectAtIndex:indexPath.row];
             break;
     }
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     return cell;
 }
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -128,5 +165,24 @@
     
     [list addObject:[NSString stringWithFormat:@"%d", i++]];
     [self.tableView reloadData];
+}
+- (IBAction)editList:(UIBarButtonItem *)sender {
+    if (self.tableView.isEditing) {
+        sender.title = @"編輯";
+    } else {
+        sender.title = @"完成";
+    }
+    self.tableView.editing = !self.tableView.editing;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"%li  -  %@", indexPath.section, [list objectAtIndex:indexPath.row]);
+}
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+
+    [list exchangeObjectAtIndex: sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
 }
 @end
