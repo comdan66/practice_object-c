@@ -1,6 +1,6 @@
 //
-//  ViewController.h
-//  Table2
+//  TableViewController.h
+//  Table3
 //
 //  Created by OA Wu on 2015/6/15.
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface TableViewController : UITableViewController {
+    NSMutableArray *list;
+}
 
 
 @end
-

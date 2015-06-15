@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0EA7DF061B2EBEEF007C2F6F"
-               BuildableName = "Table2.app"
-               BlueprintName = "Table2"
-               ReferencedContainer = "container:Table2.xcodeproj">
+               BlueprintIdentifier = "0EA7DF3B1B2EBF06007C2F6F"
+               BuildableName = "Table3.app"
+               BlueprintName = "Table3"
+               ReferencedContainer = "container:Table3.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0EA7DF221B2EBEEF007C2F6F"
-               BuildableName = "Table2Tests.xctest"
-               BlueprintName = "Table2Tests"
-               ReferencedContainer = "container:Table2.xcodeproj">
+               BlueprintIdentifier = "0EA7DF571B2EBF06007C2F6F"
+               BuildableName = "Table3Tests.xctest"
+               BlueprintName = "Table3Tests"
+               ReferencedContainer = "container:Table3.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0EA7DF221B2EBEEF007C2F6F"
-               BuildableName = "Table2Tests.xctest"
-               BlueprintName = "Table2Tests"
-               ReferencedContainer = "container:Table2.xcodeproj">
+               BlueprintIdentifier = "0EA7DF571B2EBF06007C2F6F"
+               BuildableName = "Table3Tests.xctest"
+               BlueprintName = "Table3Tests"
+               ReferencedContainer = "container:Table3.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0EA7DF061B2EBEEF007C2F6F"
-            BuildableName = "Table2.app"
-            BlueprintName = "Table2"
-            ReferencedContainer = "container:Table2.xcodeproj">
+            BlueprintIdentifier = "0EA7DF3B1B2EBF06007C2F6F"
+            BuildableName = "Table3.app"
+            BlueprintName = "Table3"
+            ReferencedContainer = "container:Table3.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,10 +76,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0EA7DF061B2EBEEF007C2F6F"
-            BuildableName = "Table2.app"
-            BlueprintName = "Table2"
-            ReferencedContainer = "container:Table2.xcodeproj">
+            BlueprintIdentifier = "0EA7DF3B1B2EBF06007C2F6F"
+            BuildableName = "Table3.app"
+            BlueprintName = "Table3"
+            ReferencedContainer = "container:Table3.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,10 +95,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0EA7DF061B2EBEEF007C2F6F"
-            BuildableName = "Table2.app"
-            BlueprintName = "Table2"
-            ReferencedContainer = "container:Table2.xcodeproj">
+            BlueprintIdentifier = "0EA7DF3B1B2EBF06007C2F6F"
+            BuildableName = "Table3.app"
+            BlueprintName = "Table3"
+            ReferencedContainer = "container:Table3.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
