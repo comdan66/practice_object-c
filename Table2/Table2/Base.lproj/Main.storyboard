@@ -18,23 +18,39 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7Ms-ID-LeP">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="65" width="600" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="HYv-dd-n9s"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="aZc-36-8GI"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Kc-sd-uQM">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="add" id="Saw-TP-rZT">
+                                        <connections>
+                                            <action selector="insertData:" destination="vXZ-lx-hvc" id="pEr-4A-uop"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="7Ms-ID-LeP" secondAttribute="trailing" id="3bm-Mv-MuY"/>
-                            <constraint firstItem="7Ms-ID-LeP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="4tf-Oh-eSf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Ms-ID-LeP" secondAttribute="trailing" constant="-16" id="3bm-Mv-MuY"/>
+                            <constraint firstItem="7Ms-ID-LeP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="4tf-Oh-eSf"/>
+                            <constraint firstItem="9Kc-sd-uQM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="OVY-Zm-kub"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9Kc-sd-uQM" secondAttribute="trailing" constant="-16" id="UAJ-Ug-DJL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="7Ms-ID-LeP" id="Mzo-Bk-gLJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="74" y="437"/>
         </scene>
     </scenes>
 </document>

@@ -123,4 +123,10 @@
     }
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
 }
+- (IBAction)insertData:(id)sender {
+    static int i;
+    
+    [list addObject:[NSString stringWithFormat:@"%d", i++]];
+    [self.tableView reloadData];
+}
 @end

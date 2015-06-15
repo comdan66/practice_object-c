@@ -12,6 +12,7 @@
     NSMutableArray *list;
     NSMutableArray *list2;
 }
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 @end
