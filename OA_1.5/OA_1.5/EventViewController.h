@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "MyHttp.h"
-#import "IndexTableViewController.h"
+#import "EventsTableViewController.h"
 #import "BackDelegate.h"
 
 @interface EventViewController : ViewController

@@ -1,5 +1,5 @@
 //
-//  IndexTableViewController.h
+//  EventsTableViewController.h
 //  OA_1.5
 //
 //  Created by OA Wu on 2015/6/16.
@@ -12,7 +12,7 @@
 #import "EventViewController.h"
 #import "BackDelegate.h"
 
-@interface IndexTableViewController : UITableViewController<BackDelegate>
+@interface EventsTableViewController : UITableViewController<BackDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 

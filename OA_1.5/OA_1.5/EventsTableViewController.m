@@ -1,14 +1,14 @@
 //
-//  IndexTableViewController.m
+//  EventsTableViewController.m
 //  OA_1.5
 //
 //  Created by OA Wu on 2015/6/16.
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
-#import "IndexTableViewController.h"
+#import "EventsTableViewController.h"
 
-@interface IndexTableViewController () {
+@interface EventsTableViewController () {
     NSMutableDictionary *events;
     NSString *nextId;
     NSString *choiceId;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation IndexTableViewController
+@implementation EventsTableViewController
 
 -(void)addEvent:(id)sender {
     UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"新增活動"
