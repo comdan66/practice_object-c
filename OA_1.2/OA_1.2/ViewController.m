@@ -17,6 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+//    NSMutableDictionary *vars = [NSMutableDictionary new];
+//    [vars setObject:@"oa" forKey:@"account"];
+//    [vars setObject:@"123" forKey:@"password"];
+//    NSLog(@"%@", [vars objectForKey: @"account"]);
+//    NSLog(@"%@", [vars objectForKey:[[vars allKeys] objectAtIndex:0]]);
+    
 }
 
 - (void)didReceiveMemoryWarning {

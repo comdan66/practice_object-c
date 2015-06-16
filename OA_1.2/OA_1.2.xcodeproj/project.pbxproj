@@ -22,7 +22,7 @@
 		0EA7E0641B2FC5E4007C2F6F /* 05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7E05F1B2FC5E4007C2F6F /* 05.jpg */; };
 		0EA7E06A1B2FC669007C2F6F /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E0691B2FC669007C2F6F /* MyTabBarController.m */; };
 		0EA7E06D1B2FC78C007C2F6F /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E06C1B2FC78C007C2F6F /* MyTableViewController.m */; };
-		0EA7E0701B2FCFB0007C2F6F /* OaHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E06F1B2FCFB0007C2F6F /* OaHttp.m */; };
+		0EA7E0701B2FCFB0007C2F6F /* MyHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E06F1B2FCFB0007C2F6F /* MyHttp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +59,8 @@
 		0EA7E0691B2FC669007C2F6F /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
 		0EA7E06B1B2FC78C007C2F6F /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
 		0EA7E06C1B2FC78C007C2F6F /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
-		0EA7E06E1B2FCFB0007C2F6F /* OaHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OaHttp.h; sourceTree = "<group>"; };
-		0EA7E06F1B2FCFB0007C2F6F /* OaHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OaHttp.m; sourceTree = "<group>"; };
+		0EA7E06E1B2FCFB0007C2F6F /* MyHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHttp.h; sourceTree = "<group>"; };
+		0EA7E06F1B2FCFB0007C2F6F /* MyHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHttp.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +116,8 @@
 				0EA7E0691B2FC669007C2F6F /* MyTabBarController.m */,
 				0EA7E06B1B2FC78C007C2F6F /* MyTableViewController.h */,
 				0EA7E06C1B2FC78C007C2F6F /* MyTableViewController.m */,
-				0EA7E06E1B2FCFB0007C2F6F /* OaHttp.h */,
-				0EA7E06F1B2FCFB0007C2F6F /* OaHttp.m */,
+				0EA7E06E1B2FCFB0007C2F6F /* MyHttp.h */,
+				0EA7E06F1B2FCFB0007C2F6F /* MyHttp.m */,
 			);
 			path = OA_1.2;
 			sourceTree = "<group>";
@@ -269,7 +269,7 @@
 				0EA7E02D1B2FC254007C2F6F /* AppDelegate.m in Sources */,
 				0EA7E02A1B2FC254007C2F6F /* main.m in Sources */,
 				0EA7E0331B2FC254007C2F6F /* ViewController.m in Sources */,
-				0EA7E0701B2FCFB0007C2F6F /* OaHttp.m in Sources */,
+				0EA7E0701B2FCFB0007C2F6F /* MyHttp.m in Sources */,
 				0EA7E06D1B2FC78C007C2F6F /* MyTableViewController.m in Sources */,
 				0EA7E06A1B2FC669007C2F6F /* MyTabBarController.m in Sources */,
 				0EA7E0301B2FC254007C2F6F /* OA_1_2.xcdatamodeld in Sources */,

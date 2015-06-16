@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OaHttp : NSObject
+@interface MyHttp : NSObject
 
 -(NSString *)urlencode:(NSString *)input;
 -(void)postURL:(NSString *)urlStr vars:(NSDictionary *)vars completionHandler:(void (^)(NSURLResponse* response, NSData* data, NSError* connectionError)) handler;

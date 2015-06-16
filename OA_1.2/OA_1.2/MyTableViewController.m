@@ -9,7 +9,8 @@
 #import "MyTableViewController.h"
 
 @interface MyTableViewController () {
-    NSMutableArray *events;
+    NSMutableDictionary *events;
+    NSString *next_id;
 }
 
 @end
@@ -19,7 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    events = [NSMutableArray new];
+    events = [NSMutableDictionary new];
+    next_id = [[NSString alloc] initWithFormat:@"0"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,22 +41,38 @@
 //    NSMutableDictionary *vars = [NSMutableDictionary new];
 //    [vars setObject:@"oa" forKey:@"account"];
 //    [vars setObject:@"123" forKey:@"password"];
-    OaHttp *http = [OaHttp new];
+//    OaHttp *http = [OaHttp new];
 //
 //    [http postURL:@"http://ios.ioa.tw/api/login" vars:vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 //        NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 //        NSLog(@"%@",str);
 //    }];
-    NSMutableDictionary *vars = [NSMutableDictionary new];
-    [vars setObject:@"0" forKey:@"next_id"];
-    [http getURL:@"http://ios.ioa.tw/api/events" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                NSLog(@"%@",str);
-            }];
-
+//    NSMutableDictionary *vars = [NSMutableDictionary new];
+//    [vars setObject:@"0" forKey:@"next_id"];
+//    [http getURL:@"http://ios.ioa.tw/api/events" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//                NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//                NSLog(@"%@",str);
+//            }];
     
-    [self.refreshControl endRefreshing];
-    [self.tableView reloadData];
+    MyHttp *http = [MyHttp new];
+    NSMutableDictionary *vars = [NSMutableDictionary new];
+    [vars setObject:next_id forKey:@"next_id"];
+    
+    [http getURL:@"http://ios.ioa.tw/api/events" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        
+        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        if ([[result objectForKey:@"status"] boolValue]) {
+            for (NSMutableDictionary *event in [result objectForKey:@"events"]) {
+                [events setObject:[event objectForKey:@"title"] forKey:[event objectForKey:@"id"]];
+            }
+            next_id = [result objectForKey:@"next_id"];
+        }
+        
+        [self.refreshControl endRefreshing];
+        [self.tableView reloadData];
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,7 +101,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    cell.textLabel.text = [events objectAtIndex:indexPath.row];
+    cell.textLabel.text = [events objectForKey:[[events allKeys] objectAtIndex:indexPath.row]];
     // Configure the cell...
     
     return cell;

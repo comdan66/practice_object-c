@@ -6,12 +6,12 @@
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
-#import "OaHttp.h"
+#import "MyHttp.h"
 
-@implementation OaHttp
+@implementation MyHttp
 
 -(NSString *)urlencode:(NSString *)input {
-    const char *input_c = [input cStringUsingEncoding:NSUTF8StringEncoding];
+    const char *input_c = [[[NSString alloc] initWithFormat:@"%@", input] cStringUsingEncoding:NSUTF8StringEncoding];
     NSMutableString *result = [NSMutableString new];
     for (NSInteger i = 0, len = strlen(input_c); i < len; i++) {
         unsigned char c = input_c[i];

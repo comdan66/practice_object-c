@@ -9,7 +9,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OA_1.2/OaHttp.h"
+            filePath = "OA_1.2/MyHttp.h"
             timestampString = "456121079.008521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
