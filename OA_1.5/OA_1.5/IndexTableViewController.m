@@ -17,25 +17,55 @@
 @end
 
 @implementation IndexTableViewController
-- (void)secVCDidDismisWithData:(NSString*)data {
-    NSLog(@"qqqqq");
-}
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.rightBarButtonItem.title = @"編輯";
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
+-(void)addEvent:(id)sender {
+    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:@"新增活動"
+                                                     message:@"請輸入活動名稱"
+                                                    delegate:self
+                                           cancelButtonTitle:@"取消"
+                                           otherButtonTitles:@"確定",nil];
     
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     
-    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-    [myAlertView show];
+    [alert show];
     
+}
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if ([alertView.title isEqual:@"新增活動"] && (buttonIndex == 1)) {
+        NSString *title = [alertView textFieldAtIndex:0].text;
+
+        if (title.length > 0) {
+            [alertView dismissWithClickedButtonIndex:-1 animated:YES];
+
+            UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+            [myAlertView show];
+            
+            MyHttp *http = [MyHttp new];
+            NSMutableDictionary *vars = [NSMutableDictionary new];
+            [vars setObject:title forKey:@"title"];
+    
+            [http postURL:@"http://ios.ioa.tw/api/add_event" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    
+                NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSString *title = [[NSString alloc] initWithFormat:[[result objectForKey:@"status"] boolValue] ? @"新增成功！" : @"新增失敗！"];
+    
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *ok = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+                    [ok show];
+
+                    [myAlertView dismissWithClickedButtonIndex:-1 animated:YES];
+                });
+            }];
+        }
+    } else if ([alertView.title isEqual:@"新增成功！"]) {
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+        [myAlertView show];
+        [self loadData: myAlertView];
+    }
+
+}
+- (void)loadData:(UIAlertView *) alert{
     events = [NSMutableDictionary new];
     nextId = [[NSString alloc] initWithFormat:@"0"];
     
@@ -53,13 +83,30 @@
             nextId = [result objectForKey:@"next_id"];
         }
         
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
-            [myAlertView dismissWithClickedButtonIndex:-1 animated:YES];
+            [alert dismissWithClickedButtonIndex:-1 animated:YES];
         });
         
     }];
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem.title = @"編輯";
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addEvent:)];
+
+    
+    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    [myAlertView show];
+    [self loadData:myAlertView];
+    
 }
 - (void)updateEvent:(NSString *) id title:(NSString *)title {
     [events setObject:title forKey:id];
@@ -133,8 +180,9 @@
     }
 
     NSArray *sortedKeys = [[events allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
-                               return [obj2 compare:obj1];
+                               return [obj2 integerValue] > [obj1 integerValue];
                            }];
+    NSLog(@"%@", sortedKeys);
     cell.textLabel.text = [events objectForKey:[sortedKeys objectAtIndex:indexPath.row]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;

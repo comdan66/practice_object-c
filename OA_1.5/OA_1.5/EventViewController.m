@@ -30,7 +30,7 @@
     [vars setObject:self.idLabel.text forKey:@"id"];
     [vars setObject:self.titleTextField.text forKey:@"title"];
     
-    [http getURL:@"http://ios.ioa.tw/api/update_event" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    [http postURL:@"http://ios.ioa.tw/api/update_event" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         
         NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSString *title = [[NSString alloc] initWithFormat:[[result objectForKey:@"status"] boolValue] ? @"更新成功！" : @"更新失敗！"];
