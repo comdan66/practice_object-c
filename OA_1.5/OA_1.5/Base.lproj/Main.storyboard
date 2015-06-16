@@ -53,6 +53,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="byO-o7-hDN" secondAttribute="trailing" constant="64" id="kDY-W7-jHZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="accountTextField" destination="IJk-gm-sQP" id="bfs-in-DgM"/>
+                        <outlet property="passwordTextField" destination="byO-o7-hDN" id="6xW-CB-ZEL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

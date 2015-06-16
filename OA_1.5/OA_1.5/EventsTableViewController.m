@@ -26,12 +26,13 @@
                                            otherButtonTitles:@"確定",nil];
     
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField *textField = [alert textFieldAtIndex:0];
+    [textField setPlaceholder:@"請輸入活動名稱.."];
     
     [alert show];
     
 }
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqual:@"新增活動"] && (buttonIndex == 1)) {
         NSString *title = [alertView textFieldAtIndex:0].text;
 

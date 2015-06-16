@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyHttp.h"
 
 @interface ViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
 
