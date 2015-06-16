@@ -51,14 +51,18 @@
                 NSString *title = [[NSString alloc] initWithFormat:[[result objectForKey:@"status"] boolValue] ? @"新增成功！" : @"新增失敗！"];
     
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [myAlertView dismissWithClickedButtonIndex:-1 animated:YES];
+                    
                     UIAlertView *ok = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
                     [ok show];
-
-                    [myAlertView dismissWithClickedButtonIndex:-1 animated:YES];
                 });
             }];
         }
     } else if ([alertView.title isEqual:@"新增成功！"]) {
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+        [myAlertView show];
+        [self loadData: myAlertView];
+    } else if ([alertView.title isEqual:@"刪除成功！"] || [alertView.title isEqual:@"刪除失敗！"]) {
         UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
         [myAlertView show];
         [self loadData: myAlertView];
@@ -99,6 +103,7 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.rightBarButtonItem.title = @"編輯";
+    [self.navigationItem.rightBarButtonItem setAction:@selector(editButtonPress:)];
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addEvent:)];
 
@@ -117,8 +122,49 @@
     return UITableViewCellEditingStyleDelete;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    [myAlertView show];
+    
+    NSArray *sortedKeys = [[events allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
+        return [obj2 integerValue] > [obj1 integerValue];
+    }];
+    
+    MyHttp *http = [MyHttp new];
+    NSMutableDictionary *vars = [NSMutableDictionary new];
+    [vars setObject:[sortedKeys objectAtIndex:indexPath.row] forKey:@"id"];
+    
+    [http postURL:@"http://ios.ioa.tw/api/delete_event" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        
+        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        NSString *title = [[NSString alloc] initWithFormat:[[result objectForKey:@"status"] boolValue] ? @"刪除成功！" : @"刪除失敗！"];
 
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([[result objectForKey:@"status"] boolValue]) {
+                [events removeObjectForKey:[sortedKeys objectAtIndex:indexPath.row]];
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+            }
+            [myAlertView dismissWithClickedButtonIndex:-1 animated:YES];
+            
+            UIAlertView *ok = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+            [ok show];
+            
+        });
+    }];
+    
 }
+- (IBAction)editButtonPress: (UIBarButtonItem *)sender {
+    if (self.tableView.isEditing) {
+        sender.title = @"編輯";
+        self.tableView.editing = NO;
+    } else {
+        sender.title = @"完成";
+        self.tableView.editing = YES;
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -182,7 +228,6 @@
     NSArray *sortedKeys = [[events allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
                                return [obj2 integerValue] > [obj1 integerValue];
                            }];
-    NSLog(@"%@", sortedKeys);
     cell.textLabel.text = [events objectForKey:[sortedKeys objectAtIndex:indexPath.row]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
