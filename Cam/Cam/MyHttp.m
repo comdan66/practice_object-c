@@ -244,8 +244,6 @@
     [request setHTTPBody:data];
     
     
-    
-    
     NSOperationQueue *requestQueue = [NSOperationQueue new];
     
     [NSURLConnection sendAsynchronousRequest:request
@@ -297,8 +295,7 @@
     
 }
 
-- (void)postMulti:(NSString *)urlStr vars:(NSDictionary *)vars datas:(NSArray *)datas completionHandler:(void (^)(NSURLResponse* response, NSData* data, NSError* connectionError)) handler {
-    //    NSString *str;
+- (void)postMulti:(NSString *)urlStr vars:(NSDictionary *)vars completionHandler:(void (^)(NSURLResponse* response, NSData* data, NSError* connectionError)) handler {
     NSMutableData *data = [NSMutableData new];
     
     NSMutableString *boundary = [NSMutableString new];
@@ -308,67 +305,55 @@
     NSData *boundaryDelimiter = [@"--" dataUsingEncoding:NSUTF8StringEncoding];
     NSData *newLine = [@"\r\n" dataUsingEncoding:NSUTF8StringEncoding];
     
-    // add variables
     if (vars != nil) {
         for (NSString *key in vars) {
-            // add boundary
-            [data appendData:boundaryDelimiter];
-            [data appendData:boundaryBody];
-            [data appendData:newLine];
+            id value = [vars valueForKey:key];
             
-            // add header
-            [data appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; %@", [self http_attribute_encode:key attribute_name:@"name"]] dataUsingEncoding:NSUTF8StringEncoding]];
-            [data appendData:newLine];
-            
-            [data appendData:[@"Content-Type: text/plain" dataUsingEncoding:NSUTF8StringEncoding]];
-            [data appendData:newLine];
-            
-            // add header to body splitter
-            [data appendData:newLine];
-            
-            // add variable content
-            [data appendData:[[vars valueForKey:key] dataUsingEncoding:NSUTF8StringEncoding]];
-            [data appendData:newLine];
-        }
-    }
+            if ([value isKindOfClass:[NSString class]]) {
+                [data appendData:boundaryDelimiter];
+                [data appendData:boundaryBody];
+                [data appendData:newLine];
     
-    // add files
-    if (datas != nil) {
-        for (NSInteger i = 0; i < datas.count; i++) {
-            NSDictionary *d = [datas objectAtIndex:i];
-            
-            NSString *name = [d objectForKey:@"name"];
-            NSData *postData = [d objectForKey:@"data"];
-            NSString *mime_type = [self getMimeType:postData];
+                // add header
+                [data appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; %@", [self http_attribute_encode:key attribute_name:@"name"]] dataUsingEncoding:NSUTF8StringEncoding]];
+                [data appendData:newLine];
+    
+                [data appendData:[@"Content-Type: text/plain" dataUsingEncoding:NSUTF8StringEncoding]];
+                [data appendData:newLine];
+    
+                // add header to body splitter
+                [data appendData:newLine];
+                
+                // add variable content
+                [data appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
+                [data appendData:newLine];
+            } else {
+                NSData *postData = (NSData *)value;
+                NSString *mime_type = [self getMimeType:postData];
+                NSString *request_filename = [[NSUUID UUID] UUIDString];
+                
+                [data appendData:boundaryDelimiter];
+                [data appendData:boundaryBody];
+                [data appendData:newLine];
+                
+                [data appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; %@; %@", [self http_attribute_encode:key attribute_name:@"name"], [self http_attribute_encode:request_filename attribute_name:@"filename"]] dataUsingEncoding:NSUTF8StringEncoding]];
+                [data appendData:newLine];
 
-            NSString *request_filename = [[NSUUID UUID] UUIDString];
-            
-            // add boundary
-            [data appendData:boundaryDelimiter];
-            [data appendData:boundaryBody];
-            [data appendData:newLine];
-            
-            
-            [data appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; %@; %@",
-                               [self http_attribute_encode:name attribute_name:@"name"],
-                               [self http_attribute_encode:request_filename attribute_name:@"filename"]
-                               ] dataUsingEncoding:NSUTF8StringEncoding]];
-            [data appendData:newLine];
-            
-            if (mime_type != nil && mime_type.length > 0) {
-                [data appendData:[[NSString stringWithFormat:@"Content-Type: %@", mime_type] dataUsingEncoding:NSUTF8StringEncoding]];
+                if (mime_type != nil && mime_type.length > 0) {
+                    [data appendData:[[NSString stringWithFormat:@"Content-Type: %@", mime_type] dataUsingEncoding:NSUTF8StringEncoding]];
+                    [data appendData:newLine];
+                }
+
+                [data appendData:[@"Content-Transfer-Encoding: binary" dataUsingEncoding:NSUTF8StringEncoding]];
+                [data appendData:newLine];
+
+                // add header to body splitter
+                [data appendData:newLine];
+
+                // add file content
+                [data appendData:postData];
                 [data appendData:newLine];
             }
-            
-            [data appendData:[@"Content-Transfer-Encoding: binary" dataUsingEncoding:NSUTF8StringEncoding]];
-            [data appendData:newLine];
-            
-            // add header to body splitter
-            [data appendData:newLine];
-            
-            // add file content
-            [data appendData:postData];
-            [data appendData:newLine];
         }
     }
     
@@ -385,8 +370,6 @@
     [request setValue:@"Agent name goes here" forHTTPHeaderField:@"User-Agent"];
     [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:data];
-    
-    
     
     
     NSOperationQueue *requestQueue = [NSOperationQueue new];

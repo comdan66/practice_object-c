@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>A51649F7-7FA2-4293-BDF4-11525D4AAE18</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>OA_1.5</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7793D8A99D1AEC79C8934EFD5A568F4D3F96FC06</key>
 		<string>github.com:comdan66/practice_object-c.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>OA_1.5/OA_1.5.xcodeproj/project.xcworkspace</string>
+	<string>OA_1.5/OA_1.5.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7793D8A99D1AEC79C8934EFD5A568F4D3F96FC06</key>

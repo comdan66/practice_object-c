@@ -325,29 +325,18 @@
     
     
     
-//    MyHttp *http = [MyHttp new];    
+
     NSData *imageData = UIImageJPEGRepresentation ([self fixOrientation:self.image.image ], 0.1);
-//    NSLog(@"%@", [http getMimeType:imageData]);
+
     MyHttp *http = [MyHttp new];
-//
+
     NSMutableDictionary *vars = [NSMutableDictionary new];
     [vars setObject:@"xxxxxx" forKey:@"title"];
-//
-    NSMutableArray *datas = [NSMutableArray new];
-//    NSMutableDictionary *data = [NSMutableDictionary new];
-//    [data setObject:@"name" forKey:@"name"];
-//    [data setObject:imageData forKey:@"data"];
-    [datas addObject:@{@"name":imageData
-                       }];
-    
-//    NSDictionary *dd = [[NSDictionary alloc] in]
-//    NSDictionary *dic4 = @{@"key1": @"value1",@"key2": @"value2"};
-//
-    [http postMulti:@"http://ios.ioa.tw/api/add_file" vars:vars datas:datas completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    [vars setObject:imageData forKey:@"name"];
 
+    [http postMulti:@"http://ios.ioa.tw/api/add_file" vars:vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"%@", result);
-
     }];
     
 //    ----------------------------------

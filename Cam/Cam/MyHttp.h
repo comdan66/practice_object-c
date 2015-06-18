@@ -14,6 +14,6 @@
 -(void)postURL:(NSString *)urlStr vars:(NSDictionary *)vars completionHandler:(void (^)(NSURLResponse* response, NSData* data, NSError* connectionError)) handler;
 -(void)getURL:(NSString *)urlStr vars:(NSDictionary *)vars completionHandler:(void (^)(NSURLResponse* response, NSData* data, NSError* connectionError)) handler;
 - (void)postMulti:(NSString *)urlStr vars:(NSDictionary *)vars files:(NSArray *)files completionHandler:(void (^)(NSURLResponse* response, NSData* data, NSError* connectionError)) handler;
-- (void)postMulti:(NSString *)urlStr vars:(NSDictionary *)vars datas:(NSArray *)datas completionHandler:(void (^)(NSURLResponse* response, NSData* data, NSError* connectionError)) handler;
+- (void)postMulti:(NSString *)urlStr vars:(NSDictionary *)vars completionHandler:(void (^)(NSURLResponse* response, NSData* data, NSError* connectionError)) handler;
 - (NSString *)getMimeType:(NSData *)data;
 @end
