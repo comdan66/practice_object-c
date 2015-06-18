@@ -134,22 +134,30 @@
     return img;
 }
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+//========================
+//    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+//    self.image.image = image;
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//========================
+    
+    UIImage *image = [self fixOrientation:[info valueForKey:UIImagePickerControllerOriginalImage]];
+    NSData *data = UIImageJPEGRepresentation(image, 0.5);
+    NSString *fullPath = [NSHomeDirectory() stringByAppendingPathComponent:@"/Documents/data/xxx.jpg"];
+    [data writeToFile:fullPath atomically:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    
     
 //    UIImage *chosenImage = [info valueForKey:UIImagePickerControllerOriginalImage];
 //    self.image.image = chosenImage;
 //    [self dismissViewControllerAnimated:YES completion:nil];
-//    
-//    UIImage *image = [self fixOrientation:[info valueForKey:UIImagePickerControllerOriginalImage]];
-//    NSLog(@"%li", image.imageOrientation);
-//    NSData *data = UIImageJPEGRepresentation(image, 0.5);
-//    NSString *fullPath = [NSHomeDirectory() stringByAppendingPathComponent:@"/Documents/data/xxx.jpg"];
-//    [data writeToFile:fullPath atomically:NO];
-//    
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    self.image.image = image;
-    [self dismissViewControllerAnimated:YES completion:nil];
+//
+    
+    //
+
+    
+//
+
     
     
     
@@ -294,6 +302,67 @@
 
 
 - (IBAction)postButton:(id)sender {
+//    =========================
+//    NSData *imageData = UIImageJPEGRepresentation ([self fixOrientation:self.image.image ], 0.1);
+//    
+//    MyHttp *http = [MyHttp new];
+//    
+//    NSMutableDictionary *vars = [NSMutableDictionary new];
+//    [vars setObject:@"xxxxxx" forKey:@"title"];
+//    [vars setObject:imageData forKey:@"name"];
+//    
+//    [http postMulti:@"http://ios.ioa.tw/api/add_file" vars:vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//        NSLog(@"%@", result);
+//    }];
+//    ==========================
+    
+    MyHttp *http = [MyHttp new];
+
+    NSMutableDictionary *vars = [NSMutableDictionary new];
+    [vars setObject:[[NSUUID UUID] UUIDString] forKey:@"title"];
+    [vars setObject:[NSData dataWithContentsOfFile:[NSHomeDirectory() stringByAppendingString:@"/Documents/data/xxx.jpg"]] forKey:@"name"];
+    
+    [http postMulti:@"http://ios.ioa.tw/api/add_file" vars:vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"%@", result);
+    }];
+//    ==========================
+    
+//
+//    
+//    NSMutableArray *files = [NSMutableArray new];
+//    NSMutableDictionary *file_parameters;
+//
+//
+//    // set up first file
+//    file_parameters = [NSMutableDictionary new];
+//    [file_parameters setObject:@"name" forKey:@"name"];
+//    [file_parameters setObject:[NSHomeDirectory() stringByAppendingString:@"/Documents/data/xxx.jpg"] forKey:@"local_filename"];
+//    [file_parameters setObject:@"image/jpg" forKey:@"mime_type"];
+//    [files addObject:file_parameters];
+//
+//
+//    [http postMulti:@"http://ios.ioa.tw/api/add_file" vars:vars files:files completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//
+//        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//        NSLog(@"%@", result);
+//        
+//    }];
+//    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 //    NSFileManager *fm = [NSFileManager defaultManager];
 ////    NSArray *arr = [fm URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
 //    NSURL *url = [[NSURL alloc] initWithString:[NSHomeDirectory() stringByAppendingString:@"/Documents/data/"]];
@@ -326,18 +395,6 @@
     
     
 
-    NSData *imageData = UIImageJPEGRepresentation ([self fixOrientation:self.image.image ], 0.1);
-
-    MyHttp *http = [MyHttp new];
-
-    NSMutableDictionary *vars = [NSMutableDictionary new];
-    [vars setObject:@"xxxxxx" forKey:@"title"];
-    [vars setObject:imageData forKey:@"name"];
-
-    [http postMulti:@"http://ios.ioa.tw/api/add_file" vars:vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"%@", result);
-    }];
     
 //    ----------------------------------
 //    MyHttp *http = [MyHttp new];

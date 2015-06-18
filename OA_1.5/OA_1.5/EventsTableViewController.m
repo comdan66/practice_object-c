@@ -49,7 +49,7 @@
             [http postURL:@"http://ios.ioa.tw/api/add_event" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
     
                 NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                NSString *title = [[NSString alloc] initWithFormat:[[result objectForKey:@"status"] boolValue] ? @"新增成功！" : @"新增失敗！"];
+                NSString *title = [[NSString alloc] initWithFormat:[[result objectForKey:@"status"] trrValue] ? @"新增成功！" : @"新增失敗！"];
     
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [myAlertView dismissWithClickedButtonIndex:-1 animated:YES];
