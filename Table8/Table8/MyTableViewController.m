@@ -65,6 +65,7 @@
     
     
     NSLog(@"%@", cell);
+//    cell.xxx.text = @"xxx";
     // Configure the cell...
     
     return cell;
