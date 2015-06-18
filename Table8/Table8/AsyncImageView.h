@@ -32,6 +32,7 @@
 
 
 #import <UIKit/UIKit.h>
+#import "UIImageViewAligned.h"
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wobjc-missing-property-synthesis"
 
@@ -75,7 +76,7 @@ extern NSString *const AsyncImageErrorKey;
 @end
 
 
-@interface AsyncImageView : UIImageView
+@interface AsyncImageView : UIImageViewAligned
 
 @property (nonatomic, assign) BOOL showActivityIndicator;
 @property (nonatomic, assign) UIActivityIndicatorViewStyle activityIndicatorStyle;

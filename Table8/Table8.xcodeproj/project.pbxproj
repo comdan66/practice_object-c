@@ -20,6 +20,9 @@
 		0EA7E29E1B32FC51007C2F6F /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7E29C1B32FC51007C2F6F /* MyTableViewCell.xib */; };
 		0EA7E2A31B32FDB4007C2F6F /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2A21B32FDB4007C2F6F /* AsyncImageView.m */; };
 		0EA7E2A71B330D9D007C2F6F /* MyHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2A61B330D9D007C2F6F /* MyHttp.m */; };
+		0EA7E2AB1B33180E007C2F6F /* UIImageViewAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2AA1B33180E007C2F6F /* UIImageViewAligned.m */; };
+		0EA7E2B21B33199F007C2F6F /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2AF1B33199F007C2F6F /* UIScrollView+SVInfiniteScrolling.m */; };
+		0EA7E2B31B33199F007C2F6F /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2B11B33199F007C2F6F /* UIScrollView+SVPullToRefresh.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,13 @@
 		0EA7E2A21B32FDB4007C2F6F /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		0EA7E2A51B330D9D007C2F6F /* MyHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHttp.h; sourceTree = "<group>"; };
 		0EA7E2A61B330D9D007C2F6F /* MyHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHttp.m; sourceTree = "<group>"; };
+		0EA7E2A91B33180E007C2F6F /* UIImageViewAligned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageViewAligned.h; sourceTree = "<group>"; };
+		0EA7E2AA1B33180E007C2F6F /* UIImageViewAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewAligned.m; sourceTree = "<group>"; };
+		0EA7E2AD1B33199F007C2F6F /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		0EA7E2AE1B33199F007C2F6F /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		0EA7E2AF1B33199F007C2F6F /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		0EA7E2B01B33199F007C2F6F /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		0EA7E2B11B33199F007C2F6F /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +163,8 @@
 		0EA7E29F1B32FD8B007C2F6F /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0EA7E2AC1B331996007C2F6F /* SVPullToRefresh */,
+				0EA7E2A81B331800007C2F6F /* UIImageViewAligned */,
 				0EA7E2A41B330D7E007C2F6F /* MyHttp */,
 				0EA7E2A01B32FDA2007C2F6F /* AsyncImageView */,
 			);
@@ -175,6 +187,27 @@
 				0EA7E2A61B330D9D007C2F6F /* MyHttp.m */,
 			);
 			name = MyHttp;
+			sourceTree = "<group>";
+		};
+		0EA7E2A81B331800007C2F6F /* UIImageViewAligned */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7E2A91B33180E007C2F6F /* UIImageViewAligned.h */,
+				0EA7E2AA1B33180E007C2F6F /* UIImageViewAligned.m */,
+			);
+			name = UIImageViewAligned;
+			sourceTree = "<group>";
+		};
+		0EA7E2AC1B331996007C2F6F /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7E2AD1B33199F007C2F6F /* SVPullToRefresh.h */,
+				0EA7E2AE1B33199F007C2F6F /* UIScrollView+SVInfiniteScrolling.h */,
+				0EA7E2AF1B33199F007C2F6F /* UIScrollView+SVInfiniteScrolling.m */,
+				0EA7E2B01B33199F007C2F6F /* UIScrollView+SVPullToRefresh.h */,
+				0EA7E2B11B33199F007C2F6F /* UIScrollView+SVPullToRefresh.m */,
+			);
+			name = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,12 +313,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA7E26E1B32F88C007C2F6F /* AppDelegate.m in Sources */,
+				0EA7E2B31B33199F007C2F6F /* UIScrollView+SVPullToRefresh.m in Sources */,
 				0EA7E2A71B330D9D007C2F6F /* MyHttp.m in Sources */,
 				0EA7E2931B32F93F007C2F6F /* MyTableViewController.m in Sources */,
 				0EA7E26B1B32F88C007C2F6F /* main.m in Sources */,
+				0EA7E2B21B33199F007C2F6F /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				0EA7E29D1B32FC51007C2F6F /* MyTableViewCell.m in Sources */,
 				0EA7E2741B32F88C007C2F6F /* ViewController.m in Sources */,
 				0EA7E2711B32F88C007C2F6F /* Table8.xcdatamodeld in Sources */,
+				0EA7E2AB1B33180E007C2F6F /* UIImageViewAligned.m in Sources */,
 				0EA7E2A31B32FDB4007C2F6F /* AsyncImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

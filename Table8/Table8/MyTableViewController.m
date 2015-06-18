@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    __weak MyTableViewController *weakSelf = self;
+    
     UIAlertView *loadingAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
     [loadingAlertView show];
     [self loadData:loadingAlertView];
@@ -50,10 +52,30 @@
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+//        NSLog(@"xxx");
+        [weakSelf insertRowAtBottom];
+    }];
 //    list = [NSMutableArray new];
 //    [list addObject:@"aaaaa"];
 //    [list addObject:@"bbbbb"];
 }
+- (void)insertRowAtBottom {
+    __weak MyTableViewController *weakSelf = self;
+    
+    int64_t delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+//        _dataPage++;
+//
+//        [self getUserShares];
+        
+        [weakSelf.tableView.infiniteScrollingView stopAnimating];
+    });
+}
+
+
 - (void)loadData:(UIAlertView *) alert{
     pictures = [NSMutableArray new];
     
@@ -123,8 +145,8 @@
         NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"MyTableViewCell" owner:self options:nil];
         cell = [nibs objectAtIndex:0];
     }
-//    [cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
-//    [cell.contentView.layer setBorderWidth:1.0f];
+    [cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
+    [cell.contentView.layer setBorderWidth:1.0f];
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.pictureImageView];
     [cell.pictureImageView setImageURL:[NSURL URLWithString:[[pictures objectAtIndex:indexPath.row] objectForKey:@"url"]]];
