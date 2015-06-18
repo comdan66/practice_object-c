@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MyTableViewCell.h"
 #import "AsyncImageView.h"
+#import "MyHttp.h"
 
 @interface MyTableViewController : UITableViewController
 

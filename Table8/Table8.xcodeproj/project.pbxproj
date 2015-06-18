@@ -19,6 +19,7 @@
 		0EA7E29D1B32FC51007C2F6F /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E29B1B32FC51007C2F6F /* MyTableViewCell.m */; };
 		0EA7E29E1B32FC51007C2F6F /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7E29C1B32FC51007C2F6F /* MyTableViewCell.xib */; };
 		0EA7E2A31B32FDB4007C2F6F /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2A21B32FDB4007C2F6F /* AsyncImageView.m */; };
+		0EA7E2A71B330D9D007C2F6F /* MyHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2A61B330D9D007C2F6F /* MyHttp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		0EA7E29C1B32FC51007C2F6F /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
 		0EA7E2A11B32FDB4007C2F6F /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		0EA7E2A21B32FDB4007C2F6F /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		0EA7E2A51B330D9D007C2F6F /* MyHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHttp.h; sourceTree = "<group>"; };
+		0EA7E2A61B330D9D007C2F6F /* MyHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHttp.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,7 @@
 		0EA7E29F1B32FD8B007C2F6F /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0EA7E2A41B330D7E007C2F6F /* MyHttp */,
 				0EA7E2A01B32FDA2007C2F6F /* AsyncImageView */,
 			);
 			name = libs;
@@ -162,6 +166,15 @@
 				0EA7E2A21B32FDB4007C2F6F /* AsyncImageView.m */,
 			);
 			name = AsyncImageView;
+			sourceTree = "<group>";
+		};
+		0EA7E2A41B330D7E007C2F6F /* MyHttp */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7E2A51B330D9D007C2F6F /* MyHttp.h */,
+				0EA7E2A61B330D9D007C2F6F /* MyHttp.m */,
+			);
+			name = MyHttp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA7E26E1B32F88C007C2F6F /* AppDelegate.m in Sources */,
+				0EA7E2A71B330D9D007C2F6F /* MyHttp.m in Sources */,
 				0EA7E2931B32F93F007C2F6F /* MyTableViewController.m in Sources */,
 				0EA7E26B1B32F88C007C2F6F /* main.m in Sources */,
 				0EA7E29D1B32FC51007C2F6F /* MyTableViewCell.m in Sources */,

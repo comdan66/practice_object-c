@@ -624,7 +624,6 @@ NSString *const AsyncImageErrorKey = @"error";
 
 - (void)setImageURL:(NSURL *)imageURL
 {
-    NSLog(@"======================================================xxx");
     UIImage *image = [[AsyncImageLoader sharedLoader].cache objectForKey:imageURL];
     if (image)
     {

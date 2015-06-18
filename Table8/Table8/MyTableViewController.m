@@ -9,7 +9,7 @@
 #import "MyTableViewController.h"
 
 @interface MyTableViewController () {
-    NSMutableArray *list;
+    NSMutableArray *pictures;
 }
 
 @end
@@ -18,6 +18,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIAlertView *loadingAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    [loadingAlertView show];
+    [self loadData:loadingAlertView];
+//    
+//    MyHttp *http = [MyHttp new];
+//    NSMutableDictionary *vars = [NSMutableDictionary new];
+//    
+//    [http getURL:@"http://ios.ioa.tw/api/files" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//        
+////
+////        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+////        NSString *title = [[NSString alloc] initWithFormat:[[result objectForKey:@"status"] boolValue] ? @"登入成功！" : @"登入失敗！"];
+////        
+////        dispatch_async(dispatch_get_main_queue(), ^{
+////            [myAlertView dismissWithClickedButtonIndex:-1 animated:YES];
+////            
+////            UIAlertView *ok = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+////            [ok show];
+////        });
+//    }];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -28,9 +50,32 @@
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    list = [NSMutableArray new];
-    [list addObject:@"aaaaa"];
-    [list addObject:@"bbbbb"];
+//    list = [NSMutableArray new];
+//    [list addObject:@"aaaaa"];
+//    [list addObject:@"bbbbb"];
+}
+- (void)loadData:(UIAlertView *) alert{
+    pictures = [NSMutableArray new];
+    
+    MyHttp *http = [MyHttp new];
+    NSMutableDictionary *vars = [NSMutableDictionary new];
+    
+    [http getURL:@"http://ios.ioa.tw/api/pictures" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        
+        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+
+        if ([[result objectForKey:@"status"] boolValue]) {
+            for (NSMutableDictionary *picture in [result objectForKey:@"pictures"]) {
+                [pictures addObject: picture];
+            }
+        }
+//        NSLog(@"%@", pictures);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+            [alert dismissWithClickedButtonIndex:-1 animated:YES];
+        });
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,21 +95,27 @@
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
 
-    return [list count];
+    return [pictures count];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     //    NSLog(@"a");
     //    return cell.frame.size.height;
+//    [[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"];
     
-    return 100;
+    MyTableViewCell *cell = (MyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"MyTableViewCell"];
+    if(!cell){
+        NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"MyTableViewCell" owner:self options:nil];
+        cell = [nibs objectAtIndex:0];
+    }
+
+    double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
+    [cell.pictureImageView];
+    return cell.pictureImageView.frame.size.width * gradient + 10;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-//    UITableViewCell *cell = (MyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
-//    MyTableViewCell *cell = (MyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"MyTableViewCell"];
-    
+
     MyTableViewCell *cell = (MyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"MyTableViewCell"];
     if(!cell){
         NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"MyTableViewCell" owner:self options:nil];
@@ -73,12 +124,11 @@
     [cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
     [cell.contentView.layer setBorderWidth:1.0f];
     
-    
-    NSLog(@"%@", cell);
-    
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.pictureImageView];
-    [cell.pictureImageView setImageURL:[NSURL URLWithString:@"http://ios.ioa.tw/upload/pictures/name/0/0/0/10/800w_1114559844_5581a714b574a.jpg"]];
-    NSLog(@"%f", cell.pictureImageView.image.size.height);
+    [cell.pictureImageView setImageURL:[NSURL URLWithString:[[pictures objectAtIndex:indexPath.row] objectForKey:@"url"]]];
+    cell.pictureImageView.contentMode = UIViewContentModeScaleToFill;
+    
+    
 //    cell.pictureImageView;
 //    cell.xxx.text = @"xxx";
     // Configure the cell...
