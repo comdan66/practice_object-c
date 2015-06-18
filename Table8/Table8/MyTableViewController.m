@@ -111,8 +111,10 @@
     }
 
     double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
-    [cell.pictureImageView];
-    return cell.pictureImageView.frame.size.width * gradient + 10;
+//    [cell.pictureImageView];
+//    cell.pictureImageView.constraints.
+    
+    return (self.tableView.frame.size.width + 32) * gradient + 100;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
@@ -121,8 +123,8 @@
         NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"MyTableViewCell" owner:self options:nil];
         cell = [nibs objectAtIndex:0];
     }
-    [cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
-    [cell.contentView.layer setBorderWidth:1.0f];
+//    [cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
+//    [cell.contentView.layer setBorderWidth:1.0f];
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.pictureImageView];
     [cell.pictureImageView setImageURL:[NSURL URLWithString:[[pictures objectAtIndex:indexPath.row] objectForKey:@"url"]]];
