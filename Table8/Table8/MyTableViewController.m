@@ -78,7 +78,7 @@
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.pictureImageView];
     [cell.pictureImageView setImageURL:[NSURL URLWithString:@"http://ios.ioa.tw/upload/pictures/name/0/0/0/10/800w_1114559844_5581a714b574a.jpg"]];
-//    NSLog(<#NSString *format, ...#>)
+    NSLog(@"%f", cell.pictureImageView.image.size.height);
 //    cell.pictureImageView;
 //    cell.xxx.text = @"xxx";
     // Configure the cell...
