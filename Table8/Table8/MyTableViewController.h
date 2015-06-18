@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MyTableViewCell.h"
+#import "AsyncImageView.h"
 
 @interface MyTableViewController : UITableViewController
 

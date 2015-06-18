@@ -26,6 +26,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
     list = [NSMutableArray new];
     [list addObject:@"aaaaa"];
     [list addObject:@"bbbbb"];
@@ -50,8 +52,14 @@
 
     return [list count];
 }
-//
-//
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    //    NSLog(@"a");
+    //    return cell.frame.size.height;
+    
+    return 100;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 //    UITableViewCell *cell = (MyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -62,11 +70,16 @@
         NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"MyTableViewCell" owner:self options:nil];
         cell = [nibs objectAtIndex:0];
     }
+    [cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
+    [cell.contentView.layer setBorderWidth:1.0f];
     
     
     NSLog(@"%@", cell);
     
-    cell.pictureImageView;
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.pictureImageView];
+    [cell.pictureImageView setImageURL:[NSURL URLWithString:@"http://ios.ioa.tw/upload/pictures/name/0/0/0/10/800w_1114559844_5581a714b574a.jpg"]];
+//    NSLog(<#NSString *format, ...#>)
+//    cell.pictureImageView;
 //    cell.xxx.text = @"xxx";
     // Configure the cell...
     
