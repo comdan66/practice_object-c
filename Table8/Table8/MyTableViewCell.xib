@@ -12,7 +12,15 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vya-ko-nUr" customClass="AsyncImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="431" height="276"/>
+                    </imageView>
+                </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="pictureImageView" destination="vya-ko-nUr" id="oCM-aE-2Nd"/>
+            </connections>
             <point key="canvasLocation" x="620.5" y="539"/>
         </tableViewCell>
     </objects>

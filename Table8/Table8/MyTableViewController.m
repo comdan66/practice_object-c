@@ -65,6 +65,8 @@
     
     
     NSLog(@"%@", cell);
+    
+    cell.pictureImageView;
 //    cell.xxx.text = @"xxx";
     // Configure the cell...
     

@@ -18,6 +18,7 @@
 		0EA7E2931B32F93F007C2F6F /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2921B32F93F007C2F6F /* MyTableViewController.m */; };
 		0EA7E29D1B32FC51007C2F6F /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E29B1B32FC51007C2F6F /* MyTableViewCell.m */; };
 		0EA7E29E1B32FC51007C2F6F /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7E29C1B32FC51007C2F6F /* MyTableViewCell.xib */; };
+		0EA7E2A31B32FDB4007C2F6F /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2A21B32FDB4007C2F6F /* AsyncImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		0EA7E29A1B32FC51007C2F6F /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
 		0EA7E29B1B32FC51007C2F6F /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 		0EA7E29C1B32FC51007C2F6F /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
+		0EA7E2A11B32FDB4007C2F6F /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		0EA7E2A21B32FDB4007C2F6F /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,7 @@
 		0EA7E2671B32F88C007C2F6F /* Table8 */ = {
 			isa = PBXGroup;
 			children = (
+				0EA7E29F1B32FD8B007C2F6F /* libs */,
 				0EA7E2941B32F98A007C2F6F /* cell */,
 				0EA7E26C1B32F88C007C2F6F /* AppDelegate.h */,
 				0EA7E26D1B32F88C007C2F6F /* AppDelegate.m */,
@@ -141,6 +145,23 @@
 				0EA7E29C1B32FC51007C2F6F /* MyTableViewCell.xib */,
 			);
 			name = cell;
+			sourceTree = "<group>";
+		};
+		0EA7E29F1B32FD8B007C2F6F /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7E2A01B32FDA2007C2F6F /* AsyncImageView */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		0EA7E2A01B32FDA2007C2F6F /* AsyncImageView */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7E2A11B32FDB4007C2F6F /* AsyncImageView.h */,
+				0EA7E2A21B32FDB4007C2F6F /* AsyncImageView.m */,
+			);
+			name = AsyncImageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +272,7 @@
 				0EA7E29D1B32FC51007C2F6F /* MyTableViewCell.m in Sources */,
 				0EA7E2741B32F88C007C2F6F /* ViewController.m in Sources */,
 				0EA7E2711B32F88C007C2F6F /* Table8.xcdatamodeld in Sources */,
+				0EA7E2A31B32FDB4007C2F6F /* AsyncImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

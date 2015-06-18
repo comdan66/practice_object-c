@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AsyncImageView.h"
 
 @interface MyTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
 
 @end
