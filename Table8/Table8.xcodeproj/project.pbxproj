@@ -15,6 +15,9 @@
 		0EA7E2791B32F88C007C2F6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7E2781B32F88C007C2F6F /* Images.xcassets */; };
 		0EA7E27C1B32F88C007C2F6F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7E27A1B32F88C007C2F6F /* LaunchScreen.xib */; };
 		0EA7E2881B32F88C007C2F6F /* Table8Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2871B32F88C007C2F6F /* Table8Tests.m */; };
+		0EA7E2931B32F93F007C2F6F /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E2921B32F93F007C2F6F /* MyTableViewController.m */; };
+		0EA7E29D1B32FC51007C2F6F /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7E29B1B32FC51007C2F6F /* MyTableViewCell.m */; };
+		0EA7E29E1B32FC51007C2F6F /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA7E29C1B32FC51007C2F6F /* MyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,11 @@
 		0EA7E2811B32F88C007C2F6F /* Table8Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Table8Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EA7E2861B32F88C007C2F6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EA7E2871B32F88C007C2F6F /* Table8Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Table8Tests.m; sourceTree = "<group>"; };
+		0EA7E2911B32F93F007C2F6F /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
+		0EA7E2921B32F93F007C2F6F /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
+		0EA7E29A1B32FC51007C2F6F /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
+		0EA7E29B1B32FC51007C2F6F /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		0EA7E29C1B32FC51007C2F6F /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +91,13 @@
 		0EA7E2671B32F88C007C2F6F /* Table8 */ = {
 			isa = PBXGroup;
 			children = (
+				0EA7E2941B32F98A007C2F6F /* cell */,
 				0EA7E26C1B32F88C007C2F6F /* AppDelegate.h */,
 				0EA7E26D1B32F88C007C2F6F /* AppDelegate.m */,
 				0EA7E2721B32F88C007C2F6F /* ViewController.h */,
 				0EA7E2731B32F88C007C2F6F /* ViewController.m */,
+				0EA7E2911B32F93F007C2F6F /* MyTableViewController.h */,
+				0EA7E2921B32F93F007C2F6F /* MyTableViewController.m */,
 				0EA7E2751B32F88C007C2F6F /* Main.storyboard */,
 				0EA7E2781B32F88C007C2F6F /* Images.xcassets */,
 				0EA7E27A1B32F88C007C2F6F /* LaunchScreen.xib */,
@@ -120,6 +131,16 @@
 				0EA7E2861B32F88C007C2F6F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0EA7E2941B32F98A007C2F6F /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				0EA7E29A1B32FC51007C2F6F /* MyTableViewCell.h */,
+				0EA7E29B1B32FC51007C2F6F /* MyTableViewCell.m */,
+				0EA7E29C1B32FC51007C2F6F /* MyTableViewCell.xib */,
+			);
+			name = cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA7E2771B32F88C007C2F6F /* Main.storyboard in Resources */,
+				0EA7E29E1B32FC51007C2F6F /* MyTableViewCell.xib in Resources */,
 				0EA7E27C1B32F88C007C2F6F /* LaunchScreen.xib in Resources */,
 				0EA7E2791B32F88C007C2F6F /* Images.xcassets in Resources */,
 			);
@@ -224,7 +246,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA7E26E1B32F88C007C2F6F /* AppDelegate.m in Sources */,
+				0EA7E2931B32F93F007C2F6F /* MyTableViewController.m in Sources */,
 				0EA7E26B1B32F88C007C2F6F /* main.m in Sources */,
+				0EA7E29D1B32FC51007C2F6F /* MyTableViewCell.m in Sources */,
 				0EA7E2741B32F88C007C2F6F /* ViewController.m in Sources */,
 				0EA7E2711B32F88C007C2F6F /* Table8.xcdatamodeld in Sources */,
 			);
