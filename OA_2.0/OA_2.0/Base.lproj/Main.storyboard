@@ -94,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="1263" y="477"/>
         </scene>
-        <!--Root View Controller-->
+        <!--s-->
         <scene sceneID="iu8-VI-IMA">
             <objects>
                 <tableViewController id="JUR-zE-vRc" customClass="MyTableViewController" sceneMemberID="viewController">
@@ -115,7 +115,7 @@
                             <outlet property="delegate" destination="JUR-zE-vRc" id="UOI-ge-IHR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="nEZ-da-vRo"/>
+                    <navigationItem key="navigationItem" title="s" id="nEZ-da-vRo"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4U-ic-faR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

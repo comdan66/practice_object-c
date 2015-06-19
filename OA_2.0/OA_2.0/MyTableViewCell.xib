@@ -20,22 +20,32 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MMD-6K-6Ic" customClass="AsyncImageView">
                                 <rect key="frame" x="-8" y="-8" width="281" height="203"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSv-Fn-k3q">
-                                <rect key="frame" x="8" y="144" width="141" height="102"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jYK-fI-B58">
+                                <rect key="frame" x="13" y="137" width="141" height="102"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSv-Fn-k3q" customClass="AsyncImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="141" height="102"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="NvI-uw-399"/>
-                                    <constraint firstAttribute="height" constant="70" id="yB9-tn-Ctp"/>
+                                    <constraint firstItem="KSv-Fn-k3q" firstAttribute="top" secondItem="jYK-fI-B58" secondAttribute="top" id="IME-LG-mex"/>
+                                    <constraint firstAttribute="bottom" secondItem="KSv-Fn-k3q" secondAttribute="bottom" id="JQd-in-7JS"/>
+                                    <constraint firstAttribute="width" constant="70" id="REb-em-MRm"/>
+                                    <constraint firstItem="KSv-Fn-k3q" firstAttribute="leading" secondItem="jYK-fI-B58" secondAttribute="leading" id="jx3-s9-TjQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="KSv-Fn-k3q" secondAttribute="trailing" id="q0d-vr-mbk"/>
+                                    <constraint firstAttribute="height" constant="70" id="ucu-Y5-f12"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MMD-6K-6Ic" firstAttribute="bottom" secondItem="KSv-Fn-k3q" secondAttribute="bottom" constant="-35" id="Grp-g1-0WA"/>
+                            <constraint firstItem="jYK-fI-B58" firstAttribute="leading" secondItem="AJ5-el-BM9" secondAttribute="leading" constant="10" id="6qL-5b-E2f"/>
                             <constraint firstItem="MMD-6K-6Ic" firstAttribute="top" secondItem="AJ5-el-BM9" secondAttribute="top" id="K5u-al-4ZL"/>
                             <constraint firstAttribute="trailing" secondItem="MMD-6K-6Ic" secondAttribute="trailing" id="M8D-78-Gfb"/>
                             <constraint firstItem="MMD-6K-6Ic" firstAttribute="leading" secondItem="AJ5-el-BM9" secondAttribute="leading" id="cKH-P3-Wk3"/>
+                            <constraint firstItem="jYK-fI-B58" firstAttribute="bottom" secondItem="MMD-6K-6Ic" secondAttribute="bottom" constant="35" id="ghF-9e-yNl"/>
                             <constraint firstAttribute="bottom" secondItem="MMD-6K-6Ic" secondAttribute="bottom" constant="100" id="m0d-be-Lzi"/>
-                            <constraint firstItem="KSv-Fn-k3q" firstAttribute="leading" secondItem="AJ5-el-BM9" secondAttribute="leading" constant="20" id="vWQ-aK-ePE"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -48,6 +58,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatarImageView" destination="KSv-Fn-k3q" id="fSn-zr-G7v"/>
+                <outlet property="avatarView" destination="jYK-fI-B58" id="SLL-Yf-zX3"/>
                 <outlet property="borderView" destination="AJ5-el-BM9" id="sEh-oU-xw2"/>
                 <outlet property="pictureImageView" destination="MMD-6K-6Ic" id="7JQ-bE-w6b"/>
             </connections>

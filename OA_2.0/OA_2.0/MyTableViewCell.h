@@ -12,6 +12,7 @@
 @interface MyTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *borderView;
 @property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet AsyncImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UIView *avatarView;
 
 @end

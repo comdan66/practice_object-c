@@ -59,6 +59,22 @@
     double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
     return (self.tableView.frame.size.width + 16) * gradient + 80;
 }
+//-(UIImage*) circleImage:(UIImage*) image withParam:(CGFloat) inset {
+//    UIGraphicsBeginImageContext(image.size);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextSetLineWidth(context, 2);
+//    CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
+//    CGRect rect = CGRectMake(inset, inset, image.size.width - inset * 2.0f, image.size.height - inset * 2.0f);
+//    CGContextAddEllipseInRect(context, rect);
+//    CGContextClip(context);
+//    
+//    [image drawInRect:rect];
+//    CGContextAddEllipseInRect(context, rect);
+//    CGContextStrokePath(context);
+//    UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return newimg;
+//}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyTableViewCell *cell = (MyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"MyTableViewCell"];
     if(!cell){
@@ -69,32 +85,36 @@
     
     [cell.contentView.layer setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:234.0/255.0 blue:237.0/255.0 alpha:1].CGColor];
     
+//    CAGradientLayer *gradient = [CAGradientLayer layer];
+//    gradient.frame = cell.contentView.bounds;
+//    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor grayColor] CGColor], nil]; // 由上到下的漸層顏色
+//    [cell.contentView.layer insertSublayer:gradient atIndex:0];
+    
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.pictureImageView];
     [cell.pictureImageView setImageURL:[NSURL URLWithString:[[pictures objectAtIndex:indexPath.row] objectForKey:@"url"]]];
     [cell.pictureImageView setContentMode:UIViewContentModeScaleToFill];
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.avatarImageView];
-    [cell.avatarImageView setImageURL:[NSURL URLWithString:[[pictures objectAtIndex:indexPath.row] objectForKey:@"url"]]];
-    [cell.avatarImageView setContentMode:UIViewContentModeScaleToFill];
-    [cell.avatarImageView.layer setBorderColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:0.7].CGColor];
-    [cell.avatarImageView.layer setBorderWidth:1.0f];
+    [cell.avatarImageView setImageURL:[NSURL URLWithString:@"https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/11048657_1080777421935599_5837445915403701082_n.jpg?oh=2443543609875efd1cfbeb180ce4eb6f&oe=5632E7AC&__gda__=1442328774_767b4bf2cebffa46d3e54485004b535b"]];
     [cell.avatarImageView.layer setCornerRadius:35];
     [cell.avatarImageView setClipsToBounds:YES];
+    
+//    [cell.avatarImageView setImage:[self circleImage:cell.avatarImageView withParam:0]];
+    
+    [cell.avatarView.layer setBorderColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:0.4].CGColor];
+    [cell.avatarView.layer setBorderWidth:1.0f];
+    [cell.avatarView.layer setCornerRadius:35];
+    [cell.avatarView.layer setShadowColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:1].CGColor];
+    [cell.avatarView.layer setShadowOffset:CGSizeMake(2.4f, 2.0f)];
+    [cell.avatarView.layer setShadowRadius:5.0f];
+    [cell.avatarView.layer setShadowOpacity:0.5f];
 
-    [cell.avatarImageView.layer setShadowColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:1].CGColor];
-    [cell.avatarImageView.layer setShadowOffset:CGSizeMake(2.0f, 1.0f)];
-    [cell.avatarImageView.layer setShadowRadius:3.0f];
-    [cell.avatarImageView.layer setShadowOpacity:0.7f];
 
     [cell.borderView.layer setBorderColor:[UIColor colorWithRed:208.0/255.0 green:209.0/255.0 blue:213.0/255.0 alpha:1].CGColor];
     [cell.borderView.layer setBorderWidth:1.0f];
     [cell.borderView.layer setCornerRadius:2];
     [cell.borderView setClipsToBounds:YES];
     
-    [cell.borderView.layer setShadowColor:[UIColor colorWithRed:208.0/255.0 green:209.0/255.0 blue:213.0/255.0 alpha:1].CGColor];
-    [cell.borderView.layer setShadowOffset:CGSizeMake(1.0f, 1.0f)];
-    [cell.borderView.layer setShadowRadius:3.0f];
-    [cell.borderView.layer setShadowOpacity:0.8f];
 
     return cell;
 }
@@ -116,15 +136,16 @@
                 [pictures addObject: picture];
             }
             nextId = [[NSString alloc] initWithFormat:@"%@", [result objectForKey:@"next_id"]];
+
+            if ([nextId doubleValue] >= 0)
+                isLoading = NO;
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView reloadData];
-            
             if (alert != nil)
                 [alert dismissWithClickedButtonIndex:-1 animated:YES];
             
-            isLoading = NO;
+            [self.tableView reloadData];
         });
         
     }];
@@ -138,6 +159,7 @@
         [self loadData:nil];
     }
 }
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
