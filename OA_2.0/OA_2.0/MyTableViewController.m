@@ -72,6 +72,19 @@
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.pictureImageView];
     [cell.pictureImageView setImageURL:[NSURL URLWithString:[[pictures objectAtIndex:indexPath.row] objectForKey:@"url"]]];
     [cell.pictureImageView setContentMode:UIViewContentModeScaleToFill];
+    
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.avatarImageView];
+    [cell.avatarImageView setImageURL:[NSURL URLWithString:[[pictures objectAtIndex:indexPath.row] objectForKey:@"url"]]];
+    [cell.avatarImageView setContentMode:UIViewContentModeScaleToFill];
+    [cell.avatarImageView.layer setBorderColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:0.7].CGColor];
+    [cell.avatarImageView.layer setBorderWidth:1.0f];
+    [cell.avatarImageView.layer setCornerRadius:35];
+    [cell.avatarImageView setClipsToBounds:YES];
+
+    [cell.avatarImageView.layer setShadowColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:1].CGColor];
+    [cell.avatarImageView.layer setShadowOffset:CGSizeMake(2.0f, 1.0f)];
+    [cell.avatarImageView.layer setShadowRadius:3.0f];
+    [cell.avatarImageView.layer setShadowOpacity:0.7f];
 
     [cell.borderView.layer setBorderColor:[UIColor colorWithRed:208.0/255.0 green:209.0/255.0 blue:213.0/255.0 alpha:1].CGColor];
     [cell.borderView.layer setBorderWidth:1.0f];
