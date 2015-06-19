@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
 @property (weak, nonatomic) IBOutlet AsyncImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UIView *avatarView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
