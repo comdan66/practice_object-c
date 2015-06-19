@@ -8,39 +8,34 @@
 
 #import "MyTableViewController.h"
 
-@interface MyTableViewController () {
+@interface MyTableViewController () <UIScrollViewDelegate>{
     NSMutableArray *pictures;
+    NSString *nextId;
+    BOOL isLoading;
 }
 
 @end
 
 @implementation MyTableViewController
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (isLoading)
+        return;
+
+    if ((scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.frame.size.height * 2)) {
+        [self loadData:nil];
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __weak MyTableViewController *weakSelf = self;
+    isLoading = NO;
+    pictures = [NSMutableArray new];
     
     UIAlertView *loadingAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
     [loadingAlertView show];
+    
     [self loadData:loadingAlertView];
-//    
-//    MyHttp *http = [MyHttp new];
-//    NSMutableDictionary *vars = [NSMutableDictionary new];
-//    
-//    [http getURL:@"http://ios.ioa.tw/api/files" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//        
-////
-////        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-////        NSString *title = [[NSString alloc] initWithFormat:[[result objectForKey:@"status"] boolValue] ? @"登入成功！" : @"登入失敗！"];
-////        
-////        dispatch_async(dispatch_get_main_queue(), ^{
-////            [myAlertView dismissWithClickedButtonIndex:-1 animated:YES];
-////            
-////            UIAlertView *ok = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
-////            [ok show];
-////        });
-//    }];
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -51,39 +46,17 @@
     
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
-//    [self.tableView addInfiniteScrollingWithActionHandler:^{
-////        NSLog(@"xxx");
-//        [weakSelf insertRowAtBottom];
-//    }];
-//    list = [NSMutableArray new];
-//    [list addObject:@"aaaaa"];
-//    [list addObject:@"bbbbb"];
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
-- (void)insertRowAtBottom {
-    __weak MyTableViewController *weakSelf = self;
-    
-    int64_t delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        
-//        _dataPage++;
-//
-//        [self getUserShares];
-        
-        [weakSelf.tableView.infiniteScrollingView stopAnimating];
-    });
-}
-
 
 - (void)loadData:(UIAlertView *) alert{
-    pictures = [NSMutableArray new];
-    
+
+    isLoading = YES;
+
     MyHttp *http = [MyHttp new];
     NSMutableDictionary *vars = [NSMutableDictionary new];
+    [vars setObject:nextId == nil ? @"0" : nextId forKey:@"next_id"];
     
-    [http getURL:@"http://ios.ioa.tw/api/pictures" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    [http getURL:@"http://ios.ioa.tw/api/next_pictures" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         
         NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 
@@ -91,11 +64,16 @@
             for (NSMutableDictionary *picture in [result objectForKey:@"pictures"]) {
                 [pictures addObject: picture];
             }
+            nextId = [[NSString alloc] initWithFormat:@"%@", [result objectForKey:@"next_id"]];
         }
-//        NSLog(@"%@", pictures);
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
-            [alert dismissWithClickedButtonIndex:-1 animated:YES];
+
+            if (alert != nil)
+                [alert dismissWithClickedButtonIndex:-1 animated:YES];
+
+            isLoading = NO;
         });
         
     }];

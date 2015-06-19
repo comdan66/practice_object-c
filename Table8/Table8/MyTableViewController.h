@@ -10,7 +10,7 @@
 #import "MyTableViewCell.h"
 #import "AsyncImageView.h"
 #import "MyHttp.h"
-#import "SVPullToRefresh.h"
+//#import "SVPullToRefresh.h"
 
 @interface MyTableViewController : UITableViewController
 
