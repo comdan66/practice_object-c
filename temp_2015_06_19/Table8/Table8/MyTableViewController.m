@@ -111,7 +111,7 @@
 //
     double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
 //
-    return (self.tableView.frame.size.width + 32) * gradient + 100;
+    return (self.tableView.frame.size.width + 32) * gradient + 80;
     
 
 }
@@ -124,14 +124,14 @@
     }
     cell.pictureImageView.contentMode = UIViewContentModeScaleToFill;
 
-    [cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
-    [cell.contentView.layer setBorderWidth:1.0f];
+//    [cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
+//    [cell.contentView.layer setBorderWidth:1.0f];
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.pictureImageView];
     [cell.pictureImageView setImageURL:[NSURL URLWithString:[[pictures objectAtIndex:indexPath.row] objectForKey:@"url"]]];
     
     cell.titleLabel.text = [[pictures objectAtIndex:indexPath.row] objectForKey:@"title"];
-    
+    cell.dataLabel.text = @"幾分鐘之前..";
     return cell;
 }
 
