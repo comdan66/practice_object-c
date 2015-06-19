@@ -5,20 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A62A6B1B-87BC-4B42-82A0-9D7D6CA98CE8</string>
+	<string>2F649872-B6BC-4433-82E8-7D11BB43BFBB</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Table8</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7793D8A99D1AEC79C8934EFD5A568F4D3F96FC06</key>
 		<string>github.com:comdan66/practice_object-c.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>temp_2015_06_19/Table8/Table8.xcodeproj</string>
+	<string>OA_2.0/OA_2.0.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7793D8A99D1AEC79C8934EFD5A568F4D3F96FC06</key>
-		<string>../../../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:comdan66/practice_object-c.git</string>
