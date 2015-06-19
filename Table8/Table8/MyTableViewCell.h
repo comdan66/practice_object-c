@@ -11,5 +11,6 @@
 
 @interface MyTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end

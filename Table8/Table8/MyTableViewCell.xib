@@ -17,16 +17,29 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vya-ko-nUr" customClass="AsyncImageView">
                         <rect key="frame" x="0.0" y="0.0" width="431" height="276"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gh-ns-Sf3">
+                        <rect key="frame" x="0.0" y="284" width="431" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="KWz-RC-hES"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="0Gh-ns-Sf3" secondAttribute="trailing" id="7Ql-pD-2XC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="vya-ko-nUr" secondAttribute="trailing" constant="-16" id="GRi-zU-VH0"/>
                     <constraint firstItem="vya-ko-nUr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-16" id="RbZ-9C-zj4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="0Gh-ns-Sf3" secondAttribute="bottom" constant="70" id="Z6a-wx-vB1"/>
                     <constraint firstItem="vya-ko-nUr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="fV9-VE-YlD"/>
                     <constraint firstAttribute="bottomMargin" secondItem="vya-ko-nUr" secondAttribute="bottom" constant="100" id="j5C-a2-5DV"/>
+                    <constraint firstItem="0Gh-ns-Sf3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="k1y-qL-ohI"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="pictureImageView" destination="vya-ko-nUr" id="oCM-aE-2Nd"/>
+                <outlet property="titleLabel" destination="0Gh-ns-Sf3" id="6Dc-Dv-pFG"/>
             </connections>
             <point key="canvasLocation" x="620.5" y="593"/>
         </tableViewCell>

@@ -52,13 +52,14 @@
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    [self.tableView addInfiniteScrollingWithActionHandler:^{
-//        NSLog(@"xxx");
-        [weakSelf insertRowAtBottom];
-    }];
+//    [self.tableView addInfiniteScrollingWithActionHandler:^{
+////        NSLog(@"xxx");
+//        [weakSelf insertRowAtBottom];
+//    }];
 //    list = [NSMutableArray new];
 //    [list addObject:@"aaaaa"];
 //    [list addObject:@"bbbbb"];
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 - (void)insertRowAtBottom {
     __weak MyTableViewController *weakSelf = self;
@@ -121,22 +122,20 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    //    NSLog(@"a");
-    //    return cell.frame.size.height;
-//    [[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"];
+//    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+//        return cell.frame.size.height;
     
-    MyTableViewCell *cell = (MyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"MyTableViewCell"];
-    if(!cell){
-        NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"MyTableViewCell" owner:self options:nil];
-        cell = [nibs objectAtIndex:0];
-    }
-
+//    MyTableViewCell *cell = (MyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"MyTableViewCell"];
+//    if(!cell){
+//        NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"MyTableViewCell" owner:self options:nil];
+//        cell = [nibs objectAtIndex:0];
+//    }
+//
     double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
-//    [cell.pictureImageView];
-//    cell.pictureImageView.constraints.
-    
+//
     return (self.tableView.frame.size.width + 32) * gradient + 100;
+    
+
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
@@ -145,17 +144,15 @@
         NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"MyTableViewCell" owner:self options:nil];
         cell = [nibs objectAtIndex:0];
     }
+    cell.pictureImageView.contentMode = UIViewContentModeScaleToFill;
+
     [cell.contentView.layer setBorderColor:[UIColor redColor].CGColor];
     [cell.contentView.layer setBorderWidth:1.0f];
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:cell.pictureImageView];
     [cell.pictureImageView setImageURL:[NSURL URLWithString:[[pictures objectAtIndex:indexPath.row] objectForKey:@"url"]]];
-    cell.pictureImageView.contentMode = UIViewContentModeScaleToFill;
     
-    
-//    cell.pictureImageView;
-//    cell.xxx.text = @"xxx";
-    // Configure the cell...
+    cell.titleLabel.text = [[pictures objectAtIndex:indexPath.row] objectForKey:@"title"];
     
     return cell;
 }
