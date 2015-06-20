@@ -57,7 +57,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
-    return (self.tableView.frame.size.width + 16) * gradient + 100;
+    return (self.tableView.frame.size.width + 16) * gradient + 135;
 }
 //-(UIImage*) circleImage:(UIImage*) image withParam:(CGFloat) inset {
 //    UIGraphicsBeginImageContext(image.size);
@@ -110,10 +110,12 @@
     
 //    [cell.avatarImageView setImage:[self circleImage:cell.avatarImageView withParam:0]];
     
-    
+//    rgba(39, 40, 34, 1)
     [cell.userNameLabel setText:@"OA"];
+
     
-    [cell.titleLabel setText:@"asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd"];
+    [cell.titleLabel setText:[[pictures objectAtIndex:indexPath.row] objectForKey:@"title"]];
+    [cell.titleLabel setTextColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:0.8]];
 //    [cell.titleLabel.layer setBorderColor:[UIColor redColor].CGColor];
 //    [cell.titleLabel.layer setBorderWidth:1.0f];
     
