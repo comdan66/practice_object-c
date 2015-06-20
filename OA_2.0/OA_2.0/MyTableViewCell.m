@@ -20,4 +20,11 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)likeButtonPress:(id)sender {
+    NSLog(@"111");
+}
+
+- (IBAction)commentButtonPress:(id)sender {
+    NSLog(@"222");
+}
 @end

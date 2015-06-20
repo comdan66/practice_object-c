@@ -74,16 +74,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5x-ZV-xQZ">
-                                <rect key="frame" x="31" y="297" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                                <rect key="frame" x="31" y="297" width="30" height="30"/>
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="likeButtonPress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2g1-Ed-v3J"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nph-cl-Hid">
-                                <rect key="frame" x="179" y="297" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                                <rect key="frame" x="179" y="297" width="30" height="30"/>
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="commentButtonPress:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="foh-DE-9TR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -127,6 +133,8 @@
                 <outlet property="avatarImageView" destination="KSv-Fn-k3q" id="fSn-zr-G7v"/>
                 <outlet property="avatarView" destination="jYK-fI-B58" id="SLL-Yf-zX3"/>
                 <outlet property="borderView" destination="AJ5-el-BM9" id="sEh-oU-xw2"/>
+                <outlet property="commentButton" destination="nph-cl-Hid" id="QHC-8c-Fv4"/>
+                <outlet property="likeButton" destination="j5x-ZV-xQZ" id="doY-ZI-i1e"/>
                 <outlet property="pictureImageView" destination="MMD-6K-6Ic" id="7JQ-bE-w6b"/>
                 <outlet property="titleLabel" destination="0dP-el-XFk" id="EUC-Ab-ohT"/>
                 <outlet property="userNameLabel" destination="cg3-fM-iyA" id="JJx-v6-ZmE"/>

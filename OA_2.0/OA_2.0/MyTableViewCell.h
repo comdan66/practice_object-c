@@ -16,5 +16,10 @@
 @property (weak, nonatomic) IBOutlet UIView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *commentButton;
+
+- (IBAction)likeButtonPress:(id)sender;
+- (IBAction)commentButtonPress:(id)sender;
 
 @end

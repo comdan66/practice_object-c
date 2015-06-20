@@ -107,18 +107,21 @@
     [cell.avatarImageView setImageURL:[NSURL URLWithString:@"https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/11048657_1080777421935599_5837445915403701082_n.jpg?oh=2443543609875efd1cfbeb180ce4eb6f&oe=5632E7AC&__gda__=1442328774_767b4bf2cebffa46d3e54485004b535b"]];
     [cell.avatarImageView.layer setCornerRadius:35];
     [cell.avatarImageView setClipsToBounds:YES];
+
     
-//    [cell.avatarImageView setImage:[self circleImage:cell.avatarImageView withParam:0]];
-    
-//    rgba(39, 40, 34, 1)
     [cell.userNameLabel setText:@"OA"];
 
     
     [cell.titleLabel setText:[[pictures objectAtIndex:indexPath.row] objectForKey:@"title"]];
     [cell.titleLabel setTextColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:0.8]];
-//    [cell.titleLabel.layer setBorderColor:[UIColor redColor].CGColor];
-//    [cell.titleLabel.layer setBorderWidth:1.0f];
+
     
+    [cell.likeButton setTitle:@"已按讚" forState:UIControlStateNormal];
+    [cell.likeButton setTitleColor:[UIColor colorWithRed:77.0/255.0 green:79.0/255.0 blue:88.0/255.0 alpha:0.85] forState:UIControlStateNormal];
+    [cell.likeButton.titleLabel setFont:[UIFont boldSystemFontOfSize:[UIFont systemFontSize]]];
+
+    [cell.commentButton setTitle:@"留言(2)" forState:UIControlStateNormal];
+    [cell.commentButton setTitleColor:[UIColor colorWithRed:137.0/255.0 green:143.0/255.0 blue:156.0/255.0 alpha:1.0] forState:UIControlStateNormal];
 
     return cell;
 }
