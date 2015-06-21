@@ -122,8 +122,13 @@
 
     [cell.commentButton setTitle:@"留言(2)" forState:UIControlStateNormal];
     [cell.commentButton setTitleColor:[UIColor colorWithRed:137.0/255.0 green:143.0/255.0 blue:156.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-
+    
+    [cell.commentButton addTarget:self action:@selector(pictureInfoSegue:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
+}
+- (void)pictureInfoSegue:(MyTableViewCell *)cell {
+    [self performSegueWithIdentifier:@"pictureInfoSegue" sender:cell];
 }
 
 - (void)loadData:(UIAlertView *) alert{

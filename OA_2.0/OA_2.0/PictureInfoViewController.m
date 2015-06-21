@@ -1,23 +1,24 @@
 //
-//  MyViewController.m
-//  test
+//  PictureInfoViewController.m
+//  OA_2.0
 //
 //  Created by OA Wu on 2015/6/20.
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
-#import "MyViewController.h"
+#import "PictureInfoViewController.h"
 
-@interface MyViewController ()
+@interface PictureInfoViewController ()
 
 @end
 
-@implementation MyViewController
+@implementation PictureInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.navigationItem.leftBarButtonItem
-//    self.navigationItem.hidesBackButton =YES;
+    // Do any additional setup after loading the view.
+    
+    //    self.navigationItem.leftBarButtonItem
 //    UIButton * customButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [customButton setBackgroundColor:[UIColor colorWithRed:197.0/255.0 green:190.0/255.0 blue:157.0/255.0 alpha:1.0]];
 //    [customButton setTitle:@"Do Something" forState:UIControlStateNormal];
@@ -30,22 +31,33 @@
 ////    [customButton addTarget:self action:@selector(customMethod:) forControlEvents:UIControlEventTouchUpInside];
 //    UIBarButtonItem * customItem = [[UIBarButtonItem alloc] initWithCustomView:customButton];
 //    customItem.tintColor=[UIColor blackColor];
+    
+//    UIButton *customButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [customButton setTitle:@"Do Something" forState:UIControlStateNormal];
+//    UIBarButtonItem * customItem = [UIBarButtonItem new];
+//    [customItem setTitle:@"<"];
+////        customItem.tintColor=[UIColor blackColor];
 //    self.navigationItem.leftBarButtonItem = customItem;
-//    [self.navigationController popToRootViewControllerAnimated:YES];
+//    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] init];
+    [self.navigationItem.leftBarButtonItem setTitle:@"❮ Back"];
+    [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStyleDone];
+    [self.navigationItem.leftBarButtonItem setTarget:self];
+    [self.navigationItem.leftBarButtonItem setAction:@selector(backButtonAction)];
     
-    // Do any additional setup after loading the view.
     
-    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-    [myAlertView show];
+//    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Loading..." message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+//    [myAlertView show];
 }
+-(void)backButtonAction  {
+//    [self.backdelegate updateEvent:eventId title:eventTitle];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)ddd:(id)sender {
-//    [self dismissModalViewControllerAnimated:YES];
 }
 
 /*

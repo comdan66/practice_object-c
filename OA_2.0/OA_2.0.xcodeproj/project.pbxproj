@@ -21,6 +21,7 @@
 		0E01AEF81B344655007561B1 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E01AEF71B344655007561B1 /* AsyncImageView.m */; };
 		0E01AEFB1B344661007561B1 /* UIImageViewAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E01AEFA1B344661007561B1 /* UIImageViewAligned.m */; };
 		0E01AEFF1B34472F007561B1 /* MyHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E01AEFE1B34472F007561B1 /* MyHttp.m */; };
+		0E01AF431B35C365007561B1 /* PictureInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E01AF421B35C365007561B1 /* PictureInfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		0E01AEFA1B344661007561B1 /* UIImageViewAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewAligned.m; sourceTree = "<group>"; };
 		0E01AEFD1B34472F007561B1 /* MyHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHttp.h; sourceTree = "<group>"; };
 		0E01AEFE1B34472F007561B1 /* MyHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHttp.m; sourceTree = "<group>"; };
+		0E01AF411B35C365007561B1 /* PictureInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureInfoViewController.h; sourceTree = "<group>"; };
+		0E01AF421B35C365007561B1 /* PictureInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureInfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +103,9 @@
 		0E01AEC01B34397E007561B1 /* OA_2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				0E01AF401B35C32C007561B1 /* PictureInfo */,
 				0E01AEF31B34462F007561B1 /* libs */,
-				0E01AEEA1B343D87007561B1 /* cell */,
+				0E01AEEA1B343D87007561B1 /* Cell */,
 				0E01AEC51B34397E007561B1 /* AppDelegate.h */,
 				0E01AEC61B34397E007561B1 /* AppDelegate.m */,
 				0E01AECB1B34397E007561B1 /* ViewController.h */,
@@ -143,14 +147,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0E01AEEA1B343D87007561B1 /* cell */ = {
+		0E01AEEA1B343D87007561B1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				0E01AEEB1B343D9F007561B1 /* MyTableViewCell.h */,
 				0E01AEEC1B343D9F007561B1 /* MyTableViewCell.m */,
 				0E01AEED1B343D9F007561B1 /* MyTableViewCell.xib */,
 			);
-			name = cell;
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		0E01AEF31B34462F007561B1 /* libs */ = {
@@ -188,6 +192,15 @@
 				0E01AEFE1B34472F007561B1 /* MyHttp.m */,
 			);
 			name = MyHttp;
+			sourceTree = "<group>";
+		};
+		0E01AF401B35C32C007561B1 /* PictureInfo */ = {
+			isa = PBXGroup;
+			children = (
+				0E01AF411B35C365007561B1 /* PictureInfoViewController.h */,
+				0E01AF421B35C365007561B1 /* PictureInfoViewController.m */,
+			);
+			name = PictureInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +310,7 @@
 				0E01AECD1B34397E007561B1 /* ViewController.m in Sources */,
 				0E01AEF21B343E17007561B1 /* MyTableViewController.m in Sources */,
 				0E01AECA1B34397E007561B1 /* OA_2_0.xcdatamodeld in Sources */,
+				0E01AF431B35C365007561B1 /* PictureInfoViewController.m in Sources */,
 				0E01AEEE1B343D9F007561B1 /* MyTableViewCell.m in Sources */,
 				0E01AEFF1B34472F007561B1 /* MyHttp.m in Sources */,
 				0E01AEF81B344655007561B1 /* AsyncImageView.m in Sources */,
