@@ -110,6 +110,7 @@
 -(void) initAndCleanView {
     hasChoice = NO;
     self.defaultImageView.image = [UIImage imageNamed:@"defaultImageView.png"];
+    self.titleTextField.text = @"";
 }
 
 -(void)touchDefaultImage {
@@ -190,6 +191,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"提示"] && [alertView.message isEqualToString:@"照片上傳成功！"]) {
+        [self initAndCleanView];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"goToTabIndex0" object:nil];
     }
     

@@ -132,6 +132,10 @@
 }
 
 - (void)loadNewPicture {
+    
+    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    [loadingAlert show];
+
     NSString *prevId;
     
     if ([pictures count] > 0)
@@ -153,7 +157,7 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"~~~~~");
+            [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
             [self.tableView reloadData];
         });
     }];
