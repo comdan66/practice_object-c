@@ -69,6 +69,12 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VX2-uS-olu">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyK-xk-gMb">
+                                        <rect key="frame" x="50" y="66" width="327" height="304"/>
+                                        <color key="backgroundColor" red="0.18823531269999999" green="0.96078437569999997" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
+                                </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

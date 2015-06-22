@@ -38,10 +38,10 @@
 //    float xPos = 10;
 //    float yPos = 10;
 //    
-    UIView* view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 200)];
-    view1.backgroundColor = [UIColor blueColor];
-    view1.center = self.scrollView.center;
-    [self.scrollView addSubview:view1];
+//    UIView* view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 200)];
+//    view1.backgroundColor = [UIColor blueColor];
+//    view1.center = self.scrollView.center;
+//    [self.scrollView addSubview:view1];
 
 //
 //    UIView* view2 = [[UIView alloc] initWithFrame:CGRectMake(xPos, self.view.bounds.size.height + yPos, width, height)];
