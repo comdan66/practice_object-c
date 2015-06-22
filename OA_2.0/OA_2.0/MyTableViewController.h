@@ -13,4 +13,5 @@
 
 @interface MyTableViewController : UITableViewController <UIScrollViewDelegate>
 
+- (void)loadNewPicture;
 @end

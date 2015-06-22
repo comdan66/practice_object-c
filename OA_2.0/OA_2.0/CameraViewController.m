@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"goToTabIndex0" object:nil];
     // Do any additional setup after loading the view.
 //    self.scrollView.contentSize =CGSizeMake(320, 700);
 //    NSLog(@"%f", self.frame.origin.y);
@@ -76,15 +77,14 @@
 
 //    backgroundView.clipsToBounds = NO;
     
-    
-    [self.borderView.layer setBorderColor:[UIColor colorWithRed:208.0/255.0 green:209.0/255.0 blue:213.0/255.0 alpha:1].CGColor];
+    [self.borderView.layer setBorderColor:[UIColor colorWithRed:197.0/255.0 green:198.0/255.0 blue:204.0/255.0 alpha:1].CGColor];
     [self.borderView.layer setBorderWidth:1.0f];
     [self.borderView.layer setCornerRadius:2];
 
 
     [self.defaultImageView.layer setBorderColor:[UIColor grayColor].CGColor];
     [self.defaultImageView.layer setBorderWidth:1.0f];
-    [self.defaultImageView.layer setCornerRadius:2];
+    [self.defaultImageView.layer setCornerRadius:3];
     [self.defaultImageView.layer setMasksToBounds:YES];
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchDefaultImage)];
@@ -143,12 +143,6 @@
             break;
     }
 }
-- (IBAction)openCameraButtonAction:(id)sender {
-    [self showCamera];
-}
-- (IBAction)openAlbumButtonAction:(id)sender {
-    [self showPhotoLibrary];
-}
 - (IBAction)submitButtonAction:(id)sender {
     
     UIAlertView *loadinfAlert = [[UIAlertView alloc] initWithTitle:@"Loading..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
@@ -167,7 +161,6 @@
         [myAlertView show];
         return;
     }
-    
     
     NSData *imageData = UIImageJPEGRepresentation ([self fixOrientation:self.defaultImageView.image ], 0.1);
 
@@ -194,12 +187,10 @@
         });
     }];
 }
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-//}
-//- (void)a
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView.title isEqualToString:@"提示"] && [alertView.message isEqualToString:@"照片上傳成功！"]) {
-        NSLog(@"dasdasdsa");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"goToTabIndex0" object:nil];
     }
     
 }
@@ -307,8 +298,6 @@
     [self presentViewController:imagePickerController animated:YES completion:nil];
 }
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    //========================
-    
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     self.defaultImageView.image = image;
     hasChoice = YES;

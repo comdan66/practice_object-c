@@ -16,8 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIView *borderView;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultImageView;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
-@property (weak, nonatomic) IBOutlet UIButton *openCameraButton;
-@property (weak, nonatomic) IBOutlet UIButton *openAlbumButton;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
 

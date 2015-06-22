@@ -131,6 +131,33 @@
     [self performSegueWithIdentifier:@"pictureInfoSegue" sender:cell];
 }
 
+- (void)loadNewPicture {
+    NSString *prevId;
+    
+    if ([pictures count] > 0)
+        prevId = [NSString stringWithFormat:@"%li", [[[pictures objectAtIndex:0] objectForKey:@"id"] integerValue] + 1];
+    else
+        prevId = @"0";
+    
+    MyHttp *http = [MyHttp new];
+    NSMutableDictionary *vars = [NSMutableDictionary new];
+    [vars setObject:prevId forKey:@"prev_id"];
+    
+    [http getURL:@"http://ios.ioa.tw/api/prev_pictures" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        if ([[result objectForKey:@"status"] boolValue]) {
+            for (NSMutableDictionary *picture in [result objectForKey:@"pictures"]) {
+                [pictures insertObject: picture atIndex:0];
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"~~~~~");
+            [self.tableView reloadData];
+        });
+    }];
+}
 - (void)loadData:(UIAlertView *) alert{
     
     isLoading = YES;

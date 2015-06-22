@@ -27,11 +27,17 @@
 //        }
 //    }
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToTabIndex0:) name:@"goToTabIndex0" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToTabIndex0:) name:@"goToTabIndex0" object:nil];
+    
 }
 
-//- (void)goToTabIndex0:(NSNotification*)sender {
-//    [self setSelectedIndex:0];
-//}
+- (void)goToTabIndex0:(NSNotification*)sender {
+    UINavigationController *first = (UINavigationController *)[self.viewControllers objectAtIndex:0];
+    MyTableViewController *temp = (MyTableViewController *)[first.viewControllers objectAtIndex:0];
+    [temp loadNewPicture];
+    
+    [self setSelectedIndex:0];
+}
 
 
 
