@@ -70,14 +70,43 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VX2-uS-olu">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PyK-xk-gMb">
-                                        <rect key="frame" x="50" y="66" width="327" height="304"/>
-                                        <color key="backgroundColor" red="0.18823531269999999" green="0.96078437569999997" blue="0.18823531269999999" alpha="1" colorSpace="deviceRGB"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VJq-tN-VJr">
+                                        <rect key="frame" x="23" y="40" width="554" height="490"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KZl-pM-7CJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="554" height="490"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="comera.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kPq-b6-C5V">
+                                                <rect key="frame" x="8" y="10" width="538" height="249"/>
+                                                <color key="backgroundColor" red="0.26901113688772726" green="1" blue="0.17866562440499179" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="250" id="KhL-Iq-3pn"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="KZl-pM-7CJ" firstAttribute="top" secondItem="VJq-tN-VJr" secondAttribute="top" id="2QR-cg-SBE"/>
+                                            <constraint firstAttribute="height" constant="500" id="VY6-j8-C0K"/>
+                                            <constraint firstAttribute="trailing" secondItem="KZl-pM-7CJ" secondAttribute="trailing" id="eAZ-ID-DoE"/>
+                                            <constraint firstAttribute="bottom" secondItem="KZl-pM-7CJ" secondAttribute="bottom" id="hJl-21-wRg"/>
+                                            <constraint firstAttribute="trailing" secondItem="kPq-b6-C5V" secondAttribute="trailing" constant="-10" id="qlc-uW-nSo"/>
+                                            <constraint firstItem="kPq-b6-C5V" firstAttribute="leading" secondItem="VJq-tN-VJr" secondAttribute="leading" constant="-10" id="t6w-g2-YaN"/>
+                                            <constraint firstItem="kPq-b6-C5V" firstAttribute="top" secondItem="VJq-tN-VJr" secondAttribute="top" constant="10" id="teX-Y8-8aU"/>
+                                            <constraint firstItem="KZl-pM-7CJ" firstAttribute="leading" secondItem="VJq-tN-VJr" secondAttribute="leading" id="xeg-V8-jKH"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="VJq-tN-VJr" firstAttribute="leading" secondItem="VX2-uS-olu" secondAttribute="leading" constant="25" id="7kx-gD-hZJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="VJq-tN-VJr" secondAttribute="trailing" constant="25" id="IjW-Mz-v9s"/>
+                                    <constraint firstAttribute="bottom" secondItem="VJq-tN-VJr" secondAttribute="bottom" constant="10" id="RK0-UF-cIX"/>
+                                    <constraint firstItem="VJq-tN-VJr" firstAttribute="top" secondItem="VX2-uS-olu" secondAttribute="top" constant="20" id="nos-Wq-xcz"/>
+                                    <constraint firstAttribute="centerX" secondItem="VJq-tN-VJr" secondAttribute="centerX" id="uqS-lR-Ooc"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.89411764705882357" green="0.89803921568627454" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="VX2-uS-olu" firstAttribute="top" secondItem="Ntz-aB-1OQ" secondAttribute="top" id="3PG-bg-uh2"/>
                             <constraint firstItem="rjK-da-kns" firstAttribute="top" secondItem="VX2-uS-olu" secondAttribute="bottom" id="O3T-VR-b41"/>
@@ -87,6 +116,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="zon-ar-rMX"/>
                     <connections>
+                        <outlet property="borderView" destination="KZl-pM-7CJ" id="ZV9-6O-ncm"/>
+                        <outlet property="boxView" destination="VJq-tN-VJr" id="39W-tx-kMD"/>
+                        <outlet property="defaultImageView" destination="kPq-b6-C5V" id="XKW-VO-INc"/>
                         <outlet property="scrollView" destination="VX2-uS-olu" id="LlP-qa-zY0"/>
                     </connections>
                 </viewController>
@@ -180,4 +212,7 @@
             <point key="canvasLocation" x="565" y="1223"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="comera.jpg" width="622" height="415"/>
+    </resources>
 </document>

@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CameraViewController : UIViewController<UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CameraViewController : UIViewController<UIActionSheetDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *boxView;
+@property (weak, nonatomic) IBOutlet UIView *borderView;
+@property (weak, nonatomic) IBOutlet UIImageView *defaultImageView;
 
 
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

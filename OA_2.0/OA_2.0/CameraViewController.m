@@ -26,11 +26,11 @@
 //    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 //    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
 //    self.scrollView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height + 10);
-    self.scrollView.backgroundColor = [UIColor redColor];
+//    self.scrollView.backgroundColor = [UIColor redColor];
 //    self.scrollView.scrollEnabled = YES;
 //    scrollView.pagingEnabled = YES;
-    self.scrollView.showsVerticalScrollIndicator = YES;
-    self.scrollView.showsHorizontalScrollIndicator = YES;
+//    self.scrollView.showsVerticalScrollIndicator = YES;
+//    self.scrollView.showsHorizontalScrollIndicator = YES;
 //    [self.view addSubview:self.scrollView];
     
 //    float width = 50;
@@ -52,10 +52,75 @@
 //    imageView.center = self.scrollView.center;
 //    imageView.backgroundColor = [UIColor blueColor];
 //    [self.scrollView addSubview:imageView];
+//    self.boxView.frame = CGRectMake(0, 0, 10, 10);
+//    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height);
     
-    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height);
+//    [self.boxView.layer setBorderColor:[UIColor colorWithRed:208.0/255.0 green:209.0/255.0 blue:213.0/255.0 alpha:1].CGColor];
+//    [self.boxView.layer setBorderWidth:1.0f];
+//    [self.boxView.layer setCornerRadius:2];
+//    [self.boxView.layer setMasksToBounds:YES];
+//    [self.boxView setClipsToBounds:YES];
+    
+//    NSLog(@"%f", CGRectGetWidth (self.boxView.bounds));
+////    
+//    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth (self.boxView.bounds), CGRectGetHeight (self.boxView.bounds))];
+//    backgroundView.backgroundColor = [UIColor blackColor];
+////
+//    [backgroundView.layer setBorderColor:[UIColor colorWithRed:208.0/255.0 green:209.0/255.0 blue:213.0/255.0 alpha:1].CGColor];
+//    [backgroundView.layer setBorderWidth:1.0f];
+////    [backgroundView.layer setCornerRadius:2];
+//////    [backgroundView.layer setMasksToBounds:YES];
+////
+//    [self.boxView addSubview:backgroundView];
+
+//    backgroundView.clipsToBounds = NO;
     
     
+    [self.borderView.layer setBorderColor:[UIColor colorWithRed:208.0/255.0 green:209.0/255.0 blue:213.0/255.0 alpha:1].CGColor];
+    [self.borderView.layer setBorderWidth:1.0f];
+    [self.borderView.layer setCornerRadius:2];
+
+
+    [self.defaultImageView.layer setBorderColor:[UIColor grayColor].CGColor];
+    [self.defaultImageView.layer setBorderWidth:1.0f];
+    [self.defaultImageView.layer setCornerRadius:2];
+    [self.defaultImageView.layer setMasksToBounds:YES];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchDefaultImage)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.defaultImageView setUserInteractionEnabled:YES];
+    [self.defaultImageView addGestureRecognizer:singleTap];
+}
+
+-(void)touchDefaultImage {
+//    NSLog(@"single Tap on imageview");
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@"請選擇方式"
+                                  delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:@"拍照"
+                                  otherButtonTitles:@"選取照片", nil];
+
+    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+//判斷ActionSheet按鈕事件
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            //拍照
+//            [self showCamera];
+            break;
+        case 1:
+            //選取照片
+//            [self showPhotoLibrary];
+            break;
+        default:
+            //取消->退回首頁
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"goToIndex" object:nil];
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
