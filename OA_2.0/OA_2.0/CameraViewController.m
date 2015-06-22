@@ -10,6 +10,7 @@
 
 @interface CameraViewController () {
     UIImagePickerController *imagePickerController;
+    BOOL hasChoice;
 }
 
 @end
@@ -90,10 +91,30 @@
     singleTap.numberOfTapsRequired = 1;
     [self.defaultImageView setUserInteractionEnabled:YES];
     [self.defaultImageView addGestureRecognizer:singleTap];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self action:@selector(touchesBegan)];
+    tapGesture.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapGesture];
+    
+    [self.titleTextField setDelegate:self];
+}
+//-(void)viewWillAppear:(BOOL)animated {
+//    [self initAndCleanView];
+//}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.titleTextField resignFirstResponder];
+    return YES;
+}
+
+-(void) initAndCleanView {
+    hasChoice = NO;
+    self.defaultImageView.image = [UIImage imageNamed:@"defaultImageView.png"];
 }
 
 -(void)touchDefaultImage {
-//    NSLog(@"single Tap on imageview");
+    
+    [self touchesBegan];
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                   initWithTitle:@"請選擇方式"
@@ -105,65 +126,162 @@
     [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 
-//判斷ActionSheet按鈕事件
+- (void)touchesBegan {
+    [self textFieldShouldReturn:self.titleTextField];
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
         case 0:
-            //拍照
-//            [self showCamera];
+            [self showCamera];
             break;
         case 1:
-            //選取照片
-//            [self showPhotoLibrary];
-            break;
-        default:
-            //取消->退回首頁
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"goToIndex" object:nil];
+            [self showPhotoLibrary];
             break;
     }
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)openCameraButtonAction:(id)sender {
+    [self showCamera];
 }
-
--(void)viewWillAppear:(BOOL)animated {
+- (IBAction)openAlbumButtonAction:(id)sender {
+    [self showPhotoLibrary];
+}
+- (IBAction)submitButtonAction:(id)sender {
     
-//    NSLog(@"%@", MyUITabBarController)
-//    UIActionSheet *actionSheet = [[UIActionSheet alloc]
-//                                  initWithTitle:@"請選擇方式"
-//                                  delegate:self
-//                                  cancelButtonTitle:@"取消"
-//                                  destructiveButtonTitle:@"拍照"
-//                                  otherButtonTitles:@"選取照片", nil];
-//
-//    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
-}
-//判斷ActionSheet按鈕事件
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//    //NSLog(@"%i",buttonIndex);
-//    
-//    //將按鈕的Title當作判斷的依據
-//    //NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-//    
-//    switch (buttonIndex) {
-//        case 0:
-//            //拍照
-//            [self showCamera];
-//            break;
-//        case 1:
-//            //選取照片
-////            [self showPhotoLibrary];
-//            break;
-//        default:
-//            //取消->退回首頁
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"goToTabIndex0" object:nil];
-//            break;
-//    }
-//}
+    UIAlertView *loadinfAlert = [[UIAlertView alloc] initWithTitle:@"Loading..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    [loadinfAlert show];
 
+    if (!hasChoice) {
+        [loadinfAlert dismissWithClickedButtonIndex:-1 animated:YES];
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"請挑選或使用相機拍攝一張照片！" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+        [myAlertView show];
+        return;
+    }
+    
+    if ([self.titleTextField.text length] <= 0) {
+        [loadinfAlert dismissWithClickedButtonIndex:-1 animated:YES];
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"請輸入此照片的簡潔說明！" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+        [myAlertView show];
+        return;
+    }
+    
+    
+    NSData *imageData = UIImageJPEGRepresentation ([self fixOrientation:self.defaultImageView.image ], 0.1);
+
+    MyHttp *http = [MyHttp new];
+    
+    NSMutableDictionary *vars = [NSMutableDictionary new];
+    [vars setObject:self.titleTextField.text forKey:@"title"];
+    [vars setObject:imageData forKey:@"name"];
+    
+    [http postMulti:@"http://ios.ioa.tw/api/add_picture" vars:vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [loadinfAlert dismissWithClickedButtonIndex:-1 animated:YES];
+            UIAlertView *messageAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+    
+            
+            if ([[result objectForKey:@"status"] boolValue]) {
+                [messageAlert setMessage:@"照片上傳成功！"];
+            } else {
+                [messageAlert setMessage:@"照片上傳失敗！"];
+            }
+            [messageAlert show];
+        });
+    }];
+}
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+//}
+//- (void)a
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if ([alertView.title isEqualToString:@"提示"] && [alertView.message isEqualToString:@"照片上傳成功！"]) {
+        NSLog(@"dasdasdsa");
+    }
+    
+}
+- (UIImage *)fixOrientation: (UIImage *) myImage {
+    
+    // No-op if the orientation is already correct
+    if (myImage.imageOrientation == UIImageOrientationUp) return myImage;
+    
+    // We need to calculate the proper transformation to make the image upright.
+    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch (myImage.imageOrientation) {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, myImage.size.width, myImage.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, myImage.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, myImage.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+        case UIImageOrientationUp:
+        case UIImageOrientationUpMirrored:
+            break;
+    }
+    
+    switch (myImage.imageOrientation) {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, myImage.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, myImage.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        case UIImageOrientationUp:
+        case UIImageOrientationDown:
+        case UIImageOrientationLeft:
+        case UIImageOrientationRight:
+            break;
+    }
+    
+    // Now we draw the underlying CGImage into a new context, applying the transform
+    // calculated above.
+    CGContextRef ctx = CGBitmapContextCreate(NULL, myImage.size.width, myImage.size.height,
+                                             CGImageGetBitsPerComponent(myImage.CGImage), 0,
+                                             CGImageGetColorSpace(myImage.CGImage),
+                                             CGImageGetBitmapInfo(myImage.CGImage));
+    CGContextConcatCTM(ctx, transform);
+    switch (myImage.imageOrientation) {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            // Grr...
+            CGContextDrawImage(ctx, CGRectMake(0,0,myImage.size.height,myImage.size.width), myImage.CGImage);
+            break;
+            
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0,0,myImage.size.width,myImage.size.height), myImage.CGImage);
+            break;
+    }
+    
+    // And now we just create a new UIImage from the drawing context
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage *img = [UIImage imageWithCGImage:cgimg];
+    CGContextRelease(ctx);
+    CGImageRelease(cgimg);
+    return img;
+}
 - (void) showCamera {
     imagePickerController = [UIImagePickerController new];
     //來源:相機
@@ -179,35 +297,26 @@
     
     [self presentViewController:imagePickerController animated:YES completion:nil];
 }
+
+- (void)showPhotoLibrary {
+    //設定圖片來源為圖庫
+    imagePickerController = [UIImagePickerController new];
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [imagePickerController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    imagePickerController.delegate = self;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     //========================
-    //    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    //    self.image.image = image;
-    //    [self dismissViewControllerAnimated:YES completion:nil];
-    //========================
     
-//    UIImage *image = [self fixOrientation:[info valueForKey:UIImagePickerControllerOriginalImage]];
-//    NSData *data = UIImageJPEGRepresentation(image, 0.5);
-//    NSString *fullPath = [NSHomeDirectory() stringByAppendingPathComponent:@"/Documents/data/xxx.jpg"];
-    //    [data writeToFile:fullPath atomically:NO];
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    self.defaultImageView.image = image;
+    hasChoice = YES;
     
-//    [myAlertView dismissWithClickedButtonIndex:-1 animated:YES];
-    
-//    
-//    UploadViewController *upLoadImage = [UploadViewController new];
-////    upLoadImage.selectImage = image;
-//    
-////    [USER_DEFAULTS setBool:YES forKey:@"isChoiceMenu"];
-//    
-//    
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    
-//    //推出圖片上傳頁(因為有"選擇分類"&"收藏雜誌",會用到pushVC,所以需用UINavigationController包裝)
-//    UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:upLoadImage];
-//    [self presentViewController:nvc animated:YES completion:nil];
-//    
-    
-    
+    if ([self.titleTextField.text length] <= 0) {
+        [self.titleTextField becomeFirstResponder];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 /*
 #pragma mark - Navigation

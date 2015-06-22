@@ -24,7 +24,7 @@
 		0E01AF431B35C365007561B1 /* PictureInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E01AF421B35C365007561B1 /* PictureInfoViewController.m */; };
 		0ED1F46D1B37C70A001B9275 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F46C1B37C70A001B9275 /* CameraViewController.m */; };
 		0ED1F4711B37C993001B9275 /* MyUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4701B37C993001B9275 /* MyUITabBarController.m */; };
-		0ED1F4841B381A45001B9275 /* comera.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0ED1F4831B381A45001B9275 /* comera.jpg */; };
+		0ED1F4871B383D8B001B9275 /* defaultImageView.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED1F4861B383D8B001B9275 /* defaultImageView.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +69,7 @@
 		0ED1F46C1B37C70A001B9275 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		0ED1F46F1B37C993001B9275 /* MyUITabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUITabBarController.h; sourceTree = "<group>"; };
 		0ED1F4701B37C993001B9275 /* MyUITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUITabBarController.m; sourceTree = "<group>"; };
-		0ED1F4831B381A45001B9275 /* comera.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = comera.jpg; sourceTree = "<group>"; };
+		0ED1F4861B383D8B001B9275 /* defaultImageView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultImageView.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +111,7 @@
 		0E01AEC01B34397E007561B1 /* OA_2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				0ED1F4851B3831CF001B9275 /* MyTableViewController */,
 				0ED1F4821B381A32001B9275 /* images */,
 				0ED1F46E1B37C971001B9275 /* TabBarController */,
 				0ED1F46A1B37C6E8001B9275 /* Camera */,
@@ -122,8 +123,6 @@
 				0E01AECB1B34397E007561B1 /* ViewController.h */,
 				0E01AECC1B34397E007561B1 /* ViewController.m */,
 				0E01AECE1B34397E007561B1 /* Main.storyboard */,
-				0E01AEF01B343E17007561B1 /* MyTableViewController.h */,
-				0E01AEF11B343E17007561B1 /* MyTableViewController.m */,
 				0E01AED11B34397E007561B1 /* Images.xcassets */,
 				0E01AED31B34397E007561B1 /* LaunchScreen.xib */,
 				0E01AEC81B34397E007561B1 /* OA_2_0.xcdatamodeld */,
@@ -235,9 +234,18 @@
 		0ED1F4821B381A32001B9275 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				0ED1F4831B381A45001B9275 /* comera.jpg */,
+				0ED1F4861B383D8B001B9275 /* defaultImageView.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		0ED1F4851B3831CF001B9275 /* MyTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0E01AEF01B343E17007561B1 /* MyTableViewController.h */,
+				0E01AEF11B343E17007561B1 /* MyTableViewController.m */,
+			);
+			name = MyTableViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,9 +330,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E01AED01B34397E007561B1 /* Main.storyboard in Resources */,
+				0ED1F4871B383D8B001B9275 /* defaultImageView.png in Resources */,
 				0E01AEEF1B343D9F007561B1 /* MyTableViewCell.xib in Resources */,
 				0E01AED51B34397E007561B1 /* LaunchScreen.xib in Resources */,
-				0ED1F4841B381A45001B9275 /* comera.jpg in Resources */,
 				0E01AED21B34397E007561B1 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

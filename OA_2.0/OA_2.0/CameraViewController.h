@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyHttp.h"
 
-@interface CameraViewController : UIViewController<UIActionSheetDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CameraViewController : UIViewController<UITextFieldDelegate, UIActionSheetDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *boxView;
 @property (weak, nonatomic) IBOutlet UIView *borderView;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultImageView;
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UIButton *openCameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *openAlbumButton;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
 
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
