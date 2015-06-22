@@ -1,8 +1,8 @@
 //
 //  MyUITabBarController.m
-//  OA_1.5
+//  OA_2.0
 //
-//  Created by OA Wu on 2015/6/16.
+//  Created by OA Wu on 2015/6/22.
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
@@ -26,17 +26,13 @@
 //            tabItem.image = image;
 //        }
 //    }
-//    goToIndex
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToIndexVC:) name:@"goToIndex" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToTabIndex0:) name:@"goToTabIndex0" object:nil];
 }
 
-- (void)goToIndexVC:(NSNotification*)sender
-{
-    //切換至首頁
-    UIButton *temp = [[UIButton alloc]init];
-    temp.tag = 0;
-    [self tabbarButtonPressed:temp];
-}
+//- (void)goToTabIndex0:(NSNotification*)sender {
+//    [self setSelectedIndex:0];
+//}
+
 
 
 - (void)didReceiveMemoryWarning {

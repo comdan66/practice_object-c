@@ -58,7 +58,7 @@
         <!--Item 1-->
         <scene sceneID="oFT-yk-T80">
             <objects>
-                <viewController id="maW-2i-OtN" sceneMemberID="viewController">
+                <viewController id="maW-2i-OtN" customClass="CameraViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jml-kP-73x"/>
                         <viewControllerLayoutGuide type="bottom" id="rjK-da-kns"/>
@@ -66,18 +66,32 @@
                     <view key="view" contentMode="scaleToFill" id="Ntz-aB-1OQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VX2-uS-olu">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VX2-uS-olu" firstAttribute="top" secondItem="Ntz-aB-1OQ" secondAttribute="top" id="3PG-bg-uh2"/>
+                            <constraint firstItem="rjK-da-kns" firstAttribute="top" secondItem="VX2-uS-olu" secondAttribute="bottom" id="O3T-VR-b41"/>
+                            <constraint firstItem="VX2-uS-olu" firstAttribute="leading" secondItem="Ntz-aB-1OQ" secondAttribute="leading" id="aTx-jO-yzJ"/>
+                            <constraint firstAttribute="trailing" secondItem="VX2-uS-olu" secondAttribute="trailing" id="mWQ-tw-Yzs"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="zon-ar-rMX"/>
+                    <connections>
+                        <outlet property="scrollView" destination="VX2-uS-olu" id="LlP-qa-zY0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKl-tT-dkW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1263" y="1223"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--MyUI Tab Bar Controller-->
         <scene sceneID="s97-8u-iu7">
             <objects>
-                <tabBarController storyboardIdentifier="logined" id="pnY-uc-NQh" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="logined" id="pnY-uc-NQh" customClass="MyUITabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ubh-z0-B5E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
