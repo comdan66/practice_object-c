@@ -25,6 +25,7 @@
 		0ED1F46D1B37C70A001B9275 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F46C1B37C70A001B9275 /* CameraViewController.m */; };
 		0ED1F4711B37C993001B9275 /* MyUITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4701B37C993001B9275 /* MyUITabBarController.m */; };
 		0ED1F4871B383D8B001B9275 /* defaultImageView.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED1F4861B383D8B001B9275 /* defaultImageView.png */; };
+		0ED1F4891B38711A001B9275 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ED1F4881B38711A001B9275 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		0ED1F46F1B37C993001B9275 /* MyUITabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUITabBarController.h; sourceTree = "<group>"; };
 		0ED1F4701B37C993001B9275 /* MyUITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUITabBarController.m; sourceTree = "<group>"; };
 		0ED1F4861B383D8B001B9275 /* defaultImageView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultImageView.png; sourceTree = "<group>"; };
+		0ED1F4881B38711A001B9275 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ED1F4891B38711A001B9275 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +96,7 @@
 		0E01AEB51B34397E007561B1 = {
 			isa = PBXGroup;
 			children = (
+				0ED1F4881B38711A001B9275 /* CoreLocation.framework */,
 				0E01AEC01B34397E007561B1 /* OA_2.0 */,
 				0E01AEDD1B34397E007561B1 /* OA_2.0Tests */,
 				0E01AEBF1B34397E007561B1 /* Products */,
