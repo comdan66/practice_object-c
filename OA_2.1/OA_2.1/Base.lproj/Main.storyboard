@@ -68,7 +68,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6Uz-FW-f4W" kind="modal" identifier="registerSegue" modalTransitionStyle="flipHorizontal" id="3hW-gM-0KT"/>
+                                    <segue destination="6Uz-FW-f4W" kind="modal" identifier="registerSegue" modalTransitionStyle="crossDissolve" id="3hW-gM-0KT"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="OA's app v2.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9n6-eL-nix">
