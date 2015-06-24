@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E74CE4E1B3B11F300D28780 /* OAHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74CE4D1B3B11F300D28780 /* OAHttp.m */; };
+		0E74CE571B3B165F00D28780 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74CE511B3B165F00D28780 /* RIButtonItem.m */; };
+		0E74CE581B3B165F00D28780 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74CE531B3B165F00D28780 /* UIActionSheet+Blocks.m */; };
+		0E74CE5A1B3B165F00D28780 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74CE561B3B165F00D28780 /* UIAlertView+Blocks.m */; };
 		0ED1F4991B39A3AF001B9275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4981B39A3AF001B9275 /* main.m */; };
 		0ED1F49C1B39A3AF001B9275 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */; };
 		0ED1F49F1B39A3AF001B9275 /* OA_2_1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49D1B39A3AF001B9275 /* OA_2_1.xcdatamodeld */; };
@@ -24,7 +28,9 @@
 		0ED1F4D91B39A48C001B9275 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4CE1B39A48C001B9275 /* AFURLRequestSerialization.m */; };
 		0ED1F4DA1B39A48C001B9275 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4D01B39A48C001B9275 /* AFURLResponseSerialization.m */; };
 		0ED1F4DB1B39A48C001B9275 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4D21B39A48C001B9275 /* AFURLSessionManager.m */; };
-		0ED1F4DE1B39AC57001B9275 /* upload.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0ED1F4DD1B39AC57001B9275 /* upload.jpg */; };
+		0ED1F4E21B3A8470001B9275 /* bg_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED1F4E11B3A8470001B9275 /* bg_login.png */; };
+		0ED1F4EA1B3AA2EB001B9275 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4E91B3AA2EB001B9275 /* RegisterViewController.m */; };
+		0ED1F4FE1B3AC08B001B9275 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED1F4FD1B3AC08B001B9275 /* camera.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +44,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E74CE4C1B3B11F300D28780 /* OAHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHttp.h; sourceTree = "<group>"; };
+		0E74CE4D1B3B11F300D28780 /* OAHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAHttp.m; sourceTree = "<group>"; };
+		0E74CE501B3B165F00D28780 /* RIButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
+		0E74CE511B3B165F00D28780 /* RIButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
+		0E74CE521B3B165F00D28780 /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		0E74CE531B3B165F00D28780 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		0E74CE551B3B165F00D28780 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		0E74CE561B3B165F00D28780 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 		0ED1F4931B39A3AF001B9275 /* OA_2.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OA_2.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED1F4971B39A3AF001B9275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ED1F4981B39A3AF001B9275 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -71,7 +85,11 @@
 		0ED1F4D01B39A48C001B9275 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		0ED1F4D11B39A48C001B9275 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		0ED1F4D21B39A48C001B9275 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		0ED1F4DD1B39AC57001B9275 /* upload.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = upload.jpg; sourceTree = "<group>"; };
+		0ED1F4E11B3A8470001B9275 /* bg_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_login.png; sourceTree = "<group>"; };
+		0ED1F4E81B3AA2EB001B9275 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		0ED1F4E91B3AA2EB001B9275 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		0ED1F4EE1B3AA7F9001B9275 /* RegisterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterDelegate.h; sourceTree = "<group>"; };
+		0ED1F4FD1B3AC08B001B9275 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +110,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E74CE4A1B3B11D400D28780 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				0E74CE4F1B3B165400D28780 /* UIAlertView-Blocks */,
+				0E74CE4B1B3B11DB00D28780 /* OAHttp */,
+				0ED1F4BF1B39A480001B9275 /* AFNetworking */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		0E74CE4B1B3B11DB00D28780 /* OAHttp */ = {
+			isa = PBXGroup;
+			children = (
+				0E74CE4C1B3B11F300D28780 /* OAHttp.h */,
+				0E74CE4D1B3B11F300D28780 /* OAHttp.m */,
+			);
+			name = OAHttp;
+			sourceTree = "<group>";
+		};
+		0E74CE4F1B3B165400D28780 /* UIAlertView-Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				0E74CE501B3B165F00D28780 /* RIButtonItem.h */,
+				0E74CE511B3B165F00D28780 /* RIButtonItem.m */,
+				0E74CE521B3B165F00D28780 /* UIActionSheet+Blocks.h */,
+				0E74CE531B3B165F00D28780 /* UIActionSheet+Blocks.m */,
+				0E74CE551B3B165F00D28780 /* UIAlertView+Blocks.h */,
+				0E74CE561B3B165F00D28780 /* UIAlertView+Blocks.m */,
+			);
+			name = "UIAlertView-Blocks";
+			sourceTree = "<group>";
+		};
 		0ED1F48A1B39A3AF001B9275 = {
 			isa = PBXGroup;
 			children = (
@@ -113,8 +163,9 @@
 		0ED1F4951B39A3AF001B9275 /* OA_2.1 */ = {
 			isa = PBXGroup;
 			children = (
+				0E74CE4A1B3B11D400D28780 /* libs */,
+				0ED1F4E71B3AA2D1001B9275 /* register */,
 				0ED1F4DC1B39AC41001B9275 /* images */,
-				0ED1F4BF1B39A480001B9275 /* AFNetworking */,
 				0ED1F49A1B39A3AF001B9275 /* AppDelegate.h */,
 				0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */,
 				0ED1F4A01B39A3AF001B9275 /* ViewController.h */,
@@ -183,9 +234,20 @@
 		0ED1F4DC1B39AC41001B9275 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				0ED1F4DD1B39AC57001B9275 /* upload.jpg */,
+				0ED1F4E11B3A8470001B9275 /* bg_login.png */,
+				0ED1F4FD1B3AC08B001B9275 /* camera.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		0ED1F4E71B3AA2D1001B9275 /* register */ = {
+			isa = PBXGroup;
+			children = (
+				0ED1F4E81B3AA2EB001B9275 /* RegisterViewController.h */,
+				0ED1F4E91B3AA2EB001B9275 /* RegisterViewController.m */,
+				0ED1F4EE1B3AA7F9001B9275 /* RegisterDelegate.h */,
+			);
+			name = register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +332,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0ED1F4A51B39A3AF001B9275 /* Main.storyboard in Resources */,
+				0ED1F4FE1B3AC08B001B9275 /* camera.png in Resources */,
+				0ED1F4E21B3A8470001B9275 /* bg_login.png in Resources */,
 				0ED1F4AA1B39A3AF001B9275 /* LaunchScreen.xib in Resources */,
-				0ED1F4DE1B39AC57001B9275 /* upload.jpg in Resources */,
 				0ED1F4A71B39A3AF001B9275 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +355,10 @@
 			files = (
 				0ED1F49C1B39A3AF001B9275 /* AppDelegate.m in Sources */,
 				0ED1F4D71B39A48C001B9275 /* AFSecurityPolicy.m in Sources */,
+				0E74CE581B3B165F00D28780 /* UIActionSheet+Blocks.m in Sources */,
+				0E74CE5A1B3B165F00D28780 /* UIAlertView+Blocks.m in Sources */,
 				0ED1F49F1B39A3AF001B9275 /* OA_2_1.xcdatamodeld in Sources */,
+				0E74CE4E1B3B11F300D28780 /* OAHttp.m in Sources */,
 				0ED1F4D41B39A48C001B9275 /* AFHTTPRequestOperationManager.m in Sources */,
 				0ED1F4D81B39A48C001B9275 /* AFURLConnectionOperation.m in Sources */,
 				0ED1F4D31B39A48C001B9275 /* AFHTTPRequestOperation.m in Sources */,
@@ -301,8 +367,10 @@
 				0ED1F4D51B39A48C001B9275 /* AFHTTPSessionManager.m in Sources */,
 				0ED1F4D61B39A48C001B9275 /* AFNetworkReachabilityManager.m in Sources */,
 				0ED1F4DA1B39A48C001B9275 /* AFURLResponseSerialization.m in Sources */,
+				0ED1F4EA1B3AA2EB001B9275 /* RegisterViewController.m in Sources */,
 				0ED1F4DB1B39A48C001B9275 /* AFURLSessionManager.m in Sources */,
 				0ED1F4991B39A3AF001B9275 /* main.m in Sources */,
+				0E74CE571B3B165F00D28780 /* RIButtonItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +567,7 @@
 				0ED1F4BB1B39A3AF001B9275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0ED1F4BC1B39A3AF001B9275 /* Build configuration list for PBXNativeTarget "OA_2.1Tests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +576,7 @@
 				0ED1F4BE1B39A3AF001B9275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

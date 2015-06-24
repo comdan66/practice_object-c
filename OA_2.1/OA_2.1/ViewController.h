@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
+#import "RegisterViewController.h"
+#import "RegisterDelegate.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITextFieldDelegate, RegisterDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
 
