@@ -31,6 +31,8 @@
 		0EC254901B3C34490057DB55 /* IndexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2548E1B3C34490057DB55 /* IndexTableViewCell.m */; };
 		0EC254911B3C34490057DB55 /* IndexTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2548F1B3C34490057DB55 /* IndexTableViewCell.xib */; };
 		0EC2549E1B3C54460057DB55 /* space.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2549D1B3C54460057DB55 /* space.png */; };
+		0EC254A21B3C65060057DB55 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254A11B3C65060057DB55 /* AsyncImageView.m */; };
+		0EC254A61B3C651B0057DB55 /* UIImageViewAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */; };
 		0ED1F4991B39A3AF001B9275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4981B39A3AF001B9275 /* main.m */; };
 		0ED1F49C1B39A3AF001B9275 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */; };
 		0ED1F49F1B39A3AF001B9275 /* OA_2_1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49D1B39A3AF001B9275 /* OA_2_1.xcdatamodeld */; };
@@ -99,6 +101,10 @@
 		0EC2548E1B3C34490057DB55 /* IndexTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexTableViewCell.m; sourceTree = "<group>"; };
 		0EC2548F1B3C34490057DB55 /* IndexTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexTableViewCell.xib; sourceTree = "<group>"; };
 		0EC2549D1B3C54460057DB55 /* space.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = space.png; sourceTree = "<group>"; };
+		0EC254A01B3C65060057DB55 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		0EC254A11B3C65060057DB55 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		0EC254A41B3C651B0057DB55 /* UIImageViewAligned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageViewAligned.h; sourceTree = "<group>"; };
+		0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewAligned.m; sourceTree = "<group>"; };
 		0ED1F4931B39A3AF001B9275 /* OA_2.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OA_2.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED1F4971B39A3AF001B9275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ED1F4981B39A3AF001B9275 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -160,6 +166,8 @@
 		0E74CE4A1B3B11D400D28780 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0EC254A31B3C650E0057DB55 /* UIImageViewAligned */,
+				0EC2549F1B3C64FF0057DB55 /* AsyncImageView */,
 				0EC254861B3C2DB40057DB55 /* AMScrollingNavbar */,
 				0E74CE4F1B3B165400D28780 /* UIAlertView-Blocks */,
 				0E74CE4B1B3B11DB00D28780 /* OAHttp */,
@@ -240,6 +248,24 @@
 				0EC2548F1B3C34490057DB55 /* IndexTableViewCell.xib */,
 			);
 			name = cell;
+			sourceTree = "<group>";
+		};
+		0EC2549F1B3C64FF0057DB55 /* AsyncImageView */ = {
+			isa = PBXGroup;
+			children = (
+				0EC254A01B3C65060057DB55 /* AsyncImageView.h */,
+				0EC254A11B3C65060057DB55 /* AsyncImageView.m */,
+			);
+			name = AsyncImageView;
+			sourceTree = "<group>";
+		};
+		0EC254A31B3C650E0057DB55 /* UIImageViewAligned */ = {
+			isa = PBXGroup;
+			children = (
+				0EC254A41B3C651B0057DB55 /* UIImageViewAligned.h */,
+				0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */,
+			);
+			name = UIImageViewAligned;
 			sourceTree = "<group>";
 		};
 		0ED1F48A1B39A3AF001B9275 = {
@@ -492,6 +518,7 @@
 				0E74CE4E1B3B11F300D28780 /* OAHttp.m in Sources */,
 				0ED1F4D41B39A48C001B9275 /* AFHTTPRequestOperationManager.m in Sources */,
 				0ED1F4D81B39A48C001B9275 /* AFURLConnectionOperation.m in Sources */,
+				0EC254A21B3C65060057DB55 /* AsyncImageView.m in Sources */,
 				0ED1F4D31B39A48C001B9275 /* AFHTTPRequestOperation.m in Sources */,
 				0ED1F4A21B39A3AF001B9275 /* LoginViewController.m in Sources */,
 				0ED1F4D91B39A48C001B9275 /* AFURLRequestSerialization.m in Sources */,
@@ -503,6 +530,7 @@
 				0ED1F4EA1B3AA2EB001B9275 /* RegisterViewController.m in Sources */,
 				0ED1F4DB1B39A48C001B9275 /* AFURLSessionManager.m in Sources */,
 				0ED1F4991B39A3AF001B9275 /* main.m in Sources */,
+				0EC254A61B3C651B0057DB55 /* UIImageViewAligned.m in Sources */,
 				0E74CE571B3B165F00D28780 /* RIButtonItem.m in Sources */,
 				0EC253C31B3BA6810057DB55 /* MyTabBarController.m in Sources */,
 			);

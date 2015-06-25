@@ -19,7 +19,7 @@
 
     // Configure the view for the selected state
 }
-- (void)initUI {
+- (void)initUI:(id)picture {
     
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     
@@ -30,6 +30,17 @@
     [self.borderView.layer setBorderWidth:1.0f];
     [self.borderView.layer setCornerRadius:5];
     [self.borderView setClipsToBounds:YES];
+    
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.pictureImageView];
+    [self.pictureImageView setImageURL:[NSURL URLWithString:[picture objectForKey:@"url"]]];
+    [self.pictureImageView setContentMode:UIViewContentModeScaleToFill];
+    
+//    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.avatarImageView];
+//    [self.avatarImageView setImageURL:[NSURL URLWithString:@"https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/11048657_1080777421935599_5837445915403701082_n.jpg?oh=2443543609875efd1cfbeb180ce4eb6f&oe=5632E7AC&__gda__=1442328774_767b4bf2cebffa46d3e54485004b535b"]];
+//    [self.avatarImageView.layer setCornerRadius:35];
+//    [self.avatarImageView setClipsToBounds:YES];
+    
+//    [self.pictureImageView]
     
 //    cell.textLabel.text = @"asd";
 }

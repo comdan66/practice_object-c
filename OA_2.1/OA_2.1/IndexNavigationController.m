@@ -16,8 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationBar.barTintColor = [UIColor colorWithRed:0.6 green:0.45 blue:0.48 alpha:0.9];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:0.31 green:0.25 blue:0.29 alpha:1]}];
+    [self.navigationBar setTranslucent:YES];
+    [self.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+    
+    
     // Do any additional setup after loading the view.
 //    [self.navigationBar setBarTintColor:[UIColor colorWithRed:254.0/255.0 green:210.0/255.0 blue:51.0/255.0 alpha:1.0]];
+    
+    
+    
+//    self.extraColorLayer.backgroundColor = barTintColor.CGColor;
     
 //    [self.navigationBar setBarTintColor:[UIColor colorWithRed:0.41 green:0.25 blue:0.19 alpha:1]];
 ////    [self.navigationBar setAlpha:0.1f];
@@ -53,7 +64,7 @@
 //    self.view.backgroundColor = [UIColor clearColor];
     //    self.navigationBar.backgroundColor = [UIColor clearColor];
     
-    [self applyTransparentBackgroundToTheNavigationBar:[UIColor colorWithRed:0.6 green:0.45 blue:0.48 alpha:0.9]];
+//    [self applyTransparentBackgroundToTheNavigationBar:[UIColor colorWithRed:0.6 green:0.45 blue:0.48 alpha:0.9]];
 }
 
 - (void)applyTransparentBackgroundToTheNavigationBar:(UIColor *)color {

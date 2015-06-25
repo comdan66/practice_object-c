@@ -264,7 +264,7 @@
 
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
 
     [manager POST:urlString parameters:data constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
         [formData appendPartWithFileData:UIImageJPEGRepresentation ([self fixOrientation:self.avatarImageView.image], 0.1) name:@"avatar" fileName:@"fg.jpg" mimeType:@"image/jepg"];

@@ -8,7 +8,10 @@
 
 #import "IndexTableViewController.h"
 
-@interface IndexTableViewController ()
+@interface IndexTableViewController () {
+    NSMutableArray *pictures;
+    NSString *nextId;
+}
 
 @end
 
@@ -29,10 +32,80 @@
 //    self.navigationController.navigationBar.translucent = YES;    
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
 
+    UIAlertView *loadAlert = [[UIAlertView alloc] initWithTitle:@"Loading.."
+                                message:nil
+                       cancelButtonItem:nil
+                       otherButtonItems:nil, nil];
+    [loadAlert show];
+    
+    
     
     [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:0.92 green:0.92 blue:0.93 alpha:1].CGColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    pictures = [NSMutableArray new];
+    nextId = @"0";
+    
+    [self loadData:loadAlert];
+    
+}
+
+- (void)loadData:(UIAlertView *) alert{
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    [data setValue:nextId forKey:@"next_id"];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
+    [manager GET:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/next_pictures"]
+      parameters:data
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSLog(@"%@", responseObject);
+             if ([[responseObject objectForKey:@"status"] boolValue]) {
+                 for (NSMutableDictionary *picture in [responseObject objectForKey:@"pictures"]) {
+                     [pictures addObject: picture];
+                 }
+                 nextId = [[NSString alloc] initWithFormat:@"%@", [responseObject objectForKey:@"next_id"]];
+             }
+             
+             if (alert != nil)
+                 [alert dismissWithClickedButtonIndex:-1 animated:YES];
+
+             [self.tableView reloadData];
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"%@", error);
+    }];
+    
+    
+//
+//
+//    MyHttp *http = [MyHttp new];
+//    NSMutableDictionary *vars = [NSMutableDictionary new];
+//    [vars setObject:nextId == nil ? @"0" : nextId forKey:@"next_id"];
+//    
+//    [http getURL:@"http://ios.ioa.tw/api/next_pictures" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//        
+//        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//        
+//        if ([[result objectForKey:@"status"] boolValue]) {
+//            for (NSMutableDictionary *picture in [result objectForKey:@"pictures"]) {
+//                [pictures addObject: picture];
+//            }
+//            nextId = [[NSString alloc] initWithFormat:@"%@", [result objectForKey:@"next_id"]];
+//            
+//            if ([nextId doubleValue] >= 0)
+//                isLoading = NO;
+//        }
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            if (alert != nil)
+//                [alert dismissWithClickedButtonIndex:-1 animated:YES];
+//            
+//            [self.tableView reloadData];
+//        });
+//        
+//    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -42,7 +115,6 @@
 #pragma mark - Table view data source
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"will %li", indexPath.row);
 //    NSLog(@"%li", indexPath.row);
 //    if (indexPath.row == 0) {
 //        [self showNavbar];
@@ -50,12 +122,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
-//    return (self.tableView.frame.size.width + 16) * gradient + 135;
-    
-    
-    NSLog(@"height %li", indexPath.row);
-    return 200 + 151;
+    double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
+    return (self.tableView.frame.size.width + 20) * gradient + 151;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -67,13 +135,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 50;
+    return [pictures count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    NSLog(@"For %li", indexPath.row);
     
     IndexTableViewCell *cell = (IndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"IndexTableViewCell"];
     if(!cell){
@@ -81,9 +148,7 @@
         cell = [nibs objectAtIndex:0];
     }
     
-    [cell initUI];
-    
-
+    [cell initUI:[pictures objectAtIndex:indexPath.row]];
     
     return cell;
 }

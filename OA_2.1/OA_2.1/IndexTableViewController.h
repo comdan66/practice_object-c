@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "IndexTableViewCell.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "UIAlertView+Blocks.h"
 
 @interface IndexTableViewController : UITableViewController <UIScrollViewDelegate>
 
