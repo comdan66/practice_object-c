@@ -240,7 +240,6 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="7uN-jL-k64">
                                         <rect key="frame" x="148" y="127" width="304" height="197"/>
-                                        <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="X7u-gV-jYI"/>
                                             <constraint firstAttribute="width" constant="150" id="le3-Rd-tqz"/>

@@ -22,6 +22,15 @@
 - (void)initUI {
     
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    [self.contentView.layer setBackgroundColor:[UIColor colorWithRed:0.92 green:0.92 blue:0.93 alpha:1].CGColor];
+    
+    [self.borderView.layer setBorderColor:[UIColor colorWithRed:0.84 green:0.82 blue:0.84 alpha:1].CGColor];
+    [self.borderView.layer setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1].CGColor];
+    [self.borderView.layer setBorderWidth:1.0f];
+    [self.borderView.layer setCornerRadius:5];
+    [self.borderView setClipsToBounds:YES];
+    
 //    cell.textLabel.text = @"asd";
 }
 @end

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TableViewController.h
 //  tt
 //
 //  Created by OA Wu on 2015/6/25.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface TableViewController : UITableViewController
 
 @end

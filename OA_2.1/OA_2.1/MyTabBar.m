@@ -67,11 +67,41 @@
     sizeThatFits.height = 45;
     return sizeThatFits;
 }
-- (void)initUI {
-    [self setBarTintColor:[UIColor colorWithRed:254.0/255.0 green:210.0/255.0 blue:51.0/255.0 alpha:1.0]];
-    [self setAlpha:0.9f];
+
+
+- (UIImage *)xxx:(UIColor *)color {
+    UIImage *transparentBackground;
+    const CGFloat* components = CGColorGetComponents(color.CGColor);
     
-    [self.layer setShadowColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:1].CGColor];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, 1), NO, self.layer.contentsScale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetRGBFillColor(context, components[0], components[1], components[2], CGColorGetAlpha(color.CGColor));
+    UIRectFill(CGRectMake(0, 0, 1, 1));
+    transparentBackground = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+//    id tabBarAppearance = self;
+//    
+//    [tabBarAppearance setBackgroundImage:transparentBackground forBarMetrics:UIBarMetricsDefault];
+    return transparentBackground;
+}
+
+
+- (void)initUI {
+//    rgba(80, 55, 54, 1)[NSColor colorWithRed:0.94 green:0.65 blue:0.42 alpha:1]
+    
+    
+    
+    [self setBarTintColor:[UIColor colorWithRed:1 green:0.95 blue:0.95 alpha:1]];
+    [self setAlpha:0.85f];
+    
+//    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
+//    [[UITabBar appearance] setShadowImage:[UIImage imageNamed:@"space.png"]];
+//    [self setBackgroundImage:[self xxx:[UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1]]];
+//    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    
+    [self.layer setShadowColor:[UIColor colorWithRed:1 green:0.95 blue:0.95 alpha:1].CGColor];
     [self.layer setShadowOffset:CGSizeMake(0.0f, 0.0f)];
     [self.layer setShadowRadius:3.0f];
     [self.layer setShadowOpacity:0.3f];

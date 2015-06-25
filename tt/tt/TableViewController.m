@@ -1,18 +1,18 @@
 //
-//  IndexTableViewController.m
-//  OA_2.1
+//  TableViewController.m
+//  tt
 //
 //  Created by OA Wu on 2015/6/25.
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
-#import "IndexTableViewController.h"
+#import "TableViewController.h"
 
-@interface IndexTableViewController ()
+@interface TableViewController ()
 
 @end
 
-@implementation IndexTableViewController
+@implementation TableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,70 +22,35 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-//    [self followScrollView:self.tableView usingTopConstraint:self.topConstraint withDelay:65];
-//    [self setShouldScrollWhenContentFits:YES];
-    
-//    self.navigationController.navigationBar.translucent = YES;    
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-
-    
-    [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:0.92 green:0.92 blue:0.93 alpha:1].CGColor];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"will %li", indexPath.row);
-//    NSLog(@"%li", indexPath.row);
-//    if (indexPath.row == 0) {
-//        [self showNavbar];
-//    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
-//    return (self.tableView.frame.size.width + 16) * gradient + 135;
-    
-    
-    NSLog(@"height %li", indexPath.row);
-    return 200 + 151;
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Potentially incomplete method implementation.
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete method implementation.
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 50;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    NSLog(@"For %li", indexPath.row);
-    
-    IndexTableViewCell *cell = (IndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"IndexTableViewCell"];
-    if(!cell){
-        NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"IndexTableViewCell" owner:self options:nil];
-        cell = [nibs objectAtIndex:0];
-    }
-    
-    [cell initUI];
-    
-
+    cell.textLabel.text = @"dasd";
     
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"yourSegue" sender:self];
 }
 
 

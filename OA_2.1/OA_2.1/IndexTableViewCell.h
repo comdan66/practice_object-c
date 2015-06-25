@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface IndexTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIView *borderView;
 
 - (void)initUI;
 @end
