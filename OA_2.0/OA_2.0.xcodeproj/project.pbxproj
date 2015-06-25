@@ -217,6 +217,13 @@
 			name = PictureInfo;
 			sourceTree = "<group>";
 		};
+		0EC2548B1B3C34190057DB55 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		0ED1F46A1B37C6E8001B9275 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +253,7 @@
 		0ED1F4851B3831CF001B9275 /* MyTableViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0EC2548B1B3C34190057DB55 /* New Group */,
 				0E01AEF01B343E17007561B1 /* MyTableViewController.h */,
 				0E01AEF11B343E17007561B1 /* MyTableViewController.m */,
 			);

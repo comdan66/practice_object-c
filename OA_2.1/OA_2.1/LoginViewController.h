@@ -11,7 +11,7 @@
 #import "RegisterViewController.h"
 #import "RegisterDelegate.h"
 
-@interface ViewController : UIViewController <UITextFieldDelegate, RegisterDelegate>
+@interface LoginViewController : UIViewController <UITextFieldDelegate, RegisterDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;

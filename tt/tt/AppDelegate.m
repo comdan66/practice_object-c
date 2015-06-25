@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  OA_2.1
+//  tt
 //
-//  Created by OA Wu on 2015/6/23.
+//  Created by OA Wu on 2015/6/25.
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
@@ -17,12 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    [[UITabBar appearance] setBackgroundColor:[UIColor redColor]];
-    //    [[UINavigationBar appearance] setBackgroundColor:[UIColor greenColor]];
-//    [[UITabBar appearance] setBarTintColor:[UIColor redColor]];
-//    [[UINavigationBar appearance] setBarTintColor:[UIColor redColor]];
-//    
-//    
     return YES;
 }
 
@@ -57,7 +51,7 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (NSURL *)applicationDocumentsDirectory {
-    // The directory the application uses to store the Core Data store file. This code uses a directory named "tw.ioa.OA_2_1" in the application's documents directory.
+    // The directory the application uses to store the Core Data store file. This code uses a directory named "tw.ioa.tt" in the application's documents directory.
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
@@ -66,7 +60,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"OA_2_1" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"tt" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -80,7 +74,7 @@
     // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"OA_2_1.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"tt.sqlite"];
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {

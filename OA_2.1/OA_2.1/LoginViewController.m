@@ -6,13 +6,13 @@
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
 
-@interface ViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation ViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,12 +28,14 @@
     [self.accountTextField.layer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:.1].CGColor];
     [self.accountTextField.layer setBorderWidth:1.5f];
     [self.accountTextField.layer setCornerRadius:4];
+    [self.accountTextField setKeyboardType:UIKeyboardTypeASCIICapable];
 
     [self.passwordTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.5]];
     [self.passwordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.passwordTextField.layer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:.1].CGColor];
     [self.passwordTextField.layer setBorderWidth:1.5f];
     [self.passwordTextField.layer setCornerRadius:4];
+    [self.passwordTextField setKeyboardType:UIKeyboardTypeASCIICapable];
 
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
@@ -64,15 +66,10 @@
 - (void)touchesBegan {
     [self textFieldShouldReturn: [UITextField new]];
 }
+- (IBAction)loginButtonAction:(id)sender {
+    [self performSegueWithIdentifier:@"loginSegue" sender:self];
+}
 
-
-//    [self.registerButton.layer setBorderColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:0.4].CGColor];
-//[cell.avatarView.layer setBorderWidth:1.0f];
-//[cell.avatarView.layer setCornerRadius:35];
-//[cell.avatarView.layer setShadowColor:[UIColor colorWithRed:39.0/255.0 green:40.0/255.0 blue:34.0/255.0 alpha:1].CGColor];
-//[cell.avatarView.layer setShadowOffset:CGSizeMake(2.4f, 2.0f)];
-//[cell.avatarView.layer setShadowRadius:5.0f];
-//[cell.avatarView.layer setShadowOpacity:0.5f];
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

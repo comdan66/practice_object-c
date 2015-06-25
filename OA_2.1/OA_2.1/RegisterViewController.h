@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ViewController.h"
+#import "LoginViewController.h"
 #import "RegisterDelegate.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "UIAlertView+Blocks.h"
