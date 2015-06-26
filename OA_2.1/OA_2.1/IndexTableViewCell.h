@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *borderView;
 @property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet AsyncImageView *avatarImageView;
 
 //@property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
 //@property (weak, nonatomic) IBOutlet UIView *avatarBorderView;

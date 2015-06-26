@@ -19,21 +19,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NpL-4S-Kon" customClass="AsyncImageView">
                                 <rect key="frame" x="8" y="8" width="592" height="297"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QPu-dW-djA">
-                                <rect key="frame" x="20" y="322" width="107" height="91"/>
-                                <color key="backgroundColor" red="0.41077559260000002" green="1" blue="0.74005976259999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="VmX-kg-7y8"/>
-                                    <constraint firstAttribute="height" constant="75" id="cNu-NZ-NoF"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="875-AZ-vMJ">
                                 <rect key="frame" x="144" y="331" width="436" height="24"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="CR2-x8-RRX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -43,14 +35,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Ixd-d3-k8I"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="aaaaaaaaaaaaaaaaaaaaaaaaaaaa" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01b-sn-zWU">
-                                <rect key="frame" x="181" y="470" width="335" height="24"/>
-                                <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -64,6 +49,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="aaaaaaaaaaaaaaaaaaaaaaaaaaaa" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01b-sn-zWU">
+                                <rect key="frame" x="181" y="470" width="335" height="24"/>
+                                <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QPu-dW-djA" customClass="AsyncImageView">
+                                <rect key="frame" x="21" y="322" width="107" height="91"/>
+                                <color key="backgroundColor" red="0.41077559260000002" green="1" blue="0.74005976259999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="VmX-kg-7y8"/>
+                                    <constraint firstAttribute="height" constant="75" id="cNu-NZ-NoF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="KUu-hD-Y7s" firstAttribute="top" secondItem="XeS-8j-6TK" secondAttribute="bottom" constant="10" id="2uu-Eh-tvg"/>
@@ -96,6 +96,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="avatarImageView" destination="QPu-dW-djA" id="wkQ-6u-w5f"/>
                 <outlet property="borderView" destination="ztY-Ni-Vxo" id="d4u-8x-BeL"/>
                 <outlet property="pictureImageView" destination="NpL-4S-Kon" id="JWO-Nf-Sed"/>
                 <outlet property="titleLabel" destination="01b-sn-zWU" id="Q66-jC-dLe"/>
