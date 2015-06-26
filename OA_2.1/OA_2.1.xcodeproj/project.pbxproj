@@ -13,18 +13,6 @@
 		0E74CE5A1B3B165F00D28780 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74CE561B3B165F00D28780 /* UIAlertView+Blocks.m */; };
 		0EC253C31B3BA6810057DB55 /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC253C21B3BA6810057DB55 /* MyTabBarController.m */; };
 		0EC253CF1B3BB0A90057DB55 /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC253CE1B3BB0A90057DB55 /* MyTabBar.m */; };
-		0EC254181B3BECC00057DB55 /* TabBarItem_00_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2540C1B3BECC00057DB55 /* TabBarItem_00_on.png */; };
-		0EC254191B3BECC00057DB55 /* TabBarItem_00_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2540D1B3BECC00057DB55 /* TabBarItem_00_on@2x.png */; };
-		0EC2541A1B3BECC00057DB55 /* TabBarItem_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2540E1B3BECC00057DB55 /* TabBarItem_00.png */; };
-		0EC2541B1B3BECC00057DB55 /* TabBarItem_00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2540F1B3BECC00057DB55 /* TabBarItem_00@2x.png */; };
-		0EC2541C1B3BECC00057DB55 /* TabBarItem_01_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC254101B3BECC00057DB55 /* TabBarItem_01_on.png */; };
-		0EC2541D1B3BECC00057DB55 /* TabBarItem_01_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC254111B3BECC00057DB55 /* TabBarItem_01_on@2x.png */; };
-		0EC2541E1B3BECC00057DB55 /* TabBarItem_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC254121B3BECC00057DB55 /* TabBarItem_01.png */; };
-		0EC2541F1B3BECC00057DB55 /* TabBarItem_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC254131B3BECC00057DB55 /* TabBarItem_01@2x.png */; };
-		0EC254201B3BECC00057DB55 /* TabBarItem_02_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC254141B3BECC00057DB55 /* TabBarItem_02_on.png */; };
-		0EC254211B3BECC00057DB55 /* TabBarItem_02_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC254151B3BECC00057DB55 /* TabBarItem_02_on@2x.png */; };
-		0EC254221B3BECC00057DB55 /* TabBarItem_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC254161B3BECC00057DB55 /* TabBarItem_02.png */; };
-		0EC254231B3BECC00057DB55 /* TabBarItem_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC254171B3BECC00057DB55 /* TabBarItem_02@2x.png */; };
 		0EC2542B1B3BEE800057DB55 /* IndexTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */; };
 		0EC254851B3C28B30057DB55 /* IndexNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254841B3C28B30057DB55 /* IndexNavigationController.m */; };
 		0EC2548A1B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254891B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m */; };
@@ -78,18 +66,6 @@
 		0EC253C21B3BA6810057DB55 /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
 		0EC253CD1B3BB0A90057DB55 /* MyTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBar.h; sourceTree = "<group>"; };
 		0EC253CE1B3BB0A90057DB55 /* MyTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBar.m; sourceTree = "<group>"; };
-		0EC2540C1B3BECC00057DB55 /* TabBarItem_00_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarItem_00_on.png; sourceTree = "<group>"; };
-		0EC2540D1B3BECC00057DB55 /* TabBarItem_00_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarItem_00_on@2x.png"; sourceTree = "<group>"; };
-		0EC2540E1B3BECC00057DB55 /* TabBarItem_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarItem_00.png; sourceTree = "<group>"; };
-		0EC2540F1B3BECC00057DB55 /* TabBarItem_00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarItem_00@2x.png"; sourceTree = "<group>"; };
-		0EC254101B3BECC00057DB55 /* TabBarItem_01_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarItem_01_on.png; sourceTree = "<group>"; };
-		0EC254111B3BECC00057DB55 /* TabBarItem_01_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarItem_01_on@2x.png"; sourceTree = "<group>"; };
-		0EC254121B3BECC00057DB55 /* TabBarItem_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarItem_01.png; sourceTree = "<group>"; };
-		0EC254131B3BECC00057DB55 /* TabBarItem_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarItem_01@2x.png"; sourceTree = "<group>"; };
-		0EC254141B3BECC00057DB55 /* TabBarItem_02_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarItem_02_on.png; sourceTree = "<group>"; };
-		0EC254151B3BECC00057DB55 /* TabBarItem_02_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarItem_02_on@2x.png"; sourceTree = "<group>"; };
-		0EC254161B3BECC00057DB55 /* TabBarItem_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBarItem_02.png; sourceTree = "<group>"; };
-		0EC254171B3BECC00057DB55 /* TabBarItem_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBarItem_02@2x.png"; sourceTree = "<group>"; };
 		0EC254291B3BEE800057DB55 /* IndexTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexTableViewController.h; sourceTree = "<group>"; };
 		0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexTableViewController.m; sourceTree = "<group>"; };
 		0EC254831B3C28B30057DB55 /* IndexNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexNavigationController.h; sourceTree = "<group>"; };
@@ -362,18 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				0EC2549D1B3C54460057DB55 /* space.png */,
-				0EC2540C1B3BECC00057DB55 /* TabBarItem_00_on.png */,
-				0EC2540D1B3BECC00057DB55 /* TabBarItem_00_on@2x.png */,
-				0EC2540E1B3BECC00057DB55 /* TabBarItem_00.png */,
-				0EC2540F1B3BECC00057DB55 /* TabBarItem_00@2x.png */,
-				0EC254101B3BECC00057DB55 /* TabBarItem_01_on.png */,
-				0EC254111B3BECC00057DB55 /* TabBarItem_01_on@2x.png */,
-				0EC254121B3BECC00057DB55 /* TabBarItem_01.png */,
-				0EC254131B3BECC00057DB55 /* TabBarItem_01@2x.png */,
-				0EC254141B3BECC00057DB55 /* TabBarItem_02_on.png */,
-				0EC254151B3BECC00057DB55 /* TabBarItem_02_on@2x.png */,
-				0EC254161B3BECC00057DB55 /* TabBarItem_02.png */,
-				0EC254171B3BECC00057DB55 /* TabBarItem_02@2x.png */,
 				0ED1F4E11B3A8470001B9275 /* bg_login.png */,
 				0ED1F4FD1B3AC08B001B9275 /* camera.png */,
 			);
@@ -471,25 +435,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EC254221B3BECC00057DB55 /* TabBarItem_02.png in Resources */,
 				0ED1F4A51B39A3AF001B9275 /* Main.storyboard in Resources */,
-				0EC254211B3BECC00057DB55 /* TabBarItem_02_on@2x.png in Resources */,
-				0EC254201B3BECC00057DB55 /* TabBarItem_02_on.png in Resources */,
-				0EC2541F1B3BECC00057DB55 /* TabBarItem_01@2x.png in Resources */,
-				0EC2541B1B3BECC00057DB55 /* TabBarItem_00@2x.png in Resources */,
 				0EC2549E1B3C54460057DB55 /* space.png in Resources */,
-				0EC2541C1B3BECC00057DB55 /* TabBarItem_01_on.png in Resources */,
 				0ED1F4FE1B3AC08B001B9275 /* camera.png in Resources */,
 				0ED1F4E21B3A8470001B9275 /* bg_login.png in Resources */,
-				0EC254181B3BECC00057DB55 /* TabBarItem_00_on.png in Resources */,
 				0ED1F4AA1B39A3AF001B9275 /* LaunchScreen.xib in Resources */,
 				0ED1F4A71B39A3AF001B9275 /* Images.xcassets in Resources */,
-				0EC2541D1B3BECC00057DB55 /* TabBarItem_01_on@2x.png in Resources */,
-				0EC2541A1B3BECC00057DB55 /* TabBarItem_00.png in Resources */,
 				0EC254911B3C34490057DB55 /* IndexTableViewCell.xib in Resources */,
-				0EC254231B3BECC00057DB55 /* TabBarItem_02@2x.png in Resources */,
-				0EC254191B3BECC00057DB55 /* TabBarItem_00_on@2x.png in Resources */,
-				0EC2541E1B3BECC00057DB55 /* TabBarItem_01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,11 +33,11 @@
 //    // 將按鈕加進目前的畫面上
 //    [self.view addSubview:button];
     
-    [self.avatarImageView.layer setBorderColor:[UIColor clearColor].CGColor];
-    [self.avatarImageView.layer setBorderWidth:1.0f];
+    [self.avatarImageView.layer setBorderColor:[UIColor whiteColor].CGColor];
+    [self.avatarImageView.layer setBorderWidth:2.0f];
     [self.avatarImageView.layer setCornerRadius:75];
     [self.avatarImageView.layer setMasksToBounds:YES];
-    [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:0.89 green:0.79 blue:0.82 alpha:1]];
+    [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:236.0/255.0 green:140.0/255.0 blue:113.0/255.0 alpha:.3]];
     
     [self.nameTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.35]];
     [self.nameTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];

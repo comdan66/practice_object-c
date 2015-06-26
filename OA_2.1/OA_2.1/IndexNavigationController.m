@@ -17,10 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationBar.barTintColor = [UIColor colorWithRed:0.6 green:0.45 blue:0.48 alpha:0.9];
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:0.31 green:0.25 blue:0.29 alpha:1]}];
+    self.navigationBar.barTintColor = [UIColor colorWithRed:0.99 green:0.47 blue:0.3 alpha:1];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]}];
     [self.navigationBar setTranslucent:YES];
-    [self.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+    [self.navigationBar setBarStyle:UIBarStyleDefault];
     
     
     // Do any additional setup after loading the view.

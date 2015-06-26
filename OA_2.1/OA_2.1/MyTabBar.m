@@ -91,9 +91,9 @@
 //    rgba(80, 55, 54, 1)[NSColor colorWithRed:0.94 green:0.65 blue:0.42 alpha:1]
     
     
-    
-    [self setBarTintColor:[UIColor colorWithRed:1 green:0.95 blue:0.95 alpha:1]];
-    [self setAlpha:0.85f];
+
+    [self setBarTintColor:[UIColor colorWithRed:236.0/255.0 green:140.0/255.0 blue:113.0/255.0 alpha:1]];
+    [self setAlpha:1.0f];
     
 //    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
 //    [[UITabBar appearance] setShadowImage:[UIImage imageNamed:@"space.png"]];
@@ -101,20 +101,23 @@
 //    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
     
     
-    [self.layer setShadowColor:[UIColor colorWithRed:1 green:0.95 blue:0.95 alpha:1].CGColor];
-    [self.layer setShadowOffset:CGSizeMake(0.0f, 0.0f)];
-    [self.layer setShadowRadius:3.0f];
-    [self.layer setShadowOpacity:0.3f];
+//    [self.layer setShadowColor:[UIColor colorWithRed:1 green:0.95 blue:0.95 alpha:1].CGColor];
+//    [self.layer setShadowOffset:CGSizeMake(0.0f, 0.0f)];
+//    [self.layer setShadowRadius:3.0f];
+//    [self.layer setShadowOpacity:0.3f];
     
     [self initItem];
     
 }
-- (void)initItem {    
+- (void)initItem {
+//    ;
+    
     for (int i = 0; i < [self.items count]; i++) {
         UITabBarItem * tabItem = [self.items objectAtIndex:i];
         [tabItem setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];
-        [tabItem setImage:[[UIImage imageNamed:[NSString stringWithFormat: @"TabBarItem_%02i.png", i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        [tabItem setSelectedImage:[[UIImage imageNamed:[NSString stringWithFormat: @"TabBarItem_%02i_on.png", i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [tabItem setImage:[[UIImage imageNamed:[NSString stringWithFormat: @"TabBarItem_%02i", i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [tabItem setSelectedImage:[[UIImage imageNamed:[NSString stringWithFormat: @"TabBarItem_%02i_on", i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+//        [tabItem se]
     }
 }
 @end
