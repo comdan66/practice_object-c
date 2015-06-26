@@ -11,6 +11,7 @@
 @interface IndexTableViewController () {
     NSMutableArray *pictures;
     NSString *nextId;
+    float titleLabelOneLineHeight;
 }
 
 @end
@@ -45,6 +46,7 @@
     
     pictures = [NSMutableArray new];
     nextId = @"0";
+    titleLabelOneLineHeight = [self calculateLabelHeight:@"" canputwidth:self.tableView.frame.size.width - 132 font:[IndexTableViewCell titleFont]];
     
     [self loadData:loadAlert];
     
@@ -60,7 +62,7 @@
     [manager GET:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/next_pictures"]
       parameters:data
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             NSLog(@"%@", responseObject);
+//             NSLog(@"%@", responseObject);
              if ([[responseObject objectForKey:@"status"] boolValue]) {
                  for (NSMutableDictionary *picture in [responseObject objectForKey:@"pictures"]) {
                      [pictures addObject: picture];
@@ -122,10 +124,25 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
-    return (self.tableView.frame.size.width + 20) * gradient + 151;
-}
 
+    double gradient = [[[pictures objectAtIndex:indexPath.row] objectForKey:@"gradient"] floatValue];
+    
+    float maxWidth = self.tableView.frame.size.width;
+    
+    float titleLableHeight = [self calculateLabelHeight: [[pictures objectAtIndex:indexPath.row] objectForKey:@"title"] canputwidth:maxWidth - 132 font:[IndexTableViewCell titleFont]];
+    
+    if (titleLableHeight > titleLabelOneLineHeight * 4) {
+        titleLableHeight = titleLabelOneLineHeight * 4;
+    }
+    
+    return ((self.tableView.frame.size.width - 20) * gradient) + 101 + titleLableHeight + 20;
+}
+-(float) calculateLabelHeight:(NSString *)string canputwidth:(int)canputwidth font:(UIFont *)font {
+    return [string boundingRectWithSize:CGSizeMake(canputwidth, MAXFLOAT)
+                                            options:NSStringDrawingUsesLineFragmentOrigin
+                                         attributes:@{NSFontAttributeName:font}
+                                            context:nil].size.height;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
@@ -148,7 +165,7 @@
         cell = [nibs objectAtIndex:0];
     }
     
-    [cell initUI:[pictures objectAtIndex:indexPath.row]];
+    [cell initUI:[pictures objectAtIndex:indexPath.row] w:self.tableView.frame.size.width];
     
     return cell;
 }
