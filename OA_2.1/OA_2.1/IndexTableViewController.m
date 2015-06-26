@@ -135,7 +135,7 @@
         titleLableHeight = titleLabelOneLineHeight * 4;
     }
     
-    return ((self.tableView.frame.size.width - 20) * gradient) + 101 + titleLableHeight + 20;
+    return ((self.tableView.frame.size.width - 20) * gradient) + 150 + titleLableHeight + 20;
 }
 -(float) calculateLabelHeight:(NSString *)string canputwidth:(int)canputwidth font:(UIFont *)font {
     return [string boundingRectWithSize:CGSizeMake(canputwidth, MAXFLOAT)
