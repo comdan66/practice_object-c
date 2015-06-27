@@ -14,6 +14,12 @@
 @property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet AsyncImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UIButton *commentButton;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *createdLabel;
+@property (weak, nonatomic) IBOutlet UILabel *horizontalRuleLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *horizontalRuleLabel2;
 
 //@property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
 //@property (weak, nonatomic) IBOutlet UIView *avatarBorderView;
@@ -24,7 +30,15 @@
 //@property (weak, nonatomic) IBOutlet UILabel *verticalDividerLabel;
 //@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 //@property (weak, nonatomic) IBOutlet UIButton *commentButton;
-+ (UIFont *) titleFont;
+
+
++ (UIFont *) nameLabelFont;
++ (UIFont *) createdLabelFont;
++ (UIFont *) titleLabelFont;
++ (CGFloat) titleLabelLineSpacing;
++ (CGFloat) titleLabelSpacing;
++ (UIFont *) likeButtonFont;
++ (UIFont *) commentButtonFont;
 
 - (void)initUI:(id)picture w:(float)w;
 @end

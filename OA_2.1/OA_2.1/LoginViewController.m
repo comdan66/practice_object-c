@@ -17,26 +17,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.registerButton.layer setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:234.0/255.0 blue:237.0/255.0 alpha:.2].CGColor];
-    [self.registerButton.layer setCornerRadius:3];
-    
-    [self.loginButton.layer setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:234.0/255.0 blue:237.0/255.0 alpha:.2].CGColor];
-    [self.loginButton.layer setCornerRadius:3];
-    
     [self.accountTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.5]];
     [self.accountTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.accountTextField.layer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:.1].CGColor];
-    [self.accountTextField.layer setBorderWidth:1.5f];
+    [self.accountTextField.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
     [self.accountTextField.layer setCornerRadius:4];
     [self.accountTextField setKeyboardType:UIKeyboardTypeASCIICapable];
 
     [self.passwordTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.5]];
     [self.passwordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.passwordTextField.layer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:.1].CGColor];
-    [self.passwordTextField.layer setBorderWidth:1.5f];
+    [self.passwordTextField.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
     [self.passwordTextField.layer setCornerRadius:4];
     [self.passwordTextField setKeyboardType:UIKeyboardTypeASCIICapable];
-
+    
+    [self.verticalDividerLabel setBackgroundColor:[UIColor colorWithRed:0.76 green:0.76 blue:0.79 alpha:0.3]];
+    
+    [self.registerButton.layer setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:234.0/255.0 blue:237.0/255.0 alpha:.2].CGColor];
+    [self.registerButton.layer setCornerRadius:3];
+    
+    [self.loginButton.layer setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:234.0/255.0 blue:237.0/255.0 alpha:.2].CGColor];
+    [self.loginButton.layer setCornerRadius:3];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
                                           initWithTarget:self action:@selector(touchesBegan)];

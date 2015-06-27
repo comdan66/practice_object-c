@@ -42,14 +42,14 @@
     [self.nameTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.35]];
     [self.nameTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.nameTextField.layer setBorderColor:[UIColor clearColor].CGColor];
-    [self.nameTextField.layer setBorderWidth:1.0f];
+    [self.nameTextField.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
     [self.nameTextField.layer setCornerRadius:4];    
     [self.nameTextField setDelegate:self];
 
     [self.accountTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.35]];
     [self.accountTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.accountTextField.layer setBorderColor:[UIColor clearColor].CGColor];
-    [self.accountTextField.layer setBorderWidth:1.0f];
+    [self.accountTextField.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
     [self.accountTextField.layer setCornerRadius:4];
     [self.accountTextField setDelegate:self];
     [self.accountTextField setKeyboardType:UIKeyboardTypeASCIICapable];
@@ -58,11 +58,12 @@
     [self.passwordTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.35]];
     [self.passwordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.passwordTextField.layer setBorderColor:[UIColor clearColor].CGColor];
-    [self.passwordTextField.layer setBorderWidth:1.0f];
+    [self.passwordTextField.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
     [self.passwordTextField.layer setCornerRadius:4];
     [self.passwordTextField setDelegate:self];
     [self.passwordTextField setKeyboardType:UIKeyboardTypeASCIICapable];
 
+    [self.verticalDividerLabel setBackgroundColor:[UIColor colorWithRed:0.76 green:0.76 blue:0.79 alpha:0.5]];
     
     [self.cancelButton.layer setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:234.0/255.0 blue:237.0/255.0 alpha:.2].CGColor];
     [self.cancelButton.layer setCornerRadius:3];

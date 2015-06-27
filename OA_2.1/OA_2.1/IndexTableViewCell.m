@@ -10,9 +10,30 @@
 
 @implementation IndexTableViewCell
 
-+ (UIFont *)titleFont {
-    return [UIFont systemFontOfSize:17];
+
++ (UIFont *) nameLabelFont {
+    return [UIFont systemFontOfSize:16.0f];
 }
++ (UIFont *) createdLabelFont {
+    return [UIFont systemFontOfSize:11.0f];
+}
++ (UIFont *) titleLabelFont {
+    return [UIFont systemFontOfSize:12.0f];
+}
++ (CGFloat) titleLabelLineSpacing {
+    return 2.f;
+}
++ (CGFloat) titleLabelSpacing {
+    return 0.5f;
+}
+
++ (UIFont *) likeButtonFont {
+    return [UIFont systemFontOfSize:13.0f];
+}
++ (UIFont *) commentButtonFont {
+    return [UIFont systemFontOfSize:13.0f];
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -26,29 +47,106 @@
     
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    [self.contentView.layer setBackgroundColor:[UIColor colorWithRed:0.92 green:0.92 blue:0.93 alpha:1].CGColor];
+    [self.contentView.layer setBackgroundColor:[UIColor colorWithRed:0.9 green:0.88 blue:0.87 alpha:1].CGColor];
     
-    [self.borderView.layer setBorderColor:[UIColor colorWithRed:0.84 green:0.82 blue:0.84 alpha:1].CGColor];
-    [self.borderView.layer setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1].CGColor];
-    [self.borderView.layer setBorderWidth:1.0f];
+    [self.borderView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor];
+    [self.borderView.layer setBorderColor:[UIColor colorWithRed:0.79 green:0.74 blue:0.72 alpha:1.0].CGColor];
+    [self.borderView.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
     [self.borderView.layer setCornerRadius:5];
     [self.borderView setClipsToBounds:YES];
-
-    
 
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.pictureImageView];
     [self.pictureImageView setImageURL:[NSURL URLWithString:[picture objectForKey:@"url"]]];
     [self.pictureImageView setContentMode:UIViewContentModeScaleToFill];
+    if ([picture objectForKey:@"color"] != nil) {
+        id color = [picture objectForKey:@"color"];
+        [self.pictureImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
+                                                                  green:[[color objectForKey:@"green"] doubleValue] / 255.0f
+                                                                   blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:1.0f]];
+    }
+
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.avatarImageView];
+    [self.avatarImageView setImageURL:[NSURL URLWithString:[[picture objectForKey:@"user"] objectForKey:@"avatar"]]];
+    [self.avatarImageView.layer setCornerRadius:30];
+    [self.avatarImageView.layer setBorderColor:[UIColor colorWithRed:0.90 green:0.87 blue:0.87 alpha:1.0].CGColor];
+    [self.avatarImageView.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
+    [self.avatarImageView setClipsToBounds:YES];
+    if (([picture objectForKey:@"user"] != nil) && ([[picture objectForKey:@"user"] objectForKey:@"color"] != nil)) {
+        id color = [[picture objectForKey:@"user"] objectForKey:@"color"];
+        [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
+                                                                 green:[[color objectForKey:@"green"] doubleValue] / 255.0f
+                                                                  blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:1.0f]];
+    }
+
+    [self.likeButton setImage: [UIImage imageNamed:@"LikeIcon"] forState:UIControlStateNormal];
+    [self.likeButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 3.0, 1.0, 0.0)];
+    [self.likeButton setTintColor:[UIColor colorWithRed:0.92 green:0.28 blue:0.29 alpha:1]];
+    [self.likeButton setTitle:@"+11 最愛" forState:UIControlStateNormal];
+    [self.likeButton setTitleColor:[UIColor colorWithRed:0.92 green:0.28 blue:0.29 alpha:1] forState:UIControlStateNormal];
+    [self.likeButton.titleLabel setNumberOfLines:1];
+    [self.likeButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
+    [self.likeButton.titleLabel setLineBreakMode:NSLineBreakByClipping];
+    [self.likeButton.titleLabel setFont:[IndexTableViewCell likeButtonFont]];
+
+    [self.commentButton setImage: [UIImage imageNamed:@"CommentIcon"] forState:UIControlStateNormal];
+    [self.commentButton setTitleEdgeInsets:UIEdgeInsetsMake(0.0, 3.0, 1.0, 0.0)];
+    [self.commentButton setTintColor:[UIColor colorWithRed:0.92 green:0.28 blue:0.29 alpha:1]];
+    [self.commentButton setTitle:@"12 則留言" forState:UIControlStateNormal];
+    [self.commentButton setTitleColor:[UIColor colorWithRed:0.92 green:0.28 blue:0.29 alpha:1] forState:UIControlStateNormal];
+    [self.commentButton.titleLabel setNumberOfLines:1];
+    [self.commentButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
+    [self.commentButton.titleLabel setLineBreakMode:NSLineBreakByClipping];
+    [self.commentButton.titleLabel setFont:[IndexTableViewCell commentButtonFont]];
+    
+    [self.nameLabel setText:[[picture objectForKey:@"user"] objectForKey:@"name"]];
+    [self.nameLabel setFont:[IndexTableViewCell nameLabelFont]];
+    [self.nameLabel setTextColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1]];
+    
+    [self.createdLabel setText:[picture objectForKey:@"created_at"]];
+    [self.createdLabel setFont:[IndexTableViewCell createdLabelFont]];
+    [self.createdLabel setTextColor:[UIColor colorWithRed:0.9 green:0.3 blue:0.3 alpha:1]];
+    
+    [self.horizontalRuleLabel1 setBackgroundColor:[UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.40]];
+    [self.horizontalRuleLabel2 setBackgroundColor:[UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.40]];
     
     [self.titleLabel setAdjustsFontSizeToFitWidth:NO];
     [self.titleLabel setLineBreakMode:NSLineBreakByTruncatingTail];
     [self.titleLabel setText:[picture objectForKey:@"title"]];
-    [self.titleLabel setFont:[IndexTableViewCell titleFont]];
+    [self.titleLabel setFont:[IndexTableViewCell titleLabelFont]];
+    [self.titleLabel setTextColor:[UIColor colorWithRed:0.31 green:0.31 blue:0.31 alpha:1]];
+
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:[IndexTableViewCell titleLabelLineSpacing]];
+
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.titleLabel.text];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.titleLabel.text length])];
+    [attributedString addAttribute:NSKernAttributeName
+                             value:@([IndexTableViewCell titleLabelSpacing])
+                             range:NSMakeRange(0, [self.titleLabel.text length])];
     
-    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.avatarImageView];
-    [self.avatarImageView setImageURL:[NSURL URLWithString:[[picture objectForKey:@"user"] objectForKey:@"avatar"]]];
-    [self.avatarImageView.layer setCornerRadius:35];
-    [self.avatarImageView setClipsToBounds:YES];
+    self.titleLabel.attributedText = attributedString ;
+    
+//    NSLog(@"%@",self.horizontalRuleLabel1.constraints);
+//    self.horizontalRuleLabel1 .onePixelViewHeightConstraint.constant = 1.f/[UIScreen mainScreen].scale;
+//    self.horizontalRuleLabel1.layer.borderColor = [UIColor colorWithRed:0.9 green:0.3 blue:0.3 alpha:1].CGColor;
+//    self.horizontalRuleLabel1.layer.borderWidth = (1.0 / [UIScreen mainScreen].scale) / 2;
+//    NSLog(@"%f", [UIScreen mainScreen].scale);
+    
+//    self.horizontalRuleLabel1.backgroundColor = [UIColor clearColor];
+    
+//    [self.titleLabel.layer setBorderColor:[UIColor colorWithRed:0.84 green:0.82 blue:0.84 alpha:1].CGColor];
+//    [self.titleLabel.layer setBorderWidth:1.0f];
+    
+    
+
+//    [self.likeButton.layer setBorderColor:[UIColor colorWithRed:0.84 green:0.82 blue:0.84 alpha:1].CGColor];
+//    [self.likeButton.layer setBorderWidth:1.0f];
+    
+//    CGSize stringsize = [@"12 則留言" sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14.0f]}];
+    
+//    [self.commentButton setFrame:CGRectMake(0,0,stringsize.width, stringsize.height)];
+    
+//    [self.commentButton sizeToFit];
 
 //    [self.pictureImageView]
     

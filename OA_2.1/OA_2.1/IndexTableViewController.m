@@ -12,6 +12,7 @@
     NSMutableArray *pictures;
     NSString *nextId;
     float titleLabelOneLineHeight;
+    BOOL isLoading;
 }
 
 @end
@@ -41,18 +42,21 @@
     
     
     
-    [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:0.92 green:0.92 blue:0.93 alpha:1].CGColor];
+    [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:0.9 green:0.88 blue:0.87 alpha:1].CGColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    pictures = [NSMutableArray new];
     nextId = @"0";
-    titleLabelOneLineHeight = [self calculateLabelHeight:@"" canputwidth:self.tableView.frame.size.width - 132 font:[IndexTableViewCell titleFont]];
+    isLoading = NO;
+    pictures = [NSMutableArray new];
+    
+    titleLabelOneLineHeight = [self calculateLabelHeight:@"　" canputwidth:self.tableView.frame.size.width - 132 font:[IndexTableViewCell titleLabelFont] withLineSpacing:[IndexTableViewCell titleLabelLineSpacing]];
     
     [self loadData:loadAlert];
     
 }
 
 - (void)loadData:(UIAlertView *) alert{
+    isLoading = YES;
     
     NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
     [data setValue:nextId forKey:@"next_id"];
@@ -68,6 +72,9 @@
                      [pictures addObject: picture];
                  }
                  nextId = [[NSString alloc] initWithFormat:@"%@", [responseObject objectForKey:@"next_id"]];
+                 
+                 if ([nextId doubleValue] >= 0)
+                     isLoading = NO;
              }
              
              if (alert != nil)
@@ -76,7 +83,7 @@
              [self.tableView reloadData];
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"%@", error);
+//             NSLog(@"%@", error);
     }];
     
     
@@ -129,19 +136,48 @@
     
     float maxWidth = self.tableView.frame.size.width;
     
-    float titleLableHeight = [self calculateLabelHeight: [[pictures objectAtIndex:indexPath.row] objectForKey:@"title"] canputwidth:maxWidth - 132 font:[IndexTableViewCell titleFont]];
-    
+    float titleLableHeight = [self calculateLabelHeight: [[pictures objectAtIndex:indexPath.row] objectForKey:@"title"] canputwidth:maxWidth - 132 font:[IndexTableViewCell titleLabelFont] withLineSpacing:[IndexTableViewCell titleLabelLineSpacing]];
+        
     if (titleLableHeight > titleLabelOneLineHeight * 4) {
         titleLableHeight = titleLabelOneLineHeight * 4;
     }
     
-    return ((self.tableView.frame.size.width - 20) * gradient) + 150 + titleLableHeight + 20;
+    return ((self.tableView.frame.size.width - 20) * gradient) + 126 + titleLableHeight + 20;
 }
--(float) calculateLabelHeight:(NSString *)string canputwidth:(int)canputwidth font:(UIFont *)font {
-    return [string boundingRectWithSize:CGSizeMake(canputwidth, MAXFLOAT)
-                                            options:NSStringDrawingUsesLineFragmentOrigin
-                                         attributes:@{NSFontAttributeName:font}
-                                            context:nil].size.height;
+-(NSMutableAttributedString *)attributedStringFromStingWithFont:(UIFont *)font
+                                                withLineSpacing:(CGFloat)lineSpacing
+                                                    withSpacing:(CGFloat)spacing
+                                                         string:(NSString *)string
+{
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName:font}];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:lineSpacing];
+    
+    [attributedStr addAttribute:NSParagraphStyleAttributeName
+                          value:paragraphStyle
+                          range:NSMakeRange(0, [string length])];
+    
+    [attributedStr addAttribute:NSKernAttributeName
+                          value:@(spacing)
+                          range:NSMakeRange(0, [string length])];
+    return attributedStr;
+}
+-(float) calculateLabelHeight:(NSString *)string canputwidth:(int)canputwidth font:(UIFont *)font withLineSpacing:(CGFloat)lineSpacing {
+
+//    return [string boundingRectWithSize:CGSizeMake(canputwidth, MAXFLOAT)
+//                                            options:NSStringDrawingUsesLineFragmentOrigin
+//                                         attributes:@{NSFontAttributeName:font}
+//                                            context:nil].size.height;
+    
+    NSMutableAttributedString *attributedText = [self attributedStringFromStingWithFont:font
+                                                                        withLineSpacing:lineSpacing
+                                                                            withSpacing:[IndexTableViewCell titleLabelSpacing]
+                                                                                 string:string];
+
+    return [attributedText boundingRectWithSize:CGSizeMake(canputwidth, MAXFLOAT)
+                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                   context:nil].size.height;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //#warning Potentially incomplete method implementation.
@@ -170,6 +206,14 @@
     return cell;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (isLoading)
+        return;
+    
+    if ((scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.frame.size.height * 2)) {
+        [self loadData:nil];
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.
