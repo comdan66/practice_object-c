@@ -17,13 +17,13 @@
 + (UIFont *) createdLabelFont {
     return [UIFont systemFontOfSize:11.0f];
 }
-+ (UIFont *) titleLabelFont {
++ (UIFont *) descriptionLabelFont {
     return [UIFont systemFontOfSize:12.0f];
 }
-+ (CGFloat) titleLabelLineSpacing {
++ (CGFloat) descriptionLabelLineSpacing {
     return 2.f;
 }
-+ (CGFloat) titleLabelSpacing {
++ (CGFloat) descriptionLabelSpacing {
     return 0.5f;
 }
 
@@ -108,23 +108,37 @@
     
     [self.horizontalRuleLabel1 setBackgroundColor:[UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.40]];
     [self.horizontalRuleLabel2 setBackgroundColor:[UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.40]];
-    
-    [self.titleLabel setAdjustsFontSizeToFitWidth:NO];
-    [self.titleLabel setLineBreakMode:NSLineBreakByTruncatingTail];
-    [self.titleLabel setText:[picture objectForKey:@"title"]];
-    [self.titleLabel setFont:[IndexTableViewCell titleLabelFont]];
-    [self.titleLabel setTextColor:[UIColor colorWithRed:0.31 green:0.31 blue:0.31 alpha:1]];
 
+    
+    [self.descriptionLabel setAdjustsFontSizeToFitWidth:NO];
+    [self.descriptionLabel setLineBreakMode:NSLineBreakByTruncatingTail];
+    [self.descriptionLabel setText:[picture objectForKey:@"description"]];
+    [self.descriptionLabel setFont:[IndexTableViewCell descriptionLabelFont]];
+    [self.descriptionLabel setTextColor:[UIColor colorWithRed:0.31 green:0.31 blue:0.31 alpha:1]];
+    
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:[IndexTableViewCell titleLabelLineSpacing]];
-
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.titleLabel.text];
-    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.titleLabel.text length])];
-    [attributedString addAttribute:NSKernAttributeName
-                             value:@([IndexTableViewCell titleLabelSpacing])
-                             range:NSMakeRange(0, [self.titleLabel.text length])];
+    [paragraphStyle setLineSpacing:[IndexTableViewCell descriptionLabelLineSpacing]];
     
-    self.titleLabel.attributedText = attributedString ;
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.descriptionLabel.text];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.descriptionLabel.text length])];
+    [attributedString addAttribute:NSKernAttributeName
+                             value:@([IndexTableViewCell descriptionLabelSpacing])
+                             range:NSMakeRange(0, [self.descriptionLabel.text length])];
+    
+    [self.descriptionLabel setAttributedText:attributedString];
+    
+//    [self.titleLabel.layer setBorderColor:[UIColor colorWithRed:0.84 green:0.82 blue:0.84 alpha:1].CGColor];
+//    [self.titleLabel.layer setBorderWidth:1.0f];
+    
+    if ([[picture objectForKey:@"description"] isEqualToString:@""] || ([[picture objectForKey:@"description"] length] <= 0)) {
+        [self.descriptionLabel setHidden:YES];
+        [self.horizontalRuleLabel2 setHidden:YES];
+        [self.horizontalRuleDescription setConstant:0.0f];
+        [self.descriptionHorizontalRule setConstant:-0.5f];
+        [self updateConstraints];
+    }
+    
+//    if (@"" isEqualToString:<#(NSString *)#>)
     
 //    NSLog(@"%@",self.horizontalRuleLabel1.constraints);
 //    self.horizontalRuleLabel1 .onePixelViewHeightConstraint.constant = 1.f/[UIScreen mainScreen].scale;
@@ -134,8 +148,6 @@
     
 //    self.horizontalRuleLabel1.backgroundColor = [UIColor clearColor];
     
-//    [self.titleLabel.layer setBorderColor:[UIColor colorWithRed:0.84 green:0.82 blue:0.84 alpha:1].CGColor];
-//    [self.titleLabel.layer setBorderWidth:1.0f];
     
     
 

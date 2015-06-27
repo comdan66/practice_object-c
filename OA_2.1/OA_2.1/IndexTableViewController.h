@@ -13,4 +13,6 @@
 
 @interface IndexTableViewController : UITableViewController <UIScrollViewDelegate>
 
+- (void)loadNewPicture:(UIAlertView *)loadingAlert callbackBlock:(void (^)(UITableView *tableView))callbackBlock;
+
 @end

@@ -107,7 +107,7 @@
                             <constraint firstItem="duV-16-3pa" firstAttribute="centerY" secondItem="eni-lz-YTy" secondAttribute="centerY" id="3s0-vz-38M"/>
                             <constraint firstItem="875-AZ-vMJ" firstAttribute="top" secondItem="NpL-4S-Kon" secondAttribute="bottom" constant="20" id="69s-86-NLf"/>
                             <constraint firstItem="QPu-dW-djA" firstAttribute="top" secondItem="NpL-4S-Kon" secondAttribute="bottom" constant="10" id="69y-ql-VJH"/>
-                            <constraint firstItem="eni-lz-YTy" firstAttribute="top" secondItem="WAh-nV-E4i" secondAttribute="bottom" constant="8" id="6Ct-Nc-d44"/>
+                            <constraint firstItem="eni-lz-YTy" firstAttribute="top" secondItem="WAh-nV-E4i" secondAttribute="bottom" constant="10" id="6Ct-Nc-d44"/>
                             <constraint firstItem="KUu-hD-Y7s" firstAttribute="leading" secondItem="XeS-8j-6TK" secondAttribute="leading" constant="-5" id="Ctw-xB-iSR"/>
                             <constraint firstItem="XeS-8j-6TK" firstAttribute="trailing" secondItem="875-AZ-vMJ" secondAttribute="trailing" id="J2U-eg-D9S"/>
                             <constraint firstItem="eni-lz-YTy" firstAttribute="leading" secondItem="duV-16-3pa" secondAttribute="trailing" constant="20" id="JD0-UQ-M4d"/>
@@ -144,12 +144,14 @@
                 <outlet property="borderView" destination="ztY-Ni-Vxo" id="d4u-8x-BeL"/>
                 <outlet property="commentButton" destination="eni-lz-YTy" id="na6-dL-Wev"/>
                 <outlet property="createdLabel" destination="XeS-8j-6TK" id="HnD-M6-Y45"/>
+                <outlet property="descriptionHorizontalRule" destination="ZL9-lz-PLP" id="f2P-Xb-a2c"/>
+                <outlet property="descriptionLabel" destination="01b-sn-zWU" id="gSV-jj-QQ1"/>
+                <outlet property="horizontalRuleDescription" destination="LVl-YW-12B" id="9KH-bf-fXh"/>
                 <outlet property="horizontalRuleLabel1" destination="KUu-hD-Y7s" id="XPD-CZ-cqc"/>
                 <outlet property="horizontalRuleLabel2" destination="WAh-nV-E4i" id="9Lg-21-DLL"/>
                 <outlet property="likeButton" destination="duV-16-3pa" id="Q0h-S6-zTb"/>
                 <outlet property="nameLabel" destination="875-AZ-vMJ" id="kam-PT-PvA"/>
                 <outlet property="pictureImageView" destination="NpL-4S-Kon" id="JWO-Nf-Sed"/>
-                <outlet property="titleLabel" destination="01b-sn-zWU" id="9go-DG-Ogr"/>
             </connections>
             <point key="canvasLocation" x="737" y="765.5"/>
         </tableViewCell>

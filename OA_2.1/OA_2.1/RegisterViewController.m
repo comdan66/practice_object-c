@@ -130,13 +130,11 @@
     return YES;
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField == self.accountTextField || textField == self.passwordTextField)
         [self animateTextField: textField up: YES];
 }
 
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (textField == self.accountTextField || textField == self.passwordTextField)
         [self animateTextField: textField up: NO];
 }
 
@@ -220,15 +218,16 @@
     [self.avatarImageView setImage:image];
     hasChoiceAvatar = YES;
 
-    if ([self.nameTextField.text length] <= 0) {
-        [self.nameTextField becomeFirstResponder];
-    } else if ([self.accountTextField.text length] <= 0) {
-        [self.accountTextField becomeFirstResponder];
-    } else if ([self.passwordTextField.text length] <= 0) {
-        [self.passwordTextField becomeFirstResponder];
-    }
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if ([self.nameTextField.text length] <= 0) {
+            [self.nameTextField becomeFirstResponder];
+        } else if ([self.accountTextField.text length] <= 0) {
+            [self.accountTextField becomeFirstResponder];
+        } else if ([self.passwordTextField.text length] <= 0) {
+            [self.passwordTextField becomeFirstResponder];
+        }
+    }];
 }
 
 - (void) cleanData {
@@ -268,7 +267,7 @@
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
 
     [manager POST:urlString parameters:data constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
-        [formData appendPartWithFileData:UIImageJPEGRepresentation ([self fixOrientation:self.avatarImageView.image], 0.1) name:@"avatar" fileName:@"fg.jpg" mimeType:@"image/jepg"];
+        [formData appendPartWithFileData:UIImageJPEGRepresentation ([ImageUtility fixOrientation:self.avatarImageView.image], 0.1) name:@"avatar" fileName:@"fg.jpg" mimeType:@"image/jepg"];
         } success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
             
@@ -342,85 +341,6 @@
         return NO;
     }
     return YES;
-}
-- (UIImage *)fixOrientation: (UIImage *) myImage {
-    
-    // No-op if the orientation is already correct
-    if (myImage.imageOrientation == UIImageOrientationUp) return myImage;
-    
-    // We need to calculate the proper transformation to make the image upright.
-    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
-    CGAffineTransform transform = CGAffineTransformIdentity;
-    
-    switch (myImage.imageOrientation) {
-        case UIImageOrientationDown:
-        case UIImageOrientationDownMirrored:
-            transform = CGAffineTransformTranslate(transform, myImage.size.width, myImage.size.height);
-            transform = CGAffineTransformRotate(transform, M_PI);
-            break;
-            
-        case UIImageOrientationLeft:
-        case UIImageOrientationLeftMirrored:
-            transform = CGAffineTransformTranslate(transform, myImage.size.width, 0);
-            transform = CGAffineTransformRotate(transform, M_PI_2);
-            break;
-            
-        case UIImageOrientationRight:
-        case UIImageOrientationRightMirrored:
-            transform = CGAffineTransformTranslate(transform, 0, myImage.size.height);
-            transform = CGAffineTransformRotate(transform, -M_PI_2);
-            break;
-        case UIImageOrientationUp:
-        case UIImageOrientationUpMirrored:
-            break;
-    }
-    
-    switch (myImage.imageOrientation) {
-        case UIImageOrientationUpMirrored:
-        case UIImageOrientationDownMirrored:
-            transform = CGAffineTransformTranslate(transform, myImage.size.width, 0);
-            transform = CGAffineTransformScale(transform, -1, 1);
-            break;
-            
-        case UIImageOrientationLeftMirrored:
-        case UIImageOrientationRightMirrored:
-            transform = CGAffineTransformTranslate(transform, myImage.size.height, 0);
-            transform = CGAffineTransformScale(transform, -1, 1);
-            break;
-        case UIImageOrientationUp:
-        case UIImageOrientationDown:
-        case UIImageOrientationLeft:
-        case UIImageOrientationRight:
-            break;
-    }
-    
-    // Now we draw the underlying CGImage into a new context, applying the transform
-    // calculated above.
-    CGContextRef ctx = CGBitmapContextCreate(NULL, myImage.size.width, myImage.size.height,
-                                             CGImageGetBitsPerComponent(myImage.CGImage), 0,
-                                             CGImageGetColorSpace(myImage.CGImage),
-                                             CGImageGetBitmapInfo(myImage.CGImage));
-    CGContextConcatCTM(ctx, transform);
-    switch (myImage.imageOrientation) {
-        case UIImageOrientationLeft:
-        case UIImageOrientationLeftMirrored:
-        case UIImageOrientationRight:
-        case UIImageOrientationRightMirrored:
-            // Grr...
-            CGContextDrawImage(ctx, CGRectMake(0,0,myImage.size.height,myImage.size.width), myImage.CGImage);
-            break;
-            
-        default:
-            CGContextDrawImage(ctx, CGRectMake(0,0,myImage.size.width,myImage.size.height), myImage.CGImage);
-            break;
-    }
-    
-    // And now we just create a new UIImage from the drawing context
-    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
-    UIImage *img = [UIImage imageWithCGImage:cgimg];
-    CGContextRelease(ctx);
-    CGImageRelease(cgimg);
-    return img;
 }
 
 /*

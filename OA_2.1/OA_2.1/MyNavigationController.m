@@ -6,13 +6,13 @@
 //  Copyright (c) 2015年 OA Wu. All rights reserved.
 //
 
-#import "IndexNavigationController.h"
+#import "MyNavigationController.h"
 
-@interface IndexNavigationController ()
+@interface MyNavigationController ()
 
 @end
 
-@implementation IndexNavigationController
+@implementation MyNavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

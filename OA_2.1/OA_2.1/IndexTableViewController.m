@@ -40,7 +40,8 @@
                        otherButtonItems:nil, nil];
     [loadAlert show];
     
-    
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventValueChanged];
     
     [self.tableView.layer setBackgroundColor:[UIColor colorWithRed:0.9 green:0.88 blue:0.87 alpha:1].CGColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -49,10 +50,55 @@
     isLoading = NO;
     pictures = [NSMutableArray new];
     
-    titleLabelOneLineHeight = [self calculateLabelHeight:@"　" canputwidth:self.tableView.frame.size.width - 132 font:[IndexTableViewCell titleLabelFont] withLineSpacing:[IndexTableViewCell titleLabelLineSpacing]];
+    titleLabelOneLineHeight = [self calculateLabelHeight:@"　" canputwidth:self.tableView.frame.size.width - 132
+                                                    font:[IndexTableViewCell descriptionLabelFont]
+                                         withLineSpacing:[IndexTableViewCell descriptionLabelLineSpacing]
+                                                 spacing:[IndexTableViewCell descriptionLabelSpacing]];
     
     [self loadData:loadAlert];
     
+}
+- (void)viewDidAppear:(BOOL)animated {
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"更新中..."];
+}
+- (void)refreshAction {
+    [self loadNewPicture:nil
+           callbackBlock: ^(UITableView *tableView){
+        [self.refreshControl endRefreshing];
+    }];
+}
+
+- (void)loadNewPicture:(UIAlertView *)loadingAlert callbackBlock:(void (^)(UITableView *tableView))callbackBlock {
+
+    NSString *prevId;
+
+    if ([pictures count] > 0)
+        prevId = [NSString stringWithFormat:@"%li", [[[pictures objectAtIndex:0] objectForKey:@"id"] integerValue] + 1];
+    else
+        prevId = @"0";
+
+    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    [data setValue:prevId forKey:@"prev_id"];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
+    [manager GET:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/prev_pictures"]
+      parameters:data
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+             if ([[responseObject objectForKey:@"status"] boolValue]) {
+                 for (NSMutableDictionary *picture in [responseObject objectForKey:@"pictures"]) {
+                     [pictures insertObject: picture atIndex:0];
+                 }
+             }
+             if (loadingAlert != nil)
+                 [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+
+             [self.tableView reloadData];
+             callbackBlock(self.tableView);
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [[[UIAlertView alloc] initWithTitle:@"失敗" message:@"請確認網路狀態正常，再重新開啟一次！" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil] show];
+         }];
 }
 
 - (void)loadData:(UIAlertView *) alert{
@@ -66,7 +112,7 @@
     [manager GET:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/next_pictures"]
       parameters:data
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//             NSLog(@"%@", responseObject);
+
              if ([[responseObject objectForKey:@"status"] boolValue]) {
                  for (NSMutableDictionary *picture in [responseObject objectForKey:@"pictures"]) {
                      [pictures addObject: picture];
@@ -83,38 +129,8 @@
              [self.tableView reloadData];
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//             NSLog(@"%@", error);
+        [[[UIAlertView alloc] initWithTitle:@"失敗" message:@"請確認網路狀態正常，再重新開啟一次！" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil] show];
     }];
-    
-    
-//
-//
-//    MyHttp *http = [MyHttp new];
-//    NSMutableDictionary *vars = [NSMutableDictionary new];
-//    [vars setObject:nextId == nil ? @"0" : nextId forKey:@"next_id"];
-//    
-//    [http getURL:@"http://ios.ioa.tw/api/next_pictures" vars: vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//        
-//        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//        
-//        if ([[result objectForKey:@"status"] boolValue]) {
-//            for (NSMutableDictionary *picture in [result objectForKey:@"pictures"]) {
-//                [pictures addObject: picture];
-//            }
-//            nextId = [[NSString alloc] initWithFormat:@"%@", [result objectForKey:@"next_id"]];
-//            
-//            if ([nextId doubleValue] >= 0)
-//                isLoading = NO;
-//        }
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            if (alert != nil)
-//                [alert dismissWithClickedButtonIndex:-1 animated:YES];
-//            
-//            [self.tableView reloadData];
-//        });
-//        
-//    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -136,19 +152,35 @@
     
     float maxWidth = self.tableView.frame.size.width;
     
-    float titleLableHeight = [self calculateLabelHeight: [[pictures objectAtIndex:indexPath.row] objectForKey:@"title"] canputwidth:maxWidth - 132 font:[IndexTableViewCell titleLabelFont] withLineSpacing:[IndexTableViewCell titleLabelLineSpacing]];
-        
+    float titleLableHeight = 0;
+    
+    if ([[[pictures objectAtIndex:indexPath.row] objectForKey:@"description"] isEqualToString:@""] || ([[[pictures objectAtIndex:indexPath.row] objectForKey:@"description"] length] <= 0))
+        titleLableHeight = -20.50f;
+    else
+        titleLableHeight = [self calculateLabelHeight: [[pictures objectAtIndex:indexPath.row] objectForKey:@"description"]
+                                          canputwidth:maxWidth - 132
+                                                 font:[IndexTableViewCell descriptionLabelFont]
+                                      withLineSpacing:[IndexTableViewCell descriptionLabelLineSpacing]
+                                              spacing:[IndexTableViewCell descriptionLabelSpacing]];
+
     if (titleLableHeight > titleLabelOneLineHeight * 4) {
         titleLableHeight = titleLabelOneLineHeight * 4;
     }
     
     return ((self.tableView.frame.size.width - 20) * gradient) + 126 + titleLableHeight + 20;
 }
--(NSMutableAttributedString *)attributedStringFromStingWithFont:(UIFont *)font
-                                                withLineSpacing:(CGFloat)lineSpacing
-                                                    withSpacing:(CGFloat)spacing
-                                                         string:(NSString *)string
-{
+-(float) calculateLabelHeight:(NSString *)string canputwidth:(int)canputwidth font:(UIFont *)font withLineSpacing:(CGFloat)lineSpacing spacing:(CGFloat)spacing {
+    NSMutableAttributedString *attributedText = [self attributedStringFromStingWithFont:font
+                                                                        withLineSpacing:lineSpacing
+                                                                            withSpacing:spacing
+                                                                                 string:string];
+
+    return [attributedText boundingRectWithSize:CGSizeMake(canputwidth, MAXFLOAT)
+                                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                                   context:nil].size.height;
+}
+-(NSMutableAttributedString *)attributedStringFromStingWithFont:(UIFont *)font withLineSpacing:(CGFloat)lineSpacing withSpacing:(CGFloat)spacing string:(NSString *)string {
+    
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName:font}];
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
@@ -162,22 +194,6 @@
                           value:@(spacing)
                           range:NSMakeRange(0, [string length])];
     return attributedStr;
-}
--(float) calculateLabelHeight:(NSString *)string canputwidth:(int)canputwidth font:(UIFont *)font withLineSpacing:(CGFloat)lineSpacing {
-
-//    return [string boundingRectWithSize:CGSizeMake(canputwidth, MAXFLOAT)
-//                                            options:NSStringDrawingUsesLineFragmentOrigin
-//                                         attributes:@{NSFontAttributeName:font}
-//                                            context:nil].size.height;
-    
-    NSMutableAttributedString *attributedText = [self attributedStringFromStingWithFont:font
-                                                                        withLineSpacing:lineSpacing
-                                                                            withSpacing:[IndexTableViewCell titleLabelSpacing]
-                                                                                 string:string];
-
-    return [attributedText boundingRectWithSize:CGSizeMake(canputwidth, MAXFLOAT)
-                                                   options:NSStringDrawingUsesLineFragmentOrigin
-                                                   context:nil].size.height;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //#warning Potentially incomplete method implementation.

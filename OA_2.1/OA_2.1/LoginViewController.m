@@ -44,6 +44,7 @@
     tapGesture.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGesture];
     
+//    []
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"registerSegue"]) {

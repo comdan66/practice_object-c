@@ -11,7 +11,7 @@
 #import "RegisterDelegate.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "UIAlertView+Blocks.h"
-//#import "OAHttp.h"
+#import "ImageUtility.h"
 
 @interface RegisterViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 

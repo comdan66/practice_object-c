@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MyTabBar.h"
+#import "IndexTableViewController.h"
+#import "MyNavigationController.h"
 
 @interface MyTabBarController : UITabBarController
 

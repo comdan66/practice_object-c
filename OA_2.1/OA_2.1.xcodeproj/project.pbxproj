@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2086681B3E7ED4006AABBB /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2086671B3E7ED4006AABBB /* CameraViewController.m */; };
 		0E74CE4E1B3B11F300D28780 /* OAHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74CE4D1B3B11F300D28780 /* OAHttp.m */; };
 		0E74CE571B3B165F00D28780 /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74CE511B3B165F00D28780 /* RIButtonItem.m */; };
 		0E74CE581B3B165F00D28780 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74CE531B3B165F00D28780 /* UIActionSheet+Blocks.m */; };
 		0E74CE5A1B3B165F00D28780 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74CE561B3B165F00D28780 /* UIAlertView+Blocks.m */; };
+		0E77D3EC1B3EC48900A2C9EC /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E77D3EB1B3EC48900A2C9EC /* UIPlaceHolderTextView.m */; };
+		0E77D3F31B3EDDFE00A2C9EC /* ImageUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E77D3F21B3EDDFE00A2C9EC /* ImageUtility.m */; };
 		0EC253C31B3BA6810057DB55 /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC253C21B3BA6810057DB55 /* MyTabBarController.m */; };
 		0EC253CF1B3BB0A90057DB55 /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC253CE1B3BB0A90057DB55 /* MyTabBar.m */; };
 		0EC2542B1B3BEE800057DB55 /* IndexTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */; };
-		0EC254851B3C28B30057DB55 /* IndexNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254841B3C28B30057DB55 /* IndexNavigationController.m */; };
+		0EC254851B3C28B30057DB55 /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254841B3C28B30057DB55 /* MyNavigationController.m */; };
 		0EC2548A1B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254891B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m */; };
 		0EC254901B3C34490057DB55 /* IndexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2548E1B3C34490057DB55 /* IndexTableViewCell.m */; };
 		0EC254911B3C34490057DB55 /* IndexTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2548F1B3C34490057DB55 /* IndexTableViewCell.xib */; };
@@ -54,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E2086661B3E7ED4006AABBB /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		0E2086671B3E7ED4006AABBB /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		0E74CE4C1B3B11F300D28780 /* OAHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAHttp.h; sourceTree = "<group>"; };
 		0E74CE4D1B3B11F300D28780 /* OAHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAHttp.m; sourceTree = "<group>"; };
 		0E74CE501B3B165F00D28780 /* RIButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
@@ -62,14 +67,18 @@
 		0E74CE531B3B165F00D28780 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
 		0E74CE551B3B165F00D28780 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
 		0E74CE561B3B165F00D28780 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		0E77D3EA1B3EC48900A2C9EC /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
+		0E77D3EB1B3EC48900A2C9EC /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
+		0E77D3F11B3EDDFE00A2C9EC /* ImageUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtility.h; sourceTree = "<group>"; };
+		0E77D3F21B3EDDFE00A2C9EC /* ImageUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtility.m; sourceTree = "<group>"; };
 		0EC253C11B3BA6810057DB55 /* MyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBarController.h; sourceTree = "<group>"; };
 		0EC253C21B3BA6810057DB55 /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
 		0EC253CD1B3BB0A90057DB55 /* MyTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBar.h; sourceTree = "<group>"; };
 		0EC253CE1B3BB0A90057DB55 /* MyTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBar.m; sourceTree = "<group>"; };
 		0EC254291B3BEE800057DB55 /* IndexTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexTableViewController.h; sourceTree = "<group>"; };
 		0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexTableViewController.m; sourceTree = "<group>"; };
-		0EC254831B3C28B30057DB55 /* IndexNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexNavigationController.h; sourceTree = "<group>"; };
-		0EC254841B3C28B30057DB55 /* IndexNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexNavigationController.m; sourceTree = "<group>"; };
+		0EC254831B3C28B30057DB55 /* MyNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationController.h; sourceTree = "<group>"; };
+		0EC254841B3C28B30057DB55 /* MyNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationController.m; sourceTree = "<group>"; };
 		0EC254871B3C2DCA0057DB55 /* AMScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbar.h; sourceTree = "<group>"; };
 		0EC254881B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ScrollingNavbar.h"; sourceTree = "<group>"; };
 		0EC254891B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScrollingNavbar.m"; sourceTree = "<group>"; };
@@ -139,9 +148,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E2086641B3E7BBB006AABBB /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				0EC254831B3C28B30057DB55 /* MyNavigationController.h */,
+				0EC254841B3C28B30057DB55 /* MyNavigationController.m */,
+			);
+			name = NavigationController;
+			sourceTree = "<group>";
+		};
+		0E2086651B3E7EBA006AABBB /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				0E2086661B3E7ED4006AABBB /* CameraViewController.h */,
+				0E2086671B3E7ED4006AABBB /* CameraViewController.m */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
 		0E74CE4A1B3B11D400D28780 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0E77D3ED1B3EDD2400A2C9EC /* ImageUtility */,
+				0E77D3E91B3EC47600A2C9EC /* UIPlaceHolderTextView */,
 				0EC254A31B3C650E0057DB55 /* UIImageViewAligned */,
 				0EC2549F1B3C64FF0057DB55 /* AsyncImageView */,
 				0EC254861B3C2DB40057DB55 /* AMScrollingNavbar */,
@@ -183,6 +212,24 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		0E77D3E91B3EC47600A2C9EC /* UIPlaceHolderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				0E77D3EA1B3EC48900A2C9EC /* UIPlaceHolderTextView.h */,
+				0E77D3EB1B3EC48900A2C9EC /* UIPlaceHolderTextView.m */,
+			);
+			name = UIPlaceHolderTextView;
+			sourceTree = "<group>";
+		};
+		0E77D3ED1B3EDD2400A2C9EC /* ImageUtility */ = {
+			isa = PBXGroup;
+			children = (
+				0E77D3F11B3EDDFE00A2C9EC /* ImageUtility.h */,
+				0E77D3F21B3EDDFE00A2C9EC /* ImageUtility.m */,
+			);
+			name = ImageUtility;
+			sourceTree = "<group>";
+		};
 		0EC253BD1B3BA63B0057DB55 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,8 +247,6 @@
 				0EC2548C1B3C342C0057DB55 /* cell */,
 				0EC254291B3BEE800057DB55 /* IndexTableViewController.h */,
 				0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */,
-				0EC254831B3C28B30057DB55 /* IndexNavigationController.h */,
-				0EC254841B3C28B30057DB55 /* IndexNavigationController.m */,
 			);
 			name = Index;
 			sourceTree = "<group>";
@@ -265,10 +310,12 @@
 		0ED1F4951B39A3AF001B9275 /* OA_2.1 */ = {
 			isa = PBXGroup;
 			children = (
-				0EC253FA1B3BDCD10057DB55 /* Index */,
-				0EC253BD1B3BA63B0057DB55 /* TabBarController */,
+				0E2086651B3E7EBA006AABBB /* Camera */,
 				0E74CE5B1B3B99B400D28780 /* Login */,
 				0ED1F4E71B3AA2D1001B9275 /* Register */,
+				0EC253FA1B3BDCD10057DB55 /* Index */,
+				0E2086641B3E7BBB006AABBB /* NavigationController */,
+				0EC253BD1B3BA63B0057DB55 /* TabBarController */,
 				0E74CE4A1B3B11D400D28780 /* libs */,
 				0ED1F4DC1B39AC41001B9275 /* images */,
 				0ED1F49A1B39A3AF001B9275 /* AppDelegate.h */,
@@ -462,6 +509,7 @@
 				0EC2542B1B3BEE800057DB55 /* IndexTableViewController.m in Sources */,
 				0ED1F49C1B39A3AF001B9275 /* AppDelegate.m in Sources */,
 				0ED1F4D71B39A48C001B9275 /* AFSecurityPolicy.m in Sources */,
+				0E77D3EC1B3EC48900A2C9EC /* UIPlaceHolderTextView.m in Sources */,
 				0E74CE581B3B165F00D28780 /* UIActionSheet+Blocks.m in Sources */,
 				0EC253CF1B3BB0A90057DB55 /* MyTabBar.m in Sources */,
 				0EC2548A1B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m in Sources */,
@@ -477,14 +525,16 @@
 				0ED1F4D51B39A48C001B9275 /* AFHTTPSessionManager.m in Sources */,
 				0ED1F4D61B39A48C001B9275 /* AFNetworkReachabilityManager.m in Sources */,
 				0ED1F4DA1B39A48C001B9275 /* AFURLResponseSerialization.m in Sources */,
-				0EC254851B3C28B30057DB55 /* IndexNavigationController.m in Sources */,
+				0EC254851B3C28B30057DB55 /* MyNavigationController.m in Sources */,
 				0EC254901B3C34490057DB55 /* IndexTableViewCell.m in Sources */,
 				0ED1F4EA1B3AA2EB001B9275 /* RegisterViewController.m in Sources */,
 				0ED1F4DB1B39A48C001B9275 /* AFURLSessionManager.m in Sources */,
 				0ED1F4991B39A3AF001B9275 /* main.m in Sources */,
 				0EC254A61B3C651B0057DB55 /* UIImageViewAligned.m in Sources */,
+				0E2086681B3E7ED4006AABBB /* CameraViewController.m in Sources */,
 				0E74CE571B3B165F00D28780 /* RIButtonItem.m in Sources */,
 				0EC253C31B3BA6810057DB55 /* MyTabBarController.m in Sources */,
+				0E77D3F31B3EDDFE00A2C9EC /* ImageUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

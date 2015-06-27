@@ -12,7 +12,7 @@
 @interface IndexTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *borderView;
 @property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet AsyncImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *createdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *horizontalRuleLabel1;
 @property (weak, nonatomic) IBOutlet UILabel *horizontalRuleLabel2;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *horizontalRuleDescription;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *descriptionHorizontalRule;
 
 //@property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
 //@property (weak, nonatomic) IBOutlet UIView *avatarBorderView;
@@ -34,9 +36,9 @@
 
 + (UIFont *) nameLabelFont;
 + (UIFont *) createdLabelFont;
-+ (UIFont *) titleLabelFont;
-+ (CGFloat) titleLabelLineSpacing;
-+ (CGFloat) titleLabelSpacing;
++ (UIFont *) descriptionLabelFont;
++ (CGFloat) descriptionLabelLineSpacing;
++ (CGFloat) descriptionLabelSpacing;
 + (UIFont *) likeButtonFont;
 + (UIFont *) commentButtonFont;
 

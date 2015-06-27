@@ -17,13 +17,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    [(MyTabBar *)self.tabBar initUI];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToTabIndex0:) name:@"goToTabIndex0" object:nil];
+}
+- (void)goToTabIndex0:(NSNotification*)sender {
+    MyNavigationController *first = (MyNavigationController *)[self.viewControllers objectAtIndex:0];
+    IndexTableViewController *temp = (IndexTableViewController *)[first.viewControllers objectAtIndex:0];
+
     
-//    for (int i = 0; i < [self.tabBar.items count]; i++)
-        [(MyTabBar *)self.tabBar initUI];
-//    [[UITabBar appearance] setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
-//    [self.tabBar setBackgroundColor:[UIColor redColor]];
+    [temp loadNewPicture:nil
+           callbackBlock:^ (UITableView *tableView) {
+               [tableView setContentOffset:CGPointZero animated:YES];
+           }];
+    [self setSelectedIndex:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,14 +39,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+//#pragma mark - Navigation
+//
+//// In a storyboard-based application, you will often want to do a little preparation before navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//    NSLog(@"d");
+//}
+
 
 @end
