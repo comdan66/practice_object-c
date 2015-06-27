@@ -35,9 +35,9 @@
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
 
     UIAlertView *loadAlert = [[UIAlertView alloc] initWithTitle:@"Loading.."
-                                message:nil
-                       cancelButtonItem:nil
-                       otherButtonItems:nil, nil];
+                                                        message:nil
+                                               cancelButtonItem:nil
+                                               otherButtonItems:nil, nil];
     [loadAlert show];
     
     self.refreshControl = [UIRefreshControl new];
@@ -85,9 +85,8 @@
     [manager GET:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/prev_pictures"]
       parameters:data
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
              if ([[responseObject objectForKey:@"status"] boolValue]) {
-                 for (NSMutableDictionary *picture in [responseObject objectForKey:@"pictures"]) {
+                for (NSMutableDictionary *picture in [responseObject objectForKey:@"pictures"]) {
                      [pictures insertObject: picture atIndex:0];
                  }
              }
@@ -96,9 +95,15 @@
 
              [self.tableView reloadData];
              callbackBlock(self.tableView);
-         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             [[[UIAlertView alloc] initWithTitle:@"失敗" message:@"請確認網路狀態正常，再重新開啟一次！" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil] show];
-         }];
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [[[UIAlertView alloc] initWithTitle:@"失敗"
+                                         message:@"請確認網路狀態後，再重新開啟一次！"
+                                        delegate:self
+                               cancelButtonTitle:nil
+                               otherButtonTitles:nil, nil] show];
+         }
+     ];
 }
 
 - (void)loadData:(UIAlertView *) alert{
@@ -112,7 +117,6 @@
     [manager GET:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/next_pictures"]
       parameters:data
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
              if ([[responseObject objectForKey:@"status"] boolValue]) {
                  for (NSMutableDictionary *picture in [responseObject objectForKey:@"pictures"]) {
                      [pictures addObject: picture];
@@ -128,22 +132,19 @@
 
              [self.tableView reloadData];
 
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[[UIAlertView alloc] initWithTitle:@"失敗" message:@"請確認網路狀態正常，再重新開啟一次！" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil] show];
-    }];
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             [[[UIAlertView alloc] initWithTitle:@"失敗"
+                                         message:@"請確認網路狀態後，再重新開啟一次！"
+                                        delegate:self
+                               cancelButtonTitle:nil
+                               otherButtonTitles:nil, nil] show];
+         }
+     ];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    NSLog(@"%li", indexPath.row);
-//    if (indexPath.row == 0) {
-//        [self showNavbar];
-//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

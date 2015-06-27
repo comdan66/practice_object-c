@@ -62,7 +62,7 @@
         id color = [picture objectForKey:@"color"];
         [self.pictureImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
                                                                   green:[[color objectForKey:@"green"] doubleValue] / 255.0f
-                                                                   blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:1.0f]];
+                                                                   blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:0.85f]];
     }
 
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.avatarImageView];

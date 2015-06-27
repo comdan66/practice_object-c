@@ -71,6 +71,7 @@
 		0E77D3EB1B3EC48900A2C9EC /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		0E77D3F11B3EDDFE00A2C9EC /* ImageUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtility.h; sourceTree = "<group>"; };
 		0E77D3F21B3EDDFE00A2C9EC /* ImageUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtility.m; sourceTree = "<group>"; };
+		0E77D3F41B3EFD1300A2C9EC /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		0EC253C11B3BA6810057DB55 /* MyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBarController.h; sourceTree = "<group>"; };
 		0EC253C21B3BA6810057DB55 /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
 		0EC253CD1B3BB0A90057DB55 /* MyTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBar.h; sourceTree = "<group>"; };
@@ -310,17 +311,18 @@
 		0ED1F4951B39A3AF001B9275 /* OA_2.1 */ = {
 			isa = PBXGroup;
 			children = (
-				0E2086651B3E7EBA006AABBB /* Camera */,
+				0ED1F4A31B39A3AF001B9275 /* Main.storyboard */,
+				0ED1F49A1B39A3AF001B9275 /* AppDelegate.h */,
+				0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */,
+				0E77D3F41B3EFD1300A2C9EC /* Config.h */,
 				0E74CE5B1B3B99B400D28780 /* Login */,
 				0ED1F4E71B3AA2D1001B9275 /* Register */,
 				0EC253FA1B3BDCD10057DB55 /* Index */,
+				0E2086651B3E7EBA006AABBB /* Camera */,
 				0E2086641B3E7BBB006AABBB /* NavigationController */,
 				0EC253BD1B3BA63B0057DB55 /* TabBarController */,
 				0E74CE4A1B3B11D400D28780 /* libs */,
 				0ED1F4DC1B39AC41001B9275 /* images */,
-				0ED1F49A1B39A3AF001B9275 /* AppDelegate.h */,
-				0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */,
-				0ED1F4A31B39A3AF001B9275 /* Main.storyboard */,
 				0ED1F4A61B39A3AF001B9275 /* Images.xcassets */,
 				0ED1F4A81B39A3AF001B9275 /* LaunchScreen.xib */,
 				0ED1F49D1B39A3AF001B9275 /* OA_2_1.xcdatamodeld */,

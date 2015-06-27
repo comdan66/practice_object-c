@@ -9,10 +9,9 @@
 #import "CameraViewController.h"
 
 @interface CameraViewController () {
-    CGFloat _viewAddHeight;
-
     UIImagePickerController *imagePickerController;
     BOOL hasChoiceAvatar;
+    CGFloat viewAddHeight;
 }
 
 @end
@@ -64,7 +63,7 @@
     [self.view addGestureRecognizer:tapGesture];
 
     
-    _viewAddHeight = 0;
+    viewAddHeight = 0;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
@@ -160,19 +159,19 @@
     }];
 }
 - (void)keyboardWillShow:(NSNotification *)notification {
-    if (_viewAddHeight > 0) {
+    if (viewAddHeight > 0) {
         return;
     }
     
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
-    _viewAddHeight = keyboardSize.height - (self.scrollView.contentSize.height - (self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height));
-    _viewAddHeight = _viewAddHeight < 0 ? 0 : _viewAddHeight;
+    viewAddHeight = keyboardSize.height - (self.scrollView.contentSize.height - (self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height));
+    viewAddHeight = viewAddHeight < 0 ? 0 : viewAddHeight;
 
     [UIView beginAnimations: @"anim" context: nil];
     [UIView setAnimationBeginsFromCurrentState: YES];
     [UIView setAnimationDuration: 0.3f];
-    self.view.frame = CGRectOffset(self.view.frame, 0, 0 - _viewAddHeight);
+    self.view.frame = CGRectOffset(self.view.frame, 0, 0 - viewAddHeight);
     [UIView commitAnimations];
 
 }
@@ -184,10 +183,10 @@
     [UIView beginAnimations: @"anim" context: nil];
     [UIView setAnimationBeginsFromCurrentState: YES];
     [UIView setAnimationDuration: 0.3f];
-    self.view.frame = CGRectOffset(self.view.frame, 0, _viewAddHeight);
+    self.view.frame = CGRectOffset(self.view.frame, 0, viewAddHeight);
     [UIView commitAnimations];
     
-    _viewAddHeight = 0;
+    viewAddHeight = 0;
 }
 
 - (void)touchesBegan {
@@ -204,7 +203,11 @@
     if (![self checkData])
         return;
         
-    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading..."
+                                                           message:nil
+                                                          delegate:self
+                                                 cancelButtonTitle:nil
+                                                 otherButtonTitles:nil, nil];
     [loadingAlert show];
     
     NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
@@ -212,49 +215,57 @@
     [data setValue:@"0" forKey:@"latitude"];
     [data setValue:@"0" forKey:@"longitude"];
     [data setValue:@"0" forKey:@"altitude"];
-    [data setValue:@"4" forKey:@"user_id"];
+    [data setValue:[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"id"] forKey:@"user_id"];
 
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
-    [manager POST:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/create_picture"] parameters:data constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
-        [formData appendPartWithFileData:UIImageJPEGRepresentation ([ImageUtility fixOrientation:self.pictureImageView.image], 0.1) name:@"name" fileName:@"fg.jpg" mimeType:@"image/jepg"];
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
-        
-        if ([[responseObject objectForKey:@"status"] boolValue]) {
-            [self cleanData];
-            
+    [manager POST:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/create_picture"]
+       parameters:data constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
+        [formData appendPartWithFileData:UIImageJPEGRepresentation ([ImageUtility fixOrientation:self.pictureImageView.image], 0.1)
+                                    name:@"name"
+                                fileName:@"fg.jpg"
+                                mimeType:@"image/jepg"];
+       }
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {              
+              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
 
-//            [[[UIAlertView alloc] initWithTitle:@"提示"
-//                                        message:@"上傳照片成功！"
-//                               cancelButtonItem:[RIButtonItem itemWithLabel:@"確定" action:^{
-////                [[NSNotificationCenter defaultCenter] postNotificationName:@"goToTabIndex0" object:nil];
-//            }]
-//                               otherButtonItems:nil, nil] show];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"goToTabIndex0" object:nil];
-
-        } else {
-            [[[UIAlertView alloc] initWithTitle:@"提示，照片上傳失敗！"
-                                        message:[responseObject objectForKey:@"message"]
-                               cancelButtonItem:[RIButtonItem itemWithLabel:@"確定" action:nil]
-                               otherButtonItems:nil, nil] show];
-        }
-
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[[UIAlertView alloc] initWithTitle:@"失敗" message:@"照片上傳失敗，請確認網路狀態正常，再重新上傳一次！" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil] show];
-    }];
+              if ([[responseObject objectForKey:@"status"] boolValue]) {
+                  [self cleanData];
+                  [[NSNotificationCenter defaultCenter] postNotificationName:@"goToTabIndex0" object:nil];
+              } else {
+                  [[[UIAlertView alloc] initWithTitle:@"提示，照片上傳失敗！"
+                                              message:[responseObject objectForKey:@"message"]
+                                     cancelButtonItem:[RIButtonItem itemWithLabel:@"確定" action:nil]
+                                     otherButtonItems:nil, nil] show];
+              }
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              [[[UIAlertView alloc] initWithTitle:@"失敗"
+                                          message:@"照片上傳失敗，請確認網路狀態後，再重新上傳一次！"
+                                         delegate:self
+                                cancelButtonTitle:nil
+                                otherButtonTitles:nil, nil] show];
+          }
+     ];
 }
 
 - (BOOL)checkData {
     if (!hasChoiceAvatar) {
-        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"請挑選或使用相機拍攝一張照片！" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"請挑選或使用相機拍攝一張照片！"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"確定"
+                                                  otherButtonTitles:nil, nil];
         [AlertView show];
         return NO;
     }
     if ([self.descriptionTextView.text length] <= 0) {
-        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"請輸入照片說明喔！" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"請輸入照片說明喔！"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"確定"
+                                                  otherButtonTitles:nil, nil];
         [AlertView show];
         return NO;
     }

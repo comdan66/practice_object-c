@@ -11,6 +11,8 @@
 @interface RegisterViewController () {
     UIImagePickerController *imagePickerController;
     BOOL hasChoiceAvatar;
+    CGFloat viewAddHeight;
+    UITextField *focusTextField;
 
 }
 @end
@@ -84,6 +86,52 @@
     tapGesture.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGesture];
     
+    
+    viewAddHeight = 0;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:self.view.window];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    focusTextField = textField;
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    if (viewAddHeight > 0) {
+        return;
+    }
+    
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    viewAddHeight = keyboardSize.height - (self.scrollView.contentSize.height - (focusTextField.frame.origin.y + focusTextField.frame.size.height));
+    viewAddHeight = viewAddHeight < 0 ? 0 : viewAddHeight;
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: 0.3f];
+    self.view.frame = CGRectOffset(self.view.frame, 0, 0 - viewAddHeight);
+    [UIView commitAnimations];
+    
+}
+- (void)keyboardWillHide:(NSNotification*)notification {
+    if (!self.isViewLoaded || !self.view.window) {
+        return;
+    }
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: 0.3f];
+    self.view.frame = CGRectOffset(self.view.frame, 0, viewAddHeight);
+    [UIView commitAnimations];
+    
+    viewAddHeight = 0;
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSUInteger oldLength = [textField.text length];
@@ -128,30 +176,6 @@
     }
     
     return YES;
-}
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-        [self animateTextField: textField up: YES];
-}
-
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-        [self animateTextField: textField up: NO];
-}
-
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up {
-    int movementDistance = 50;
-    
-    if (textField == self.accountTextField)
-        movementDistance = 100;
-    else if (textField == self.passwordTextField)
-        movementDistance = 130;
-    
-    int movement = (up ? -movementDistance : movementDistance);
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: 0.3f];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
 }
 
 - (void)touchAvatarImage {
@@ -252,7 +276,11 @@
     if (![self checkData])
         return;
 
-    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading..." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading..."
+                                                           message:nil
+                                                          delegate:self
+                                                 cancelButtonTitle:nil
+                                                 otherButtonTitles:nil, nil];
     [loadingAlert show];
     
     NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
@@ -260,83 +288,80 @@
     [data setValue:self.passwordTextField.text forKey:@"password"];
     [data setValue:self.nameTextField.text forKey:@"name"];
 
-    NSString *urlString = [NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/register"];
-
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
-
-    [manager POST:urlString parameters:data constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
-        [formData appendPartWithFileData:UIImageJPEGRepresentation ([ImageUtility fixOrientation:self.avatarImageView.image], 0.1) name:@"avatar" fileName:@"fg.jpg" mimeType:@"image/jepg"];
-        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
-            
-            if ([[responseObject objectForKey:@"status"] boolValue]) {
-                [[[UIAlertView alloc] initWithTitle:@"成功"
-                                            message:@"恭喜，註冊成功，你已經是會員了，趕快登入吧！"
-                                   cancelButtonItem:[RIButtonItem itemWithLabel:@"確定" action:^{
-                    [_loginVC updateAccount:[[responseObject objectForKey:@"user"] objectForKey:@"account"]];
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                    
-                }]
-                                   otherButtonItems:nil, nil] show];
-            } else {
-                [[[UIAlertView alloc] initWithTitle:@"失敗" message:[responseObject objectForKey:@"message"] delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil] show];
-            }
-
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [[[UIAlertView alloc] initWithTitle:@"失敗" message:@"連線註冊失敗..." delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil] show];
+    [manager POST:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/register"]
+       parameters:data constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
+        [formData appendPartWithFileData:UIImageJPEGRepresentation ([ImageUtility fixOrientation:self.avatarImageView.image], 0.1)
+                                    name:@"avatar"
+                                fileName:@"fg.jpg"
+                                mimeType:@"image/jepg"];
         }
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+            
+              if ([[responseObject objectForKey:@"status"] boolValue]) {
+                  [[[UIAlertView alloc] initWithTitle:@"成功"
+                                              message:@"恭喜，註冊成功，你已經是會員了，趕快登入吧！"
+                                     cancelButtonItem:[RIButtonItem itemWithLabel:@"確定" action:^{
+
+                      [USER_DEFAULTS setValue:[responseObject objectForKey:@"user"] forKey:@"user"];
+                      
+                      [_loginVC updateAccount:[[responseObject objectForKey:@"user"] objectForKey:@"account"]];
+                      [self dismissViewControllerAnimated:YES completion:nil];
+                  }]
+                                     otherButtonItems:nil, nil] show];
+              } else {
+                  [[[UIAlertView alloc] initWithTitle:@"失敗"
+                                              message:[responseObject objectForKey:@"message"]
+                                             delegate:self
+                                    cancelButtonTitle:nil
+                                    otherButtonTitles:nil, nil] show];
+              }
+          }
+            failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                [[[UIAlertView alloc] initWithTitle:@"提示"
+                                            message:@"連線註冊失敗，請確認網路連線狀況後再試一次..."
+                                           delegate:self
+                                  cancelButtonTitle:nil
+                                  otherButtonTitles:nil, nil] show];
+            }
      ];
-    
-//    OAHttp *http = [OAHttp new];
-//    
-//    NSMutableDictionary *vars = [NSMutableDictionary new];
-//    [vars setValue:self.accountTextField.text forKey:@"account"];
-//    [vars setValue:self.passwordTextField.text forKey:@"password"];
-//    [vars setValue:self.nameTextField.text forKey:@"name"];
-//
-//    [vars setObject:UIImageJPEGRepresentation ([self fixOrientation:self.avatarImageView.image], 0.1) forKey:@"file"];
-//    
-//    [http postMulti:@"http://ios.ioa.tw/api/v1/register" vars:vars completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//        NSMutableDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//        NSLog(@"%@",result);
-////        dispatch_async(dispatch_get_main_queue(), ^{
-////            [loadinfAlert dismissWithClickedButtonIndex:-1 animated:YES];
-////            UIAlertView *messageAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
-////            
-////            
-////            if ([[result objectForKey:@"status"] boolValue]) {
-////                [messageAlert setMessage:@"照片上傳成功！"];
-////            } else {
-////                [messageAlert setMessage:@"照片上傳失敗！"];
-////            }
-////            [messageAlert show];
-////        });
-//    }];
-
-
-
-//    [loadinfAlert dismissWithClickedButtonIndex:-1 animated:YES];
 }
 - (BOOL)checkData {
     if (!hasChoiceAvatar) {
-        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"請挑選或使用相機拍攝一張照片！" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"請挑選或使用相機拍攝一張照片！"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"確定"
+                                                  otherButtonTitles:nil, nil];
         [AlertView show];
         return NO;
     }
     if ([self.nameTextField.text length] <= 0) {
-        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"請輸入暱稱喔！" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"請輸入暱稱喔！"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"確定"
+                                                  otherButtonTitles:nil, nil];
         [AlertView show];
         return NO;
     }
     if ([self.accountTextField.text length] <= 0) {
-        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"請輸入帳號喔！" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"請輸入帳號喔！"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"確定"
+                                                  otherButtonTitles:nil, nil];
         [AlertView show];
         return NO;
     }
     if ([self.passwordTextField.text length] <= 0) {
-        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"請輸入密碼喔！" delegate:self cancelButtonTitle:@"確定" otherButtonTitles:nil, nil];
+        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"請輸入密碼喔！"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"確定"
+                                                  otherButtonTitles:nil, nil];
         [AlertView show];
         return NO;
     }

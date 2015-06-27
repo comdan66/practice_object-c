@@ -11,6 +11,8 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "ImageUtility.h"
 #import "UIAlertView+Blocks.h"
+#import "Config.h"
+
 
 @interface CameraViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 

@@ -24,5 +24,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (weak, nonatomic) IBOutlet UILabel *verticalDividerLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

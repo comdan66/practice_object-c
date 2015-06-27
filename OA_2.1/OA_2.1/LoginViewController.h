@@ -10,6 +10,8 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "RegisterViewController.h"
 #import "RegisterDelegate.h"
+#import "UIAlertView+Blocks.h"
+#import "Config.h"
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate, RegisterDelegate>
 

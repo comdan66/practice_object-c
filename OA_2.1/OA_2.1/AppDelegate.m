@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-
 @interface AppDelegate ()
 
 @end
@@ -16,13 +15,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-//    [[UITabBar appearance] setBackgroundColor:[UIColor redColor]];
-    //    [[UINavigationBar appearance] setBackgroundColor:[UIColor greenColor]];
-//    [[UITabBar appearance] setBarTintColor:[UIColor redColor]];
-//    [[UINavigationBar appearance] setBarTintColor:[UIColor redColor]];
-//    
-//    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *mainViewController;
+    
+    if ([[USER_DEFAULTS objectForKey:@"isLogin"] isEqualToString:@"YES"])
+        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyTabBarController"];
+    else
+        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+
+    [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
+    [self.window setRootViewController:mainViewController];
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 
