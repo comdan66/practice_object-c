@@ -98,7 +98,8 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:self.view.window];
 }
-
+-(void)dealloc {
+}
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     focusTextField = textField;
 }
