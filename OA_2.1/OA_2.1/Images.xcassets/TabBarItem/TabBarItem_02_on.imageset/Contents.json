@@ -3,16 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "setting_o.png"
+      "filename" : "map_o.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "setting_o@2x.png"
+      "filename" : "map_o@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "map_o@3x.png"
     }
   ],
   "info" : {

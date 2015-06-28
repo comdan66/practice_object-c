@@ -15,6 +15,7 @@
 		0E77D3EC1B3EC48900A2C9EC /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E77D3EB1B3EC48900A2C9EC /* UIPlaceHolderTextView.m */; };
 		0E77D3F31B3EDDFE00A2C9EC /* ImageUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E77D3F21B3EDDFE00A2C9EC /* ImageUtility.m */; };
 		0E77D3F81B3F245A00A2C9EC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E77D3F71B3F245A00A2C9EC /* SettingViewController.m */; };
+		0E77D3FA1B3FB0CB00A2C9EC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E77D3F91B3FB0CB00A2C9EC /* CoreLocation.framework */; };
 		0EC253C31B3BA6810057DB55 /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC253C21B3BA6810057DB55 /* MyTabBarController.m */; };
 		0EC253CF1B3BB0A90057DB55 /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC253CE1B3BB0A90057DB55 /* MyTabBar.m */; };
 		0EC2542B1B3BEE800057DB55 /* IndexTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */; };
@@ -75,6 +76,7 @@
 		0E77D3F41B3EFD1300A2C9EC /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		0E77D3F61B3F245A00A2C9EC /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		0E77D3F71B3F245A00A2C9EC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		0E77D3F91B3FB0CB00A2C9EC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0EC253C11B3BA6810057DB55 /* MyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBarController.h; sourceTree = "<group>"; };
 		0EC253C21B3BA6810057DB55 /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
 		0EC253CD1B3BB0A90057DB55 /* MyTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBar.h; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E77D3FA1B3FB0CB00A2C9EC /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +308,7 @@
 		0ED1F48A1B39A3AF001B9275 = {
 			isa = PBXGroup;
 			children = (
+				0E77D3F91B3FB0CB00A2C9EC /* CoreLocation.framework */,
 				0ED1F4951B39A3AF001B9275 /* OA_2.1 */,
 				0ED1F4B21B39A3AF001B9275 /* OA_2.1Tests */,
 				0ED1F4941B39A3AF001B9275 /* Products */,

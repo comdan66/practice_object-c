@@ -174,6 +174,25 @@
             </objects>
             <point key="canvasLocation" x="1495" y="2663"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="cJE-Fr-bPQ">
+            <objects>
+                <viewController id="kVa-Ty-kGr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8BT-OL-VjF"/>
+                        <viewControllerLayoutGuide type="bottom" id="rUZ-vf-cG7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VEX-zZ-Jq5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="2CI-PZ-KMX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fg9-Wp-vWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="2655"/>
+        </scene>
         <!--OA's app v2.1-->
         <scene sceneID="tFN-iJ-ZGC">
             <objects>
@@ -324,6 +343,7 @@
                         <segue destination="CW6-1U-XpN" kind="relationship" relationship="viewControllers" id="Vg1-yS-PAD"/>
                         <segue destination="Yry-0P-RsM" kind="relationship" relationship="viewControllers" id="K0U-gM-uX5"/>
                         <segue destination="ns1-yL-CAj" kind="relationship" relationship="viewControllers" id="jiY-0y-4S6"/>
+                        <segue destination="kVa-Ty-kGr" kind="relationship" relationship="viewControllers" id="u2j-EB-5l4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xb1-X7-VPS" userLabel="First Responder" sceneMemberID="firstResponder"/>

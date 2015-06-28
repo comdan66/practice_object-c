@@ -97,11 +97,13 @@
              callbackBlock(self.tableView);
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             [[[UIAlertView alloc] initWithTitle:@"失敗"
-                                         message:@"請確認網路狀態後，再重新開啟一次！"
-                                        delegate:self
-                               cancelButtonTitle:nil
-                               otherButtonTitles:nil, nil] show];
+             if (loadingAlert != nil)
+                 [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+
+             [[[UIAlertView alloc] initWithTitle:@"提示"
+                                         message:@"連線失敗，請確認網路連線狀況後再試一次..."
+                                cancelButtonItem:[RIButtonItem itemWithLabel:@"確定" ]
+                                otherButtonItems:nil, nil] show];
          }
      ];
 }
@@ -134,11 +136,13 @@
 
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             [[[UIAlertView alloc] initWithTitle:@"失敗"
-                                         message:@"請確認網路狀態後，再重新開啟一次！"
-                                        delegate:self
-                               cancelButtonTitle:nil
-                               otherButtonTitles:nil, nil] show];
+             if (alert != nil)
+                 [alert dismissWithClickedButtonIndex:-1 animated:YES];
+
+             [[[UIAlertView alloc] initWithTitle:@"提示"
+                                         message:@"連線失敗，請確認網路連線狀況後再試一次..."
+                                cancelButtonItem:[RIButtonItem itemWithLabel:@"確定" ]
+                                otherButtonItems:nil, nil] show];
          }
      ];
 }

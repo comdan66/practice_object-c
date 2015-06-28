@@ -105,6 +105,7 @@
        parameters:data
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+              
               if ([[responseObject objectForKey:@"status"] boolValue]) {
                   [USER_DEFAULTS setValue:[responseObject objectForKey:@"user"] forKey:@"user"];
                   [USER_DEFAULTS setValue:@"YES" forKey:@"isLogin"];
@@ -112,18 +113,17 @@
               } else {
                   [[[UIAlertView alloc] initWithTitle:@"失敗"
                                               message:[responseObject objectForKey:@"message"]
-                                             delegate:self
-                                    cancelButtonTitle:nil
-                                    otherButtonTitles:nil, nil] show];
-              
+                                    cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
+                                    otherButtonItems:nil, nil] show];
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+              
               [[[UIAlertView alloc] initWithTitle:@"提示"
-                                          message:@"連線註冊失敗，請確認網路連線狀況後再試一次..."
-                                         delegate:self
-                                cancelButtonTitle:nil
-                                otherButtonTitles:nil, nil] show];
+                                          message:@"連線失敗，請確認網路連線狀況後再試一次..."
+                                 cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
+                                 otherButtonItems:nil, nil] show];
           }
     ];
 }

@@ -27,7 +27,7 @@
     [self.window setRootViewController:mainViewController];
     [self.window makeKeyAndVisible];
 
-    return YES;
+    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

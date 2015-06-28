@@ -12,9 +12,10 @@
 #import "ImageUtility.h"
 #import "UIAlertView+Blocks.h"
 #import "Config.h"
+#import <CoreLocation/CoreLocation.h>
 
 
-@interface CameraViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CameraViewController : UIViewController <CLLocationManagerDelegate, UITextViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *borderView;
 @property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *descriptionTextView;

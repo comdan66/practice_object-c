@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "edit_o.png"
+      "filename" : "setting_o.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "edit_o@2x.png"
+      "filename" : "setting_o@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "edit_o@3x.png"
+      "filename" : "setting_o@3x.png"
     }
   ],
   "info" : {

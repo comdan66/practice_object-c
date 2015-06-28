@@ -12,6 +12,8 @@
     UIImagePickerController *imagePickerController;
     BOOL hasChoiceAvatar;
     CGFloat viewAddHeight;
+    CLLocationManager *locationManager;
+    CLLocation *location;
 }
 
 @end
@@ -20,6 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    
+    locationManager = [CLLocationManager new];
+    [locationManager setDelegate:self];
+    [locationManager requestWhenInUseAuthorization];
     
     [self.view.layer setBackgroundColor:[UIColor colorWithRed:0.9 green:0.88 blue:0.87 alpha:1].CGColor];
     
@@ -75,6 +81,23 @@
                                                object:self.view.window];
 
     [self cleanData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [locationManager startUpdatingLocation];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+//    CLLocation *c = [locations objectAtIndex:0];
+    location = [locations objectAtIndex:0];
+//
+//    NSLog(@"%@", locations);
+//    NSLog(@"緯度：%f, 經度：%f, 高度：%f", c.coordinate.latitude, c.coordinate.longitude, c.altitude);
+}
+-(void)viewDidDisappear:(BOOL)animated {
+    [locationManager stopUpdatingLocation];
 }
 
 - (void) cleanData {
@@ -212,11 +235,17 @@
     
     NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
     [data setValue:self.descriptionTextView.text forKey:@"description"];
-    [data setValue:@"0" forKey:@"latitude"];
-    [data setValue:@"0" forKey:@"longitude"];
-    [data setValue:@"0" forKey:@"altitude"];
     [data setValue:[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"id"] forKey:@"user_id"];
 
+    if (location != nil) {
+        [data setValue:[[NSString alloc] initWithFormat:@"%f", location.coordinate.latitude] forKey:@"latitude"];
+        [data setValue:[[NSString alloc] initWithFormat:@"%f", location.coordinate.longitude] forKey:@"longitude"];
+        [data setValue:[[NSString alloc] initWithFormat:@"%f", location.altitude] forKey:@"altitude"];
+    } else {
+        [data setValue:@"" forKey:@"latitude"];
+        [data setValue:@"" forKey:@"longitude"];
+        [data setValue:@"" forKey:@"altitude"];
+    }
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
@@ -227,7 +256,7 @@
                                 fileName:@"fg.jpg"
                                 mimeType:@"image/jepg"];
        }
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {              
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
               [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
 
               if ([[responseObject objectForKey:@"status"] boolValue]) {
@@ -236,16 +265,17 @@
               } else {
                   [[[UIAlertView alloc] initWithTitle:@"提示，照片上傳失敗！"
                                               message:[responseObject objectForKey:@"message"]
-                                     cancelButtonItem:[RIButtonItem itemWithLabel:@"確定" action:nil]
+                                     cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
                                      otherButtonItems:nil, nil] show];
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              [[[UIAlertView alloc] initWithTitle:@"失敗"
-                                          message:@"照片上傳失敗，請確認網路狀態後，再重新上傳一次！"
-                                         delegate:self
-                                cancelButtonTitle:nil
-                                otherButtonTitles:nil, nil] show];
+              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+              
+              [[[UIAlertView alloc] initWithTitle:@"提示"
+                                          message:@"連線失敗，請確認網路連線狀況後再試一次..."
+                                 cancelButtonItem:[RIButtonItem itemWithLabel:@"確定" ]
+                                 otherButtonItems:nil, nil] show];
           }
      ];
 }
