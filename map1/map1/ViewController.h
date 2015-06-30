@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "MyAnno.h"
+//#import "MyAnno.h"
+#import "REMarkerClusterer.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "MKAnnotationView+WebCache.h"
 
-@interface ViewController : UIViewController <MKMapViewDelegate>
+@interface ViewController : UIViewController <MKMapViewDelegate, REMarkerClusterDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, readonly, nonatomic) REMarkerClusterer *clusterer;
 
 
 @end
