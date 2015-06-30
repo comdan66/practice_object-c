@@ -168,17 +168,86 @@
     pinID = annotation.markers.count == 1 ? markerPinID : clusterPinID;
     
 //    MKPinAnnotationView *pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:pinID];
-    MyMKAnnotationView *annView = (MyMKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomAnnotation"];
+    MKAnnotationView *annView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomAnnotation"];
     
     if (annView == nil) {
-        annView = [[MyMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomAnnocation"];
+        annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomAnnocation"];
         
 
     }
-    [annView sd_setImageWithURL:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]]; 
+    
+    
+    
+    AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    
+
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
+    [imageView setImageURL:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
+    
+//    [imageView.layer setCornerRadius:30];
+    [imageView.layer setBorderColor:[UIColor redColor].CGColor];
+    [imageView.layer setBorderWidth:10.0f / [UIScreen mainScreen].scale];
+//    [imageView setClipsToBounds:YES];
+    [imageView setContentMode:UIViewContentModeScaleAspectFill];
+    
+    [imageView.layer setShadowColor:[UIColor colorWithRed:0.15 green:0.16 blue:0.13 alpha:1].CGColor];
+    [imageView.layer setShadowOffset:CGSizeMake(2.4f, 2.0f)];
+    [imageView.layer setShadowRadius:5.0f];
+    [imageView.layer setShadowOpacity:0.5f];
+    
+    
+//    ;
+    [annView addSubview:imageView];
+    
+//    [annView sd_setImageWithURL:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
 //    [annView inita];
 //    annView.image = [UIImage imageNamed:@"Pin_Red"];
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    MKAnnotationView *annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
+
+//    
+//    //change here
+//    annView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Pin_Purple"]];
+//    
+//    UIImage *frame = [UIImage imageNamed:[NSString stringWithFormat:@"Pin_Purple"]];
+//  UIImage *image = [UIImage imageNamed:@"Pin_Red"];
+//  
+//  UIGraphicsBeginImageContext(CGSizeMake(200, 200));
+//  
+//  [frame drawInRect:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+//  [image drawInRect:CGRectMake(2, 2, 60, 60)]; // the frame your inner image
+//  //maybe you should draw the left bottom icon here,
+//  
+//  
+//  //then set back the new image, done
+//  annView.image = UIGraphicsGetImageFromCurrentImageContext();
+//  
+//  UIGraphicsEndImageContext();
+//  
+//  
+//  
+//  
+//  
+//  UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+////  [rightButton addTarget:self action:@selector(writeSomething:) forControlEvents:UIControlEventTouchUpInside];
+//  [rightButton setTitle:annotation.title forState:UIControlStateNormal];
+//  
+//  annView.rightCalloutAccessoryView = rightButton;
+//    annView.canShowCallout = NO;
+//  annView.draggable = NO;
+  
+  
+  
     return annView;
 }
 - (void) handlePinButtonTap:(UITapGestureRecognizer *)gestureRecognizer
