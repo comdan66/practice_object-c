@@ -15,6 +15,7 @@
 //#import "MyMKAnnotationView.h"
 
 #import "AsyncImageView.h"
+#import "MarkerView.h"
 
 @interface ViewController : UIViewController <MKMapViewDelegate, REMarkerClusterDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

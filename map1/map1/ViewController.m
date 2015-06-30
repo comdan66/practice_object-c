@@ -177,27 +177,41 @@
     }
     
     
+//    
+//    AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+//    
+//
+//    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
+//    [imageView setImageURL:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
+//    
+////    [imageView.layer setCornerRadius:30];
+//    [imageView.layer setBorderColor:[UIColor redColor].CGColor];
+//    [imageView.layer setBorderWidth:10.0f / [UIScreen mainScreen].scale];
+////    [imageView setClipsToBounds:YES];
+//    [imageView setContentMode:UIViewContentModeScaleAspectFill];
+//    
+//    [imageView.layer setShadowColor:[UIColor colorWithRed:0.15 green:0.16 blue:0.13 alpha:1].CGColor];
+//    [imageView.layer setShadowOffset:CGSizeMake(2.4f, 2.0f)];
+//    [imageView.layer setShadowRadius:5.0f];
+//    [imageView.layer setShadowOpacity:0.5f];
     
-    AsyncImageView *imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+//    MarkerView *markerView = [[MarkerView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+//    [markerView setBackgroundColor:[UIColor colorWithRed:0.84 green:0.84 blue:0.84 alpha:1]];
     
-
-    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
-    [imageView setImageURL:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
     
-//    [imageView.layer setCornerRadius:30];
-    [imageView.layer setBorderColor:[UIColor redColor].CGColor];
-    [imageView.layer setBorderWidth:10.0f / [UIScreen mainScreen].scale];
-//    [imageView setClipsToBounds:YES];
-    [imageView setContentMode:UIViewContentModeScaleAspectFill];
+//    MarkerView *markerView = (MarkerView *)[tableView dequeueReusableCellWithIdentifier:@"IndexTableViewCell"];
+//    if(!cell){
+//        NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"IndexTableViewCell" owner:self options:nil];
+//        cell = [nibs objectAtIndex:0];
+//    }
     
-    [imageView.layer setShadowColor:[UIColor colorWithRed:0.15 green:0.16 blue:0.13 alpha:1].CGColor];
-    [imageView.layer setShadowOffset:CGSizeMake(2.4f, 2.0f)];
-    [imageView.layer setShadowRadius:5.0f];
-    [imageView.layer setShadowOpacity:0.5f];
     
+    MarkerView *markerView = [MarkerView customView];
+    markerView.frame = CGRectMake(0, 0, 100, 100);
+    [markerView initUI:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
     
 //    ;
-    [annView addSubview:imageView];
+    [annView addSubview:markerView];
     
 //    [annView sd_setImageWithURL:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
 //    [annView inita];

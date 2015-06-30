@@ -51,6 +51,8 @@
 		0EAB32C81B42D94000D3D106 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32B71B42D94000D3D106 /* UIImageView+WebCache.m */; };
 		0EAB32C91B42D94000D3D106 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32B91B42D94000D3D106 /* UIView+WebCacheOperation.m */; };
 		0EAB32CC1B42F75A00D3D106 /* MyMKAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32CB1B42F75A00D3D106 /* MyMKAnnotationView.m */; };
+		0EAB32CE1B4311BC00D3D106 /* MarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EAB32CD1B4311BC00D3D106 /* MarkerView.xib */; };
+		0EAB32D41B43122C00D3D106 /* MarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32D31B43122C00D3D106 /* MarkerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +151,9 @@
 		0EAB32B91B42D94000D3D106 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		0EAB32CA1B42F75A00D3D106 /* MyMKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMKAnnotationView.h; sourceTree = "<group>"; };
 		0EAB32CB1B42F75A00D3D106 /* MyMKAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMKAnnotationView.m; sourceTree = "<group>"; };
+		0EAB32CD1B4311BC00D3D106 /* MarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerView.xib; sourceTree = "<group>"; };
+		0EAB32D21B43122C00D3D106 /* MarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkerView.h; sourceTree = "<group>"; };
+		0EAB32D31B43122C00D3D106 /* MarkerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +215,9 @@
 				0EAB32311B417CC100D3D106 /* Supporting Files */,
 				0EAB32CA1B42F75A00D3D106 /* MyMKAnnotationView.h */,
 				0EAB32CB1B42F75A00D3D106 /* MyMKAnnotationView.m */,
+				0EAB32D21B43122C00D3D106 /* MarkerView.h */,
+				0EAB32D31B43122C00D3D106 /* MarkerView.m */,
+				0EAB32CD1B4311BC00D3D106 /* MarkerView.xib */,
 			);
 			path = map1;
 			sourceTree = "<group>";
@@ -433,6 +441,7 @@
 				0EAB32401B417CC100D3D106 /* Main.storyboard in Resources */,
 				0EAB32451B417CC100D3D106 /* LaunchScreen.xib in Resources */,
 				0EAB32621B41971C00D3D106 /* tw_flag.png in Resources */,
+				0EAB32CE1B4311BC00D3D106 /* MarkerView.xib in Resources */,
 				0EAB32421B417CC100D3D106 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +476,7 @@
 				0EAB32851B4293DB00D3D106 /* AFHTTPRequestOperation.m in Sources */,
 				0EAB32871B4293DB00D3D106 /* AFHTTPSessionManager.m in Sources */,
 				0EAB328B1B4293DB00D3D106 /* AFURLRequestSerialization.m in Sources */,
+				0EAB32D41B43122C00D3D106 /* MarkerView.m in Sources */,
 				0EAB32C41B42D94000D3D106 /* UIImage+GIF.m in Sources */,
 				0EAB32C91B42D94000D3D106 /* UIView+WebCacheOperation.m in Sources */,
 				0EAB326C1B427FF800D3D106 /* RECluster.m in Sources */,

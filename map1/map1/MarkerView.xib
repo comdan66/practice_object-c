@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MarkerView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mVE-1L-clQ" customClass="AsyncImageView">
+                    <rect key="frame" x="101" y="27" width="386" height="365"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.47717795014855136" blue="0.13965081895429043" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="mVE-1L-clQ" secondAttribute="trailing" id="4rG-OZ-DV7"/>
+                <constraint firstItem="mVE-1L-clQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OIV-uV-JP7"/>
+                <constraint firstItem="mVE-1L-clQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zuo-CD-RM0"/>
+                <constraint firstAttribute="bottom" secondItem="mVE-1L-clQ" secondAttribute="bottom" id="kZ2-Vp-POg"/>
+            </constraints>
+            <connections>
+                <outlet property="mainImageView" destination="mVE-1L-clQ" id="dHA-Ce-cVM"/>
+            </connections>
+            <point key="canvasLocation" x="527" y="420"/>
+        </view>
+    </objects>
+</document>
