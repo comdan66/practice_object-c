@@ -50,6 +50,7 @@
 		0EAB32C71B42D94000D3D106 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32B51B42D94000D3D106 /* UIImageView+HighlightedWebCache.m */; };
 		0EAB32C81B42D94000D3D106 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32B71B42D94000D3D106 /* UIImageView+WebCache.m */; };
 		0EAB32C91B42D94000D3D106 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32B91B42D94000D3D106 /* UIView+WebCacheOperation.m */; };
+		0EAB32CC1B42F75A00D3D106 /* MyMKAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32CB1B42F75A00D3D106 /* MyMKAnnotationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +147,8 @@
 		0EAB32B71B42D94000D3D106 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		0EAB32B81B42D94000D3D106 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		0EAB32B91B42D94000D3D106 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		0EAB32CA1B42F75A00D3D106 /* MyMKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMKAnnotationView.h; sourceTree = "<group>"; };
+		0EAB32CB1B42F75A00D3D106 /* MyMKAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMKAnnotationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +208,8 @@
 				0EAB32431B417CC100D3D106 /* LaunchScreen.xib */,
 				0EAB32381B417CC100D3D106 /* map1.xcdatamodeld */,
 				0EAB32311B417CC100D3D106 /* Supporting Files */,
+				0EAB32CA1B42F75A00D3D106 /* MyMKAnnotationView.h */,
+				0EAB32CB1B42F75A00D3D106 /* MyMKAnnotationView.m */,
 			);
 			path = map1;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 				0EAB32BC1B42D94000D3D106 /* SDImageCache.m in Sources */,
 				0EAB32881B4293DB00D3D106 /* AFNetworkReachabilityManager.m in Sources */,
 				0EAB32C31B42D94000D3D106 /* UIButton+WebCache.m in Sources */,
+				0EAB32CC1B42F75A00D3D106 /* MyMKAnnotationView.m in Sources */,
 				0EAB32371B417CC100D3D106 /* AppDelegate.m in Sources */,
 				0EAB328A1B4293DB00D3D106 /* AFURLConnectionOperation.m in Sources */,
 				0EAB32C61B42D94000D3D106 /* UIImage+WebP.m in Sources */,

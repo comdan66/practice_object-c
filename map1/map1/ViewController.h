@@ -12,6 +12,7 @@
 #import "REMarkerClusterer.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "MKAnnotationView+WebCache.h"
+#import "MyMKAnnotationView.h"
 
 @interface ViewController : UIViewController <MKMapViewDelegate, REMarkerClusterDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

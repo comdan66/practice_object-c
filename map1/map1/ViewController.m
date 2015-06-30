@@ -28,7 +28,7 @@
     [self.mapView setRegion:MKCoordinateRegionMake(center, MKCoordinateSpanMake(0.025, 0.025)) animated:YES];
     
     [self setClusterer:[[REMarkerClusterer alloc] initWithMapView:self.mapView delegate:self]];
-    [self.clusterer setGridSize:UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 25 : 20];//距離
+    [self.clusterer setGridSize:65];//距離
     
     [self.clusterer clusterize:NO];
     [self.clusterer zoomToAnnotationsBounds:self.clusterer.markers];
@@ -168,41 +168,16 @@
     pinID = annotation.markers.count == 1 ? markerPinID : clusterPinID;
     
 //    MKPinAnnotationView *pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:pinID];
-    MKAnnotationView *annView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomAnnotation"];
+    MyMKAnnotationView *annView = (MyMKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomAnnotation"];
     
     if (annView == nil) {
-        annView = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"CustomAnnocation"];
-//        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pinID];
-//
-//        UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//        detailButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-//        detailButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-//        
-//        pinView.rightCalloutAccessoryView = detailButton;
-//        pinView.pinColor = MKPinAnnotationColorRed;
-//        pinView.canShowCallout = YES;
+        annView = [[MyMKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomAnnocation"];
+        
 
-        
-//        UIButton *pinButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//        pinButton.frame = CGRectMake(0, 0, 140, 28);
-//        pinButton.tag = 10;
-//        
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-//                                       initWithTarget:self action:@selector(handlePinButtonTap:)];
-//        tap.numberOfTapsRequired = 1;
-//        [pinButton addGestureRecognizer:tap];
-//        [pinView addSubview:pinButton];
-        
-//        NSLog(@"%@", );
-//        AsyncImageView
-//((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"url"] objectForKey:@"w100"]
-        
-        [annView sd_setImageWithURL:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
-//        annView.image = [self imageWithBorderFromImage:annView.image];
-        //        UIImage
-//        annView.image = [UIImage imageNamed:annotation.markers.count == 1 ? @"Pin_Red" : @"Pin_Purple"];
-        
     }
+    [annView sd_setImageWithURL:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]]; 
+//    [annView inita];
+//    annView.image = [UIImage imageNamed:@"Pin_Red"];
     
     return annView;
 }
