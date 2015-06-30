@@ -17,6 +17,8 @@
 		0EAB32511B417CC200D3D106 /* map1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32501B417CC200D3D106 /* map1Tests.m */; };
 		0EAB325B1B417CE000D3D106 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAB325A1B417CE000D3D106 /* MapKit.framework */; };
 		0EAB325D1B417CED00D3D106 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAB325C1B417CED00D3D106 /* CoreLocation.framework */; };
+		0EAB32601B41938B00D3D106 /* MyAnno.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB325F1B41938B00D3D106 /* MyAnno.m */; };
+		0EAB32621B41971C00D3D106 /* tw_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EAB32611B41971C00D3D106 /* tw_flag.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,9 @@
 		0EAB32501B417CC200D3D106 /* map1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = map1Tests.m; sourceTree = "<group>"; };
 		0EAB325A1B417CE000D3D106 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0EAB325C1B417CED00D3D106 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0EAB325E1B41938B00D3D106 /* MyAnno.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnno.h; sourceTree = "<group>"; };
+		0EAB325F1B41938B00D3D106 /* MyAnno.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnno.m; sourceTree = "<group>"; };
+		0EAB32611B41971C00D3D106 /* tw_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tw_flag.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +101,10 @@
 				0EAB323B1B417CC100D3D106 /* ViewController.h */,
 				0EAB323C1B417CC100D3D106 /* ViewController.m */,
 				0EAB323E1B417CC100D3D106 /* Main.storyboard */,
+				0EAB325E1B41938B00D3D106 /* MyAnno.h */,
+				0EAB325F1B41938B00D3D106 /* MyAnno.m */,
 				0EAB32411B417CC100D3D106 /* Images.xcassets */,
+				0EAB32611B41971C00D3D106 /* tw_flag.png */,
 				0EAB32431B417CC100D3D106 /* LaunchScreen.xib */,
 				0EAB32381B417CC100D3D106 /* map1.xcdatamodeld */,
 				0EAB32311B417CC100D3D106 /* Supporting Files */,
@@ -212,6 +220,7 @@
 			files = (
 				0EAB32401B417CC100D3D106 /* Main.storyboard in Resources */,
 				0EAB32451B417CC100D3D106 /* LaunchScreen.xib in Resources */,
+				0EAB32621B41971C00D3D106 /* tw_flag.png in Resources */,
 				0EAB32421B417CC100D3D106 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,6 +243,7 @@
 				0EAB32341B417CC100D3D106 /* main.m in Sources */,
 				0EAB323D1B417CC100D3D106 /* ViewController.m in Sources */,
 				0EAB323A1B417CC100D3D106 /* map1.xcdatamodeld in Sources */,
+				0EAB32601B41938B00D3D106 /* MyAnno.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
