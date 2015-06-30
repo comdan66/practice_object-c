@@ -241,8 +241,8 @@ static char imageURLKey;
 
 - (UIImage *)generatePhotoStackWithImage:(UIImage *)image {
     CGFloat boderWidth = 10;
-    CGSize newSize = CGSizeMake(image.size.width + 70, image.size.width + 70);
-    CGRect rect = CGRectMake(25, 25, image.size.width, image.size.width);
+    CGSize newSize = CGSizeMake(image.size.width + 70, image.size.height + 70);
+    CGRect rect = CGRectMake(25, 25, image.size.width, image.size.height);
     
     UIGraphicsBeginImageContextWithOptions(newSize, NO, image.scale); {
         CGContextRef context = UIGraphicsGetCurrentContext();
