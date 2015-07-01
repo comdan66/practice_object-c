@@ -161,20 +161,25 @@
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
-    static NSString *pinID;
-    static NSString *clusterPinID = @"REClusterPin";
-    static NSString *markerPinID = @"REMarkerPin";
+//    static NSString *pinID;
+//    static NSString *clusterPinID = @"REClusterPin";
+//    static NSString *markerPinID = @"REMarkerPin";
+//    
+//    pinID = annotation.markers.count == 1 ? markerPinID : clusterPinID;
     
-    pinID = annotation.markers.count == 1 ? markerPinID : clusterPinID;
-    
-//    MKPinAnnotationView *pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:pinID];
     MKAnnotationView *annView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomAnnotation"];
     
     if (annView == nil) {
         annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomAnnocation"];
-        
-
     }
+    
+    MarkerView *markerView = annotation.markers.count == 1 ? [MarkerView initSingle] : [MarkerView initMulti];
+    [markerView initUI:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
+    [annView addSubview:markerView];
+    
+    annView.canShowCallout = NO;
+    annView.draggable = NO;
+    return annView;
     
     
 //    
@@ -204,14 +209,6 @@
 //        NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"IndexTableViewCell" owner:self options:nil];
 //        cell = [nibs objectAtIndex:0];
 //    }
-    
-    
-    MarkerView *markerView = [MarkerView customView];
-    markerView.frame = CGRectMake(0, 0, 100, 100);
-    [markerView initUI:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
-    
-//    ;
-    [annView addSubview:markerView];
     
 //    [annView sd_setImageWithURL:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
 //    [annView inita];
@@ -257,12 +254,9 @@
 //  [rightButton setTitle:annotation.title forState:UIControlStateNormal];
 //  
 //  annView.rightCalloutAccessoryView = rightButton;
-//    annView.canShowCallout = NO;
-//  annView.draggable = NO;
   
   
   
-    return annView;
 }
 - (void) handlePinButtonTap:(UITapGestureRecognizer *)gestureRecognizer
 {

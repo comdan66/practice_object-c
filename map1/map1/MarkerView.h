@@ -11,9 +11,12 @@
 
 @interface MarkerView : UIView
 @property (weak, nonatomic) IBOutlet AsyncImageView *mainImageView;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 
-+ (id)customView;
+@property NSString *nibType;
 
++ (MarkerView *)initSingle;
++ (MarkerView *)initMulti;
 
 - (void)initUI:(NSURL *) url;
 @end

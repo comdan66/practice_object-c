@@ -9,39 +9,50 @@
 #import "MarkerView.h"
 
 @implementation MarkerView
+@synthesize nibType;
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-+ (id)customView
-{
-    MarkerView *se = [[[NSBundle mainBundle] loadNibNamed:@"MarkerView" owner:nil options:nil] lastObject];
++ (MarkerView *)initSingle {
+    MarkerView *markView = [[[NSBundle mainBundle] loadNibNamed:@"SingleMarkerView" owner:nil options:nil] lastObject];
     
-    // make sure customView is not nil or the wrong class!
-    if ([se isKindOfClass:[MarkerView class]])
-        return se;
-    else
+    if ([markView isKindOfClass:[MarkerView class]]) {
+        markView.nibType = @"Single";
+        return markView;
+    } else
         return nil;
 }
-- (void)initUI:(NSURL *) url {
-    NSLog(@"ddd");
++ (MarkerView *)initMulti {
+    MarkerView *markView = [[[NSBundle mainBundle] loadNibNamed:@"MultiMarkerView" owner:nil options:nil] lastObject];
     
+    if ([markView isKindOfClass:[MarkerView class]]) {
+        markView.nibType = @"Multi";
+        return markView;
+    } else
+        return nil;
+}
+
+- (void)initUI:(NSURL *) url {
+
+    self.frame = CGRectMake(0, 0, 50, 50);
+    
+    if ([nibType isEqualToString:@"Multi"]) {
+    
+    } else {
+        CGFloat radius = 2.0f;
+        
         [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.mainImageView];
         [self.mainImageView setImageURL:url];
-    
-    //    [imageView.layer setCornerRadius:30];
-        [self.mainImageView.layer setBorderColor:[UIColor redColor].CGColor];
-        [self.mainImageView.layer setBorderWidth:10.0f / [UIScreen mainScreen].scale];
-    //    [imageView setClipsToBounds:YES];
+        
+        [self.mainImageView.layer setBorderColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor];
+        [self.mainImageView.layer setBorderWidth:8.0f / [UIScreen mainScreen].scale];
+        [self.mainImageView setClipsToBounds:YES];
+        [self.mainImageView.layer setCornerRadius:radius];
         [self.mainImageView setContentMode:UIViewContentModeScaleAspectFill];
-    
-        [self.mainImageView.layer setShadowColor:[UIColor colorWithRed:0.15 green:0.16 blue:0.13 alpha:1].CGColor];
-        [self.mainImageView.layer setShadowOffset:CGSizeMake(2.4f, 2.0f)];
-        [self.mainImageView.layer setShadowRadius:5.0f];
-        [self.mainImageView.layer setShadowOpacity:0.5f];
+        
+        [self.bgView.layer setShadowColor:[UIColor colorWithRed:0.15 green:0.16 blue:0.13 alpha:1].CGColor];
+        [self.bgView.layer setShadowOffset:CGSizeMake(2.4f, 2.0f)];
+        [self.bgView.layer setShadowRadius:5.0f];
+        [self.bgView.layer setShadowOpacity:0.5f];
+        [self.bgView.layer setCornerRadius:radius];
+    }
 }
 @end
