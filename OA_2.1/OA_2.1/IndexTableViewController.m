@@ -217,12 +217,14 @@
     
     
     IndexTableViewCell *cell = (IndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"IndexTableViewCell"];
-    if(!cell){
+
+    if(cell == nil){
         NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"IndexTableViewCell" owner:self options:nil];
         cell = [nibs objectAtIndex:0];
+
     }
-    
     [cell initUI:[pictures objectAtIndex:indexPath.row] w:self.tableView.frame.size.width];
+
     
     return cell;
 }

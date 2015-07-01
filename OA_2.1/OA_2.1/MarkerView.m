@@ -82,6 +82,7 @@
     [self.bgView.layer setShadowOpacity:0.5f];
     [self.bgView.layer setCornerRadius:radius];
     
+//    [self.bgView2 setHidden:YES];
     [self.bgView2.layer setShadowColor:[UIColor colorWithRed:0.15 green:0.16 blue:0.13 alpha:1].CGColor];
     [self.bgView2.layer setShadowOffset:CGSizeMake(0.0f, 0.0f)];
     [self.bgView2.layer setShadowRadius:2.0f];
@@ -89,13 +90,16 @@
     [self.bgView2.layer setCornerRadius:radius];
     [self.bgView2 setTransform:CGAffineTransformMakeRotation(0.18)];
     
+//    [self.bgView3 setHidden:YES];
     [self.bgView3.layer setShadowColor:[UIColor colorWithRed:0.15 green:0.16 blue:0.13 alpha:1].CGColor];
     [self.bgView3.layer setShadowOffset:CGSizeMake(0.0f, 0.0f)];
     [self.bgView3.layer setShadowRadius:2.0f];
     [self.bgView3.layer setShadowOpacity:0.5f];
     [self.bgView3.layer setCornerRadius:radius];
     [self.bgView3 setTransform:CGAffineTransformMakeRotation(-0.17)];
+
     
+//    [self.countLabel setHidden:YES];
     [self.countLabel setBackgroundColor:[UIColor colorWithRed:0.09 green:0.68 blue:0.93 alpha:1]];
     [self.countLabel setTextColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
     [self.countLabel.layer setBorderColor:[UIColor colorWithRed:0.08 green:0.49 blue:0.97 alpha:1].CGColor];
@@ -110,7 +114,7 @@
                                           initWithTarget:self action:@selector(handlePinButtonTap:)];
     tapGesture.numberOfTapsRequired = 1;
     [self addGestureRecognizer:tapGesture];
-    
+
     return self;
 }
 - (void) handlePinButtonTap:(UITapGestureRecognizer *)gestureRecognizer {

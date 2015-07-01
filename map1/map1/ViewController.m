@@ -110,7 +110,7 @@
 
                       marker.markerId = [[picture objectForKey:@"id"] integerValue];
                       marker.coordinate = CLLocationCoordinate2DMake([[picture objectForKey:@"lat"] doubleValue], [[picture objectForKey:@"lng"] doubleValue]);
-                      marker.userInfo = [picture objectForKey:@"url"];
+                      marker.userInfo = picture;
                       [newMarks addObject:marker];
                   }
   
@@ -157,15 +157,18 @@
           }
      ];
 }
+
+//- (void) handlePinButtonTap:(UITapGestureRecognizer *)gestureRecognizer
+//{
+//    [self.clusterer zoomToAnnotationsBounds:self.clusterer.markers];
+////    NSLog(@"handlePinButtonTap: ann.title=%lu", );
+////    self.annotation.zoomToAnnotationsBounds
+//}
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(RECluster *)annotation {
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
     
-//    static NSString *pinID;
-//    static NSString *clusterPinID = @"REClusterPin";
-//    static NSString *markerPinID = @"REMarkerPin";
-//    
-//    pinID = annotation.markers.count == 1 ? markerPinID : clusterPinID;
     
     MKAnnotationView *annView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomAnnotation"];
     
@@ -173,12 +176,25 @@
         annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomAnnocation"];
     }
     
-    MarkerView *markerView = annotation.markers.count == 1 ? [MarkerView initSingle] : [MarkerView initMulti];
-    [markerView initUI:[NSURL URLWithString:[((REMarker *)[annotation.markers objectAtIndex:0]).userInfo objectForKey:@"w100"]]];
+    MarkerView *markerView;
+    if (annotation.markers.count == 1) {
+        markerView = [MarkerView initSingle:annotation mapView:self.mapView];
+    } else {
+        markerView = [MarkerView initMulti:annotation mapView:self.mapView];
+    }
+
     [annView addSubview:markerView];
+    [annView setFrame:CGRectMake(0, 0, 50, 50)];
+    annView.centerOffset = CGPointMake(-25,-25);
     
     annView.canShowCallout = NO;
     annView.draggable = NO;
+    
+//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
+//                                          initWithTarget:self action:@selector(handlePinButtonTap:)];
+//    tapGesture.numberOfTapsRequired = 1;
+//    [annView addGestureRecognizer:tapGesture];
+    
     return annView;
     
     
@@ -258,13 +274,7 @@
   
   
 }
-- (void) handlePinButtonTap:(UITapGestureRecognizer *)gestureRecognizer
-{
-    UIButton *btn = (UIButton *) gestureRecognizer.view;
-    MKAnnotationView *av = (MKAnnotationView *)[btn superview];
-    id<MKAnnotation> ann = av.annotation;
-    NSLog(@"handlePinButtonTap: ann.title=%@", ann.title);
-}
+
 
 //
 //- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {

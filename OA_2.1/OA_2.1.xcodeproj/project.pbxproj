@@ -16,6 +16,15 @@
 		0E77D3F31B3EDDFE00A2C9EC /* ImageUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E77D3F21B3EDDFE00A2C9EC /* ImageUtility.m */; };
 		0E77D3F81B3F245A00A2C9EC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E77D3F71B3F245A00A2C9EC /* SettingViewController.m */; };
 		0E77D3FA1B3FB0CB00A2C9EC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E77D3F91B3FB0CB00A2C9EC /* CoreLocation.framework */; };
+		0EAB32D81B442B2000D3D106 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAB32D71B442B2000D3D106 /* MapKit.framework */; };
+		0EAB32E31B442B7300D3D106 /* RECluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32DC1B442B7300D3D106 /* RECluster.m */; };
+		0EAB32E41B442B7300D3D106 /* RELatLngBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32DE1B442B7300D3D106 /* RELatLngBounds.m */; };
+		0EAB32E51B442B7300D3D106 /* REMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32E01B442B7300D3D106 /* REMarker.m */; };
+		0EAB32E61B442B7300D3D106 /* REMarkerClusterer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32E21B442B7300D3D106 /* REMarkerClusterer.m */; };
+		0EAB32E91B442B9900D3D106 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32E81B442B9900D3D106 /* MapViewController.m */; };
+		0EAB32EF1B442C0900D3D106 /* MarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32EC1B442C0900D3D106 /* MarkerView.m */; };
+		0EAB32F01B442C0900D3D106 /* SingleMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EAB32ED1B442C0900D3D106 /* SingleMarkerView.xib */; };
+		0EAB32F11B442C0900D3D106 /* MultiMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EAB32EE1B442C0900D3D106 /* MultiMarkerView.xib */; };
 		0EC253C31B3BA6810057DB55 /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC253C21B3BA6810057DB55 /* MyTabBarController.m */; };
 		0EC253CF1B3BB0A90057DB55 /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC253CE1B3BB0A90057DB55 /* MyTabBar.m */; };
 		0EC2542B1B3BEE800057DB55 /* IndexTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */; };
@@ -77,6 +86,21 @@
 		0E77D3F61B3F245A00A2C9EC /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		0E77D3F71B3F245A00A2C9EC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		0E77D3F91B3FB0CB00A2C9EC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0EAB32D71B442B2000D3D106 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0EAB32DB1B442B7300D3D106 /* RECluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECluster.h; sourceTree = "<group>"; };
+		0EAB32DC1B442B7300D3D106 /* RECluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECluster.m; sourceTree = "<group>"; };
+		0EAB32DD1B442B7300D3D106 /* RELatLngBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RELatLngBounds.h; sourceTree = "<group>"; };
+		0EAB32DE1B442B7300D3D106 /* RELatLngBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RELatLngBounds.m; sourceTree = "<group>"; };
+		0EAB32DF1B442B7300D3D106 /* REMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMarker.h; sourceTree = "<group>"; };
+		0EAB32E01B442B7300D3D106 /* REMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMarker.m; sourceTree = "<group>"; };
+		0EAB32E11B442B7300D3D106 /* REMarkerClusterer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMarkerClusterer.h; sourceTree = "<group>"; };
+		0EAB32E21B442B7300D3D106 /* REMarkerClusterer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMarkerClusterer.m; sourceTree = "<group>"; };
+		0EAB32E71B442B9900D3D106 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		0EAB32E81B442B9900D3D106 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		0EAB32EB1B442C0900D3D106 /* MarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkerView.h; sourceTree = "<group>"; };
+		0EAB32EC1B442C0900D3D106 /* MarkerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkerView.m; sourceTree = "<group>"; };
+		0EAB32ED1B442C0900D3D106 /* SingleMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleMarkerView.xib; sourceTree = "<group>"; };
+		0EAB32EE1B442C0900D3D106 /* MultiMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultiMarkerView.xib; sourceTree = "<group>"; };
 		0EC253C11B3BA6810057DB55 /* MyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBarController.h; sourceTree = "<group>"; };
 		0EC253C21B3BA6810057DB55 /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
 		0EC253CD1B3BB0A90057DB55 /* MyTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBar.h; sourceTree = "<group>"; };
@@ -141,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EAB32D81B442B2000D3D106 /* MapKit.framework in Frameworks */,
 				0E77D3FA1B3FB0CB00A2C9EC /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +201,7 @@
 		0E74CE4A1B3B11D400D28780 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0EAB32DA1B442B6400D3D106 /* REMarkerClusterer */,
 				0E77D3ED1B3EDD2400A2C9EC /* ImageUtility */,
 				0E77D3E91B3EC47600A2C9EC /* UIPlaceHolderTextView */,
 				0EC254A31B3C650E0057DB55 /* UIImageViewAligned */,
@@ -246,6 +272,42 @@
 			name = Setting;
 			sourceTree = "<group>";
 		};
+		0EAB32D91B442B5F00D3D106 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0EAB32EA1B442BFB00D3D106 /* MarkerView */,
+				0EAB32E71B442B9900D3D106 /* MapViewController.h */,
+				0EAB32E81B442B9900D3D106 /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		0EAB32DA1B442B6400D3D106 /* REMarkerClusterer */ = {
+			isa = PBXGroup;
+			children = (
+				0EAB32DB1B442B7300D3D106 /* RECluster.h */,
+				0EAB32DC1B442B7300D3D106 /* RECluster.m */,
+				0EAB32DD1B442B7300D3D106 /* RELatLngBounds.h */,
+				0EAB32DE1B442B7300D3D106 /* RELatLngBounds.m */,
+				0EAB32DF1B442B7300D3D106 /* REMarker.h */,
+				0EAB32E01B442B7300D3D106 /* REMarker.m */,
+				0EAB32E11B442B7300D3D106 /* REMarkerClusterer.h */,
+				0EAB32E21B442B7300D3D106 /* REMarkerClusterer.m */,
+			);
+			name = REMarkerClusterer;
+			sourceTree = "<group>";
+		};
+		0EAB32EA1B442BFB00D3D106 /* MarkerView */ = {
+			isa = PBXGroup;
+			children = (
+				0EAB32EB1B442C0900D3D106 /* MarkerView.h */,
+				0EAB32EC1B442C0900D3D106 /* MarkerView.m */,
+				0EAB32ED1B442C0900D3D106 /* SingleMarkerView.xib */,
+				0EAB32EE1B442C0900D3D106 /* MultiMarkerView.xib */,
+			);
+			name = MarkerView;
+			sourceTree = "<group>";
+		};
 		0EC253BD1B3BA63B0057DB55 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +370,7 @@
 		0ED1F48A1B39A3AF001B9275 = {
 			isa = PBXGroup;
 			children = (
+				0EAB32D71B442B2000D3D106 /* MapKit.framework */,
 				0E77D3F91B3FB0CB00A2C9EC /* CoreLocation.framework */,
 				0ED1F4951B39A3AF001B9275 /* OA_2.1 */,
 				0ED1F4B21B39A3AF001B9275 /* OA_2.1Tests */,
@@ -327,6 +390,7 @@
 		0ED1F4951B39A3AF001B9275 /* OA_2.1 */ = {
 			isa = PBXGroup;
 			children = (
+				0EAB32D91B442B5F00D3D106 /* Map */,
 				0ED1F4A31B39A3AF001B9275 /* Main.storyboard */,
 				0ED1F49A1B39A3AF001B9275 /* AppDelegate.h */,
 				0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */,
@@ -505,6 +569,8 @@
 				0EC2549E1B3C54460057DB55 /* space.png in Resources */,
 				0ED1F4FE1B3AC08B001B9275 /* camera.png in Resources */,
 				0ED1F4E21B3A8470001B9275 /* bg_login.png in Resources */,
+				0EAB32F01B442C0900D3D106 /* SingleMarkerView.xib in Resources */,
+				0EAB32F11B442C0900D3D106 /* MultiMarkerView.xib in Resources */,
 				0ED1F4AA1B39A3AF001B9275 /* LaunchScreen.xib in Resources */,
 				0ED1F4A71B39A3AF001B9275 /* Images.xcassets in Resources */,
 				0EC254911B3C34490057DB55 /* IndexTableViewCell.xib in Resources */,
@@ -532,6 +598,8 @@
 				0E74CE581B3B165F00D28780 /* UIActionSheet+Blocks.m in Sources */,
 				0EC253CF1B3BB0A90057DB55 /* MyTabBar.m in Sources */,
 				0EC2548A1B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m in Sources */,
+				0EAB32E31B442B7300D3D106 /* RECluster.m in Sources */,
+				0EAB32EF1B442C0900D3D106 /* MarkerView.m in Sources */,
 				0E74CE5A1B3B165F00D28780 /* UIAlertView+Blocks.m in Sources */,
 				0ED1F49F1B39A3AF001B9275 /* OA_2_1.xcdatamodeld in Sources */,
 				0E74CE4E1B3B11F300D28780 /* OAHttp.m in Sources */,
@@ -539,6 +607,7 @@
 				0ED1F4D81B39A48C001B9275 /* AFURLConnectionOperation.m in Sources */,
 				0EC254A21B3C65060057DB55 /* AsyncImageView.m in Sources */,
 				0ED1F4D31B39A48C001B9275 /* AFHTTPRequestOperation.m in Sources */,
+				0EAB32E41B442B7300D3D106 /* RELatLngBounds.m in Sources */,
 				0ED1F4A21B39A3AF001B9275 /* LoginViewController.m in Sources */,
 				0ED1F4D91B39A48C001B9275 /* AFURLRequestSerialization.m in Sources */,
 				0ED1F4D51B39A48C001B9275 /* AFHTTPSessionManager.m in Sources */,
@@ -548,10 +617,13 @@
 				0EC254901B3C34490057DB55 /* IndexTableViewCell.m in Sources */,
 				0ED1F4EA1B3AA2EB001B9275 /* RegisterViewController.m in Sources */,
 				0ED1F4DB1B39A48C001B9275 /* AFURLSessionManager.m in Sources */,
+				0EAB32E51B442B7300D3D106 /* REMarker.m in Sources */,
 				0ED1F4991B39A3AF001B9275 /* main.m in Sources */,
+				0EAB32E91B442B9900D3D106 /* MapViewController.m in Sources */,
 				0EC254A61B3C651B0057DB55 /* UIImageViewAligned.m in Sources */,
 				0E2086681B3E7ED4006AABBB /* CameraViewController.m in Sources */,
 				0E74CE571B3B165F00D28780 /* RIButtonItem.m in Sources */,
+				0EAB32E61B442B7300D3D106 /* REMarkerClusterer.m in Sources */,
 				0EC253C31B3BA6810057DB55 /* MyTabBarController.m in Sources */,
 				0E77D3F31B3EDDFE00A2C9EC /* ImageUtility.m in Sources */,
 				0E77D3F81B3F245A00A2C9EC /* SettingViewController.m in Sources */,
