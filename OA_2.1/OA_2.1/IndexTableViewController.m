@@ -51,9 +51,9 @@
     pictures = [NSMutableArray new];
     
     titleLabelOneLineHeight = [self calculateLabelHeight:@"　" canputwidth:self.tableView.frame.size.width - 132
-                                                    font:[IndexTableViewCell2 descriptionLabelFont]
-                                         withLineSpacing:[IndexTableViewCell2 descriptionLabelLineSpacing]
-                                                 spacing:[IndexTableViewCell2 descriptionLabelSpacing]];
+                                                    font:[IndexTableViewCell descriptionLabelFont]
+                                         withLineSpacing:[IndexTableViewCell descriptionLabelLineSpacing]
+                                                 spacing:[IndexTableViewCell descriptionLabelSpacing]];
     
     [self loadData:loadAlert];
     
@@ -164,9 +164,9 @@
     else
         titleLableHeight = [self calculateLabelHeight: [[pictures objectAtIndex:indexPath.row] objectForKey:@"description"]
                                           canputwidth:maxWidth - 132
-                                                 font:[IndexTableViewCell2 descriptionLabelFont]
-                                      withLineSpacing:[IndexTableViewCell2 descriptionLabelLineSpacing]
-                                              spacing:[IndexTableViewCell2 descriptionLabelSpacing]];
+                                                 font:[IndexTableViewCell descriptionLabelFont]
+                                      withLineSpacing:[IndexTableViewCell descriptionLabelLineSpacing]
+                                              spacing:[IndexTableViewCell descriptionLabelSpacing]];
 
     if (titleLableHeight > titleLabelOneLineHeight * 4) {
         titleLableHeight = titleLabelOneLineHeight * 4;
@@ -223,11 +223,11 @@
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     
-    IndexTableViewCell2 *cell = (IndexTableViewCell2 *)[tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"IndexTableViewCell_%lu", indexPath.row]];
+    IndexTableViewCell *cell = (IndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"IndexTableViewCell_%lu", indexPath.row]];
 //    ;
     if(cell == nil){
         NSLog(@"==");
-        cell = [[[IndexTableViewCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"IndexTableViewCell_%lu", indexPath.row]] initBaseData];
+        cell = [[[IndexTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"IndexTableViewCell_%lu", indexPath.row]] initBaseData];
         cell = [cell initUI:[pictures objectAtIndex:indexPath.row] w:self.tableView.frame.size.width];
     }
     

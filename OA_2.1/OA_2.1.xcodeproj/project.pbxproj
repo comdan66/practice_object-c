@@ -30,12 +30,12 @@
 		0EC2542B1B3BEE800057DB55 /* IndexTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */; };
 		0EC254851B3C28B30057DB55 /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254841B3C28B30057DB55 /* MyNavigationController.m */; };
 		0EC2548A1B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254891B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m */; };
-		0EC254901B3C34490057DB55 /* IndexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2548E1B3C34490057DB55 /* IndexTableViewCell.m */; };
-		0EC254911B3C34490057DB55 /* IndexTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2548F1B3C34490057DB55 /* IndexTableViewCell.xib */; };
+		0EC254901B3C34490057DB55 /* IndexTableViewCellOri.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2548E1B3C34490057DB55 /* IndexTableViewCellOri.m */; };
+		0EC254911B3C34490057DB55 /* IndexTableViewCellOri.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2548F1B3C34490057DB55 /* IndexTableViewCellOri.xib */; };
 		0EC2549E1B3C54460057DB55 /* space.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2549D1B3C54460057DB55 /* space.png */; };
 		0EC254A21B3C65060057DB55 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254A11B3C65060057DB55 /* AsyncImageView.m */; };
 		0EC254A61B3C651B0057DB55 /* UIImageViewAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */; };
-		0ECC5DE41B44611200F6B9DB /* IndexTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5DE31B44611200F6B9DB /* IndexTableViewCell2.m */; };
+		0ECC5DE41B44611200F6B9DB /* IndexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5DE31B44611200F6B9DB /* IndexTableViewCell.m */; };
 		0ED1F4991B39A3AF001B9275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4981B39A3AF001B9275 /* main.m */; };
 		0ED1F49C1B39A3AF001B9275 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */; };
 		0ED1F49F1B39A3AF001B9275 /* OA_2_1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49D1B39A3AF001B9275 /* OA_2_1.xcdatamodeld */; };
@@ -113,16 +113,16 @@
 		0EC254871B3C2DCA0057DB55 /* AMScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbar.h; sourceTree = "<group>"; };
 		0EC254881B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ScrollingNavbar.h"; sourceTree = "<group>"; };
 		0EC254891B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScrollingNavbar.m"; sourceTree = "<group>"; };
-		0EC2548D1B3C34490057DB55 /* IndexTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexTableViewCell.h; sourceTree = "<group>"; };
-		0EC2548E1B3C34490057DB55 /* IndexTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexTableViewCell.m; sourceTree = "<group>"; };
-		0EC2548F1B3C34490057DB55 /* IndexTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexTableViewCell.xib; sourceTree = "<group>"; };
+		0EC2548D1B3C34490057DB55 /* IndexTableViewCellOri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexTableViewCellOri.h; sourceTree = "<group>"; };
+		0EC2548E1B3C34490057DB55 /* IndexTableViewCellOri.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexTableViewCellOri.m; sourceTree = "<group>"; };
+		0EC2548F1B3C34490057DB55 /* IndexTableViewCellOri.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexTableViewCellOri.xib; sourceTree = "<group>"; };
 		0EC2549D1B3C54460057DB55 /* space.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = space.png; sourceTree = "<group>"; };
 		0EC254A01B3C65060057DB55 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		0EC254A11B3C65060057DB55 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		0EC254A41B3C651B0057DB55 /* UIImageViewAligned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageViewAligned.h; sourceTree = "<group>"; };
 		0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewAligned.m; sourceTree = "<group>"; };
-		0ECC5DE21B44611200F6B9DB /* IndexTableViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexTableViewCell2.h; sourceTree = "<group>"; };
-		0ECC5DE31B44611200F6B9DB /* IndexTableViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexTableViewCell2.m; sourceTree = "<group>"; };
+		0ECC5DE21B44611200F6B9DB /* IndexTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexTableViewCell.h; sourceTree = "<group>"; };
+		0ECC5DE31B44611200F6B9DB /* IndexTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexTableViewCell.m; sourceTree = "<group>"; };
 		0ED1F4931B39A3AF001B9275 /* OA_2.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OA_2.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED1F4971B39A3AF001B9275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ED1F4981B39A3AF001B9275 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -346,9 +346,9 @@
 		0EC2548C1B3C342C0057DB55 /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				0EC2548D1B3C34490057DB55 /* IndexTableViewCell.h */,
-				0EC2548E1B3C34490057DB55 /* IndexTableViewCell.m */,
-				0EC2548F1B3C34490057DB55 /* IndexTableViewCell.xib */,
+				0EC2548D1B3C34490057DB55 /* IndexTableViewCellOri.h */,
+				0EC2548E1B3C34490057DB55 /* IndexTableViewCellOri.m */,
+				0EC2548F1B3C34490057DB55 /* IndexTableViewCellOri.xib */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -374,8 +374,8 @@
 		0ECC5DE11B4460F900F6B9DB /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				0ECC5DE21B44611200F6B9DB /* IndexTableViewCell2.h */,
-				0ECC5DE31B44611200F6B9DB /* IndexTableViewCell2.m */,
+				0ECC5DE21B44611200F6B9DB /* IndexTableViewCell.h */,
+				0ECC5DE31B44611200F6B9DB /* IndexTableViewCell.m */,
 			);
 			name = "New Group";
 			sourceTree = "<group>";
@@ -586,7 +586,7 @@
 				0EAB32F11B442C0900D3D106 /* MultiMarkerView.xib in Resources */,
 				0ED1F4AA1B39A3AF001B9275 /* LaunchScreen.xib in Resources */,
 				0ED1F4A71B39A3AF001B9275 /* Images.xcassets in Resources */,
-				0EC254911B3C34490057DB55 /* IndexTableViewCell.xib in Resources */,
+				0EC254911B3C34490057DB55 /* IndexTableViewCellOri.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,7 +615,7 @@
 				0EAB32EF1B442C0900D3D106 /* MarkerView.m in Sources */,
 				0E74CE5A1B3B165F00D28780 /* UIAlertView+Blocks.m in Sources */,
 				0ED1F49F1B39A3AF001B9275 /* OA_2_1.xcdatamodeld in Sources */,
-				0ECC5DE41B44611200F6B9DB /* IndexTableViewCell2.m in Sources */,
+				0ECC5DE41B44611200F6B9DB /* IndexTableViewCell.m in Sources */,
 				0E74CE4E1B3B11F300D28780 /* OAHttp.m in Sources */,
 				0ED1F4D41B39A48C001B9275 /* AFHTTPRequestOperationManager.m in Sources */,
 				0ED1F4D81B39A48C001B9275 /* AFURLConnectionOperation.m in Sources */,
@@ -628,7 +628,7 @@
 				0ED1F4D61B39A48C001B9275 /* AFNetworkReachabilityManager.m in Sources */,
 				0ED1F4DA1B39A48C001B9275 /* AFURLResponseSerialization.m in Sources */,
 				0EC254851B3C28B30057DB55 /* MyNavigationController.m in Sources */,
-				0EC254901B3C34490057DB55 /* IndexTableViewCell.m in Sources */,
+				0EC254901B3C34490057DB55 /* IndexTableViewCellOri.m in Sources */,
 				0ED1F4EA1B3AA2EB001B9275 /* RegisterViewController.m in Sources */,
 				0ED1F4DB1B39A48C001B9275 /* AFURLSessionManager.m in Sources */,
 				0EAB32E51B442B7300D3D106 /* REMarker.m in Sources */,
