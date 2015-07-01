@@ -51,9 +51,9 @@
     pictures = [NSMutableArray new];
     
     titleLabelOneLineHeight = [self calculateLabelHeight:@"　" canputwidth:self.tableView.frame.size.width - 132
-                                                    font:[IndexTableViewCell descriptionLabelFont]
-                                         withLineSpacing:[IndexTableViewCell descriptionLabelLineSpacing]
-                                                 spacing:[IndexTableViewCell descriptionLabelSpacing]];
+                                                    font:[IndexTableViewCell2 descriptionLabelFont]
+                                         withLineSpacing:[IndexTableViewCell2 descriptionLabelLineSpacing]
+                                                 spacing:[IndexTableViewCell2 descriptionLabelSpacing]];
     
     [self loadData:loadAlert];
     
@@ -164,9 +164,9 @@
     else
         titleLableHeight = [self calculateLabelHeight: [[pictures objectAtIndex:indexPath.row] objectForKey:@"description"]
                                           canputwidth:maxWidth - 132
-                                                 font:[IndexTableViewCell descriptionLabelFont]
-                                      withLineSpacing:[IndexTableViewCell descriptionLabelLineSpacing]
-                                              spacing:[IndexTableViewCell descriptionLabelSpacing]];
+                                                 font:[IndexTableViewCell2 descriptionLabelFont]
+                                      withLineSpacing:[IndexTableViewCell2 descriptionLabelLineSpacing]
+                                              spacing:[IndexTableViewCell2 descriptionLabelSpacing]];
 
     if (titleLableHeight > titleLabelOneLineHeight * 4) {
         titleLableHeight = titleLabelOneLineHeight * 4;
@@ -211,21 +211,27 @@
     // Return the number of rows in the section.
     return [pictures count];
 }
-
+//- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(IndexTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [cell clean];
+//}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(IndexTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+////    IndexTableViewCell *cell = (IndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"IndexTableViewCell"];
+////    [cell clean];
+//    
+//}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     
-    IndexTableViewCell *cell = (IndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"IndexTableViewCell"];
-
+    IndexTableViewCell2 *cell = (IndexTableViewCell2 *)[tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"IndexTableViewCell_%lu", indexPath.row]];
+//    ;
     if(cell == nil){
-        NSArray *nibs = [[NSBundle mainBundle]loadNibNamed:@"IndexTableViewCell" owner:self options:nil];
-        cell = [nibs objectAtIndex:0];
-
+        NSLog(@"==");
+        cell = [[[IndexTableViewCell2 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"IndexTableViewCell_%lu", indexPath.row]] initBaseData];
+        cell = [cell initUI:[pictures objectAtIndex:indexPath.row] w:self.tableView.frame.size.width];
     }
-    [cell initUI:[pictures objectAtIndex:indexPath.row] w:self.tableView.frame.size.width];
-
     
+
     return cell;
 }
 

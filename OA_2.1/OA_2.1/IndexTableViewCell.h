@@ -10,6 +10,7 @@
 #import "AsyncImageView.h"
 
 @interface IndexTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIView *borderView;
 @property (weak, nonatomic) IBOutlet AsyncImageView *pictureImageView;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -42,5 +43,7 @@
 + (UIFont *) likeButtonFont;
 + (UIFont *) commentButtonFont;
 
-- (void)initUI:(id)picture w:(float)w;
+- (IndexTableViewCell *)initBaseData;
+- (IndexTableViewCell *)initUI:(id)picture w:(float)w;
+- (void) clean;
 @end

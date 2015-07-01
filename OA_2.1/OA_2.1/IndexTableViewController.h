@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IndexTableViewCell.h"
+#import "IndexTableViewCell2.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "UIAlertView+Blocks.h"
 

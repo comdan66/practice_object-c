@@ -35,6 +35,7 @@
 		0EC2549E1B3C54460057DB55 /* space.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2549D1B3C54460057DB55 /* space.png */; };
 		0EC254A21B3C65060057DB55 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254A11B3C65060057DB55 /* AsyncImageView.m */; };
 		0EC254A61B3C651B0057DB55 /* UIImageViewAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */; };
+		0ECC5DE41B44611200F6B9DB /* IndexTableViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5DE31B44611200F6B9DB /* IndexTableViewCell2.m */; };
 		0ED1F4991B39A3AF001B9275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4981B39A3AF001B9275 /* main.m */; };
 		0ED1F49C1B39A3AF001B9275 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */; };
 		0ED1F49F1B39A3AF001B9275 /* OA_2_1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49D1B39A3AF001B9275 /* OA_2_1.xcdatamodeld */; };
@@ -120,6 +121,8 @@
 		0EC254A11B3C65060057DB55 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		0EC254A41B3C651B0057DB55 /* UIImageViewAligned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageViewAligned.h; sourceTree = "<group>"; };
 		0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewAligned.m; sourceTree = "<group>"; };
+		0ECC5DE21B44611200F6B9DB /* IndexTableViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexTableViewCell2.h; sourceTree = "<group>"; };
+		0ECC5DE31B44611200F6B9DB /* IndexTableViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexTableViewCell2.m; sourceTree = "<group>"; };
 		0ED1F4931B39A3AF001B9275 /* OA_2.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OA_2.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED1F4971B39A3AF001B9275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ED1F4981B39A3AF001B9275 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -322,6 +325,7 @@
 		0EC253FA1B3BDCD10057DB55 /* Index */ = {
 			isa = PBXGroup;
 			children = (
+				0ECC5DE11B4460F900F6B9DB /* New Group */,
 				0EC2548C1B3C342C0057DB55 /* cell */,
 				0EC254291B3BEE800057DB55 /* IndexTableViewController.h */,
 				0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */,
@@ -365,6 +369,15 @@
 				0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */,
 			);
 			name = UIImageViewAligned;
+			sourceTree = "<group>";
+		};
+		0ECC5DE11B4460F900F6B9DB /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				0ECC5DE21B44611200F6B9DB /* IndexTableViewCell2.h */,
+				0ECC5DE31B44611200F6B9DB /* IndexTableViewCell2.m */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		0ED1F48A1B39A3AF001B9275 = {
@@ -602,6 +615,7 @@
 				0EAB32EF1B442C0900D3D106 /* MarkerView.m in Sources */,
 				0E74CE5A1B3B165F00D28780 /* UIAlertView+Blocks.m in Sources */,
 				0ED1F49F1B39A3AF001B9275 /* OA_2_1.xcdatamodeld in Sources */,
+				0ECC5DE41B44611200F6B9DB /* IndexTableViewCell2.m in Sources */,
 				0E74CE4E1B3B11F300D28780 /* OAHttp.m in Sources */,
 				0ED1F4D41B39A48C001B9275 /* AFHTTPRequestOperationManager.m in Sources */,
 				0ED1F4D81B39A48C001B9275 /* AFURLConnectionOperation.m in Sources */,
