@@ -320,7 +320,7 @@
 		0EC253FA1B3BDCD10057DB55 /* Index */ = {
 			isa = PBXGroup;
 			children = (
-				0ECC5DE11B4460F900F6B9DB /* New Group */,
+				0ECC5DE11B4460F900F6B9DB /* cell */,
 				0EC254291B3BEE800057DB55 /* IndexTableViewController.h */,
 				0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */,
 			);
@@ -355,13 +355,13 @@
 			name = UIImageViewAligned;
 			sourceTree = "<group>";
 		};
-		0ECC5DE11B4460F900F6B9DB /* New Group */ = {
+		0ECC5DE11B4460F900F6B9DB /* cell */ = {
 			isa = PBXGroup;
 			children = (
 				0ECC5DE21B44611200F6B9DB /* IndexTableViewCell.h */,
 				0ECC5DE31B44611200F6B9DB /* IndexTableViewCell.m */,
 			);
-			name = "New Group";
+			name = cell;
 			sourceTree = "<group>";
 		};
 		0ED1F48A1B39A3AF001B9275 = {
