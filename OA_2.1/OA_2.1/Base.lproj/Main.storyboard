@@ -160,16 +160,16 @@
             </objects>
             <point key="canvasLocation" x="1083" y="2663"/>
         </scene>
-        <!--Root View Controller-->
+        <!--OA's app v2.1-->
         <scene sceneID="Fh0-ub-V12">
             <objects>
-                <tableViewController id="cUI-t0-GIe" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WjB-Ro-1zf">
+                <tableViewController id="cUI-t0-GIe" customClass="SettingTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WjB-Ro-1zf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="b8e-PB-pv1">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cel" id="b8e-PB-pv1">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b8e-PB-pv1" id="Cda-CY-sMp">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -181,17 +181,39 @@
                             <outlet property="delegate" destination="cUI-t0-GIe" id="hDX-VT-bua"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="hCt-ay-uDZ"/>
+                    <navigationItem key="navigationItem" title="OA's app v2.1" id="hCt-ay-uDZ"/>
+                    <connections>
+                        <segue destination="wW9-5c-cSe" kind="push" identifier="sss" id="gk8-hQ-r8s"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pEY-fT-dY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1871" y="3405"/>
         </scene>
-        <!--Item-->
+        <!--Avatar View Controller-->
+        <scene sceneID="5Ga-2O-dTy">
+            <objects>
+                <viewController id="wW9-5c-cSe" customClass="AvatarViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1HK-BH-TiV"/>
+                        <viewControllerLayoutGuide type="bottom" id="AJ3-84-pqQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f8G-eT-vuv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DhJ-vd-PLS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7L1-mW-eR8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2591" y="3405"/>
+        </scene>
+        <!--My Navigation Controller-->
         <scene sceneID="qnl-jm-iqu">
             <objects>
-                <navigationController id="4Ma-1t-NRQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5Xs-cR-9kz"/>
+                <navigationController id="4Ma-1t-NRQ" customClass="MyNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="5Xs-cR-9kz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F1W-s3-Lde">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

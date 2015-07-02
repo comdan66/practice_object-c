@@ -33,6 +33,8 @@
 		0EC254A21B3C65060057DB55 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254A11B3C65060057DB55 /* AsyncImageView.m */; };
 		0EC254A61B3C651B0057DB55 /* UIImageViewAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */; };
 		0ECC5DE41B44611200F6B9DB /* IndexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5DE31B44611200F6B9DB /* IndexTableViewCell.m */; };
+		0ECC5DE81B45647500F6B9DB /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5DE71B45647500F6B9DB /* SettingTableViewController.m */; };
+		0ECC5DEC1B457AEF00F6B9DB /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5DEB1B457AEF00F6B9DB /* AvatarViewController.m */; };
 		0ED1F4991B39A3AF001B9275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4981B39A3AF001B9275 /* main.m */; };
 		0ED1F49C1B39A3AF001B9275 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */; };
 		0ED1F49F1B39A3AF001B9275 /* OA_2_1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49D1B39A3AF001B9275 /* OA_2_1.xcdatamodeld */; };
@@ -115,6 +117,10 @@
 		0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewAligned.m; sourceTree = "<group>"; };
 		0ECC5DE21B44611200F6B9DB /* IndexTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexTableViewCell.h; sourceTree = "<group>"; };
 		0ECC5DE31B44611200F6B9DB /* IndexTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexTableViewCell.m; sourceTree = "<group>"; };
+		0ECC5DE61B45647500F6B9DB /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
+		0ECC5DE71B45647500F6B9DB /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
+		0ECC5DEA1B457AEF00F6B9DB /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarViewController.h; sourceTree = "<group>"; };
+		0ECC5DEB1B457AEF00F6B9DB /* AvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarViewController.m; sourceTree = "<group>"; };
 		0ED1F4931B39A3AF001B9275 /* OA_2.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OA_2.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED1F4971B39A3AF001B9275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ED1F4981B39A3AF001B9275 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -261,6 +267,9 @@
 		0E77D3F51B3F242D00A2C9EC /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				0ECC5DE91B457AA700F6B9DB /* Avatar */,
+				0ECC5DE61B45647500F6B9DB /* SettingTableViewController.h */,
+				0ECC5DE71B45647500F6B9DB /* SettingTableViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -366,6 +375,15 @@
 				0E77D3F91B3FB0CB00A2C9EC /* CoreLocation.framework */,
 			);
 			name = Framework;
+			sourceTree = "<group>";
+		};
+		0ECC5DE91B457AA700F6B9DB /* Avatar */ = {
+			isa = PBXGroup;
+			children = (
+				0ECC5DEA1B457AEF00F6B9DB /* AvatarViewController.h */,
+				0ECC5DEB1B457AEF00F6B9DB /* AvatarViewController.m */,
+			);
+			name = Avatar;
 			sourceTree = "<group>";
 		};
 		0ED1F48A1B39A3AF001B9275 = {
@@ -594,6 +612,7 @@
 				0ED1F49C1B39A3AF001B9275 /* AppDelegate.m in Sources */,
 				0ED1F4D71B39A48C001B9275 /* AFSecurityPolicy.m in Sources */,
 				0E77D3EC1B3EC48900A2C9EC /* UIPlaceHolderTextView.m in Sources */,
+				0ECC5DE81B45647500F6B9DB /* SettingTableViewController.m in Sources */,
 				0E74CE581B3B165F00D28780 /* UIActionSheet+Blocks.m in Sources */,
 				0EC253CF1B3BB0A90057DB55 /* MyTabBar.m in Sources */,
 				0EC2548A1B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m in Sources */,
@@ -611,6 +630,7 @@
 				0ED1F4A21B39A3AF001B9275 /* LoginViewController.m in Sources */,
 				0ED1F4D91B39A48C001B9275 /* AFURLRequestSerialization.m in Sources */,
 				0ED1F4D51B39A48C001B9275 /* AFHTTPSessionManager.m in Sources */,
+				0ECC5DEC1B457AEF00F6B9DB /* AvatarViewController.m in Sources */,
 				0ED1F4D61B39A48C001B9275 /* AFNetworkReachabilityManager.m in Sources */,
 				0ED1F4DA1B39A48C001B9275 /* AFURLResponseSerialization.m in Sources */,
 				0EC254851B3C28B30057DB55 /* MyNavigationController.m in Sources */,

@@ -22,13 +22,13 @@
     [super viewDidLoad];
     
     isLoadPicture = NO;
-    center = CLLocationCoordinate2DMake(24.977953065589, 121.46128272033);
+    
+    center = CLLocationCoordinate2DMake([[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"latitude"] doubleValue], [[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"longitude"] doubleValue]);
 
     [self.mapView setDelegate:self];
     [self.mapView setRotateEnabled:NO];
     [self.mapView setZoomEnabled:YES];
-//    [self.mapView setRegion:MKCoordinateRegionMake(center, MKCoordinateSpanMake(0.025, 0.025)) animated:YES];
-        [self.mapView setRegion:MKCoordinateRegionMake(center, MKCoordinateSpanMake(0.55, 0.55)) animated:YES];
+    [self.mapView setRegion:MKCoordinateRegionMake(center, MKCoordinateSpanMake(0.025, 0.025)) animated:YES];
 
     [self setClusterer:[[REMarkerClusterer alloc] initWithMapView:self.mapView delegate:self]];
     [self.clusterer setGridSize:65];

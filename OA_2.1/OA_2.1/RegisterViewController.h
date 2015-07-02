@@ -12,6 +12,7 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "UIAlertView+Blocks.h"
 #import "ImageUtility.h"
+#import "Config.h"
 
 @interface RegisterViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 

@@ -12,8 +12,8 @@
     UIImagePickerController *imagePickerController;
     BOOL hasChoiceAvatar;
     CGFloat viewAddHeight;
-    CLLocationManager *locationManager;
-    CLLocation *location;
+//    CLLocationManager *locationManager;
+//    CLLocation *location;
 }
 
 @end
@@ -23,9 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    
-    locationManager = [CLLocationManager new];
-    [locationManager setDelegate:self];
-    [locationManager requestWhenInUseAuthorization];
+//    locationManager = [CLLocationManager new];
+//    [locationManager setDelegate:self];
+//    [locationManager requestWhenInUseAuthorization];
+//    NSLog(@"%@",[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"latitude"]);
     
     [self.view.layer setBackgroundColor:[UIColor colorWithRed:0.9 green:0.88 blue:0.87 alpha:1].CGColor];
     
@@ -83,22 +84,24 @@
     [self cleanData];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [locationManager startUpdatingLocation];
-}
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+////    NSLog(@"%@", [USER_DEFAULTS objectForKey:@"asd"]);
+////    NSLog(@"%@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]);
+////    [locationManager startUpdatingLocation];
+//}
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-//    CLLocation *c = [locations objectAtIndex:0];
-    location = [locations objectAtIndex:0];
-//
+//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+////    CLLocation *c = [locations objectAtIndex:0];
 //    NSLog(@"%@", locations);
-//    NSLog(@"緯度：%f, 經度：%f, 高度：%f", c.coordinate.latitude, c.coordinate.longitude, c.altitude);
-}
--(void)viewDidDisappear:(BOOL)animated {
-    [locationManager stopUpdatingLocation];
-}
+//    location = [locations objectAtIndex:0];
+////
+////    NSLog(@"%@", locations);
+////    NSLog(@"緯度：%f, 經度：%f, 高度：%f", c.coordinate.latitude, c.coordinate.longitude, c.altitude);
+//}
+//-(void)viewDidDisappear:(BOOL)animated {
+//    [locationManager stopUpdatingLocation];
+//}
 
 - (void) cleanData {
     [self touchesBegan];
@@ -237,16 +240,16 @@
     [data setValue:self.descriptionTextView.text forKey:@"description"];
     [data setValue:[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"id"] forKey:@"user_id"];
 
-    if (location != nil) {
-        [data setValue:[[NSString alloc] initWithFormat:@"%f", location.coordinate.latitude] forKey:@"latitude"];
-        [data setValue:[[NSString alloc] initWithFormat:@"%f", location.coordinate.longitude] forKey:@"longitude"];
-        [data setValue:[[NSString alloc] initWithFormat:@"%f", location.altitude] forKey:@"altitude"];
+    if ([USER_DEFAULTS objectForKey:@"location"] != nil) {
+        [data setValue:[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"latitude"] forKey:@"latitude"];
+        [data setValue:[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"longitude"] forKey:@"longitude"];
+        [data setValue:[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"altitude"] forKey:@"altitude"];
     } else {
         [data setValue:@"" forKey:@"latitude"];
         [data setValue:@"" forKey:@"longitude"];
         [data setValue:@"" forKey:@"altitude"];
     }
-    
+
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
     [manager POST:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/create_picture"]
