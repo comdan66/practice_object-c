@@ -110,12 +110,10 @@
 
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.pictureImageView];
     [self.pictureImageView setContentMode:UIViewContentModeScaleToFill];
-    
     [self.pictureImageView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor];
     [self.pictureImageView.layer setBorderColor:[UIColor colorWithRed:0.79 green:0.74 blue:0.72 alpha:1.0].CGColor];
     [self.pictureImageView.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
-    [self.pictureImageView setBackgroundColor:[UIColor redColor]];
-    
+
     [self.borderView addSubview:self.pictureImageView];
     
     [self.borderView addConstraint:[NSLayoutConstraint constraintWithItem:self.pictureImageView

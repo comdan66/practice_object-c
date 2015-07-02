@@ -201,33 +201,21 @@
     return attributedStr;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
     return [pictures count];
 }
-//- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(IndexTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [cell clean];
-//}
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(IndexTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-////    IndexTableViewCell *cell = (IndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"IndexTableViewCell"];
-////    [cell clean];
-//    
-//}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    NSString *identifier = [NSString stringWithFormat:@"IndexTableViewCell_%@", [[pictures objectAtIndex:indexPath.row] objectForKey:@"id"]];
     
-    
-    IndexTableViewCell *cell = (IndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"IndexTableViewCell_%lu", indexPath.row]];
-//    ;
+    IndexTableViewCell *cell = (IndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+
     if(cell == nil){
         NSLog(@"==");
-        cell = [[[IndexTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"IndexTableViewCell_%lu", indexPath.row]] initBaseData];
+        cell = [[[IndexTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] initBaseData];
         cell = [cell initUI:[pictures objectAtIndex:indexPath.row] w:self.tableView.frame.size.width];
     }
     

@@ -14,7 +14,6 @@
 		0E74CE5A1B3B165F00D28780 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E74CE561B3B165F00D28780 /* UIAlertView+Blocks.m */; };
 		0E77D3EC1B3EC48900A2C9EC /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E77D3EB1B3EC48900A2C9EC /* UIPlaceHolderTextView.m */; };
 		0E77D3F31B3EDDFE00A2C9EC /* ImageUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E77D3F21B3EDDFE00A2C9EC /* ImageUtility.m */; };
-		0E77D3F81B3F245A00A2C9EC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E77D3F71B3F245A00A2C9EC /* SettingViewController.m */; };
 		0E77D3FA1B3FB0CB00A2C9EC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E77D3F91B3FB0CB00A2C9EC /* CoreLocation.framework */; };
 		0EAB32D81B442B2000D3D106 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAB32D71B442B2000D3D106 /* MapKit.framework */; };
 		0EAB32E31B442B7300D3D106 /* RECluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB32DC1B442B7300D3D106 /* RECluster.m */; };
@@ -82,8 +81,6 @@
 		0E77D3F11B3EDDFE00A2C9EC /* ImageUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtility.h; sourceTree = "<group>"; };
 		0E77D3F21B3EDDFE00A2C9EC /* ImageUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtility.m; sourceTree = "<group>"; };
 		0E77D3F41B3EFD1300A2C9EC /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
-		0E77D3F61B3F245A00A2C9EC /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		0E77D3F71B3F245A00A2C9EC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		0E77D3F91B3FB0CB00A2C9EC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0EAB32D71B442B2000D3D106 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0EAB32DB1B442B7300D3D106 /* RECluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECluster.h; sourceTree = "<group>"; };
@@ -264,8 +261,6 @@
 		0E77D3F51B3F242D00A2C9EC /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				0E77D3F61B3F245A00A2C9EC /* SettingViewController.h */,
-				0E77D3F71B3F245A00A2C9EC /* SettingViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -364,13 +359,21 @@
 			name = cell;
 			sourceTree = "<group>";
 		};
-		0ED1F48A1B39A3AF001B9275 = {
+		0ECC5DE51B447C5100F6B9DB /* Framework */ = {
 			isa = PBXGroup;
 			children = (
 				0EAB32D71B442B2000D3D106 /* MapKit.framework */,
 				0E77D3F91B3FB0CB00A2C9EC /* CoreLocation.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		0ED1F48A1B39A3AF001B9275 = {
+			isa = PBXGroup;
+			children = (
 				0ED1F4951B39A3AF001B9275 /* OA_2.1 */,
 				0ED1F4B21B39A3AF001B9275 /* OA_2.1Tests */,
+				0ECC5DE51B447C5100F6B9DB /* Framework */,
 				0ED1F4941B39A3AF001B9275 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -387,7 +390,6 @@
 		0ED1F4951B39A3AF001B9275 /* OA_2.1 */ = {
 			isa = PBXGroup;
 			children = (
-				0EAB32D91B442B5F00D3D106 /* Map */,
 				0ED1F4A31B39A3AF001B9275 /* Main.storyboard */,
 				0ED1F49A1B39A3AF001B9275 /* AppDelegate.h */,
 				0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */,
@@ -397,6 +399,7 @@
 				0ED1F4E71B3AA2D1001B9275 /* Register */,
 				0EC253FA1B3BDCD10057DB55 /* Index */,
 				0E2086651B3E7EBA006AABBB /* Camera */,
+				0EAB32D91B442B5F00D3D106 /* Map */,
 				0E2086641B3E7BBB006AABBB /* NavigationController */,
 				0EC253BD1B3BA63B0057DB55 /* TabBarController */,
 				0E74CE4A1B3B11D400D28780 /* libs */,
@@ -622,7 +625,6 @@
 				0EAB32E61B442B7300D3D106 /* REMarkerClusterer.m in Sources */,
 				0EC253C31B3BA6810057DB55 /* MyTabBarController.m in Sources */,
 				0E77D3F31B3EDDFE00A2C9EC /* ImageUtility.m in Sources */,
-				0E77D3F81B3F245A00A2C9EC /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,7 +752,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OA_2.1/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -762,7 +764,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = OA_2.1/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
