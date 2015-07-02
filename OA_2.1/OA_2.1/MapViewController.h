@@ -11,14 +11,12 @@
 #import "REMarkerClusterer.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "MarkerView.h"
-#import "Config.h"
-
+#import "AppDelegate.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, REMarkerClusterDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, readonly, nonatomic) REMarkerClusterer *clusterer;
 
 @property BOOL isLoadPicture;
-@property CLLocationCoordinate2D center;
 
 @end

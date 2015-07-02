@@ -522,12 +522,13 @@
                                                                   blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:1.0f]];
     }
     
-    
-    
     [self.nameLabel setText:[[picture objectForKey:@"user"] objectForKey:@"name"]];
     
-    [self.createdLabel setText:[picture objectForKey:@"created_at"]];
-    
+    if ([[picture objectForKey:@"address"] objectForKey:@"city"] != nil)
+        [self.createdLabel setText:[NSString stringWithFormat:@"%@ · %@", [picture objectForKey:@"created_at"], [[picture objectForKey:@"address"] objectForKey:@"city"]]];
+    else
+        [self.createdLabel setText:[NSString stringWithFormat:@"%@", [picture objectForKey:@"created_at"]]];
+
     [self.horizontalRuleLabel1 setBackgroundColor:[UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.40]];
     [self.horizontalRuleLabel2 setBackgroundColor:[UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.40]];
     

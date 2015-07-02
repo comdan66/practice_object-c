@@ -16,19 +16,23 @@
 
 @implementation MapViewController
 
-@synthesize isLoadPicture, center;
+@synthesize isLoadPicture;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     isLoadPicture = NO;
     
-    center = CLLocationCoordinate2DMake([[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"latitude"] doubleValue], [[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"longitude"] doubleValue]);
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if ((app.location.coordinate.latitude == 0) || (app.location.coordinate.longitude == 0))
+        [self.mapView setRegion:MKCoordinateRegionMake(CLLocationCoordinate2DMake(23.80, 120.90), MKCoordinateSpanMake(4.5, 4.5)) animated:YES];
+    else
+        [self.mapView setRegion:MKCoordinateRegionMake(CLLocationCoordinate2DMake(app.location.coordinate.latitude, app.location.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025)) animated:YES];
 
     [self.mapView setDelegate:self];
     [self.mapView setRotateEnabled:NO];
     [self.mapView setZoomEnabled:YES];
-    [self.mapView setRegion:MKCoordinateRegionMake(center, MKCoordinateSpanMake(0.025, 0.025)) animated:YES];
 
     [self setClusterer:[[REMarkerClusterer alloc] initWithMapView:self.mapView delegate:self]];
     [self.clusterer setGridSize:65];

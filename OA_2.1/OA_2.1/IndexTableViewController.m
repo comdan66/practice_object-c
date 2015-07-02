@@ -214,11 +214,9 @@
     IndexTableViewCell *cell = (IndexTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
 
     if(cell == nil){
-        NSLog(@"==");
         cell = [[[IndexTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] initBaseData];
         cell = [cell initUI:[pictures objectAtIndex:indexPath.row] w:self.tableView.frame.size.width];
     }
-    
 
     return cell;
 }

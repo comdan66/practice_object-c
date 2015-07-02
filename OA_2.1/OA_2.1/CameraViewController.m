@@ -22,11 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    
-//    locationManager = [CLLocationManager new];
-//    [locationManager setDelegate:self];
-//    [locationManager requestWhenInUseAuthorization];
-//    NSLog(@"%@",[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"latitude"]);
     
     [self.view.layer setBackgroundColor:[UIColor colorWithRed:0.9 green:0.88 blue:0.87 alpha:1].CGColor];
     
@@ -239,17 +234,20 @@
     NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
     [data setValue:self.descriptionTextView.text forKey:@"description"];
     [data setValue:[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"id"] forKey:@"user_id"];
-
-    if ([USER_DEFAULTS objectForKey:@"location"] != nil) {
-        [data setValue:[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"latitude"] forKey:@"latitude"];
-        [data setValue:[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"longitude"] forKey:@"longitude"];
-        [data setValue:[[USER_DEFAULTS objectForKey:@"location"] objectForKey:@"altitude"] forKey:@"altitude"];
-    } else {
-        [data setValue:@"" forKey:@"latitude"];
-        [data setValue:@"" forKey:@"longitude"];
-        [data setValue:@"" forKey:@"altitude"];
-    }
-
+    
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [data setValue:[NSString stringWithFormat:@"%f", app.location.coordinate.latitude] forKey:@"position[latitude]"];
+    [data setValue:[NSString stringWithFormat:@"%f", app.location.coordinate.longitude] forKey:@"position[longitude]"];
+    [data setValue:[NSString stringWithFormat:@"%f", app.location.altitude] forKey:@"position[altitude]"];
+    
+    [data setValue:[NSString stringWithFormat:@"%f", app.location.horizontalAccuracy] forKey:@"accuracy[horizontal]"];
+    [data setValue:[NSString stringWithFormat:@"%f", app.location.verticalAccuracy] forKey:@"accuracy[vertical]"];
+    
+    [data setValue:app.locationInfo[@"City"] forKey:@"address[city]"];
+    [data setValue:app.locationInfo[@"Country"] forKey:@"address[country]"];
+    [data setValue:[app.locationInfo[@"FormattedAddressLines"] firstObject] forKey:@"address[address]"];
+   
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
     [manager POST:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/create_picture"]

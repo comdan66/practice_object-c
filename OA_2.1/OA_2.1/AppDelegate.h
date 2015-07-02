@@ -20,6 +20,8 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property CLLocationManager *locationManager;
+@property CLLocation *location;
+@property NSDictionary *locationInfo;
 
 
 - (void)saveContext;
