@@ -20,17 +20,17 @@
     [self.locationManager setDelegate:self];
     [self.locationManager requestWhenInUseAuthorization];
     
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UIViewController *mainViewController;
-//    
-//    if ([[USER_DEFAULTS objectForKey:@"isLogin"] isEqualToString:@"YES"])
-//        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyTabBarController"];
-//    else
-//        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//
-//    [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
-//    [self.window setRootViewController:mainViewController];
-//    [self.window makeKeyAndVisible];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *mainViewController;
+    
+    if ([[USER_DEFAULTS objectForKey:@"isLogin"] isEqualToString:@"YES"])
+        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyTabBarController"];
+    else
+        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+
+    [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
+    [self.window setRootViewController:mainViewController];
+    [self.window makeKeyAndVisible];
 
     return YES;
 }
@@ -67,6 +67,9 @@
 }
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *location = [locations firstObject];
+//    NSLog(@"%f", location.horizontalAccuracy);
+    
+
     if (location != nil) {
         [USER_DEFAULTS setValue:@{@"latitude": [NSString stringWithFormat:@"%f", location.coordinate.latitude],
                                   @"longitude": [NSString stringWithFormat:@"%f", location.coordinate.longitude],
