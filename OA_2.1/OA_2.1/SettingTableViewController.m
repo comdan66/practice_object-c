@@ -50,15 +50,18 @@
                           @"items": @[
                                   @{
                                       @"name": @"頭像設定",
-                                      @"action": @"s"
+                                      @"action": @"s",
+                                      @"image": @"Setting_00"
                                       },
                                   @{
                                       @"name": @"暱稱設定",
-                                      @"action": @"d"
+                                      @"action": @"d",
+                                      @"image": @"Setting_01"
                                       },
                                   @{
                                       @"name": @"密碼設定",
-                                      @"action": @"f"
+                                      @"action": @"f",
+                                      @"image": @"Setting_02"
                                       }
                               ]
                         }];
@@ -67,10 +70,12 @@
                           @"items": @[
                                   @{
                                       @"name": @"登出",
-                                      @"action": @"logout"
+                                      @"action": @"logout",
+                                      @"image": @"Setting_03"
                                       }
                                   ]
                           }];
+    [self performSegueWithIdentifier:@"sss" sender:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,11 +129,12 @@
     
     NSString *text = [[[[features objectAtIndex:indexPath.section] objectForKey:@"items"] objectAtIndex:indexPath.row] objectForKey:@"name"];
     NSString *action = [[[[features objectAtIndex:indexPath.section] objectForKey:@"items"] objectAtIndex:indexPath.row] objectForKey:@"action"];
+    NSString *image = [[[[features objectAtIndex:indexPath.section] objectForKey:@"items"] objectAtIndex:indexPath.row] objectForKey:@"image"];
     
     [cell.textLabel setText:text];
     if (![action isEqualToString:@"logout"])
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    [cell.imageView setImage:[UIImage imageNamed:@"AvatarIcon"]];
+    [cell.imageView setImage:[UIImage imageNamed:image]];
     
     return cell;
 }

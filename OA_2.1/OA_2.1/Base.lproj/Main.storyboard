@@ -406,10 +406,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="4Ma-1t-NRQ" kind="relationship" relationship="viewControllers" id="HlW-lu-ykV"/>
                         <segue destination="CW6-1U-XpN" kind="relationship" relationship="viewControllers" id="Vg1-yS-PAD"/>
                         <segue destination="Yry-0P-RsM" kind="relationship" relationship="viewControllers" id="K0U-gM-uX5"/>
                         <segue destination="d9d-Cb-vuG" kind="relationship" relationship="viewControllers" id="m7X-fN-e4r"/>
-                        <segue destination="4Ma-1t-NRQ" kind="relationship" relationship="viewControllers" id="HlW-lu-ykV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xb1-X7-VPS" userLabel="First Responder" sceneMemberID="firstResponder"/>

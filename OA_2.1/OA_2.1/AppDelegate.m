@@ -21,6 +21,7 @@
     [self.locationManager requestWhenInUseAuthorization];
     
 //    NSLog(@"%@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]);
+    NSLog(@"%@", [USER_DEFAULTS objectForKey:@"user"]);
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *mainViewController;

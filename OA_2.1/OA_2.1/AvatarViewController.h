@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "SettingTableViewController.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "UIAlertView+Blocks.h"
+#import "AsyncImageView.h"
+#import "Config.h"
 
 @interface AvatarViewController : UIViewController
+@property  AsyncImageView *avatarImageView;
+@property UIButton *cameraButton, *albumButton;
+@property UIView *avatarView;
 
 @end
