@@ -75,7 +75,7 @@
                                       }
                                   ]
                           }];
-    [self performSegueWithIdentifier:@"sss" sender:self];
+//    [self performSegueWithIdentifier:@"sss" sender:self];
 }
 
 - (void)didReceiveMemoryWarning {
