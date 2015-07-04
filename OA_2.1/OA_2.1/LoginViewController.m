@@ -270,6 +270,27 @@
 
     
 }
+
+- (void)setAvatar:(BOOL)isClean {
+    [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:236.0/255.0 green:140.0/255.0 blue:113.0/255.0 alpha:.3]];
+    [self.avatarImageView setImage:[UIImage imageNamed:@"LoginAvatar"]];
+
+    if (isClean || ([USER_DEFAULTS objectForKey:@"user"] == nil))
+        return;
+    
+    id color = [[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"color"];
+    
+    if ((color != nil) && ([color objectForKey:@"red"] != nil) && ([color objectForKey:@"green"] != nil) && ([color objectForKey:@"blue"] != nil))
+        [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
+                                                                 green:[[color objectForKey:@"green"] doubleValue] / 255.0f
+                                                                  blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:1.0f]];
+    
+    id avatar = [[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"];
+
+    if ((avatar != nil) && ([avatar objectForKey:@"140x140c"] != nil))
+        [self.avatarImageView setImageURL:[NSURL URLWithString:[avatar objectForKey:@"140x140c"]]];
+}
+
 - (void)initAvatarImageView {
     CGFloat width = 100;
     
@@ -280,57 +301,11 @@
     [self.avatarImageView.layer setBorderWidth:6.0f / [UIScreen mainScreen].scale];
     [self.avatarImageView.layer setCornerRadius:width / 2];
     [self.avatarImageView setClipsToBounds:YES];
-
-    if ([[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"color"] != nil) {
-        id color = [[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"color"];
-        [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
-                                                                 green:[[color objectForKey:@"green"] doubleValue] / 255.0f
-                                                                  blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:1.0f]];
-    } else {
-        [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:236.0/255.0 green:140.0/255.0 blue:113.0/255.0 alpha:.3]];
-    }
     
-    if ([[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"140x140c"] != nil) {
-        [self.avatarImageView setImageURL:[NSURL URLWithString:[[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"140x140c"]]];
-    } else {
-        [self.avatarImageView setImage:[UIImage imageNamed:@"LoginAvatar"]];
-    }
-
+    [self setAvatar:NO];
     
     
     [self.avatarView addSubview:self.avatarImageView];
-//    
-//    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
-//                                                          attribute:NSLayoutAttributeTop
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:self.avatarView
-//                                                          attribute:NSLayoutAttributeTop
-//                                                         multiplier:1
-//                                                           constant:0.0]];
-//    
-//    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
-//                                                          attribute:NSLayoutAttributeLeading
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:self.avatarView
-//                                                          attribute:NSLayoutAttributeLeading
-//                                                         multiplier:1
-//                                                           constant:0.0]];
-//    
-//    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
-//                                                          attribute:NSLayoutAttributeLeading
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:self.avatarView
-//                                                          attribute:NSLayoutAttributeLeading
-//                                                         multiplier:1
-//                                                           constant:0.0]];
-//    
-//    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
-//                                                          attribute:NSLayoutAttributeBottom
-//                                                          relatedBy:NSLayoutRelationEqual
-//                                                             toItem:self.avatarView
-//                                                          attribute:NSLayoutAttributeBottom
-//                                                         multiplier:1
-    //                                                           constant:0.0]];
     
     [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
                                                                 attribute:NSLayoutAttributeCenterX
@@ -611,7 +586,7 @@
     [super viewDidLoad];
     
     [self initUI];
-    
+
 
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
                                           initWithTarget:self action:@selector(touchesBegan)];
@@ -653,29 +628,13 @@
     
     return YES;
 }
-- (void)setAvatar {
-    if ([[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"color"] != nil) {
-        id color = [[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"color"];
-        [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
-                                                                 green:[[color objectForKey:@"green"] doubleValue] / 255.0f
-                                                                  blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:1.0f]];
-    } else {
-        [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:236.0/255.0 green:140.0/255.0 blue:113.0/255.0 alpha:.3]];
-    }
-    
-    if ([[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"140x140c"] != nil) {
-        [self.avatarImageView setImageURL:[NSURL URLWithString:[[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"140x140c"]]];
-    } else {
-        [self.avatarImageView setImage:[UIImage imageNamed:@"LoginAvatar"]];
-    }
-}
 - (void)accountTextFielddDidChange :(UITextField *)textField{
     NSString *str = textField.text;
     str = [[str stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString];
     
     if ([[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"account"] isEqualToString:str]) {
         
-        [self setAvatar];
+        [self setAvatar:NO];
 
         [UIView animateWithDuration:.5f animations:^{
             [self.avatarView setAlpha:1];
@@ -689,8 +648,7 @@
             [self.scrollView layoutIfNeeded];
         } completion:^(BOOL finished) {
             if (finished) {
-                [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:236.0/255.0 green:140.0/255.0 blue:113.0/255.0 alpha:.3]];
-                [self.avatarImageView setImage:[UIImage imageNamed:@"LoginAvatar"]];
+                [self setAvatar:YES];
             }
         }];
     }
