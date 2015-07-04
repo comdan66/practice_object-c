@@ -29,7 +29,6 @@
 		0EC2542B1B3BEE800057DB55 /* IndexTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC2542A1B3BEE800057DB55 /* IndexTableViewController.m */; };
 		0EC254851B3C28B30057DB55 /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254841B3C28B30057DB55 /* MyNavigationController.m */; };
 		0EC2548A1B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254891B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m */; };
-		0EC2549E1B3C54460057DB55 /* space.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EC2549D1B3C54460057DB55 /* space.png */; };
 		0EC254A21B3C65060057DB55 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254A11B3C65060057DB55 /* AsyncImageView.m */; };
 		0EC254A61B3C651B0057DB55 /* UIImageViewAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC254A51B3C651B0057DB55 /* UIImageViewAligned.m */; };
 		0ECC5DE41B44611200F6B9DB /* IndexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5DE31B44611200F6B9DB /* IndexTableViewCell.m */; };
@@ -52,9 +51,7 @@
 		0ED1F4D91B39A48C001B9275 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4CE1B39A48C001B9275 /* AFURLRequestSerialization.m */; };
 		0ED1F4DA1B39A48C001B9275 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4D01B39A48C001B9275 /* AFURLResponseSerialization.m */; };
 		0ED1F4DB1B39A48C001B9275 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4D21B39A48C001B9275 /* AFURLSessionManager.m */; };
-		0ED1F4E21B3A8470001B9275 /* bg_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED1F4E11B3A8470001B9275 /* bg_login.png */; };
 		0ED1F4EA1B3AA2EB001B9275 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4E91B3AA2EB001B9275 /* RegisterViewController.m */; };
-		0ED1F4FE1B3AC08B001B9275 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ED1F4FD1B3AC08B001B9275 /* camera.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +107,6 @@
 		0EC254871B3C2DCA0057DB55 /* AMScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMScrollingNavbar.h; sourceTree = "<group>"; };
 		0EC254881B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ScrollingNavbar.h"; sourceTree = "<group>"; };
 		0EC254891B3C2DCA0057DB55 /* UIViewController+ScrollingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScrollingNavbar.m"; sourceTree = "<group>"; };
-		0EC2549D1B3C54460057DB55 /* space.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = space.png; sourceTree = "<group>"; };
 		0EC254A01B3C65060057DB55 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		0EC254A11B3C65060057DB55 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		0EC254A41B3C651B0057DB55 /* UIImageViewAligned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageViewAligned.h; sourceTree = "<group>"; };
@@ -154,10 +150,8 @@
 		0ED1F4D01B39A48C001B9275 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		0ED1F4D11B39A48C001B9275 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		0ED1F4D21B39A48C001B9275 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		0ED1F4E11B3A8470001B9275 /* bg_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_login.png; sourceTree = "<group>"; };
 		0ED1F4E81B3AA2EB001B9275 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		0ED1F4E91B3AA2EB001B9275 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		0ED1F4FD1B3AC08B001B9275 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,7 +414,6 @@
 				0E2086641B3E7BBB006AABBB /* NavigationController */,
 				0EC253BD1B3BA63B0057DB55 /* TabBarController */,
 				0E74CE4A1B3B11D400D28780 /* libs */,
-				0ED1F4DC1B39AC41001B9275 /* images */,
 				0ED1F4A61B39A3AF001B9275 /* Images.xcassets */,
 				0ED1F4A81B39A3AF001B9275 /* LaunchScreen.xib */,
 				0ED1F49D1B39A3AF001B9275 /* OA_2_1.xcdatamodeld */,
@@ -479,16 +472,6 @@
 				0ED1F4D21B39A48C001B9275 /* AFURLSessionManager.m */,
 			);
 			name = AFNetworking;
-			sourceTree = "<group>";
-		};
-		0ED1F4DC1B39AC41001B9275 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				0EC2549D1B3C54460057DB55 /* space.png */,
-				0ED1F4E11B3A8470001B9275 /* bg_login.png */,
-				0ED1F4FD1B3AC08B001B9275 /* camera.png */,
-			);
-			name = images;
 			sourceTree = "<group>";
 		};
 		0ED1F4E71B3AA2D1001B9275 /* Register */ = {
@@ -582,9 +565,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0ED1F4A51B39A3AF001B9275 /* Main.storyboard in Resources */,
-				0EC2549E1B3C54460057DB55 /* space.png in Resources */,
-				0ED1F4FE1B3AC08B001B9275 /* camera.png in Resources */,
-				0ED1F4E21B3A8470001B9275 /* bg_login.png in Resources */,
 				0EAB32F01B442C0900D3D106 /* SingleMarkerView.xib in Resources */,
 				0EAB32F11B442C0900D3D106 /* MultiMarkerView.xib in Resources */,
 				0ED1F4AA1B39A3AF001B9275 /* LaunchScreen.xib in Resources */,

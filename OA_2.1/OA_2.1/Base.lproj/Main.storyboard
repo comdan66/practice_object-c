@@ -1,31 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="L6M-TI-JbN">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="LoginViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <segue destination="L6M-TI-JbN" kind="modal" identifier="loginSegue" modalTransitionStyle="coverVertical" id="mcj-gP-PVu"/>
-                        <segue destination="6Uz-FW-f4W" kind="modal" identifier="registerSegue" modalTransitionStyle="crossDissolve" id="WX9-Og-tpH"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-119" y="1155"/>
-        </scene>
         <!--My Navigation Controller-->
         <scene sceneID="mWj-eD-zEp">
             <objects>
@@ -138,21 +116,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b17-wT-gIX">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tKM-mr-u89">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="b17-wT-gIX" firstAttribute="leading" secondItem="51m-3s-jh8" secondAttribute="leading" id="H6p-Ev-q3R"/>
-                            <constraint firstAttribute="bottom" secondItem="b17-wT-gIX" secondAttribute="bottom" id="Rsc-27-dFR"/>
-                            <constraint firstItem="b17-wT-gIX" firstAttribute="top" secondItem="51m-3s-jh8" secondAttribute="top" id="cQO-ey-4ai"/>
-                            <constraint firstAttribute="trailing" secondItem="b17-wT-gIX" secondAttribute="trailing" id="dAB-mb-aG9"/>
+                            <constraint firstItem="tKM-mr-u89" firstAttribute="top" secondItem="51m-3s-jh8" secondAttribute="top" id="77K-72-XG8"/>
+                            <constraint firstAttribute="bottom" secondItem="tKM-mr-u89" secondAttribute="bottom" id="F0T-6G-9oO"/>
+                            <constraint firstAttribute="trailing" secondItem="tKM-mr-u89" secondAttribute="trailing" id="Nub-a7-cm5"/>
+                            <constraint firstItem="tKM-mr-u89" firstAttribute="leading" secondItem="51m-3s-jh8" secondAttribute="leading" id="sic-cP-bw5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="OA's app v2.1" id="suD-7X-dI3"/>
                     <connections>
-                        <outlet property="mapView" destination="b17-wT-gIX" id="xGS-Q0-ovd"/>
+                        <outlet property="mapView" destination="tKM-mr-u89" id="DPN-CR-rKm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5D-nL-9so" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -242,25 +220,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xb1-X7-VPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="648" y="1914"/>
-        </scene>
-        <!--Register View Controller-->
-        <scene sceneID="24X-xx-P4f">
-            <objects>
-                <viewController id="6Uz-FW-f4W" customClass="RegisterViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a5i-BC-s5N"/>
-                        <viewControllerLayoutGuide type="bottom" id="EP1-UJ-Ls5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Vhh-ZD-5Zu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="I9O-Op-3dc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w3h-Pv-OFP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-857" y="1914"/>
         </scene>
     </scenes>
 </document>

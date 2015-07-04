@@ -14,8 +14,10 @@
 #import "AppDelegate.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, REMarkerClusterDelegate>
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, readonly, nonatomic) REMarkerClusterer *clusterer;
+
+@property REMarkerClusterer *clusterer;
 
 @property BOOL isLoadPicture;
 

@@ -29,7 +29,7 @@
     if ([USER_DEFAULTS objectForKey:@"user"] != nil)
         mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyTabBarController"];
     else
-        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        mainViewController = [LoginViewController new];
 
     [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
     [self.window setRootViewController:mainViewController];
