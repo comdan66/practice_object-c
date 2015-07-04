@@ -506,7 +506,7 @@
 
 - (IndexTableViewCell *)initUI:(id)picture w:(float)w {
     
-    [self.pictureImageView setImageURL:[NSURL URLWithString:[picture objectForKey:@"url"]]];
+    [self.pictureImageView setImageURL:[NSURL URLWithString:[[picture objectForKey:@"name"] objectForKey:@"800w"]]];
     if ([picture objectForKey:@"color"] != nil) {
         id color = [picture objectForKey:@"color"];
         [self.pictureImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
@@ -514,7 +514,7 @@
                                                                    blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:0.85f]];
     }
     
-    [self.avatarImageView setImageURL:[NSURL URLWithString:[[picture objectForKey:@"user"] objectForKey:@"avatar"]]];
+    [self.avatarImageView setImageURL:[NSURL URLWithString:[[[picture objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"140x140c"]]];
     if (([picture objectForKey:@"user"] != nil) && ([[picture objectForKey:@"user"] objectForKey:@"color"] != nil)) {
         id color = [[picture objectForKey:@"user"] objectForKey:@"color"];
         [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f

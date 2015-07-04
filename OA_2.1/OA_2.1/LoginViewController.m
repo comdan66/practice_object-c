@@ -108,7 +108,6 @@
               
               if ([[responseObject objectForKey:@"status"] boolValue]) {
                   [USER_DEFAULTS setValue:[responseObject objectForKey:@"user"] forKey:@"user"];
-                  [USER_DEFAULTS setValue:@"YES" forKey:@"isLogin"];
                   [self performSegueWithIdentifier:@"loginSegue" sender:self];
               } else {
                   [[[UIAlertView alloc] initWithTitle:@"失敗"

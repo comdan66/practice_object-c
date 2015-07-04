@@ -61,13 +61,13 @@
                  NSMutableArray *newMarks = [NSMutableArray new];
                  
                  for (NSMutableDictionary *picture in [responseObject objectForKey:@"pictures"]) {
-                     
-                     REMarker *marker = [[REMarker alloc] init];
-                     
-                     marker.markerId = [[picture objectForKey:@"id"] integerValue];
-                     marker.coordinate = CLLocationCoordinate2DMake([[picture objectForKey:@"lat"] doubleValue], [[picture objectForKey:@"lng"] doubleValue]);
-                     marker.userInfo = picture;
-                     [newMarks addObject:marker];
+                     if ([picture objectForKey:@"position"] != nil) {
+                         REMarker *marker = [[REMarker alloc] init];
+                         marker.markerId = [[picture objectForKey:@"id"] integerValue];
+                         marker.coordinate = CLLocationCoordinate2DMake([[[picture objectForKey:@"position"] objectForKey:@"latitude"] doubleValue], [[[picture objectForKey:@"position"] objectForKey:@"longitude"] doubleValue]);
+                         marker.userInfo = picture;
+                         [newMarks addObject:marker];
+                    }
                  }
                  
                  BOOL has = NO;
@@ -86,15 +86,13 @@
                  NSMutableArray *adds = [NSMutableArray new];
                  for (REMarker *newOri in newMarks) {
                      has = NO;
-                     for (REMarker *oriObj in self.clusterer.markers) {
+                     for (REMarker *oriObj in self.clusterer.markers)
                          if (newOri.markerId == oriObj.markerId) {
                              has = YES;
                              break;
                          }
-                     }
-                     if (!has) {
+                     if (!has)
                          [adds addObject:newOri];
-                     }
                  }
                  [self.clusterer removeMarkers:removes];
                  [self.clusterer addMarkers:adds];

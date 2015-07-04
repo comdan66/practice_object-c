@@ -123,7 +123,7 @@
         [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:236.0/255.0 green:140.0/255.0 blue:113.0/255.0 alpha:.3]];
     }
     
-    [self.avatarImageView setImageURL:[NSURL URLWithString:[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"]]];
+    [self.avatarImageView setImageURL:[NSURL URLWithString:[[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"ori"]]];
     [self.avatarImageView setContentMode:UIViewContentModeScaleAspectFill];
     
     [self.avatarView addSubview:self.avatarImageView];

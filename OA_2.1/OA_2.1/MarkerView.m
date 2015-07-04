@@ -38,10 +38,18 @@
     [self initBaseData:anno mapView:mv];
     
     CGFloat radius = 1.5f;
-    NSURL *w100Url = [NSURL URLWithString:[[((REMarker *)[self.annotation.markers objectAtIndex:0]).userInfo objectForKey:@"url"] objectForKey:@"w100"]];
+    NSDictionary *picture = ((REMarker *)[self.annotation.markers objectAtIndex:0]).userInfo;
+    NSURL *w100Url = [NSURL URLWithString:[[picture objectForKey:@"name"] objectForKey:@"100w"]];
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.mainImageView];
     [self.mainImageView setImageURL:w100Url];
+    
+    if ([picture objectForKey:@"color"] != nil) {
+        id color = [picture objectForKey:@"color"];
+        [self.mainImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
+                                                               green:[[color objectForKey:@"green"] doubleValue] / 255.0f
+                                                                blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:0.85f]];
+    }
     
     [self.mainImageView.layer setBorderColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor];
     [self.mainImageView.layer setBorderWidth:8.0f / [UIScreen mainScreen].scale];
@@ -65,10 +73,17 @@
 
     
     CGFloat radius = 1.5f;
-    NSURL *w100Url = [NSURL URLWithString:[[((REMarker *)[self.annotation.markers objectAtIndex:0]).userInfo objectForKey:@"url"] objectForKey:@"w100"]];
-
+    NSDictionary *picture = ((REMarker *)[self.annotation.markers objectAtIndex:0]).userInfo;
+    NSURL *w100Url = [NSURL URLWithString:[[picture objectForKey:@"name"] objectForKey:@"100w"]];
+    
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.mainImageView];
     [self.mainImageView setImageURL:w100Url];
+    if ([picture objectForKey:@"color"] != nil) {
+        id color = [picture objectForKey:@"color"];
+        [self.mainImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
+                                                               green:[[color objectForKey:@"green"] doubleValue] / 255.0f
+                                                                blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:0.85f]];
+    }
     
     [self.mainImageView.layer setBorderColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor];
     [self.mainImageView.layer setBorderWidth:8.0f / [UIScreen mainScreen].scale];
