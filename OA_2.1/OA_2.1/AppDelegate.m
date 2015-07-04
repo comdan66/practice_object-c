@@ -16,24 +16,24 @@
 @synthesize locationManager, location, locationInfo;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.locationManager = [CLLocationManager new];
-    [self.locationManager setDelegate:self];
-    [self.locationManager requestWhenInUseAuthorization];
-    
-//    NSLog(@"%@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]);
-    NSLog(@"%@", [USER_DEFAULTS objectForKey:@"user"]);
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *mainViewController;
-    
-    if ([[USER_DEFAULTS objectForKey:@"isLogin"] isEqualToString:@"YES"])
-        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyTabBarController"];
-    else
-        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-
-    [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
-    [self.window setRootViewController:mainViewController];
-    [self.window makeKeyAndVisible];
+//    self.locationManager = [CLLocationManager new];
+//    [self.locationManager setDelegate:self];
+//    [self.locationManager requestWhenInUseAuthorization];
+//    
+////    NSLog(@"%@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]);
+//    NSLog(@"%@", [USER_DEFAULTS objectForKey:@"user"]);
+//    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIViewController *mainViewController;
+//    
+//    if ([USER_DEFAULTS objectForKey:@"user"] != nil)
+//        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyTabBarController"];
+//    else
+//        mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//
+//    [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
+//    [self.window setRootViewController:mainViewController];
+//    [self.window makeKeyAndVisible];
 
     return YES;
 }

@@ -108,7 +108,6 @@
     
     [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:self.avatarImageView];
     [self.avatarImageView setContentMode:UIViewContentModeScaleToFill];
-    [self.avatarImageView.layer setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor];
     [self.avatarImageView.layer setBorderColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor];
     [self.avatarImageView.layer setBorderWidth:10.0f / [UIScreen mainScreen].scale];
     [self.avatarImageView.layer setCornerRadius:width / 2];

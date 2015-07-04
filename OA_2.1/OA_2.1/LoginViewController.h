@@ -9,17 +9,27 @@
 #import <UIKit/UIKit.h>
 #import "AFHTTPRequestOperationManager.h"
 #import "RegisterViewController.h"
-#import "RegisterDelegate.h"
 #import "UIAlertView+Blocks.h"
 #import "Config.h"
+#import "AsyncImageView.h"
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate, RegisterDelegate>
+@interface LoginViewController : UIViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *registerButton;
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
-@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UILabel *verticalDividerLabel;
+@property UIImageView *bgImageView;
+@property UIScrollView *scrollView;
+@property UILabel *titleLabel;
+@property UIView *avatarBgView;
+@property UIView *avatarView;
+@property AsyncImageView *avatarImageView;
+@property UITextField *accountTextField;
+@property UITextField *passwordTextField;
+@property UILabel *verticalDividerLabel;
+
+@property UIButton *registerButton;
+@property UIButton *loginButton;
+
+@property CGFloat avatarDimension;
+@property NSLayoutConstraint *avatarBgViewHeightConstraint;
 
 @end
 

@@ -15,41 +15,611 @@
 
 @implementation LoginViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)initBgImageView {
+    self.bgImageView = [UIImageView new];
+    [self.bgImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.bgImageView setImage:[UIImage imageNamed:@"LoginBackground"]];
+    [self.bgImageView setContentMode:UIViewContentModeScaleAspectFill];
     
-    [self.accountTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.5]];
-    [self.accountTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.accountTextField.layer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:.1].CGColor];
-    [self.accountTextField.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
-    [self.accountTextField.layer setCornerRadius:4];
-    [self.accountTextField setKeyboardType:UIKeyboardTypeASCIICapable];
-    [self.accountTextField setDelegate:self];
+    [self.view addSubview:self.bgImageView];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bgImageView
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1
+                                                           constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bgImageView
+                                                          attribute:NSLayoutAttributeLeading
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeLeading
+                                                         multiplier:1
+                                                           constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bgImageView
+                                                          attribute:NSLayoutAttributeTrailing
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTrailing
+                                                         multiplier:1
+                                                           constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bgImageView
+                                                          attribute:NSLayoutAttributeBottom
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeBottom
+                                                         multiplier:1
+                                                           constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bgImageView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.view
+                                                                attribute:NSLayoutAttributeCenterX
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.bgImageView
+                                                                attribute:NSLayoutAttributeCenterY
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.view
+                                                                attribute:NSLayoutAttributeCenterY
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+    
+}
+- (void)initScrollView {
+    self.scrollView = [UIScrollView new];
+    [self.scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self.view addSubview:self.scrollView];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1
+                                                           constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
+                                                          attribute:NSLayoutAttributeLeading
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeLeading
+                                                         multiplier:1
+                                                           constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
+                                                          attribute:NSLayoutAttributeTrailing
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTrailing
+                                                         multiplier:1
+                                                           constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
+                                                          attribute:NSLayoutAttributeBottom
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeBottom
+                                                         multiplier:1
+                                                           constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
+                                                          attribute:NSLayoutAttributeCenterX
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeCenterX
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.scrollView
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+}
+- (void)initTitle {
+    self.titleLabel = [UILabel new];
+    [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.titleLabel setText:@"OA's app v2.1"];
+    [self.titleLabel setFont:[UIFont fontWithName:@"DIN Condensed" size: 50.0]];
+    [self.titleLabel setTextColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:.85]];
+    
+    [self.titleLabel setShadowColor:[UIColor colorWithRed:0.15 green:0.16 blue:0.13 alpha:1]];
+    [self.titleLabel setShadowOffset:CGSizeMake(0.5f, 0.5f)];
+    
+//    [self.titleLabel.layer setBorderColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor];
+//    [self.titleLabel.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
+    
+    [self.scrollView addSubview:self.titleLabel];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.scrollView
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1
+                                                           constant:50.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:50.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel
+                                                          attribute:NSLayoutAttributeCenterX
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.scrollView
+                                                          attribute:NSLayoutAttributeCenterX
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+}
+- (void)initAvatarBgView {
+    self.avatarDimension = 100;
+    self.avatarBgView = [UIView new];
+    [self.avatarBgView setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-    [self.passwordTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.5]];
-    [self.passwordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.passwordTextField.layer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:.1].CGColor];
-    [self.passwordTextField.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
-    [self.passwordTextField.layer setCornerRadius:4];
-    [self.passwordTextField setKeyboardType:UIKeyboardTypeASCIICapable];
-    [self.passwordTextField setDelegate:self];
+
+    [self.scrollView addSubview:self.avatarBgView];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarBgView
+                                                                attribute:NSLayoutAttributeTop
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.titleLabel
+                                                                attribute:NSLayoutAttributeBottom
+                                                               multiplier:1
+                                                                 constant:20.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarBgView
+                                                                attribute:NSLayoutAttributeWidth
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                               multiplier:1.0
+                                                                 constant:self.avatarDimension]];
+    
+    self.avatarBgViewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.avatarBgView
+                                                                   attribute:NSLayoutAttributeHeight
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:nil
+                                                                   attribute:NSLayoutAttributeNotAnAttribute
+                                                                  multiplier:1.0
+                                                                    constant:self.avatarDimension];
+    [self.scrollView addConstraint:self.avatarBgViewHeightConstraint];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarBgView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.scrollView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+}
+- (void)initAvatarView {
+    
+    self.avatarView = [UIView new];
+    [self.avatarView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.avatarView.layer setCornerRadius:self.avatarDimension / 2];
+    [self.avatarView.layer setShadowColor:[UIColor colorWithRed:0.15 green:0.16 blue:0.13 alpha:1].CGColor];
+    [self.avatarView.layer setShadowOffset:CGSizeMake(0.5f, 0.5f)];
+    [self.avatarView.layer setShadowRadius:3.0f];
+    [self.avatarView.layer setShadowOpacity:0.5f];
+    [self.avatarView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
+    
+    [self.avatarBgView addSubview:self.avatarView];
+    
+    [self.avatarBgView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarView
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.avatarBgView
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1
+                                                           constant:0]];
+    
+    [self.avatarBgView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarView
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.avatarBgView
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                 multiplier:1
+                                                                   constant:0]];
+    
+    [self.avatarBgView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarView
+                                                                  attribute:NSLayoutAttributeLeading
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.avatarBgView
+                                                                  attribute:NSLayoutAttributeLeading
+                                                                 multiplier:1
+                                                                   constant:0]];
+    
+    [self.avatarBgView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarView
+                                                                  attribute:NSLayoutAttributeTrailing
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.avatarBgView
+                                                                  attribute:NSLayoutAttributeTrailing
+                                                                 multiplier:1
+                                                                   constant:0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.avatarBgView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarView
+                                                                attribute:NSLayoutAttributeCenterY
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.avatarBgView
+                                                                attribute:NSLayoutAttributeCenterY
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+
+
+    
+}
+- (void)initAvatarImageView {
+    CGFloat width = 100;
+    
+    self.avatarImageView = [AsyncImageView new];
+    [self.avatarImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.avatarImageView setContentMode:UIViewContentModeScaleToFill];
+    [self.avatarImageView.layer setBorderColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor];
+    [self.avatarImageView.layer setBorderWidth:6.0f / [UIScreen mainScreen].scale];
+    [self.avatarImageView.layer setCornerRadius:width / 2];
+    [self.avatarImageView setClipsToBounds:YES];
+
+    if ([[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"color"] != nil) {
+        id color = [[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"color"];
+        [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
+                                                                 green:[[color objectForKey:@"green"] doubleValue] / 255.0f
+                                                                  blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:1.0f]];
+    } else {
+        [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:236.0/255.0 green:140.0/255.0 blue:113.0/255.0 alpha:.3]];
+    }
+    
+    if ([[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"140x140c"] != nil) {
+        [self.avatarImageView setImageURL:[NSURL URLWithString:[[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"140x140c"]]];
+    } else {
+        [self.avatarImageView setImage:[UIImage imageNamed:@"LoginAvatar"]];
+    }
+
+    
+    
+    [self.avatarView addSubview:self.avatarImageView];
+//    
+//    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
+//                                                          attribute:NSLayoutAttributeTop
+//                                                          relatedBy:NSLayoutRelationEqual
+//                                                             toItem:self.avatarView
+//                                                          attribute:NSLayoutAttributeTop
+//                                                         multiplier:1
+//                                                           constant:0.0]];
+//    
+//    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
+//                                                          attribute:NSLayoutAttributeLeading
+//                                                          relatedBy:NSLayoutRelationEqual
+//                                                             toItem:self.avatarView
+//                                                          attribute:NSLayoutAttributeLeading
+//                                                         multiplier:1
+//                                                           constant:0.0]];
+//    
+//    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
+//                                                          attribute:NSLayoutAttributeLeading
+//                                                          relatedBy:NSLayoutRelationEqual
+//                                                             toItem:self.avatarView
+//                                                          attribute:NSLayoutAttributeLeading
+//                                                         multiplier:1
+//                                                           constant:0.0]];
+//    
+//    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
+//                                                          attribute:NSLayoutAttributeBottom
+//                                                          relatedBy:NSLayoutRelationEqual
+//                                                             toItem:self.avatarView
+//                                                          attribute:NSLayoutAttributeBottom
+//                                                         multiplier:1
+    //                                                           constant:0.0]];
+    
+    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.avatarView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+    
+    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                                attribute:NSLayoutAttributeCenterY
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.avatarView
+                                                                attribute:NSLayoutAttributeCenterY
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+    
+    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                                attribute:NSLayoutAttributeWidth
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                               multiplier:1.0
+                                                                 constant:self.avatarDimension]];
+    
+    [self.avatarView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
+                                                                attribute:NSLayoutAttributeHeight
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                               multiplier:1.0
+                                                                 constant:self.avatarDimension]];
+}
+- (void)initAccountTextField {
+    self.accountTextField = [UITextField new];
+    [self.accountTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self.accountTextField.layer setSublayerTransform:CATransform3DMakeTranslation(5, 0, 0)];
+    [self.accountTextField setPlaceholder:@"請輸入帳號.."];
+    [self.accountTextField setFont:[UIFont systemFontOfSize:16.0]];
+    [self.accountTextField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:.6] forKeyPath:@"_placeholderLabel.textColor"];
     
     if ([USER_DEFAULTS objectForKey:@"user"]) {
         [self.accountTextField setText:[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"account"]];
     }
     
-    [self.verticalDividerLabel setBackgroundColor:[UIColor colorWithRed:0.76 green:0.76 blue:0.79 alpha:0.3]];
+    [self.accountTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.45]];
+    [self.accountTextField.layer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:.1].CGColor];
+    [self.accountTextField.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
+    [self.accountTextField.layer setCornerRadius:3];
+    [self.accountTextField setKeyboardType:UIKeyboardTypeASCIICapable];
+    [self.accountTextField setDelegate:self];
+    [self.accountTextField addTarget:self action:@selector(accountTextFielddDidChange:) forControlEvents:UIControlEventEditingChanged];
+
+    [self.scrollView addSubview:self.accountTextField];
     
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.accountTextField
+                                                                attribute:NSLayoutAttributeTop
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.avatarBgView
+                                                                attribute:NSLayoutAttributeBottom
+                                                               multiplier:1
+                                                                 constant:20.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.accountTextField
+                                                          attribute:NSLayoutAttributeWidth
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:250]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.accountTextField
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:30]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.accountTextField
+                                                                attribute:NSLayoutAttributeCenterX
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.scrollView
+                                                                attribute:NSLayoutAttributeCenterX
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+    
+}
+- (void)initPasswordTextField {
+    self.passwordTextField = [UITextField new];
+    [self.passwordTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self.passwordTextField.layer setSublayerTransform:CATransform3DMakeTranslation(5, 0, 0)];
+    [self.passwordTextField setSecureTextEntry:YES];
+    [self.passwordTextField setPlaceholder:@"請輸入密碼.."];
+    [self.passwordTextField setFont:[UIFont systemFontOfSize:16.0]];
+    [self.passwordTextField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:.6] forKeyPath:@"_placeholderLabel.textColor"];
+    
+    [self.passwordTextField setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:.45]];
+    [self.passwordTextField.layer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:.1].CGColor];
+    [self.passwordTextField.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
+    [self.passwordTextField.layer setCornerRadius:3];
+    [self.passwordTextField setKeyboardType:UIKeyboardTypeASCIICapable];
+    [self.passwordTextField setDelegate:self];
+    
+    [self.scrollView addSubview:self.passwordTextField];
+    
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.passwordTextField
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.accountTextField
+                                                          attribute:NSLayoutAttributeBottom
+                                                         multiplier:1
+                                                           constant:5.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.passwordTextField
+                                                          attribute:NSLayoutAttributeWidth
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.accountTextField
+                                                          attribute:NSLayoutAttributeWidth
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.passwordTextField
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:30]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.passwordTextField
+                                                          attribute:NSLayoutAttributeCenterX
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.scrollView
+                                                          attribute:NSLayoutAttributeCenterX
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+}
+- (void)initVerticalDividerLabel {
+    self.verticalDividerLabel = [UILabel new];
+    [self.verticalDividerLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.verticalDividerLabel setBackgroundColor:[UIColor colorWithRed:0.84 green:0.84 blue:0.84 alpha:.3]];
+    [self.scrollView addSubview:self.verticalDividerLabel];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.verticalDividerLabel
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.passwordTextField
+                                                          attribute:NSLayoutAttributeBottom
+                                                         multiplier:1
+                                                           constant:40.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.verticalDividerLabel
+                                                          attribute:NSLayoutAttributeBottom
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.scrollView
+                                                          attribute:NSLayoutAttributeBottom
+                                                         multiplier:1
+                                                           constant:-100.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.verticalDividerLabel
+                                                          attribute:NSLayoutAttributeWidth
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:1.0 / [UIScreen mainScreen].scale]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.verticalDividerLabel
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:40]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.verticalDividerLabel
+                                                          attribute:NSLayoutAttributeCenterX
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.scrollView
+                                                          attribute:NSLayoutAttributeCenterX
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+}
+
+- (void)initRegisterButton {
+    self.registerButton = [UIButton new];
+    [self.registerButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.registerButton setTitle:@"註冊。加入" forState:UIControlStateNormal];
+    [self.registerButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.registerButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:.5] forState:UIControlStateHighlighted];
     [self.registerButton.layer setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:234.0/255.0 blue:237.0/255.0 alpha:.2].CGColor];
     [self.registerButton.layer setCornerRadius:3];
+    [self.registerButton.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
+    [self.registerButton addTarget:self action:@selector(registerButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+
+    [self.scrollView addSubview:self.registerButton];
     
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.registerButton
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.verticalDividerLabel
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.registerButton
+                                                          attribute:NSLayoutAttributeTrailing
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.verticalDividerLabel
+                                                          attribute:NSLayoutAttributeLeading
+                                                         multiplier:1
+                                                           constant:-10.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.registerButton
+                                                          attribute:NSLayoutAttributeLeading
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.passwordTextField
+                                                          attribute:NSLayoutAttributeLeading
+                                                         multiplier:1
+                                                           constant:0.0]];
+}
+- (void)initLoginButton {
+    self.loginButton = [UIButton new];
+    [self.loginButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.loginButton setTitle:@"立即。登入" forState:UIControlStateNormal];
+    [self.loginButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.loginButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:.5] forState:UIControlStateHighlighted];
     [self.loginButton.layer setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:234.0/255.0 blue:237.0/255.0 alpha:.2].CGColor];
     [self.loginButton.layer setCornerRadius:3];
+    [self.loginButton.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
     
+    [self.scrollView addSubview:self.loginButton];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.loginButton
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.verticalDividerLabel
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.loginButton
+                                                          attribute:NSLayoutAttributeLeading
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.verticalDividerLabel
+                                                          attribute:NSLayoutAttributeTrailing
+                                                         multiplier:1
+                                                           constant:10.0]];
+    
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.loginButton
+                                                          attribute:NSLayoutAttributeTrailing
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.passwordTextField
+                                                          attribute:NSLayoutAttributeTrailing
+                                                         multiplier:1
+                                                           constant:0.0]];
+}
+- (void)initUI {
+    [self initBgImageView];
+    [self initScrollView];
+    [self initTitle];
+    [self initAvatarBgView];
+    [self initAvatarView];
+    [self initAvatarImageView];
+    [self initAccountTextField];
+    [self initPasswordTextField];
+    [self initVerticalDividerLabel];
+    [self initRegisterButton];
+    [self initLoginButton];
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self initUI];
+    
+
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
                                           initWithTarget:self action:@selector(touchesBegan)];
     tapGesture.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGesture];
+}
+- (void)touchesBegan {
+    [self textFieldShouldReturn: [UITextField new]];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -69,85 +639,142 @@
     
     return YES;
 }
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"registerSegue"]) {
-        RegisterViewController *registerVC = segue.destinationViewController;
-        registerVC.loginVC = self;
-    }
-}
--(void)updateAccount:(NSString *) account {
-    [self.accountTextField setText:account];
-    [self.passwordTextField becomeFirstResponder];
-}
-
-
-- (void)touchesBegan {
-    [self textFieldShouldReturn: [UITextField new]];
-}
-- (IBAction)loginButtonAction:(id)sender {
-    if (![self checkData])
-        return;
+//- (void)
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSUInteger oldLength = [textField.text length];
+    NSUInteger replacementLength = [string length];
+    NSUInteger rangeLength = range.length;
     
-    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading..."
-                                                           message:nil
-                                                          delegate:self
-                                                 cancelButtonTitle:nil
-                                                 otherButtonTitles:nil, nil];
-    [loadingAlert show];
+    NSUInteger newLength = oldLength - rangeLength + replacementLength;
     
-    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
-    [data setValue:self.accountTextField.text forKey:@"account"];
-    [data setValue:self.passwordTextField.text forKey:@"password"];
-        
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
-    [manager POST:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/login"]
-       parameters:data
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
-              
-              if ([[responseObject objectForKey:@"status"] boolValue]) {
-                  [USER_DEFAULTS setValue:[responseObject objectForKey:@"user"] forKey:@"user"];
-                  [self performSegueWithIdentifier:@"loginSegue" sender:self];
-              } else {
-                  [[[UIAlertView alloc] initWithTitle:@"失敗"
-                                              message:[responseObject objectForKey:@"message"]
-                                    cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
-                                    otherButtonItems:nil, nil] show];
-              }
-          }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
-              
-              [[[UIAlertView alloc] initWithTitle:@"提示"
-                                          message:@"連線失敗，請確認網路連線狀況後再試一次..."
-                                 cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
-                                 otherButtonItems:nil, nil] show];
-          }
-    ];
-}
-
-- (BOOL)checkData {
-    if ([self.accountTextField.text length] <= 0) {
-        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                            message:@"請輸入帳號喔！"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"確定"
-                                                  otherButtonTitles:nil, nil];
-        [AlertView show];
-        return NO;
-    }
-    if ([self.passwordTextField.text length] <= 0) {
-        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                            message:@"請輸入密碼喔！"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"確定"
-                                                  otherButtonTitles:nil, nil];
-        [AlertView show];
-        return NO;
-    }
+    BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+    
+    return newLength <= 200 || returnKey;
+    
     return YES;
 }
+- (void)setAvatar {
+    if ([[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"color"] != nil) {
+        id color = [[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"color"];
+        [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f
+                                                                 green:[[color objectForKey:@"green"] doubleValue] / 255.0f
+                                                                  blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:1.0f]];
+    } else {
+        [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:236.0/255.0 green:140.0/255.0 blue:113.0/255.0 alpha:.3]];
+    }
+    
+    if ([[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"140x140c"] != nil) {
+        [self.avatarImageView setImageURL:[NSURL URLWithString:[[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"140x140c"]]];
+    } else {
+        [self.avatarImageView setImage:[UIImage imageNamed:@"LoginAvatar"]];
+    }
+}
+- (void)accountTextFielddDidChange :(UITextField *)textField{
+    NSString *str = textField.text;
+    str = [[str stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString];
+    
+    if ([[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"account"] isEqualToString:str]) {
+        
+        [self setAvatar];
+
+        [UIView animateWithDuration:.5f animations:^{
+            [self.avatarView setAlpha:1];
+            [self.avatarBgViewHeightConstraint setConstant:self.avatarDimension];
+            [self.scrollView layoutIfNeeded];
+        }];
+    } else {
+        [UIView animateWithDuration:.5f animations:^{
+            [self.avatarView setAlpha:0];
+            [self.avatarBgViewHeightConstraint setConstant:0.0f];
+            [self.scrollView layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:236.0/255.0 green:140.0/255.0 blue:113.0/255.0 alpha:.3]];
+                [self.avatarImageView setImage:[UIImage imageNamed:@"LoginAvatar"]];
+            }
+        }];
+    }
+}
+-(void)registerButtonAction:(UIButton*)sender {
+    [self performSegueWithIdentifier:@"registerSegue" sender:self];
+}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"registerSegue"]) {
+//        RegisterViewController *registerVC = segue.destinationViewController;
+//        registerVC.loginVC = self;
+//    }
+//}
+//-(void)updateAccount:(NSString *) account {
+//    [self.accountTextField setText:account];
+//    [self.passwordTextField becomeFirstResponder];
+//}
+//
+//
+
+//- (IBAction)loginButtonAction:(id)sender {
+//    if (![self checkData])
+//        return;
+//    
+//    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading..."
+//                                                           message:nil
+//                                                          delegate:self
+//                                                 cancelButtonTitle:nil
+//                                                 otherButtonTitles:nil, nil];
+//    [loadingAlert show];
+//    
+//    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+//    [data setValue:self.accountTextField.text forKey:@"account"];
+//    [data setValue:self.passwordTextField.text forKey:@"password"];
+//        
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
+//    [manager POST:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/login"]
+//       parameters:data
+//          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+//              
+//              if ([[responseObject objectForKey:@"status"] boolValue]) {
+//                  [USER_DEFAULTS setValue:[responseObject objectForKey:@"user"] forKey:@"user"];
+//                  [self performSegueWithIdentifier:@"loginSegue" sender:self];
+//              } else {
+//                  [[[UIAlertView alloc] initWithTitle:@"失敗"
+//                                              message:[responseObject objectForKey:@"message"]
+//                                    cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
+//                                    otherButtonItems:nil, nil] show];
+//              }
+//          }
+//          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+//              
+//              [[[UIAlertView alloc] initWithTitle:@"提示"
+//                                          message:@"連線失敗，請確認網路連線狀況後再試一次..."
+//                                 cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
+//                                 otherButtonItems:nil, nil] show];
+//          }
+//    ];
+//}
+//
+//- (BOOL)checkData {
+//    if ([self.accountTextField.text length] <= 0) {
+//        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
+//                                                            message:@"請輸入帳號喔！"
+//                                                           delegate:self
+//                                                  cancelButtonTitle:@"確定"
+//                                                  otherButtonTitles:nil, nil];
+//        [AlertView show];
+//        return NO;
+//    }
+//    if ([self.passwordTextField.text length] <= 0) {
+//        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
+//                                                            message:@"請輸入密碼喔！"
+//                                                           delegate:self
+//                                                  cancelButtonTitle:@"確定"
+//                                                  otherButtonTitles:nil, nil];
+//        [AlertView show];
+//        return NO;
+//    }
+//    return YES;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

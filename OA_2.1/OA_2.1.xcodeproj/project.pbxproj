@@ -157,7 +157,6 @@
 		0ED1F4E11B3A8470001B9275 /* bg_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_login.png; sourceTree = "<group>"; };
 		0ED1F4E81B3AA2EB001B9275 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		0ED1F4E91B3AA2EB001B9275 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		0ED1F4EE1B3AA7F9001B9275 /* RegisterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterDelegate.h; sourceTree = "<group>"; };
 		0ED1F4FD1B3AC08B001B9275 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -497,7 +496,6 @@
 			children = (
 				0ED1F4E81B3AA2EB001B9275 /* RegisterViewController.h */,
 				0ED1F4E91B3AA2EB001B9275 /* RegisterViewController.m */,
-				0ED1F4EE1B3AA7F9001B9275 /* RegisterDelegate.h */,
 			);
 			name = Register;
 			sourceTree = "<group>";

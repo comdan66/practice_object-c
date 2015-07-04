@@ -308,7 +308,7 @@
 
                       [USER_DEFAULTS setValue:[responseObject objectForKey:@"user"] forKey:@"user"];
                       
-                      [_loginVC updateAccount:[[responseObject objectForKey:@"user"] objectForKey:@"account"]];
+//                      [_loginVC updateAccount:[[responseObject objectForKey:@"user"] objectForKey:@"account"]];
                       [self dismissViewControllerAnimated:YES completion:nil];
                   }]
                                      otherButtonItems:nil, nil] show];

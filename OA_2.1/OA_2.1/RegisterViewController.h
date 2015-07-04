@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
-#import "RegisterDelegate.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "UIAlertView+Blocks.h"
 #import "ImageUtility.h"
@@ -16,7 +15,6 @@
 
 @interface RegisterViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (nonatomic, assign) id<RegisterDelegate> loginVC;
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
