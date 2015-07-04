@@ -12,6 +12,7 @@
 #import "UIAlertView+Blocks.h"
 #import "Config.h"
 #import "AsyncImageView.h"
+#import "MyTabBarController.h";
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate>
 

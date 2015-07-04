@@ -292,14 +292,13 @@
 }
 
 - (void)initAvatarImageView {
-    CGFloat width = 100;
     
     self.avatarImageView = [AsyncImageView new];
     [self.avatarImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.avatarImageView setContentMode:UIViewContentModeScaleToFill];
     [self.avatarImageView.layer setBorderColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1].CGColor];
     [self.avatarImageView.layer setBorderWidth:6.0f / [UIScreen mainScreen].scale];
-    [self.avatarImageView.layer setCornerRadius:width / 2];
+    [self.avatarImageView.layer setCornerRadius:self.avatarDimension / 2];
     [self.avatarImageView setClipsToBounds:YES];
     
     [self setAvatar:NO];
@@ -533,6 +532,78 @@
                                                          multiplier:1
                                                            constant:0.0]];
 }
+- (BOOL)checkData {
+    
+    NSString *str = self.accountTextField.text;
+    str = [[str stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString];
+    if ([str length] <= 0) {
+        [[[UIAlertView alloc] initWithTitle:@"提示"
+                                    message:@"請輸入帳號喔！"
+                                   delegate:self
+                          cancelButtonTitle:@"確定"
+                          otherButtonTitles:nil, nil] show];
+        return NO;
+    }
+    
+    str = self.passwordTextField.text;
+    str = [[str stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString];
+    if ([str length] <= 0) {
+
+        [[[UIAlertView alloc] initWithTitle:@"提示"
+                                    message:@"請輸入密碼喔！"
+                                   delegate:self
+                          cancelButtonTitle:@"確定"
+                          otherButtonTitles:nil, nil] show];
+        return NO;
+    }
+    return YES;
+}
+- (void)loginButtonAction:(id)sender {
+    if (![self checkData])
+        return;
+    
+    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading..."
+                                                           message:nil
+                                                          delegate:self
+                                                 cancelButtonTitle:nil
+                                                 otherButtonTitles:nil, nil];
+    [loadingAlert show];
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    [data setValue:[[self.accountTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString] forKey:@"account"];
+    [data setValue:[[self.passwordTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString] forKey:@"password"];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
+    [manager POST:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/login"]
+       parameters:data
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+              
+              if ([[responseObject objectForKey:@"status"] boolValue]) {
+                  [USER_DEFAULTS setValue:[responseObject objectForKey:@"user"] forKey:@"user"];
+
+                  MyTabBarController *myTabBarController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MyTabBarController"];
+                  [[[[UIApplication sharedApplication] delegate] window] setRootViewController:myTabBarController];
+              } else {
+                  [[[UIAlertView alloc] initWithTitle:@"失敗"
+                                              message:[responseObject objectForKey:@"message"]
+                                     cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
+                                     otherButtonItems:nil, nil] show];
+              }
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
+              
+              [[[UIAlertView alloc] initWithTitle:@"提示"
+                                          message:@"連線失敗，請確認網路連線狀況後再試一次..."
+                                 cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
+                                 otherButtonItems:nil, nil] show];
+          }
+     ];
+}
+
+
 - (void)initLoginButton {
     self.loginButton = [UIButton new];
     [self.loginButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -542,6 +613,7 @@
     [self.loginButton.layer setBackgroundColor:[UIColor colorWithRed:233.0/255.0 green:234.0/255.0 blue:237.0/255.0 alpha:.2].CGColor];
     [self.loginButton.layer setCornerRadius:3];
     [self.loginButton.titleLabel setFont:[UIFont systemFontOfSize:12.0f]];
+    [self.loginButton addTarget:self action:@selector(loginButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.scrollView addSubview:self.loginButton];
     
@@ -614,19 +686,20 @@
     
     return YES;
 }
-//- (void)
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSUInteger oldLength = [textField.text length];
-    NSUInteger replacementLength = [string length];
-    NSUInteger rangeLength = range.length;
+    BOOL _isAllowed = YES;
     
-    NSUInteger newLength = oldLength - rangeLength + replacementLength;
+    NSString *temp = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    BOOL returnKey = [string rangeOfString: @"\n"].location != NSNotFound;
+    if ((textField == self.accountTextField) && [textField.text isEqualToString:temp]) {
+        _isAllowed =  NO;
+    }
+    if ([temp length] > 200) {
+        _isAllowed =  NO;
+    }
     
-    return newLength <= 200 || returnKey;
-    
-    return YES;
+    return   _isAllowed;
 }
 - (void)accountTextFielddDidChange :(UITextField *)textField{
     NSString *str = textField.text;
@@ -654,14 +727,11 @@
     }
 }
 -(void)registerButtonAction:(UIButton*)sender {
-    [self performSegueWithIdentifier:@"registerSegue" sender:self];
+    RegisterViewController *registerViewController = [[RegisterViewController alloc] init];
+    [registerViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self presentViewController:registerViewController animated:YES completion:nil];
 }
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"registerSegue"]) {
-//        RegisterViewController *registerVC = segue.destinationViewController;
-//        registerVC.loginVC = self;
-//    }
-//}
+
 //-(void)updateAccount:(NSString *) account {
 //    [self.accountTextField setText:account];
 //    [self.passwordTextField becomeFirstResponder];
@@ -669,70 +739,7 @@
 //
 //
 
-//- (IBAction)loginButtonAction:(id)sender {
-//    if (![self checkData])
-//        return;
-//    
-//    UIAlertView *loadingAlert = [[UIAlertView alloc] initWithTitle:@"Loading..."
-//                                                           message:nil
-//                                                          delegate:self
-//                                                 cancelButtonTitle:nil
-//                                                 otherButtonTitles:nil, nil];
-//    [loadingAlert show];
-//    
-//    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
-//    [data setValue:self.accountTextField.text forKey:@"account"];
-//    [data setValue:self.passwordTextField.text forKey:@"password"];
-//        
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
-//    [manager POST:[NSString stringWithFormat:@"http://ios.ioa.tw/api/v1/login"]
-//       parameters:data
-//          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
-//              
-//              if ([[responseObject objectForKey:@"status"] boolValue]) {
-//                  [USER_DEFAULTS setValue:[responseObject objectForKey:@"user"] forKey:@"user"];
-//                  [self performSegueWithIdentifier:@"loginSegue" sender:self];
-//              } else {
-//                  [[[UIAlertView alloc] initWithTitle:@"失敗"
-//                                              message:[responseObject objectForKey:@"message"]
-//                                    cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
-//                                    otherButtonItems:nil, nil] show];
-//              }
-//          }
-//          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//              [loadingAlert dismissWithClickedButtonIndex:-1 animated:YES];
-//              
-//              [[[UIAlertView alloc] initWithTitle:@"提示"
-//                                          message:@"連線失敗，請確認網路連線狀況後再試一次..."
-//                                 cancelButtonItem:[RIButtonItem itemWithLabel:@"確定"]
-//                                 otherButtonItems:nil, nil] show];
-//          }
-//    ];
-//}
-//
-//- (BOOL)checkData {
-//    if ([self.accountTextField.text length] <= 0) {
-//        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                            message:@"請輸入帳號喔！"
-//                                                           delegate:self
-//                                                  cancelButtonTitle:@"確定"
-//                                                  otherButtonTitles:nil, nil];
-//        [AlertView show];
-//        return NO;
-//    }
-//    if ([self.passwordTextField.text length] <= 0) {
-//        UIAlertView *AlertView = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                            message:@"請輸入密碼喔！"
-//                                                           delegate:self
-//                                                  cancelButtonTitle:@"確定"
-//                                                  otherButtonTitles:nil, nil];
-//        [AlertView show];
-//        return NO;
-//    }
-//    return YES;
-//}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
