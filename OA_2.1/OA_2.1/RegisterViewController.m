@@ -659,32 +659,29 @@
 - (void)touchAvatarImage {
     [self touchesBegan];
 
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"請選擇方式"
-                                                             delegate:self
-                                                    cancelButtonTitle:@"取消"
-                                               destructiveButtonTitle:@"拍照"
-                                                    otherButtonTitles:@"選取照片", nil];
-
-    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+    [[[UIActionSheet alloc] initWithTitle:@"請選擇方式"
+                                 delegate:self
+                        cancelButtonTitle:@"取消"
+                   destructiveButtonTitle:@"拍照"
+                        otherButtonTitles:@"選取照片", nil] showInView:[UIApplication sharedApplication].keyWindow];
 }
 -(void)cameraChangeDevice:(NSNotification *)notification {
     if(self.imagePickerController.cameraDevice == UIImagePickerControllerCameraDeviceFront) {
-        self.imagePickerController.cameraViewTransform = CGAffineTransformIdentity;
-        self.imagePickerController.cameraViewTransform = CGAffineTransformScale(self.imagePickerController.cameraViewTransform, -1, 1);
-        NSLog(@"asd");
+        [self.imagePickerController setCameraViewTransform:CGAffineTransformIdentity];
+        [self.imagePickerController setCameraViewTransform:CGAffineTransformScale(self.imagePickerController.cameraViewTransform, -1, 1)];
     } else {
-        self.imagePickerController.cameraViewTransform = CGAffineTransformIdentity;
+        [self.imagePickerController setCameraViewTransform:CGAffineTransformIdentity];
     }
 }
 - (void) showCamera {
     self.imagePickerController = [UIImagePickerController new];
-    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.imagePickerController.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-    self.imagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeAuto;
-    self.imagePickerController.delegate = self;
-    self.imagePickerController.navigationBarHidden = YES;
+    [self.imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [self.imagePickerController setCameraCaptureMode:UIImagePickerControllerCameraCaptureModePhoto];
+    [self.imagePickerController setCameraFlashMode:UIImagePickerControllerCameraFlashModeAuto];
+    [self.imagePickerController setDelegate:self];
+    [self.imagePickerController setNavigationBarHidden:YES];
 
-    self.imagePickerController.cameraDevice = [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront] ? UIImagePickerControllerCameraDeviceFront : UIImagePickerControllerCameraDeviceRear;
+    [self.imagePickerController setCameraDevice:[UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront] ? UIImagePickerControllerCameraDeviceFront : UIImagePickerControllerCameraDeviceRear];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(cameraChangeDevice:)
@@ -695,9 +692,9 @@
 }
 - (void)showPhotoLibrary {
     self.imagePickerController = [UIImagePickerController new];
-    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self.imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self.imagePickerController setDelegate:self];
     [self.imagePickerController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    self.imagePickerController.delegate = self;
 
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
@@ -819,9 +816,8 @@
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
-    if ((self.viewAddHeight > 0) || (self.focusTextField == nil)) {
+    if ((self.viewAddHeight > 0) || (self.focusTextField == nil))
         return;
-    }
 
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
 
@@ -836,14 +832,13 @@
 
 }
 - (void)keyboardWillHide:(NSNotification*)notification {
-    if (!self.isViewLoaded || !self.view.window || (self.focusTextField == nil)) {
+    if (!self.isViewLoaded || !self.view.window || (self.focusTextField == nil))
         return;
-    }
 
     [UIView beginAnimations: @"anim" context: nil];
     [UIView setAnimationBeginsFromCurrentState: YES];
     [UIView setAnimationDuration: 0.3f];
-    self.view.frame = CGRectOffset(self.view.frame, 0, self.viewAddHeight);
+    [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [UIView commitAnimations];
 
     self.viewAddHeight = 0;

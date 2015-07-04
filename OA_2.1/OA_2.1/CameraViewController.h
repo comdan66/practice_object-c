@@ -8,18 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "UIPlaceHolderTextView.h"
+#import "AppDelegate.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "ImageUtility.h"
 #import "UIAlertView+Blocks.h"
-#import "AppDelegate.h"
 
+@interface CameraViewController : UIViewController <UIActionSheetDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@interface CameraViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property UIScrollView *scrollView;
+@property UIView *borderView;
+@property UIImageView *pictureImageView;
+@property UIPlaceHolderTextView *descriptionTextView;
+@property UIButton *submitButton;
 
-@property (weak, nonatomic) IBOutlet UIView *borderView;
-@property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *descriptionTextView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *pictureImageView;
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property UIImagePickerController *imagePickerController;
+@property CGFloat viewAddHeight;
+@property BOOL hasChoiceAvatar;
+
 
 @end

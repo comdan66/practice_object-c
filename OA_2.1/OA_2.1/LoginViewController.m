@@ -731,19 +731,8 @@
     [registerViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:registerViewController animated:YES completion:nil];
 }
-
-//-(void)updateAccount:(NSString *) account {
-//    [self.accountTextField setText:account];
-//    [self.passwordTextField becomeFirstResponder];
-//}
-//
-//
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
