@@ -47,7 +47,7 @@
     
     self.isLoadPicture = YES;
 
-    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *data = [NSMutableDictionary new];
     [data setValue:[[NSString alloc] initWithFormat:@"%f", self.mapView.region.center.latitude] forKey:@"center[latitude]"];
     [data setValue:[[NSString alloc] initWithFormat:@"%f", self.mapView.region.center.longitude] forKey:@"center[longitude]"];
     [data setValue:[[NSString alloc] initWithFormat:@"%f", self.mapView.region.span.latitudeDelta] forKey:@"span[latitudeDelta]"];

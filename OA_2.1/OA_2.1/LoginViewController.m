@@ -287,8 +287,8 @@
     
     id avatar = [[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"avatar"];
 
-    if ((avatar != nil) && ([avatar objectForKey:@"140x140c"] != nil))
-        [self.avatarImageView setImageURL:[NSURL URLWithString:[avatar objectForKey:@"140x140c"]]];
+    if ((avatar != nil) && ([avatar objectForKey:@"200x200t"] != nil))
+        [self.avatarImageView setImageURL:[NSURL URLWithString:[avatar objectForKey:@"200x200t"]]];
 }
 
 - (void)initAvatarImageView {
@@ -534,8 +534,7 @@
 }
 - (BOOL)checkData {
     
-    NSString *str = self.accountTextField.text;
-    str = [[str stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString];
+    NSString *str = [[self.accountTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString];
     if ([str length] <= 0) {
         [[[UIAlertView alloc] initWithTitle:@"提示"
                                     message:@"請輸入帳號喔！"
@@ -545,8 +544,7 @@
         return NO;
     }
     
-    str = self.passwordTextField.text;
-    str = [[str stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString];
+    str = [self.passwordTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
     if ([str length] <= 0) {
 
         [[[UIAlertView alloc] initWithTitle:@"提示"
@@ -569,9 +567,9 @@
                                                  otherButtonTitles:nil, nil];
     [loadingAlert show];
     
-    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *data = [NSMutableDictionary new];
     [data setValue:[[self.accountTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString] forKey:@"account"];
-    [data setValue:[[self.passwordTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString] forKey:@"password"];
+    [data setValue:[self.passwordTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] forKey:@"password"];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager.responseSerializer setAcceptableContentTypes:[NSSet setWithObject:@"application/json"]];
@@ -660,8 +658,7 @@
     [self initUI];
 
 
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
-                                          initWithTarget:self action:@selector(touchesBegan)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesBegan)];
     tapGesture.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGesture];
 }
@@ -688,18 +685,17 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    BOOL _isAllowed = YES;
+    BOOL isAllowed = YES;
     
     NSString *temp = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    if ((textField == self.accountTextField) && [textField.text isEqualToString:temp]) {
-        _isAllowed =  NO;
-    }
-    if ([temp length] > 200) {
-        _isAllowed =  NO;
-    }
+    if ((textField == self.accountTextField) && [textField.text isEqualToString:temp]) 
+        isAllowed =  NO;
+
+    if ([temp length] > 200)
+        isAllowed =  NO;
     
-    return   _isAllowed;
+    return   isAllowed;
 }
 - (void)accountTextFielddDidChange :(UITextField *)textField{
     NSString *str = textField.text;

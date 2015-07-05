@@ -50,17 +50,17 @@
                           @"items": @[
                                   @{
                                       @"name": @"頭像設定",
-                                      @"action": @"s",
+                                      @"action": @"AvatarViewController",
                                       @"image": @"Setting_00"
                                       },
                                   @{
                                       @"name": @"暱稱設定",
-                                      @"action": @"d",
+                                      @"action": @"NameViewController",
                                       @"image": @"Setting_01"
                                       },
                                   @{
                                       @"name": @"密碼設定",
-                                      @"action": @"f",
+                                      @"action": @"PasswordViewController",
                                       @"image": @"Setting_02"
                                       }
                               ]
@@ -75,7 +75,8 @@
                                       }
                                   ]
                           }];
-//    [self performSegueWithIdentifier:@"sss" sender:self];
+    
+//    [self.navigationController pushViewController:[PasswordViewController new] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -139,7 +140,13 @@
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"sss" sender:self];
+    NSString *action = [[[[features objectAtIndex:indexPath.section] objectForKey:@"items"] objectAtIndex:indexPath.row] objectForKey:@"action"];
+
+    if ([action isEqualToString:@"logout"]) {
+        [[[[UIApplication sharedApplication] delegate] window] setRootViewController:[LoginViewController new]];
+    } else {
+        [self.navigationController pushViewController:[NSClassFromString(action) new] animated:YES];
+    }
 }
 /*
 // Override to support conditional editing of the table view.

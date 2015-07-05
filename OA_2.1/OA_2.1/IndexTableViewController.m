@@ -77,7 +77,7 @@
     else
         prevId = @"0";
 
-    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *data = [NSMutableDictionary new];
     [data setValue:prevId forKey:@"prev_id"];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -111,7 +111,7 @@
 - (void)loadData:(UIAlertView *) alert{
     isLoading = YES;
     
-    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *data = [NSMutableDictionary new];
     [data setValue:nextId forKey:@"next_id"];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

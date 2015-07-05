@@ -334,7 +334,7 @@
     [self.nameTextField.layer setCornerRadius:4];
     
     [self.nameTextField.layer setSublayerTransform:CATransform3DMakeTranslation(5, 0, 0)];
-    [self.nameTextField setPlaceholder:@"請輸入帳號.."];
+    [self.nameTextField setPlaceholder:@"請輸入暱稱.."];
     [self.nameTextField setFont:[UIFont systemFontOfSize:16.0]];
     [self.nameTextField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:.6] forKeyPath:@"_placeholderLabel.textColor"];
     
@@ -768,18 +768,17 @@
     [self.passwordTextField setText:@""];
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    BOOL _isAllowed = YES;
+    BOOL isAllowed = YES;
     
     NSString *temp = [[textField.text stringByReplacingCharactersInRange:range withString:string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
-    if ((textField == self.accountTextField) && [textField.text isEqualToString:temp]) {
-        _isAllowed =  NO;
-    }
-    if ([temp length] > 200) {
-        _isAllowed =  NO;
-    }
+    if ((textField == self.accountTextField) && [textField.text isEqualToString:temp])
+        isAllowed =  NO;
+
+    if ([temp length] > 200)
+        isAllowed =  NO;
     
-    return   _isAllowed;
+    return   isAllowed;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -848,6 +847,8 @@
     [super didReceiveMemoryWarning];
 }
 - (void)submitButtonAction:(id)sender {
+    [self touchesBegan];
+
     if (![self checkData])
         return;
 
@@ -858,9 +859,9 @@
                                                  otherButtonTitles:nil, nil];
     [loadingAlert show];
 
-    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *data = [NSMutableDictionary new];
     [data setValue:[[self.accountTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString] forKey:@"account"];
-    [data setValue:[[self.passwordTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString] forKey:@"password"];
+    [data setValue:[self.passwordTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] forKey:@"password"];
     [data setValue:[self.nameTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] forKey:@"name"];
 
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -881,6 +882,7 @@
                                      cancelButtonItem:[RIButtonItem itemWithLabel:@"確定" action:^{
                       
                       [USER_DEFAULTS setValue:[responseObject objectForKey:@"user"] forKey:@"user"];
+
                       [self dismissViewControllerAnimated:YES completion:^(void) {
                           [self cleanData];
                       }];
@@ -914,8 +916,7 @@
         return NO;
     }
     
-    NSString *str = self.nameTextField.text;
-    str = [[str stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString];
+    NSString *str = [self.nameTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
     
     if ([str length] <= 0) {
         [[[UIAlertView alloc] initWithTitle:@"提示"
@@ -926,8 +927,7 @@
         return NO;
     }
 
-    str = self.accountTextField.text;
-    str = [[str stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString];
+    str = [[self.accountTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] lowercaseString];
     if ([str length] <= 0) {
         [[[UIAlertView alloc] initWithTitle:@"提示"
                                     message:@"請輸入帳號喔！"
@@ -936,9 +936,8 @@
                           otherButtonTitles:nil, nil] show];
         return NO;
     }
-    
-    str = self.passwordTextField.text;
-    str = [str stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
+
+    str = [self.passwordTextField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
     if ([str length] <= 0) {
         [[[UIAlertView alloc] initWithTitle:@"提示"
                                     message:@"請輸入密碼喔！"

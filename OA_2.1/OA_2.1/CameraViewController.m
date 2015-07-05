@@ -350,8 +350,7 @@
     singleTap.numberOfTapsRequired = 1;
     [self.pictureImageView addGestureRecognizer:singleTap];
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
-                                          initWithTarget:self action:@selector(touchesBegan)];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchesBegan)];
     tapGesture.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapGesture];
     
@@ -425,7 +424,7 @@
                                                  otherButtonTitles:nil, nil];
     [loadingAlert show];
     
-    NSMutableDictionary *data = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *data = [NSMutableDictionary new];
     [data setValue:[self.descriptionTextView.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]] forKey:@"description"];
     [data setValue:[[USER_DEFAULTS objectForKey:@"user"] objectForKey:@"id"] forKey:@"user_id"];
     
@@ -485,8 +484,7 @@
         return NO;
     }
     
-    NSString *str = self.descriptionTextView.text;
-    str = [str stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
+    NSString *str = [self.descriptionTextView.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
     if ([str length] <= 0) {
         [[[UIAlertView alloc] initWithTitle:@"提示"
                                     message:@"請輸入照片說明喔！"

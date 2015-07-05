@@ -143,11 +143,13 @@
     
 }
 - (void) initAvatarImageView {
+    self.avatarDimension = 65;
+    
     self.avatarImageView = [AsyncImageView new];
     [self.avatarImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     [self.avatarImageView setContentMode:UIViewContentModeScaleAspectFill];
-    [self.avatarImageView.layer setCornerRadius:30];
+    [self.avatarImageView.layer setCornerRadius:self.avatarDimension / 2];
     [self.avatarImageView.layer setBorderColor:[UIColor colorWithRed:0.90 green:0.87 blue:0.87 alpha:1.0].CGColor];
     [self.avatarImageView.layer setBorderWidth:1.0f / [UIScreen mainScreen].scale];
     [self.avatarImageView setClipsToBounds:YES];
@@ -176,7 +178,7 @@
                                                                    toItem:nil
                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                multiplier:1.0
-                                                                 constant:60.0]];
+                                                                 constant:self.avatarDimension]];
     
     
     [self.borderView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView
@@ -185,7 +187,7 @@
                                                                    toItem:nil
                                                                 attribute:NSLayoutAttributeNotAnAttribute
                                                                multiplier:1.0
-                                                                 constant:60.0]];
+                                                                 constant:self.avatarDimension]];
 }
 - (void) initNameLabel {
     self.nameLabel = [UILabel new];
@@ -514,7 +516,7 @@
                                                                    blue:[[color objectForKey:@"blue"] doubleValue] / 255.0f alpha:0.85f]];
     }
     
-    [self.avatarImageView setImageURL:[NSURL URLWithString:[[[picture objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"140x140c"]]];
+    [self.avatarImageView setImageURL:[NSURL URLWithString:[[[picture objectForKey:@"user"] objectForKey:@"avatar"] objectForKey:@"130x130t"]]];
     if (([picture objectForKey:@"user"] != nil) && ([[picture objectForKey:@"user"] objectForKey:@"color"] != nil)) {
         id color = [[picture objectForKey:@"user"] objectForKey:@"color"];
         [self.avatarImageView setBackgroundColor:[UIColor colorWithRed:[[color objectForKey:@"red"] doubleValue] / 255.0f

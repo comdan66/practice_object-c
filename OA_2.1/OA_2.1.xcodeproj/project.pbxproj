@@ -34,6 +34,8 @@
 		0ECC5DE41B44611200F6B9DB /* IndexTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5DE31B44611200F6B9DB /* IndexTableViewCell.m */; };
 		0ECC5DE81B45647500F6B9DB /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5DE71B45647500F6B9DB /* SettingTableViewController.m */; };
 		0ECC5DEC1B457AEF00F6B9DB /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5DEB1B457AEF00F6B9DB /* AvatarViewController.m */; };
+		0ECC5E241B4924A300F6B9DB /* NameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5E231B4924A200F6B9DB /* NameViewController.m */; };
+		0ECC5E271B492D2800F6B9DB /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ECC5E261B492D2800F6B9DB /* PasswordViewController.m */; };
 		0ED1F4991B39A3AF001B9275 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F4981B39A3AF001B9275 /* main.m */; };
 		0ED1F49C1B39A3AF001B9275 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49B1B39A3AF001B9275 /* AppDelegate.m */; };
 		0ED1F49F1B39A3AF001B9275 /* OA_2_1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0ED1F49D1B39A3AF001B9275 /* OA_2_1.xcdatamodeld */; };
@@ -117,6 +119,10 @@
 		0ECC5DE71B45647500F6B9DB /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		0ECC5DEA1B457AEF00F6B9DB /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarViewController.h; sourceTree = "<group>"; };
 		0ECC5DEB1B457AEF00F6B9DB /* AvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarViewController.m; sourceTree = "<group>"; };
+		0ECC5E221B4924A200F6B9DB /* NameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameViewController.h; sourceTree = "<group>"; };
+		0ECC5E231B4924A200F6B9DB /* NameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameViewController.m; sourceTree = "<group>"; };
+		0ECC5E251B492D2800F6B9DB /* PasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordViewController.h; sourceTree = "<group>"; };
+		0ECC5E261B492D2800F6B9DB /* PasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordViewController.m; sourceTree = "<group>"; };
 		0ED1F4931B39A3AF001B9275 /* OA_2.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OA_2.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED1F4971B39A3AF001B9275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ED1F4981B39A3AF001B9275 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -375,6 +381,10 @@
 			children = (
 				0ECC5DEA1B457AEF00F6B9DB /* AvatarViewController.h */,
 				0ECC5DEB1B457AEF00F6B9DB /* AvatarViewController.m */,
+				0ECC5E221B4924A200F6B9DB /* NameViewController.h */,
+				0ECC5E231B4924A200F6B9DB /* NameViewController.m */,
+				0ECC5E251B492D2800F6B9DB /* PasswordViewController.h */,
+				0ECC5E261B492D2800F6B9DB /* PasswordViewController.m */,
 			);
 			name = Avatar;
 			sourceTree = "<group>";
@@ -615,6 +625,7 @@
 				0ED1F4EA1B3AA2EB001B9275 /* RegisterViewController.m in Sources */,
 				0ED1F4DB1B39A48C001B9275 /* AFURLSessionManager.m in Sources */,
 				0EAB32E51B442B7300D3D106 /* REMarker.m in Sources */,
+				0ECC5E241B4924A300F6B9DB /* NameViewController.m in Sources */,
 				0ED1F4991B39A3AF001B9275 /* main.m in Sources */,
 				0EAB32E91B442B9900D3D106 /* MapViewController.m in Sources */,
 				0EC254A61B3C651B0057DB55 /* UIImageViewAligned.m in Sources */,
@@ -623,6 +634,7 @@
 				0EAB32E61B442B7300D3D106 /* REMarkerClusterer.m in Sources */,
 				0EC253C31B3BA6810057DB55 /* MyTabBarController.m in Sources */,
 				0E77D3F31B3EDDFE00A2C9EC /* ImageUtility.m in Sources */,
+				0ECC5E271B492D2800F6B9DB /* PasswordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

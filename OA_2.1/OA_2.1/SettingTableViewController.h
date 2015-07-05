@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AvatarViewController.h"
+#import "NameViewController.h"
+#import "PasswordViewController.h"
+#import "LoginViewController.h"
 
 @interface SettingTableViewController : UITableViewController
 
-- (void)test;
 @end

@@ -60,32 +60,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="OA's app v2.1" id="hCt-ay-uDZ"/>
-                    <connections>
-                        <segue destination="wW9-5c-cSe" kind="push" identifier="sss" id="gk8-hQ-r8s"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pEY-fT-dY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1871" y="3405"/>
-        </scene>
-        <!--Avatar View Controller-->
-        <scene sceneID="5Ga-2O-dTy">
-            <objects>
-                <viewController id="wW9-5c-cSe" customClass="AvatarViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1HK-BH-TiV"/>
-                        <viewControllerLayoutGuide type="bottom" id="AJ3-84-pqQ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="f8G-eT-vuv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="DhJ-vd-PLS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7L1-mW-eR8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2591" y="3405"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="qnl-jm-iqu">

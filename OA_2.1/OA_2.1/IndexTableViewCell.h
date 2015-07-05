@@ -22,6 +22,8 @@
 @property  UIButton *commentButton;
 @property  UIButton *likeButton;
 
+@property CGFloat avatarDimension;
+
 
 @property NSLayoutConstraint *horizontalRule1Description;
 @property NSLayoutConstraint *descriptionHorizontalRule2;

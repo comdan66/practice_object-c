@@ -21,7 +21,7 @@
     [(MyTabBar *)self.tabBar initUI];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToTabIndex0:) name:@"goToTabIndex0" object:nil];
-//    [self setSelectedIndex:2];
+//    [self setSelectedIndex:3];
 }
 - (void)goToTabIndex0:(NSNotification*)sender {
     MyNavigationController *first = (MyNavigationController *)[self.viewControllers objectAtIndex:0];
