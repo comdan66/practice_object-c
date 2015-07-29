@@ -162,6 +162,9 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 
 #pragma mark - Lifecycle
 
+- (void)touchAvatarImage {
+    NSLog(@"v");
+}
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
@@ -196,14 +199,19 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		self.backgroundColor = [UIColor clearColor];
 		// Make it invisible for now
 		self.alpha = 0.0f;
+        [self setBackgroundColor:[UIColor colorWithRed:0.43 green:0.78 blue:0.94 alpha:.2]];
 		
 		taskInProgress = NO;
 		rotationTransform = CGAffineTransformIdentity;
-		
+        
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchAvatarImage)];
+        singleTap.numberOfTapsRequired = 1;
+        [self addGestureRecognizer:singleTap];
+        
 		[self setupLabels];
-		[self updateIndicators];
-		[self registerForKVO];
-		[self registerForNotifications];
+//		[self updateIndicators];
+//		[self registerForKVO];
+//		[self registerForNotifications];
 	}
 	return self;
 }
