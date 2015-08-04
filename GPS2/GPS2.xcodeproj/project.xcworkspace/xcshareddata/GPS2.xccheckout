@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>C0B92BAC-534F-453C-B776-C08511138538</string>
+	<string>92FB412A-1F2D-4D34-96D1-9375EB6DD327</string>
 	<key>IDESourceControlProjectName</key>
-	<string>gps</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7793D8A99D1AEC79C8934EFD5A568F4D3F96FC06</key>
 		<string>github.com:comdan66/practice_object-c.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>gps/gps.xcodeproj</string>
+	<string>GPS2/GPS2.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7793D8A99D1AEC79C8934EFD5A568F4D3F96FC06</key>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="63m-GQ-VLk">
+                                <rect key="frame" x="146" y="55" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChangeAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="aV4-hM-QW7"/>
+                                </connections>
+                            </switch>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="32G-9j-cJY">
+                                <rect key="frame" x="367" y="57" width="94" height="29"/>
+                                <connections>
+                                    <action selector="steperChangeAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="U3N-Ms-JnN"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="關閉" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBO-n9-5Dj">
+                                <rect key="frame" x="52" y="60" width="34" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Nqy-rq-JOp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ovm-k5-U43">
+                                <rect key="frame" x="513" y="60" width="10" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="ZCw-1q-aQ1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hNs-99-zQj">
+                                <rect key="frame" x="52" y="141" width="503" height="433"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrx-uZ-cm7">
+                                <rect key="frame" x="52" y="96" width="92" height="30"/>
+                                <state key="normal" title="重設 Event ID">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setEventIdAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ut6-JN-wcT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7v-O8-y1f">
+                                <rect key="frame" x="367" y="96" width="60" height="30"/>
+                                <state key="normal" title="清空紀錄">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cleanDbAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="S1f-Rw-Ps7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ovm-k5-U43" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="50" id="AIa-bF-FZ1"/>
+                            <constraint firstItem="hNs-99-zQj" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Ayb-cJ-FS3"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="hNs-99-zQj" secondAttribute="bottom" constant="20" id="HoL-zK-pve"/>
+                            <constraint firstItem="32G-9j-cJY" firstAttribute="centerY" secondItem="Ovm-k5-U43" secondAttribute="centerY" id="PZR-Rx-gX2"/>
+                            <constraint firstItem="63m-GQ-VLk" firstAttribute="leading" secondItem="RBO-n9-5Dj" secondAttribute="trailing" constant="20" id="Q10-zz-bd5"/>
+                            <constraint firstAttribute="trailing" secondItem="hNs-99-zQj" secondAttribute="trailing" constant="20" id="QyX-M7-jqq"/>
+                            <constraint firstItem="RBO-n9-5Dj" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="50" id="TOZ-cG-FTd"/>
+                            <constraint firstItem="w7v-O8-y1f" firstAttribute="centerY" secondItem="Qrx-uZ-cm7" secondAttribute="centerY" id="XjK-cP-px8"/>
+                            <constraint firstItem="32G-9j-cJY" firstAttribute="leading" secondItem="w7v-O8-y1f" secondAttribute="leading" id="YmW-r9-ZF7"/>
+                            <constraint firstItem="RBO-n9-5Dj" firstAttribute="leading" secondItem="Qrx-uZ-cm7" secondAttribute="leading" id="a61-HD-CVl"/>
+                            <constraint firstItem="RBO-n9-5Dj" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="aaS-87-JQa"/>
+                            <constraint firstItem="32G-9j-cJY" firstAttribute="centerY" secondItem="63m-GQ-VLk" secondAttribute="centerY" id="bb0-w8-Jy4"/>
+                            <constraint firstItem="Qrx-uZ-cm7" firstAttribute="top" secondItem="RBO-n9-5Dj" secondAttribute="bottom" constant="20" id="cCi-2L-UTS"/>
+                            <constraint firstItem="hNs-99-zQj" firstAttribute="top" secondItem="Qrx-uZ-cm7" secondAttribute="bottom" constant="20" id="gue-In-Dlr"/>
+                            <constraint firstItem="Ovm-k5-U43" firstAttribute="leading" secondItem="32G-9j-cJY" secondAttribute="trailing" constant="20" id="k1G-UJ-1U2"/>
+                            <constraint firstAttribute="trailing" secondItem="Ovm-k5-U43" secondAttribute="trailing" constant="20" id="ltp-Yd-usQ"/>
+                            <constraint firstItem="32G-9j-cJY" firstAttribute="centerY" secondItem="RBO-n9-5Dj" secondAttribute="centerY" id="vho-Dw-3g4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logTextView" destination="hNs-99-zQj" id="KOi-bn-IST"/>
+                        <outlet property="steperLabel" destination="Ovm-k5-U43" id="n0S-Qw-yvk"/>
+                        <outlet property="switchButton" destination="63m-GQ-VLk" id="ea6-V9-bCd"/>
+                        <outlet property="switchLabel" destination="RBO-n9-5Dj" id="FtH-uJ-B8z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
